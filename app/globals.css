@@ -1162,6 +1162,8 @@ main {
 }
 
 .projects-header {
+  grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
+  align-items: end;
   gap: 22px;
 }
 
@@ -1355,7 +1357,6 @@ main {
   .home-hero,
   .home-routes,
   .page-header,
-  .projects-stats,
   .section-head--split,
   .home-lens__matrix,
   .home-selected__grid,
@@ -1385,6 +1386,11 @@ main {
   .resume-panel--projects,
   .resume-profile-grid__wide {
     grid-column: span 1;
+  }
+
+  .projects-header {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 }
 
@@ -1429,6 +1435,10 @@ main {
   .page-title {
     max-width: 15ch;
     font-size: 1.85rem;
+  }
+
+  .projects-stats {
+    grid-template-columns: 1fr;
   }
 
   .filter-grid,
