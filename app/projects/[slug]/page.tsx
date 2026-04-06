@@ -5,9 +5,9 @@ import { caseStudies } from "@/content/case-studies";
 import { projects } from "@/content/projects";
 
 type ProjectDetailPageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export function generateStaticParams() {
@@ -19,7 +19,7 @@ export function generateStaticParams() {
 export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const project = projects.find((item) => item.slug === slug);
 
   if (!project) {

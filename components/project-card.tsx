@@ -25,7 +25,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <p className="project-card__summary">{project.summary}</p>
 
-      <dl className="meta-list">
+      <dl className="meta-list meta-list--compact">
         <div className="meta-item">
           <dt>기간</dt>
           <dd>{project.period}</dd>
@@ -38,12 +38,16 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <dt>도메인</dt>
           <dd>{project.domains.join(" / ")}</dd>
         </div>
+        <div className="meta-item">
+          <dt>역할</dt>
+          <dd>{project.role.slice(0, 3).join(", ")}</dd>
+        </div>
       </dl>
 
       <div className="project-card__block">
         <span className="project-card__label">문제 유형</span>
         <div className="tag-list">
-          {project.problemTypes.map((item) => (
+          {project.problemTypes.slice(0, 4).map((item) => (
             <span className="tag" key={item}>
               {item}
             </span>
@@ -54,13 +58,19 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <div className="project-card__block">
         <span className="project-card__label">기술</span>
         <div className="tag-list">
-          {project.stack.map((item) => (
+          {project.stack.slice(0, 4).map((item) => (
             <span className="tag" key={item}>
               {item}
             </span>
           ))}
         </div>
       </div>
+
+      <ul className="list-stack compact-list">
+        {project.focusPoints.slice(0, 2).map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
 
       <p className="project-card__outcome">{project.outcome}</p>
 
