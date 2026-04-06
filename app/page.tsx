@@ -3,50 +3,58 @@ import Link from "next/link";
 import { HomeProjectCard } from "@/components/home-project-card";
 import { featuredProjects } from "@/content/projects";
 
-const heroRoles = ["데이터 분석가", "공간데이터 분석가"];
-
-const frameItems = [
+const heroMeta = [
   {
-    title: "문제 정의",
-    label: "signals first",
-    description: "겉으로 드러난 수치보다 먼저 검증해야 할 위험 신호와 질문을 정리합니다.",
+    label: "Roles",
+    value: "데이터 분석가 / 공간데이터 분석가",
   },
   {
-    title: "구조 설계",
-    label: "analysis structure",
-    description: "흩어진 데이터를 분석 가능한 단위로 다시 묶고, 판단 기준이 되는 구조를 세웁니다.",
-  },
-  {
-    title: "검증 중심",
-    label: "decision ready",
-    description: "보기 좋은 결과보다 실제로 다시 확인하고 설명할 수 있는 결과를 남깁니다.",
+    label: "Frame",
+    value: "문제 정의 / 구조 설계 / 검증 중심",
   },
 ];
 
-const archiveRoutes = [
+const frameItems = [
+  {
+    index: "01",
+    title: "문제 정의",
+    label: "signals first",
+    summary: "먼저 무엇을 의심하고 무엇을 다시 물어야 하는지 정리합니다.",
+  },
+  {
+    index: "02",
+    title: "구조 설계",
+    label: "analysis structure",
+    summary: "흩어진 데이터를 판단 가능한 구조로 다시 묶고 기준을 세웁니다.",
+  },
+  {
+    index: "03",
+    title: "검증 중심",
+    label: "decision ready",
+    summary: "보기 좋은 결과보다 다시 설명하고 검토할 수 있는 결과를 남깁니다.",
+  },
+];
+
+const routeGroups = [
   {
     href: "/case-studies",
     label: "Case Studies",
-    title: "문제 해결 방식",
-    description: "문제 정의, 구조 설계, 전달 구조를 별도 프레임으로 정리한 기록.",
+    summary: "문제 해결 방식 정리",
   },
   {
     href: "/writing",
     label: "Writing",
-    title: "분석 기록 아카이브",
-    description: "프로젝트와 연결되는 메모, 회고, 글의 흐름을 묶은 아카이브.",
+    summary: "프로젝트 연계 기록",
   },
   {
     href: "/resume",
     label: "Resume",
-    title: "압축된 경력 정보",
-    description: "기술, 프로젝트, 역할을 빠르게 읽을 수 있도록 압축한 요약본.",
+    summary: "압축된 경력 정보",
   },
   {
     href: "/contact",
     label: "Contact",
-    title: "공개 버전 안내",
-    description: "공개 사이트 기준의 연락 방식과 포트폴리오 범위를 정리한 페이지.",
+    summary: "공개 버전 안내",
   },
 ];
 
@@ -54,36 +62,36 @@ const homeProjectMeta: Record<
   string,
   {
     lens: string;
-    heroNote: string;
     problem: string;
     roleLabel: string;
     tags: string[];
     impact: string;
+    quickNote: string;
   }
 > = {
   "lh-traffic-safety-analysis": {
     lens: "spatial / public / risk",
-    heroNote: "공간 분석과 위험도 해석",
     problem: "사고 건수 집계가 아니라 도시 인프라 관점에서 먼저 읽어야 할 위험 신호가 필요했다.",
     roleLabel: "spatial analysis / indicator design",
     tags: ["공간 분석", "공공데이터", "위험 해석", "지표 설계"],
-    impact: "교통안전 해석을 빈도 중심 정리에서 우선순위 판단 구조로 전환한 사례.",
+    impact: "교통안전 해석을 빈도 정리에서 우선순위 판단 구조로 전환한 사례.",
+    quickNote: "공간 분석과 위험도 해석",
   },
   "seoul-storefront-redveil": {
     lens: "end-to-end / decision tool",
-    heroNote: "리스크 판단 기준 설계",
     problem: "좋아 보이는 상가보다 매입 전에 먼저 걸러야 할 리스크 신호를 구조적으로 보여줄 필요가 있었다.",
     roleLabel: "service framing / web implementation",
     tags: ["리스크 기준", "SQL", "웹 구현", "상권 분석"],
     impact: "분석 결과를 문서에 멈추지 않고 웹 기반 판단 도구까지 연결한 사례.",
+    quickNote: "리스크 판단 기준 설계",
   },
   "uk-online-retail-segment-analysis": {
     lens: "commerce / segmentation / insight",
-    heroNote: "비즈니스 해석 중심 세그먼트",
     problem: "세그먼트 분류 자체보다, 어떤 고객 해석이 사업 판단으로 이어지는지가 더 중요했다.",
     roleLabel: "segment analysis / business reading",
     tags: ["커머스", "세그먼트", "고객 해석", "인사이트"],
     impact: "리테일 데이터를 사업 질문과 연결된 해석 구조로 정리한 사례.",
+    quickNote: "비즈니스 해석 중심 세그먼트",
   },
 };
 
@@ -100,29 +108,24 @@ export default function HomePage() {
           <div className="home-hero__copy">
             <div className="home-hero__lead">
               <span className="eyebrow">Signal Archive</span>
-              <p className="intro-name">Data Analysis Portfolio</p>
+              <p className="intro-name">Analytical Dossier</p>
             </div>
 
             <h1 className="hero-title">위험 신호와 구조를 먼저 짚는 데이터 분석가</h1>
 
-            <div className="home-hero__summary">
-              <p>
-                흩어진 데이터를 분석 가능한 구조로 정리하고, 표면적인 결과보다 먼저 확인해야 할 위험
-                신호와 맥락을 짚습니다.
-              </p>
-              <p>
-                공간 데이터, 상권 리스크, 커머스 분석까지 서로 다른 도메인에서도 같은 판단 프레임으로
-                문제를 다룹니다.
-              </p>
-            </div>
+            <p className="home-hero__summary">
+              흩어진 데이터를 판단 가능한 구조로 재편하고, 겉으로 좋아 보이는 결과보다 먼저 검증할
+              신호를 정리합니다.
+            </p>
 
-            <div className="home-hero__tokens" aria-label="핵심 포지션">
-              {heroRoles.map((role) => (
-                <span className="home-token" key={role}>
-                  {role}
-                </span>
+            <dl className="home-hero__meta-grid">
+              {heroMeta.map((item) => (
+                <div className="home-hero__meta-item" key={item.label}>
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
               ))}
-            </div>
+            </dl>
 
             <div className="button-row home-hero__actions">
               <Link className="button-link" href="/projects">
@@ -134,62 +137,52 @@ export default function HomePage() {
             </div>
           </div>
 
-          <aside className="home-hero__rail">
-            <section className="home-panel">
-              <div className="home-panel__head">
-                <span className="eyebrow">Position</span>
-                <p>문제 정의, 구조 설계, 검증 중심의 분석 프레임으로 읽히는 포지션.</p>
-              </div>
-              <div className="home-panel__stack">
-                <div className="home-panel__metric">
-                  <span className="home-panel__label">Primary</span>
-                  <strong>데이터 분석가 / 공간데이터 분석가</strong>
-                </div>
-                <div className="home-panel__metric">
-                  <span className="home-panel__label">Focus</span>
-                  <strong>risk signals / structure design / end-to-end analysis</strong>
-                </div>
-              </div>
-            </section>
+          <aside className="home-dossier">
+            <div className="home-dossier__head">
+              <span className="eyebrow">Selected Dossiers</span>
+              <p>Home에서 바로 확인할 대표 작업 세 개.</p>
+            </div>
 
-            <section className="home-panel">
-              <div className="home-panel__head">
-                <span className="eyebrow">Selected Work</span>
-                <p>Home에서 바로 확인할 대표 프로젝트 3개.</p>
-              </div>
-              <div className="home-work-list">
-                {selectedProjects.map(({ project, meta }, index) => (
-                  <Link className="home-work-link" href={`/projects/${project.slug}`} key={project.slug}>
-                    <span className="home-work-link__index">{`0${index + 1}`}</span>
-                    <div className="home-work-link__body">
-                      <strong>{project.title}</strong>
-                      <span>{meta?.heroNote ?? project.badges[0] ?? project.format}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </section>
+            <div className="home-dossier__list">
+              {selectedProjects.map(({ project, meta }, index) => (
+                <Link className="home-dossier__item" href={`/projects/${project.slug}`} key={project.slug}>
+                  <span className="home-dossier__index">{`0${index + 1}`}</span>
+                  <div className="home-dossier__body">
+                    <strong>{project.title}</strong>
+                    <span>{meta?.quickNote ?? project.badges[0] ?? project.format}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+
+            <div className="home-dossier__footer">
+              <span>spatial</span>
+              <span>end-to-end</span>
+              <span>commerce</span>
+            </div>
           </aside>
         </section>
 
         <section className="surface-card home-frame">
-          <div className="home-frame__intro">
-            <span className="eyebrow">Brand Frame</span>
-            <h2 className="section-title">반복 설명 대신, 세 개의 프레임으로 압축한 분석 태도</h2>
+          <div className="home-frame__header">
+            <div>
+              <span className="eyebrow">Brand Frame</span>
+              <h2 className="section-title">분석 기준 3축</h2>
+            </div>
             <p className="page-intro">
-              같은 말을 다른 제목으로 나누지 않고, 문제를 다루는 기준을 하나의 구조로 묶었습니다.
+              설명을 늘리지 않고, 무엇을 먼저 보고 어떻게 판단하는지를 세 축으로 압축했습니다.
             </p>
           </div>
 
-          <div className="home-frame__grid">
-            {frameItems.map((item, index) => (
-              <article className="home-frame-card" key={item.title}>
-                <div className="home-frame-card__top">
-                  <span className="home-frame-card__index">{`0${index + 1}`}</span>
-                  <span className="home-frame-card__label">{item.label}</span>
+          <div className="home-frame__matrix">
+            {frameItems.map((item) => (
+              <article className="home-frame-axis" key={item.title}>
+                <div className="home-frame-axis__top">
+                  <span className="home-frame-axis__index">{item.index}</span>
+                  <span className="home-frame-axis__label">{item.label}</span>
                 </div>
                 <h3>{item.title}</h3>
-                <p>{item.description}</p>
+                <p>{item.summary}</p>
               </article>
             ))}
           </div>
@@ -199,11 +192,10 @@ export default function HomePage() {
           <div className="section-head section-head--split section-head--tight">
             <div>
               <span className="eyebrow">Selected Projects</span>
-              <h2 className="section-title">대표 작업 세 개로 읽히는 분석 역량</h2>
+              <h2 className="section-title">대표 사례 세 개로 읽히는 분석 역량</h2>
             </div>
             <p className="page-intro section-copy">
-              한 줄 소개 대신 문제 정의, 역할, 핵심 태그, 결과를 카드 안에서 바로 읽을 수 있게
-              정리했습니다.
+              Home에서는 긴 소개를 줄이고, 검토 가능한 사례 패널 세 개만 중심에 남겼습니다.
             </p>
           </div>
 
@@ -223,24 +215,17 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="surface-card home-archive">
-          <div className="section-head section-head--split section-head--tight">
-            <div>
-              <span className="eyebrow">Archive Routes</span>
-              <h2 className="section-title">프로젝트 바깥의 기록은 얇게, 하지만 바로 닿게</h2>
-            </div>
-            <p className="page-intro section-copy">
-              Case Studies, Writing, Resume, Contact는 홈에서 과하게 설명하지 않고 경로만 분명하게
-              남겼습니다.
-            </p>
+        <section className="surface-card home-routes">
+          <div className="home-routes__intro">
+            <span className="eyebrow">Archive Routes</span>
+            <p>나머지 경로는 보조 탐색으로만 남깁니다.</p>
           </div>
 
-          <div className="home-archive__grid">
-            {archiveRoutes.map((route) => (
-              <Link className="home-archive-card" href={route.href} key={route.href}>
-                <span className="home-archive-card__label">{route.label}</span>
-                <strong>{route.title}</strong>
-                <p>{route.description}</p>
+          <div className="home-routes__grid">
+            {routeGroups.map((route) => (
+              <Link className="home-route" href={route.href} key={route.href}>
+                <strong>{route.label}</strong>
+                <span>{route.summary}</span>
               </Link>
             ))}
           </div>
