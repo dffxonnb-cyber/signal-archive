@@ -4,14 +4,8 @@ import { HomeProjectCard } from "@/components/home-project-card";
 import { featuredProjects } from "@/content/projects";
 
 const heroMeta = [
-  {
-    label: "Roles",
-    value: "데이터 분석가 / 공간데이터 분석가",
-  },
-  {
-    label: "Frame",
-    value: "문제 정의 / 구조 설계 / 검증 중심",
-  },
+  "데이터 분석가 / 공간데이터 분석가",
+  "문제 정의 / 구조 설계 / 검증 중심",
 ];
 
 const frameItems = [
@@ -64,6 +58,7 @@ const homeProjectMeta: Record<
     lens: string;
     problem: string;
     roleLabel: string;
+    scopeLabel: string;
     tags: string[];
     impact: string;
     quickNote: string;
@@ -73,6 +68,7 @@ const homeProjectMeta: Record<
     lens: "spatial / public / risk",
     problem: "사고 건수 집계가 아니라 도시 인프라 관점에서 먼저 읽어야 할 위험 신호가 필요했다.",
     roleLabel: "spatial analysis / indicator design",
+    scopeLabel: "public safety / spatial risk reading",
     tags: ["공간 분석", "공공데이터", "위험 해석", "지표 설계"],
     impact: "교통안전 해석을 빈도 정리에서 우선순위 판단 구조로 전환한 사례.",
     quickNote: "공간 분석과 위험도 해석",
@@ -81,6 +77,7 @@ const homeProjectMeta: Record<
     lens: "end-to-end / decision tool",
     problem: "좋아 보이는 상가보다 매입 전에 먼저 걸러야 할 리스크 신호를 구조적으로 보여줄 필요가 있었다.",
     roleLabel: "service framing / web implementation",
+    scopeLabel: "commercial risk / end-to-end build",
     tags: ["리스크 기준", "SQL", "웹 구현", "상권 분석"],
     impact: "분석 결과를 문서에 멈추지 않고 웹 기반 판단 도구까지 연결한 사례.",
     quickNote: "리스크 판단 기준 설계",
@@ -89,6 +86,7 @@ const homeProjectMeta: Record<
     lens: "commerce / segmentation / insight",
     problem: "세그먼트 분류 자체보다, 어떤 고객 해석이 사업 판단으로 이어지는지가 더 중요했다.",
     roleLabel: "segment analysis / business reading",
+    scopeLabel: "retail data / business interpretation",
     tags: ["커머스", "세그먼트", "고객 해석", "인사이트"],
     impact: "리테일 데이터를 사업 질문과 연결된 해석 구조로 정리한 사례.",
     quickNote: "비즈니스 해석 중심 세그먼트",
@@ -118,18 +116,17 @@ export default function HomePage() {
             </h1>
 
             <p className="home-hero__summary">
-              흩어진 데이터를 판단 가능한 구조로 재편하고, 겉으로 좋아 보이는 결과보다 먼저 검증할
-              신호를 정리합니다.
+              흩어진 데이터를 판단 가능한 구조로 재편하고, 보기 좋은 결과보다 먼저 검증할 신호를
+              정리합니다.
             </p>
 
-            <dl className="home-hero__meta-grid">
+            <div className="home-hero__meta-line" aria-label="핵심 메타">
               {heroMeta.map((item) => (
-                <div className="home-hero__meta-item" key={item.label}>
-                  <dt>{item.label}</dt>
-                  <dd>{item.value}</dd>
-                </div>
+                <span className="home-hero__meta-token" key={item}>
+                  {item}
+                </span>
               ))}
-            </dl>
+            </div>
 
             <div className="button-row home-hero__actions">
               <Link className="button-link" href="/projects">
@@ -158,19 +155,13 @@ export default function HomePage() {
                 </Link>
               ))}
             </div>
-
-            <div className="home-dossier__footer">
-              <span>spatial</span>
-              <span>end-to-end</span>
-              <span>commerce</span>
-            </div>
           </aside>
         </section>
 
-        <section className="surface-card home-frame">
-          <div className="home-frame__header">
+        <section className="surface-card home-lens">
+          <div className="home-lens__header">
             <div>
-              <span className="eyebrow">Brand Frame</span>
+              <span className="eyebrow">Analytical Lens</span>
               <h2 className="section-title">분석 기준 3축</h2>
             </div>
             <p className="page-intro">
@@ -178,12 +169,12 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="home-frame__matrix">
+          <div className="home-lens__matrix">
             {frameItems.map((item) => (
-              <article className="home-frame-axis" key={item.title}>
-                <div className="home-frame-axis__top">
-                  <span className="home-frame-axis__index">{item.index}</span>
-                  <span className="home-frame-axis__label">{item.label}</span>
+              <article className="home-lens__axis" key={item.title}>
+                <div className="home-lens__axis-top">
+                  <span className="home-lens__axis-index">{item.index}</span>
+                  <span className="home-lens__axis-label">{item.label}</span>
                 </div>
                 <h3>{item.title}</h3>
                 <p>{item.summary}</p>
@@ -213,6 +204,7 @@ export default function HomePage() {
                 problem={meta?.problem ?? project.summary}
                 project={project}
                 roleLabel={meta?.roleLabel ?? project.role.slice(0, 2).join(" / ")}
+                scopeLabel={meta?.scopeLabel ?? project.domains.slice(0, 2).join(" / ")}
                 tags={meta?.tags ?? project.problemTypes.slice(0, 4)}
               />
             ))}

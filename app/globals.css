@@ -351,7 +351,7 @@ main {
 }
 
 .home-hero,
-.home-frame,
+.home-lens,
 .home-routes {
   padding: 28px;
 }
@@ -364,8 +364,8 @@ main {
 
 .home-hero__copy,
 .home-dossier,
-.home-frame__header,
-.home-frame-axis,
+.home-lens__header,
+.home-lens__axis,
 .home-selected,
 .home-project-card,
 .home-project-card__section,
@@ -379,7 +379,7 @@ main {
 }
 
 .home-hero__lead,
-.home-frame__header,
+.home-lens__header,
 .home-routes__intro {
   display: grid;
   gap: 8px;
@@ -404,26 +404,15 @@ main {
   line-height: 1.72;
 }
 
-.home-hero__meta-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.home-hero__meta-line {
+  display: flex;
+  flex-wrap: wrap;
   gap: 10px;
-  margin: 0;
 }
 
-.home-hero__meta-item {
-  display: grid;
-  gap: 4px;
-  padding: 12px 14px;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.home-hero__meta-item dt,
-.home-dossier__footer span,
-.home-frame-axis__index,
-.home-frame-axis__label,
+.home-hero__meta-token,
+.home-lens__axis-index,
+.home-lens__axis-label,
 .home-project-card__section-label,
 .home-project-card__lens,
 .home-project-card__fact dt,
@@ -433,12 +422,16 @@ main {
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
 }
 
-.home-hero__meta-item dd {
-  margin: 0;
-  font-size: 0.92rem;
-  line-height: 1.45;
+.home-hero__meta-token {
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .home-hero__actions {
@@ -460,7 +453,6 @@ main {
 }
 
 .home-dossier__head p,
-.home-frame-axis p,
 .home-route strong,
 .home-route span {
   margin: 0;
@@ -527,19 +519,11 @@ main {
   line-height: 1.48;
 }
 
-.home-dossier__footer {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 16px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border);
-}
-
-.home-frame {
+.home-lens {
   gap: 18px;
 }
 
-.home-frame__matrix {
+.home-lens__matrix {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
@@ -547,33 +531,42 @@ main {
   border-radius: 10px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.015);
+  position: relative;
 }
 
-.home-frame-axis {
+.home-lens__matrix::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 1px 0 rgba(165, 176, 184, 0.08);
+}
+
+.home-lens__axis {
   gap: 10px;
   min-height: 100%;
   padding: 18px 18px 16px;
   border-left: 1px solid var(--border);
 }
 
-.home-frame-axis:first-child {
+.home-lens__axis:first-child {
   border-left: 0;
 }
 
-.home-frame-axis__top {
+.home-lens__axis-top {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
 }
 
-.home-frame-axis h3 {
+.home-lens__axis h3 {
   margin: 0;
   font-size: 1.04rem;
   line-height: 1.32;
 }
 
-.home-frame-axis p {
+.home-lens__axis p {
   color: var(--text-secondary);
   font-size: 0.88rem;
   line-height: 1.62;
@@ -631,10 +624,6 @@ main {
 .home-project-card__facts {
   padding: 14px 18px;
   border-top: 1px solid var(--border);
-}
-
-.home-project-card__section:first-of-type {
-  border-top: 0;
 }
 
 .home-project-card__title {
@@ -1202,7 +1191,7 @@ main {
   .home-routes,
   .page-header,
   .section-head--split,
-  .home-frame__matrix,
+  .home-lens__matrix,
   .home-selected__grid,
   .home-routes__grid,
   .project-grid--featured,
@@ -1213,12 +1202,12 @@ main {
     grid-template-columns: 1fr;
   }
 
-  .home-frame-axis {
+  .home-lens__axis {
     border-left: 0;
     border-top: 1px solid var(--border);
   }
 
-  .home-frame-axis:first-child {
+  .home-lens__axis:first-child {
     border-top: 0;
   }
 
@@ -1262,7 +1251,7 @@ main {
   }
 
   .home-hero,
-  .home-frame,
+  .home-lens,
   .home-routes {
     padding: 22px 20px;
   }
@@ -1279,7 +1268,6 @@ main {
   .filter-grid,
   .filter-grid--compact,
   .project-card__meta-grid,
-  .home-hero__meta-grid,
   .home-project-card__facts,
   .resume-profile-grid,
   .resume-strength-grid,

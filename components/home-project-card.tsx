@@ -8,6 +8,7 @@ type HomeProjectCardProps = {
   lens: string;
   problem: string;
   roleLabel: string;
+  scopeLabel: string;
   tags: string[];
   impact: string;
 };
@@ -18,6 +19,7 @@ export function HomeProjectCard({
   lens,
   problem,
   roleLabel,
+  scopeLabel,
   tags,
   impact,
 }: HomeProjectCardProps) {
@@ -46,8 +48,8 @@ export function HomeProjectCard({
           <dd>{roleLabel}</dd>
         </div>
         <div className="home-project-card__fact">
-          <dt>Tools</dt>
-          <dd>{project.stack.slice(0, 3).join(" / ")}</dd>
+          <dt>Scope</dt>
+          <dd>{scopeLabel}</dd>
         </div>
       </dl>
 
