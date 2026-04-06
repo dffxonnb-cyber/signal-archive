@@ -1,16 +1,53 @@
+import Link from "next/link";
+
+import { caseStudies } from "@/content/case-studies";
+import { projects } from "@/content/projects";
+
 export default function CaseStudiesPage() {
+  const projectTitleMap = new Map(
+    projects.map((project) => [project.slug, project.title] as const),
+  );
+
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
         <section className="surface-card">
           <span className="eyebrow">Case Studies</span>
-          <h1 className="page-title">How problems were handled</h1>
+          <h1 className="page-title">프로젝트 결과물 뒤에 있는 문제 해결 방식</h1>
           <p className="page-intro">
-            프로젝트 결과물과 분리된 문제 해결 사례를 담는 섹션입니다.
+            Projects가 무엇을 만들었는지를 보여준다면, Case Studies는 어떤
+            질문과 구조로 문제를 다뤘는지 따로 추출해 보여줍니다.
           </p>
         </section>
+
+        <div className="highlight-grid">
+          {caseStudies.map((caseStudy) => (
+            <article className="summary-card summary-card--spacious" id={caseStudy.slug} key={caseStudy.slug}>
+              <span className="tag tag--accent">{caseStudy.category}</span>
+              <h2>{caseStudy.title}</h2>
+              <p>{caseStudy.summary}</p>
+              <div className="project-card__block">
+                <span className="project-card__label">핵심 접근</span>
+                <ul className="list-stack compact-list">
+                  {caseStudy.keyMoves.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="project-card__block">
+                <span className="project-card__label">연결 프로젝트</span>
+                <div className="tag-list">
+                  {caseStudy.linkedProjects.map((slug) => (
+                    <Link className="tag" href={`/projects/${slug}`} key={slug}>
+                      {projectTitleMap.get(slug) ?? slug}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </main>
   );
 }
-

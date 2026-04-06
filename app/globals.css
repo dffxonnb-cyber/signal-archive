@@ -129,6 +129,12 @@ main {
   color: var(--text-primary);
 }
 
+.site-nav__active {
+  border-color: rgba(142, 185, 159, 0.35) !important;
+  background: rgba(95, 139, 118, 0.12) !important;
+  color: var(--text-primary) !important;
+}
+
 .page-shell {
   padding: 56px 0 96px;
 }
@@ -172,6 +178,81 @@ main {
   margin: 0;
   font-size: clamp(1.35rem, 2.6vw, 2rem);
   line-height: 1.2;
+}
+
+.intro-panel {
+  gap: 20px;
+}
+
+.intro-name {
+  margin: 0;
+  color: var(--accent-strong);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.intro-copy {
+  max-width: 760px;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-head {
+  display: grid;
+  gap: 10px;
+}
+
+.highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.summary-card {
+  display: grid;
+  gap: 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 24px;
+}
+
+.summary-card h2,
+.summary-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.25;
+}
+
+.summary-card p,
+.summary-card a {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.summary-card a:hover,
+.summary-card a:focus-visible {
+  color: var(--accent-strong);
+}
+
+.summary-card--spacious {
+  align-content: start;
+}
+
+.info-strip {
+  gap: 18px;
+}
+
+.compact-grid {
+  gap: 16px;
+}
+
+.compact-list {
+  margin-top: 0;
 }
 
 .placeholder-stack {
@@ -278,6 +359,18 @@ main {
   border-color: rgba(142, 185, 159, 0.45);
   background: rgba(95, 139, 118, 0.12);
   color: var(--accent-strong);
+}
+
+.status-tag--published {
+  color: #b6d9c1;
+}
+
+.status-tag--inventory {
+  color: #c3d1cb;
+}
+
+.status-tag--planned {
+  color: #9faeb1;
 }
 
 .results-summary {
