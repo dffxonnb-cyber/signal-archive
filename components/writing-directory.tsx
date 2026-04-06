@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { FilterSelect } from "@/components/filter-select";
 import { projects } from "@/content/projects";
 import type { WritingEntry } from "@/types/content";
 
@@ -46,52 +47,45 @@ export function WritingDirectory({
   return (
     <section className="page-grid">
       <div className="surface-card filter-panel">
-        <div className="filter-groups">
-          <div className="filter-group">
-            <span className="filter-group__label">플랫폼</span>
-            <div className="filter-options">
-              <button
-                className={`filter-chip ${platform === "전체" ? "filter-chip--active" : ""}`}
-                onClick={() => setPlatform("전체")}
-                type="button"
-              >
-                전체
-              </button>
-              {platforms.map((item) => (
-                <button
-                  className={`filter-chip ${platform === item ? "filter-chip--active" : ""}`}
-                  key={item}
-                  onClick={() => setPlatform(item)}
-                  type="button"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
+        <div className="filter-panel__header">
+          <div>
+            <span className="eyebrow">Directory</span>
+            <h2 className="section-title">글을 플랫폼이 아니라 역할로 정리하기</h2>
+            <p className="filter-panel__description">
+              먼저 성격과 플랫폼을 좁힌 뒤, 관련 프로젝트를 확인하는 흐름으로
+              구성했습니다.
+            </p>
           </div>
+        </div>
 
-          <div className="filter-group">
-            <span className="filter-group__label">글 성격</span>
-            <div className="filter-options">
-              <button
-                className={`filter-chip ${category === "전체" ? "filter-chip--active" : ""}`}
-                onClick={() => setCategory("전체")}
-                type="button"
-              >
-                전체
-              </button>
-              {categories.map((item) => (
-                <button
-                  className={`filter-chip ${category === item ? "filter-chip--active" : ""}`}
-                  key={item}
-                  onClick={() => setCategory(item)}
-                  type="button"
-                >
-                  {item}
-                </button>
-              ))}
-            </div>
-          </div>
+        <div className="filter-grid filter-grid--compact">
+          <FilterSelect
+            id="writing-platform"
+            label="플랫폼"
+            onChange={setPlatform}
+            options={[
+              { label: "전체", value: "전체" },
+              ...platforms.map((item) => ({ label: item, value: item })),
+            ]}
+            value={platform}
+          />
+          <FilterSelect
+            id="writing-category"
+            label="글 성격"
+            onChange={setCategory}
+            options={[
+              { label: "전체", value: "전체" },
+              ...categories.map((item) => ({ label: item, value: item })),
+            ]}
+            value={category}
+          />
+        </div>
+
+        <div className="results-summary">
+          <span>{filteredEntries.length} entries</span>
+          <span>
+            {platform} / {category}
+          </span>
         </div>
       </div>
 
@@ -156,4 +150,3 @@ export function WritingDirectory({
     </section>
   );
 }
-

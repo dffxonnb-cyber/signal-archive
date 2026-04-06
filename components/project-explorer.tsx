@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 
+import { FilterSelect } from "@/components/filter-select";
 import { ProjectCard } from "@/components/project-card";
 import type { Project } from "@/types/content";
 
@@ -10,40 +11,6 @@ type ProjectExplorerProps = {
 };
 
 type SortMode = "featured" | "title";
-
-type FilterGroupProps = {
-  label: string;
-  options: string[];
-  value: string;
-  onChange: (value: string) => void;
-};
-
-function FilterGroup({ label, options, value, onChange }: FilterGroupProps) {
-  return (
-    <div className="filter-group">
-      <span className="filter-group__label">{label}</span>
-      <div className="filter-options">
-        <button
-          className={`filter-chip ${value === "전체" ? "filter-chip--active" : ""}`}
-          onClick={() => onChange("전체")}
-          type="button"
-        >
-          전체
-        </button>
-        {options.map((option) => (
-          <button
-            className={`filter-chip ${value === option ? "filter-chip--active" : ""}`}
-            key={option}
-            onClick={() => onChange(option)}
-            type="button"
-          >
-            {option}
-          </button>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   const [domain, setDomain] = useState("전체");
@@ -92,52 +59,76 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
           <div>
             <span className="eyebrow">Explorer</span>
             <h2 className="section-title">문제 유형과 도메인으로 프로젝트를 읽기</h2>
-          </div>
-          <div className="sort-switch" role="group" aria-label="Sort projects">
-            <button
-              className={`filter-chip ${sortMode === "featured" ? "filter-chip--active" : ""}`}
-              onClick={() => setSortMode("featured")}
-              type="button"
-            >
-              추천순
-            </button>
-            <button
-              className={`filter-chip ${sortMode === "title" ? "filter-chip--active" : ""}`}
-              onClick={() => setSortMode("title")}
-              type="button"
-            >
-              제목순
-            </button>
+            <p className="filter-panel__description">
+              필터를 조합해 프로젝트를 좁히고, 필요하면 정렬 기준을 바꿔서
+              읽을 수 있습니다.
+            </p>
           </div>
         </div>
 
-        <div className="filter-groups">
-          <FilterGroup
+        <div className="filter-grid">
+          <FilterSelect
+            id="project-domain"
             label="도메인"
             onChange={setDomain}
-            options={domains}
+            options={[
+              { label: "전체", value: "전체" },
+              ...domains.map((option) => ({ label: option, value: option })),
+            ]}
             value={domain}
           />
-          <FilterGroup
+          <FilterSelect
+            id="project-problem-type"
             label="문제 유형"
             onChange={setProblemType}
-            options={problemTypes}
+            options={[
+              { label: "전체", value: "전체" },
+              ...problemTypes.map((option) => ({ label: option, value: option })),
+            ]}
             value={problemType}
           />
-          <FilterGroup
+          <FilterSelect
+            id="project-stack"
             label="기술"
             onChange={setStack}
-            options={stacks}
+            options={[
+              { label: "전체", value: "전체" },
+              ...stacks.map((option) => ({ label: option, value: option })),
+            ]}
             value={stack}
           />
+          <FilterSelect
+            id="project-sort"
+            label="정렬"
+            onChange={(value) => setSortMode(value as SortMode)}
+            options={[
+              { label: "추천순", value: "featured" },
+              { label: "제목순", value: "title" },
+            ]}
+            value={sortMode}
+          />
         </div>
-      </div>
 
-      <div className="results-summary">
-        <span>{filteredProjects.length} projects</span>
-        <span>
-          {domain} / {problemType} / {stack}
-        </span>
+        <div className="filter-toolbar">
+          <div className="results-summary">
+            <span>{filteredProjects.length} projects</span>
+            <span>
+              {domain} / {problemType} / {stack}
+            </span>
+          </div>
+          <button
+            className="text-button"
+            onClick={() => {
+              setDomain("전체");
+              setProblemType("전체");
+              setStack("전체");
+              setSortMode("featured");
+            }}
+            type="button"
+          >
+            필터 초기화
+          </button>
+        </div>
       </div>
 
       {filteredProjects.length > 0 ? (
@@ -158,4 +149,3 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
     </section>
   );
 }
-
