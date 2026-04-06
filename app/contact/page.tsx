@@ -7,8 +7,7 @@ export default function ContactPage() {
             <span className="eyebrow">Contact</span>
             <h1 className="page-title">공개 버전에서 확인할 수 있는 범위</h1>
             <p className="page-intro">
-              이 페이지는 직접 연락처보다 공개 가능한 범위와 후속 제공 항목을
-              정리한 안내용 섹션입니다.
+              이 페이지는 직접 연락처보다 공개 가능한 범위와 후속 제공 항목을 정리한 안내용 섹션입니다.
             </p>
           </div>
 
@@ -35,7 +34,7 @@ export default function ContactPage() {
               <span className="archive-card__count">public-safe</span>
             </div>
             <h3>직접 연락처 비공개</h3>
-            <p>개인 메일과 소셜 링크는 공개 사이트에서 제외하고, 구조 검토에 필요한 정보만 남겼습니다.</p>
+            <p>개인 메일과 외부 소셜 링크는 공개 사이트에서 제외하고, 프로젝트 검토에 필요한 정보만 남겼습니다.</p>
           </article>
           <article className="archive-card">
             <div className="archive-card__meta">
@@ -51,7 +50,7 @@ export default function ContactPage() {
               <span className="archive-card__count">in progress</span>
             </div>
             <h3>프로젝트와 구조 우선</h3>
-            <p>우선은 프로젝트, 문제 해결 방식, 글 아카이브를 더 정교하게 다듬는 데 집중합니다.</p>
+            <p>현재는 프로젝트, 문제 해결 방식, 기록 아카이브를 더 정교하게 다듬는 데 집중하고 있습니다.</p>
           </article>
         </div>
       </div>

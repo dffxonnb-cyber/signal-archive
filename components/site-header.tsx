@@ -22,9 +22,10 @@ export function SiteHeader() {
           <span className="site-header__mark">SA</span>
           <span>
             <span className="site-header__title">Signal Archive</span>
-            <span className="site-header__subtitle">Public Preview</span>
+            <span className="site-header__subtitle">Research Portfolio</span>
           </span>
         </Link>
+
         <nav aria-label="Primary" className="site-nav">
           {navigation.map((item) => {
             const isActive =

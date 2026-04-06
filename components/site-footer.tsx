@@ -3,9 +3,8 @@ export function SiteFooter() {
     <footer className="site-footer">
       <div className="site-container site-footer__inner">
         <span>Signal Archive</span>
-        <span>A hiring portfolio for analysis, problem solving, and writing.</span>
+        <span>Problem framing, structure design, and verification-led analysis.</span>
       </div>
     </footer>
   );
 }
-

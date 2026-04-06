@@ -16,8 +16,7 @@ export default function CaseStudiesPage() {
             <span className="eyebrow">Case Studies</span>
             <h1 className="page-title">프로젝트 뒤에 있는 문제 해결 방식</h1>
             <p className="page-intro">
-              결과물보다 먼저 어떤 질문과 구조로 문제를 다뤘는지 따로 추출한
-              페이지입니다.
+              결과물보다 먼저 어떤 질문과 구조로 문제를 다뤘는지 따로 추출한 페이지입니다.
             </p>
           </div>
 

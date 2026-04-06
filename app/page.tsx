@@ -1,33 +1,23 @@
 import Link from "next/link";
 
-import { caseStudies } from "@/content/case-studies";
-import { profile } from "@/content/profile";
-import { featuredProjects } from "@/content/projects";
-import { writingEntries } from "@/content/writing";
 import { ProjectCard } from "@/components/project-card";
-
-const heroHeadline = "위험 신호와 구조를 먼저 짚는 데이터 분석가";
-const heroSummary =
-  "흩어진 데이터를 분석 가능한 구조로 정리하고, 표면적인 결과보다 맥락과 이상 신호를 먼저 살핍니다. 문제 정의부터 결과물 구현까지 검증 흐름으로 연결하는 방식을 선호합니다.";
+import { caseStudies } from "@/content/case-studies";
+import { featuredProjects } from "@/content/projects";
+import { profile } from "@/content/profile";
+import { writingEntries } from "@/content/writing";
 
 const frameItems = [
   {
-    label: "Problem Frame",
     title: "문제 정의",
-    description:
-      "무엇을 먼저 검증해야 하는지부터 다시 세우고, 좋아 보이는 결과를 바로 받아들이지 않습니다.",
+    description: "먼저 무엇을 검증해야 하는지부터 다시 세웁니다.",
   },
   {
-    label: "Structure",
     title: "구조 설계",
-    description:
-      "흩어진 데이터를 분석 가능한 단위로 다시 묶고, 해석 기준이 흔들리지 않도록 구조를 정리합니다.",
+    description: "흩어진 데이터를 분석 가능한 단위로 다시 묶습니다.",
   },
   {
-    label: "Verification",
     title: "검증 중심",
-    description:
-      "수치 그 자체보다 위험 신호와 맥락을 먼저 보고, 결과를 끝까지 점검하는 흐름을 유지합니다.",
+    description: "수치보다 위험 신호와 맥락을 먼저 확인합니다.",
   },
 ];
 
@@ -35,75 +25,66 @@ export default function HomePage() {
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
-        <section className="surface-card hero-card">
-          <div className="hero-card__copy">
+        <section className="surface-card hero-shell">
+          <div className="hero-shell__copy">
             <div>
               <span className="eyebrow">Signal Archive</span>
-              <p className="intro-name">공개용 버전</p>
+              <p className="intro-name">Analysis Portfolio</p>
             </div>
-            <h1 className="hero-title">{heroHeadline}</h1>
-            <p className="hero-summary">{heroSummary}</p>
+            <h1 className="hero-title">위험 신호와 구조를 먼저 짚는 데이터 분석가</h1>
+            <p className="hero-summary">
+              {profile.summary[0]} {profile.summary[1]}
+            </p>
             <div className="button-row">
               <Link className="button-link" href="/projects">
-                대표 프로젝트 보기
+                프로젝트 아카이브
               </Link>
               <Link className="button-link button-link--secondary" href="/resume">
-                Resume 보기
+                Resume
               </Link>
             </div>
           </div>
 
-          <aside className="hero-card__aside">
-            <div className="hero-glance">
-              <span className="hero-glance__label">Primary</span>
-              <strong>{profile.primaryRoles.join(" / ")}</strong>
+          <aside className="hero-shell__rail">
+            <div className="hero-shell__rail-head">
+              <span className="eyebrow">Selected Projects</span>
+              <p>대표 프로젝트 세 개를 먼저 보여줍니다.</p>
             </div>
-            <div className="hero-glance">
-              <span className="hero-glance__label">Frame</span>
-              <strong>{profile.strengths.slice(0, 3).join(" / ")}</strong>
-            </div>
-            <div className="hero-glance">
-              <span className="hero-glance__label">Scope</span>
-              <strong>공간데이터 / 비즈니스 / end-to-end</strong>
+            <div className="hero-project-list">
+              {featuredProjects.map((project, index) => (
+                <Link className="hero-project-link" href={`/projects/${project.slug}`} key={project.slug}>
+                  <span className="hero-project-link__index">{`0${index + 1}`}</span>
+                  <div className="hero-project-link__body">
+                    <span className="hero-project-link__meta">{project.badges[0] ?? project.category}</span>
+                    <strong>{project.title}</strong>
+                    <p>{project.focusPoints[0]}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
           </aside>
         </section>
 
-        <section className="page-grid">
-          <div className="section-head section-head--split">
-            <div>
-              <span className="eyebrow">Frame</span>
-              <h2 className="section-title">문제를 해석하는 기준</h2>
-            </div>
-            <p className="page-intro section-copy">
-              브랜딩 문장을 반복하기보다, 실제로 어떤 순서로 문제를 읽고 구조를
-              세우는지 세 개의 기준으로 압축했습니다.
-            </p>
-          </div>
-
-          <div className="frame-grid">
-            {frameItems.map((item) => (
-              <article className="frame-card" key={item.title}>
-                <span className="frame-card__eyebrow">{item.label}</span>
-                <h3 className="frame-card__title">{item.title}</h3>
-                <p>{item.description}</p>
-              </article>
-            ))}
-          </div>
+        <section className="frame-strip">
+          {frameItems.map((item) => (
+            <article className="frame-card" key={item.title}>
+              <span className="frame-card__eyebrow">Frame</span>
+              <h2 className="frame-card__title">{item.title}</h2>
+              <p>{item.description}</p>
+            </article>
+          ))}
         </section>
 
         <section className="page-grid">
           <div className="section-head section-head--split">
             <div>
               <span className="eyebrow">Featured Projects</span>
-              <h2 className="section-title">대표 프로젝트</h2>
+              <h2 className="section-title">가장 먼저 봐야 하는 세 가지 작업</h2>
             </div>
             <p className="page-intro section-copy">
-              가장 대표적인 세 프로젝트만 전면에 두고, 역할과 도구, 핵심 판단
-              포인트가 한눈에 읽히도록 구성했습니다.
+              프로젝트가 가장 먼저 읽히도록 구성했습니다. 카드 안에서 역할, 사용 도구, 문제 유형, 핵심 포인트가 바로 보이게 정리했습니다.
             </p>
           </div>
-
           <div className="project-grid project-grid--featured">
             {featuredProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
@@ -115,14 +96,12 @@ export default function HomePage() {
           <div className="section-head section-head--split">
             <div>
               <span className="eyebrow">Archive</span>
-              <h2 className="section-title">케이스, 글, 요약 문서</h2>
+              <h2 className="section-title">케이스 스터디와 기록 아카이브</h2>
             </div>
             <p className="page-intro section-copy">
-              프로젝트를 중심에 두되, 문제 해결 방식과 글, 요약 문서가 주변
-              아카이브처럼 연결되도록 정리했습니다.
+              브랜딩 문장을 반복하기보다, 프로젝트를 둘러싼 판단 기준과 기록을 별도 아카이브로 분리했습니다.
             </p>
           </div>
-
           <div className="archive-grid">
             <Link className="archive-card" href="/case-studies">
               <div className="archive-card__meta">
@@ -130,7 +109,7 @@ export default function HomePage() {
                 <span className="archive-card__count">{caseStudies.length} records</span>
               </div>
               <h3>문제 해결 방식</h3>
-              <p>프로젝트 뒤에 있던 판단 기준과 해석 구조를 따로 추출한 기록입니다.</p>
+              <p>문제 정의, 구조 설계, 스토리텔링을 프로젝트와 분리해 읽을 수 있도록 정리했습니다.</p>
             </Link>
 
             <Link className="archive-card" href="/writing">
@@ -138,17 +117,17 @@ export default function HomePage() {
                 <span className="eyebrow">Writing</span>
                 <span className="archive-card__count">{writingEntries.length} notes</span>
               </div>
-              <h3>연결된 글 아카이브</h3>
-              <p>분석 메모, 회고, 태도에 관한 글을 프로젝트와 이어 읽을 수 있게 묶었습니다.</p>
+              <h3>연결된 기록</h3>
+              <p>분석 메모와 회고, 태도에 관한 글을 프로젝트와 함께 읽히도록 구성한 아카이브입니다.</p>
             </Link>
 
             <div className="archive-card">
               <div className="archive-card__meta">
-                <span className="eyebrow">Resume & Contact</span>
+                <span className="eyebrow">Summary</span>
                 <span className="archive-card__count">public-safe</span>
               </div>
-              <h3>압축된 요약 문서</h3>
-              <p>Resume와 Contact는 공개 가능한 범위만 남기고, 검토용 구조를 우선 제공합니다.</p>
+              <h3>Resume / Contact</h3>
+              <p>공개 버전에서는 핵심 역량과 대표 작업만 압축해 보여주고, 직접 연락 정보는 제외합니다.</p>
               <div className="button-row">
                 <Link className="button-link button-link--secondary" href="/resume">
                   Resume

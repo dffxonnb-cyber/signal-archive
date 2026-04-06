@@ -12,8 +12,7 @@ export default function ResumePage() {
             <span className="eyebrow">Resume</span>
             <h1 className="page-title">핵심 역량과 대표 작업 요약</h1>
             <p className="page-intro">
-              긴 자기소개 대신 역할, 강점, 도구, 대표 프로젝트만 빠르게 읽히는
-              압축본으로 정리했습니다.
+              긴 자기소개 대신 역할, 강점, 도구, 대표 프로젝트만 빠르게 읽히는 압축본입니다.
             </p>
           </div>
 
@@ -39,8 +38,7 @@ export default function ResumePage() {
             <h2 className="section-title">{profile.name}</h2>
             <p className="page-intro">{profile.headline}</p>
             <p className="page-intro">
-              개인 식별 정보와 직접 연락처는 공개 버전에서 제외하고, 문제 해결
-              구조와 프로젝트 중심 정보만 남겼습니다.
+              공개 버전에서는 개인 식별 정보와 직접 연락처를 제외하고, 문제 해결 구조와 프로젝트 중심 정보만 남겼습니다.
             </p>
             <div className="resume-profile-grid">
               <div className="project-card__block">

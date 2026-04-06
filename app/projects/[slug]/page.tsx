@@ -69,7 +69,7 @@ export default async function ProjectDetailPage({
                 <dd>{project.role.join(", ")}</dd>
               </div>
               <div>
-                <dt>기술</dt>
+                <dt>사용 도구</dt>
                 <dd>{project.stack.join(", ")}</dd>
               </div>
             </dl>
@@ -100,7 +100,7 @@ export default async function ProjectDetailPage({
 
             <section className="surface-card detail-section">
               <span className="eyebrow">Outcome</span>
-              <h2 className="section-title">결과물</h2>
+              <h2 className="section-title">결과와 핵심 포인트</h2>
               <p className="page-intro">{project.outcome}</p>
               <ul className="list-stack">
                 {project.focusPoints.map((item) => (
@@ -123,7 +123,7 @@ export default async function ProjectDetailPage({
             {relatedCaseStudies.length > 0 ? (
               <section className="surface-card detail-section">
                 <span className="eyebrow">Case Studies</span>
-                <h2 className="section-title">관련 문제 해결 방식</h2>
+                <h2 className="section-title">연결된 문제 해결 방식</h2>
                 <div className="related-grid">
                   {relatedCaseStudies.map((caseStudy) => (
                     <article className="related-card" key={caseStudy.slug}>

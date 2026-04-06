@@ -3,10 +3,7 @@ import type { Profile } from "@/types/content";
 export const profile: Profile = {
   name: "공개용 프로필",
   primaryRoles: ["데이터 분석가", "공간데이터 분석가"],
-  secondaryRoles: [
-    "비즈니스 데이터 분석가",
-    "마케팅/커머스 데이터 분석가",
-  ],
+  secondaryRoles: ["비즈니스 데이터 분석가", "마케팅/커머스 데이터 분석가"],
   industries: ["커머스", "플랫폼", "공공", "도시", "교통", "마케팅", "CRM", "스포츠"],
   avoidSignals: [
     "단순 운영 리포트 작성 위주의 역할",
@@ -47,18 +44,13 @@ export const profile: Profile = {
         "EDA",
         "분석 파이프라인 설계",
         "도메인 기반 인사이트 도출",
-        "리스크 모델링 / 판단 기준 설계",
+        "리스크 판단 기준 설계",
         "공간데이터 분석",
       ],
     },
     {
       title: "구현 / 결과물",
-      items: [
-        "웹 기반 분석 결과 구현",
-        "프로젝트 문서화",
-        "분석 구조 설계",
-      ],
+      items: ["웹 기반 결과 구현", "프로젝트 문서화", "분석 구조 설계"],
     },
   ],
 };
-

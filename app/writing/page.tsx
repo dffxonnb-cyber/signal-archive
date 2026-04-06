@@ -14,8 +14,7 @@ export default function WritingPage() {
             <span className="eyebrow">Writing</span>
             <h1 className="page-title">프로젝트를 둘러싼 기록 아카이브</h1>
             <p className="page-intro">
-              플랫폼보다 글의 역할과 연결 구조를 먼저 보여주는 페이지입니다.
-              회고, 분석 메모, 태도에 관한 기록을 같은 흐름 안에서 정리합니다.
+              플랫폼보다 글의 역할과 연결 구조를 먼저 보여주는 페이지입니다. 회고, 분석 메모, 태도에 관한 기록을 같은 흐름 안에서 정리합니다.
             </p>
           </div>
 

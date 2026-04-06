@@ -3,7 +3,7 @@ import type { CaseStudy } from "@/types/content";
 export const caseStudies: CaseStudy[] = [
   {
     slug: "risk-signals-before-volume",
-    title: "겉으로 큰 숫자보다 먼저 위험 신호를 확인하는 구조",
+    title: "큰 숫자보다 먼저 위험 신호를 확인하는 구조",
     category: "문제 정의 / 위험 신호 포착",
     summary:
       "좋아 보이거나 많이 보이는 수치에 바로 반응하지 않고, 먼저 어떤 신호를 의심해야 하는지 기준을 세우는 방식입니다.",
@@ -29,16 +29,15 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     slug: "segmenting-for-business-meaning",
-    title: "세그먼트를 숫자 묶음이 아니라 비즈니스 의미로 번역하는 방식",
+    title: "세그먼트를 비즈니스 의미로 번역하는 방식",
     category: "인사이트 도출 / 스토리텔링",
     summary:
       "군집이나 세그먼트 자체보다, 그것이 어떤 판단과 액션으로 이어지는지에 초점을 맞추는 방식입니다.",
     keyMoves: [
       "세그먼트 이름보다 해석 기준을 먼저 둡니다.",
       "요약값이 아니라 비즈니스 질문에 답하는 구조로 인사이트를 정리합니다.",
-      "채용 담당자가 보더라도 산업 적합성이 읽히도록 설명합니다.",
+      "산업 적합성이 읽히도록 설명 순서를 설계합니다.",
     ],
     linkedProjects: ["uk-online-retail-segment-analysis"],
   },
 ];
-
