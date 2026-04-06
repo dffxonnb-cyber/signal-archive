@@ -44,6 +44,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <p className="project-card__summary">{project.summary}</p>
+      <p className="project-card__supporting-line">{project.supportingLine}</p>
 
       <div className="project-card__metadata">
         <div className="project-card__metadata-group">
@@ -83,7 +84,6 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="project-card__footer">
-        <p className="project-card__note">{project.supportingLine}</p>
         <Link className="button-link button-link--secondary project-card__cta" href={`/projects/${project.slug}`}>
           상세 보기
         </Link>

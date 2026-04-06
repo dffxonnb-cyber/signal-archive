@@ -1145,6 +1145,14 @@ main {
   line-height: 1.58;
 }
 
+.project-card__supporting-line {
+  margin: -2px 0 2px;
+  max-width: none;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
 .tag--primary {
   background: rgba(255, 255, 255, 0.045);
   color: var(--text-primary);
@@ -1152,17 +1160,9 @@ main {
 
 .project-card__footer {
   display: grid;
-  gap: 10px;
+  gap: 0;
   padding-top: 12px;
-  border-top: 1px solid var(--border);
   margin-top: auto;
-}
-
-.project-card__note {
-  max-width: none;
-  font-size: 0.84rem;
-  line-height: 1.52;
-  color: var(--text-secondary);
 }
 
 .project-card__cta {
