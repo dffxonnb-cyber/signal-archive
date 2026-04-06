@@ -392,6 +392,21 @@ main {
   letter-spacing: -0.02em;
 }
 
+.home-hero__title {
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.home-hero__title-prefix,
+.home-hero__title-tail {
+  display: block;
+}
+
+.home-hero__title-tail {
+  white-space: nowrap;
+}
+
 .hero-title__accent {
   color: var(--accent-strong);
 }

@@ -93,10 +93,9 @@ export default function HomePage() {
               <p className="intro-name">Analytical Dossier</p>
             </div>
 
-            <h1 className="hero-title">
-              위험 신호와 구조를 먼저 짚는
-              <br />
-              <span className="hero-title__accent">데이터 분석가</span>
+            <h1 className="hero-title home-hero__title">
+              <span className="home-hero__title-prefix">위험 신호와 구조를 먼저 짚는</span>
+              <span className="hero-title__accent home-hero__title-tail">데이터 분석가</span>
             </h1>
 
             <p className="home-hero__summary">
