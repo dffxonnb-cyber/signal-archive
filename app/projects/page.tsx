@@ -10,7 +10,10 @@ export default function ProjectsPage() {
         <section className="surface-card projects-header">
           <div className="projects-header__lead">
             <span className="eyebrow">Projects</span>
-            <h1 className="page-title">대표 프로젝트를 포함한 전체 아카이브</h1>
+            <h1 className="page-title projects-header__title">
+              <span className="projects-header__title-prefix">대표 프로젝트를 포함한</span>{" "}
+              <span className="projects-header__title-tail">전체 아카이브</span>
+            </h1>
             <p className="page-intro">
               프로젝트 수는 적지만, 각 사례를 더 정확하게 고를 수 있도록 분류 체계를 다시 정리했습니다.
             </p>

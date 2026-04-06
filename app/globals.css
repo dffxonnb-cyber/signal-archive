@@ -1193,7 +1193,7 @@ main {
 }
 
 .projects-header {
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1.16fr) auto;
   align-items: end;
   gap: 22px 32px;
 }
@@ -1202,6 +1202,21 @@ main {
   display: grid;
   gap: 10px;
   align-content: start;
+  min-width: 0;
+}
+
+.projects-header__title {
+  max-width: 18ch;
+  font-size: 2.16rem;
+  line-height: 1.15;
+  letter-spacing: -0.024em;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.projects-header__title-tail {
+  white-space: nowrap;
 }
 
 .projects-summary {
@@ -1209,49 +1224,48 @@ main {
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   align-self: stretch;
 }
 
 .projects-summary__item {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  min-height: 44px;
-  padding: 0 12px;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 11px;
   border: 1px solid var(--border);
-  border-radius: 10px;
+  border-radius: 9px;
   background: rgba(255, 255, 255, 0.018);
 }
 
 .projects-summary__label {
   color: var(--text-muted);
-  font-size: 0.72rem;
+  font-size: 0.69rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
+  line-height: 1;
 }
 
 .projects-summary__value {
-  font-size: 1.38rem;
-  line-height: 0.94;
+  font-size: 1.28rem;
+  font-weight: 700;
+  line-height: 1;
   letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
 }
 
 .projects-summary__item--metric {
   display: grid;
   justify-items: center;
   align-content: center;
-  gap: 5px;
-  min-width: 108px;
-  min-height: 72px;
-  padding: 10px 14px 11px;
+  gap: 4px;
+  min-width: 104px;
+  min-height: 66px;
+  padding: 11px 14px 12px;
   text-align: center;
-}
-
-.projects-summary__item--metric .projects-summary__label {
-  line-height: 1;
 }
 
 .projects-summary__item--metric .projects-summary__value {
@@ -1265,6 +1279,8 @@ main {
   align-items: center;
   gap: 10px;
   max-width: 360px;
+  min-height: 66px;
+  padding-inline: 12px;
 }
 
 .projects-summary__chips {
@@ -1520,6 +1536,12 @@ main {
   .page-title {
     max-width: 15ch;
     font-size: 1.85rem;
+  }
+
+  .projects-header__title {
+    max-width: 16ch;
+    font-size: 1.92rem;
+    line-height: 1.16;
   }
 
   .filter-grid,
