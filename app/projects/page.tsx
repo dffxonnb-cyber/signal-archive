@@ -16,35 +16,27 @@ export default function ProjectsPage() {
             </p>
           </div>
 
-          <div className="projects-header__summary" aria-label="프로젝트 요약">
-            <div className="projects-summary-bar">
-              <article className="projects-stat projects-stat--metric">
-                <span className="projects-stat__label">전체 프로젝트</span>
-                <div className="projects-stat__body">
-                  <strong className="projects-stat__value">{projects.length}</strong>
-                </div>
-              </article>
+          <div className="projects-summary" aria-label="프로젝트 요약">
+            <article className="projects-summary__item projects-summary__item--metric">
+              <span className="projects-summary__label">전체 프로젝트</span>
+              <strong className="projects-summary__value">{projects.length}</strong>
+            </article>
 
-              <article className="projects-stat projects-stat--metric">
-                <span className="projects-stat__label">대표 프로젝트</span>
-                <div className="projects-stat__body">
-                  <strong className="projects-stat__value">{featuredProjects.length}</strong>
-                </div>
-              </article>
+            <article className="projects-summary__item projects-summary__item--metric">
+              <span className="projects-summary__label">대표 프로젝트</span>
+              <strong className="projects-summary__value">{featuredProjects.length}</strong>
+            </article>
 
-              <article className="projects-stat projects-stat--focus">
-                <span className="projects-stat__label">Focus</span>
-                <div className="projects-stat__body">
-                  <div className="projects-stat__tags" aria-label="focus categories">
-                    {focusAreas.map((area) => (
-                      <span className="projects-stat__tag" key={area}>
-                        {area}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            </div>
+            <article className="projects-summary__item projects-summary__item--focus">
+              <span className="projects-summary__label">Focus</span>
+              <div className="projects-summary__chips" aria-label="focus categories">
+                {focusAreas.map((area) => (
+                  <span className="projects-summary__chip" key={area}>
+                    {area}
+                  </span>
+                ))}
+              </div>
+            </article>
           </div>
         </section>
 
