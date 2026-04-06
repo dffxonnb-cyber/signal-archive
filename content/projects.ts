@@ -93,12 +93,7 @@ export const projects: Project[] = [
       "데이터 결과를 실제 판단 도구 형태로 구현한 프로젝트",
       "문서화와 구조화 수준을 함께 보여줄 수 있는 프로젝트",
     ],
-    links: [
-      {
-        label: "GitHub Repository",
-        href: "https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil",
-      },
-    ],
+    links: [],
     sortOrder: 2,
     caseStudySlugs: [
       "risk-signals-before-volume",

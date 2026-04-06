@@ -4,7 +4,7 @@ A hiring portfolio connecting data analysis, structured problem solving, and wri
 
 ## Overview
 
-Signal Archive is a Korean-first portfolio site for Choi Dabin. Instead of a simple project gallery, the site is structured as an archive-style interface that connects:
+Signal Archive is a Korean-first portfolio site prepared as a public-safe preview. Instead of a simple project gallery, the site is structured as an archive-style interface that connects:
 
 - analysis projects
 - problem-solving case studies
@@ -19,7 +19,7 @@ The goal is to show not only what was built, but how problems were framed, struc
 - `Case Studies`: extracted problem-solving patterns across projects
 - `Writing`: unified writing directory with platform and category filters
 - `Resume`: compressed hiring summary
-- `Contact`: direct contact links
+- `Contact`: public-safe contact placeholder
 
 ## Content model
 

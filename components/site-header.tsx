@@ -22,7 +22,7 @@ export function SiteHeader() {
           <span className="site-header__mark">SA</span>
           <span>
             <span className="site-header__title">Signal Archive</span>
-            <span className="site-header__subtitle">Choi Dabin</span>
+            <span className="site-header__subtitle">Public Preview</span>
           </span>
         </Link>
         <nav aria-label="Primary" className="site-nav">

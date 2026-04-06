@@ -2,19 +2,19 @@ import type { WritingEntry } from "@/types/content";
 
 export const writingEntries: WritingEntry[] = [
   {
-    slug: "velog-profile",
-    title: "Velog 글 아카이브",
-    platform: "Velog",
+    slug: "public-writing-preview",
+    title: "외부 글 아카이브 준비 중",
+    platform: "Archive",
     summary:
-      "데이터 분석, 프로젝트 회고, 기술 기록을 통합 피드로 재정리하기 전 연결되는 메인 글 채널입니다.",
-    href: "https://velog.io/@8_1st0/posts",
-    status: "published",
+      "개인 채널 정리 후 프로젝트와 연결되는 글 묶음을 공개 버전에 맞춰 다시 구성하는 단계입니다.",
+    href: "#",
+    status: "inventory",
     categories: ["데이터 분석", "프로젝트 회고", "기술 기록"],
     relatedProjects: [
       "seoul-storefront-redveil",
       "uk-online-retail-segment-analysis",
     ],
-    publishedAt: "ongoing",
+    publishedAt: "planned",
   },
   {
     slug: "brunch-inventory",

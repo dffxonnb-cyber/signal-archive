@@ -41,6 +41,7 @@ export default function ResumePage() {
             <span className="eyebrow">Profile</span>
             <h2 className="section-title">{profile.name}</h2>
             <p className="page-intro">{profile.headline}</p>
+            <p className="page-intro">개인 식별 정보와 직접 연락처는 공개 버전에서 제외했습니다.</p>
             <div className="resume-profile-grid">
               <div className="project-card__block">
                 <span className="project-card__label">1순위 직무</span>
@@ -130,21 +131,17 @@ export default function ResumePage() {
             <span className="eyebrow">Links</span>
             <h2 className="section-title">외부 링크</h2>
             <div className="resume-links-grid">
-              {profile.contactLinks.map((link) => (
-                <a
-                  className="resume-link-card"
-                  href={link.href}
-                  key={link.label}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="resume-link-card__label">{link.label}</span>
-                  <strong>{link.label}</strong>
-                </a>
-              ))}
+              <div className="resume-link-card resume-link-card--muted">
+                <span className="resume-link-card__label">Contact</span>
+                <strong>직접 연락처 비공개</strong>
+              </div>
+              <div className="resume-link-card resume-link-card--muted">
+                <span className="resume-link-card__label">Profiles</span>
+                <strong>외부 프로필 비공개</strong>
+              </div>
               <div className="resume-link-card resume-link-card--muted">
                 <span className="resume-link-card__label">Document</span>
-                <strong>PDF Resume 준비 중</strong>
+                <strong>PDF Resume 요청 시 제공</strong>
               </div>
             </div>
           </section>

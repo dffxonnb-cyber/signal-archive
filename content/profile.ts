@@ -1,7 +1,7 @@
 import type { Profile } from "@/types/content";
 
 export const profile: Profile = {
-  name: "최다빈",
+  name: "공개용 프로필",
   primaryRoles: ["데이터 분석가", "공간데이터 분석가"],
   secondaryRoles: [
     "비즈니스 데이터 분석가",
@@ -34,11 +34,7 @@ export const profile: Profile = {
     "end-to-end 분석",
     "검증 중심 태도",
   ],
-  contactLinks: [
-    { label: "Email", href: "mailto:dffxonnb@gmail.com" },
-    { label: "GitHub", href: "https://github.com/dffxonnb-cyber" },
-    { label: "Velog", href: "https://velog.io/@8_1st0/posts" },
-  ],
+  contactLinks: [],
   skillGroups: [
     {
       title: "언어 / 환경",

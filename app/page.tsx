@@ -17,7 +17,7 @@ export default function HomePage() {
             <div className="page-grid intro-main">
               <div>
                 <span className="eyebrow">Signal Archive</span>
-                <p className="intro-name">최다빈</p>
+                <p className="intro-name">공개용 버전</p>
               </div>
               <h1 className="page-title">{profile.headline}</h1>
               <div className="copy-stack intro-copy">
