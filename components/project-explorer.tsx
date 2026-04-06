@@ -21,7 +21,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   const [sortMode, setSortMode] = useState<SortMode>("featured");
 
   const domains = useMemo(
-    () => Array.from(new Set(projects.flatMap((project) => project.domains))),
+    () => Array.from(new Set(projects.map((project) => project.primaryDomain))),
     [projects],
   );
   const problemTypes = useMemo(
@@ -29,15 +29,15 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
     [projects],
   );
   const stacks = useMemo(
-    () => Array.from(new Set(projects.flatMap((project) => project.stack))),
+    () => Array.from(new Set(projects.flatMap((project) => project.filterTools))),
     [projects],
   );
 
   const filteredProjects = useMemo(() => {
     const nextProjects = projects.filter((project) => {
-      const matchesDomain = domain === ALL || project.domains.includes(domain);
+      const matchesDomain = domain === ALL || project.primaryDomain === domain;
       const matchesProblemType = problemType === ALL || project.problemTypes.includes(problemType);
-      const matchesStack = stack === ALL || project.stack.includes(stack);
+      const matchesStack = stack === ALL || project.filterTools.includes(stack);
 
       return matchesDomain && matchesProblemType && matchesStack;
     });
@@ -63,8 +63,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
             <span className="eyebrow">Explorer</span>
             <h2 className="section-title">필터로 프로젝트 좁히기</h2>
             <p className="filter-panel__description">
-              규모가 크지 않은 아카이브인 만큼, 필요한 프로젝트만 빠르게 고를 수 있도록 필터를 간결하게
-              정리했습니다.
+              규모는 작게, 분류는 명확하게. 채용 담당자가 보고 싶은 기준만 빠르게 고를 수 있게 정리했습니다.
             </p>
           </div>
 

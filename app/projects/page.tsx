@@ -1,7 +1,7 @@
 import { ProjectExplorer } from "@/components/project-explorer";
 import { featuredProjects, projects } from "@/content/projects";
 
-const focusAreas = ["공공", "상권", "커머스", "스포츠"];
+const focusAreas = ["공공데이터", "커머스", "리테일/마케팅", "스포츠"];
 
 export default function ProjectsPage() {
   return (
@@ -12,7 +12,7 @@ export default function ProjectsPage() {
             <span className="eyebrow">Projects</span>
             <h1 className="page-title">대표 프로젝트를 포함한 전체 아카이브</h1>
             <p className="page-intro">
-              결과물 나열보다 문제 유형과 도메인 기준으로 프로젝트를 직접 좁혀보는 구조입니다.
+              프로젝트 수는 적지만, 각 사례를 더 정확하게 고를 수 있도록 분류 체계를 다시 정리했습니다.
             </p>
           </div>
 
