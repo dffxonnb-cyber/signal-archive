@@ -7,6 +7,7 @@ import { writingEntries } from "@/content/writing";
 
 export default function HomePage() {
   const featuredWriting = writingEntries.slice(0, 2);
+  const heroProjects = featuredProjects.slice(0, 2);
 
   return (
     <main className="page-shell">
@@ -46,32 +47,54 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="intro-aside">
-              <section className="info-cluster">
-                <h2 className="info-cluster__title">1순위 직무</h2>
-                <div className="tag-list">
-                  {profile.primaryRoles.map((role) => (
-                    <span className="tag tag--accent" key={role}>
-                      {role}
-                    </span>
-                  ))}
+            <div className="hero-side">
+              <section className="hero-panel hero-panel--accent">
+                <div className="hero-panel__header">
+                  <span className="eyebrow">Core Frame</span>
+                  <h2 className="section-title">핵심 판단 프레임</h2>
+                </div>
+                <div className="hero-metric-list">
+                  <article className="hero-metric">
+                    <span className="hero-metric__index">01</span>
+                    <div>
+                      <h3>문제 정의</h3>
+                      <p>먼저 무엇을 검증해야 하는지부터 다시 세웁니다.</p>
+                    </div>
+                  </article>
+                  <article className="hero-metric">
+                    <span className="hero-metric__index">02</span>
+                    <div>
+                      <h3>구조 설계</h3>
+                      <p>흩어진 데이터를 분석 가능한 단위로 재구성합니다.</p>
+                    </div>
+                  </article>
+                  <article className="hero-metric">
+                    <span className="hero-metric__index">03</span>
+                    <div>
+                      <h3>검증 중심</h3>
+                      <p>겉으로 좋은 수치보다 위험 신호와 맥락을 먼저 봅니다.</p>
+                    </div>
+                  </article>
                 </div>
               </section>
 
-              <section className="info-cluster">
-                <h2 className="info-cluster__title">핵심 강점</h2>
-                <ul className="list-stack compact-list">
-                  {profile.strengths.slice(0, 3).map((item) => (
-                    <li key={item}>{item}</li>
+              <section className="hero-panel">
+                <div className="hero-panel__header">
+                  <span className="eyebrow">Selected Work</span>
+                  <h2 className="section-title">대표 작업</h2>
+                </div>
+                <div className="hero-link-list">
+                  {heroProjects.map((project) => (
+                    <Link className="hero-link-card" href={`/projects/${project.slug}`} key={project.slug}>
+                      <div className="hero-link-card__top">
+                        <span className="tag tag--accent">{project.badges[0] ?? project.category}</span>
+                        <span className="hero-link-card__arrow">↗</span>
+                      </div>
+                      <h3>{project.title}</h3>
+                      <p>{project.summary}</p>
+                    </Link>
                   ))}
-                </ul>
-              </section>
-
-              <section className="info-cluster">
-                <h2 className="info-cluster__title">관심 산업</h2>
-                <p className="info-cluster__copy">
-                  {profile.industries.slice(0, 6).join(" / ")}
-                </p>
+                </div>
               </section>
             </div>
           </div>
@@ -99,7 +122,7 @@ export default function HomePage() {
             </ul>
           </article>
 
-          <article className="surface-card compact-panel">
+          <article className="surface-card compact-panel compact-panel--accent">
             <span className="eyebrow">Keywords</span>
             <h2 className="section-title">기억할 키워드</h2>
             <div className="tag-list">
