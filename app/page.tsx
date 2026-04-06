@@ -111,7 +111,11 @@ export default function HomePage() {
               <p className="intro-name">Analytical Dossier</p>
             </div>
 
-            <h1 className="hero-title">위험 신호와 구조를 먼저 짚는 데이터 분석가</h1>
+            <h1 className="hero-title">
+              위험 신호와 구조를 먼저 짚는
+              <br />
+              <span className="hero-title__accent">데이터 분석가</span>
+            </h1>
 
             <p className="home-hero__summary">
               흩어진 데이터를 판단 가능한 구조로 재편하고, 겉으로 좋아 보이는 결과보다 먼저 검증할

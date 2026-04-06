@@ -392,6 +392,10 @@ main {
   letter-spacing: -0.02em;
 }
 
+.hero-title__accent {
+  color: var(--accent-strong);
+}
+
 .home-hero__summary {
   margin: 0;
   max-width: 43ch;
