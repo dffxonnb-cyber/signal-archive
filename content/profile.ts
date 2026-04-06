@@ -1,0 +1,68 @@
+import type { Profile } from "@/types/content";
+
+export const profile: Profile = {
+  name: "최다빈",
+  primaryRoles: ["데이터 분석가", "공간데이터 분석가"],
+  secondaryRoles: [
+    "비즈니스 데이터 분석가",
+    "마케팅/커머스 데이터 분석가",
+  ],
+  industries: ["커머스", "플랫폼", "공공", "도시", "교통", "마케팅", "CRM", "스포츠"],
+  avoidSignals: [
+    "단순 운영 리포트 작성 위주의 역할",
+    "반복 보고 업무가 중심인 포지션",
+    "툴만 다루는 사람처럼 보이는 방향",
+    "시각화만 하는 사람처럼 보이는 방향",
+  ],
+  headline:
+    "겉으로 보이는 수치보다, 먼저 확인해야 할 위험 신호와 구조를 짚어내는 데이터 분석가입니다.",
+  summary: [
+    "흩어진 데이터를 분석 가능한 구조로 정리하고, 표면적인 결과보다 그 안의 맥락과 이상 신호를 먼저 살피는 분석가입니다.",
+    "빠르게 보기 좋은 결과를 만드는 것보다, 먼저 의심하고 구조를 정리한 뒤 끝까지 검증하는 태도를 중요하게 생각합니다.",
+  ],
+  strengths: [
+    "문제 정의",
+    "구조 설계",
+    "검증 중심 태도",
+    "위험 신호 포착",
+    "end-to-end 분석 수행력",
+  ],
+  keywords: [
+    "구조 설계",
+    "위험 신호 포착",
+    "문제 정의",
+    "end-to-end 분석",
+    "검증 중심 태도",
+  ],
+  contactLinks: [
+    { label: "Email", href: "mailto:dffxonnb@gmail.com" },
+    { label: "GitHub", href: "https://github.com/dffxonnb-cyber" },
+    { label: "Velog", href: "https://velog.io/@8_1st0/posts" },
+  ],
+  skillGroups: [
+    {
+      title: "언어 / 환경",
+      items: ["Python", "SQL", "JavaScript", "Jupyter Notebook"],
+    },
+    {
+      title: "분석 역량",
+      items: [
+        "데이터 전처리",
+        "EDA",
+        "분석 파이프라인 설계",
+        "도메인 기반 인사이트 도출",
+        "리스크 모델링 / 판단 기준 설계",
+        "공간데이터 분석",
+      ],
+    },
+    {
+      title: "구현 / 결과물",
+      items: [
+        "웹 기반 분석 결과 구현",
+        "프로젝트 문서화",
+        "분석 구조 설계",
+      ],
+    },
+  ],
+};
+
