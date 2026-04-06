@@ -53,7 +53,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
               <span className="project-card__chip" key={item}>
                 {item}
               </span>
-              ))}
+            ))}
           </div>
         </div>
 
@@ -72,7 +72,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <div className="project-card__tag-stack">
         <div className="project-card__tag-group">
           <span className="project-card__label">핵심 태그</span>
-          <div className="tag-list">
+          <div className="tag-list tag-list--project">
             {primaryTags.map((item) => (
               <span className="tag tag--primary" key={item}>
                 {item}
@@ -84,7 +84,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="project-card__footer">
         <p className="project-card__note">{project.supportingLine}</p>
-        <Link className="button-link" href={`/projects/${project.slug}`}>
+        <Link className="button-link button-link--secondary project-card__cta" href={`/projects/${project.slug}`}>
           상세 보기
         </Link>
       </div>
