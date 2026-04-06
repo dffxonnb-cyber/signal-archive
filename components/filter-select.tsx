@@ -13,6 +13,7 @@ type FilterSelectProps = {
   options: Option[];
   value: string;
   onChange: (value: string) => void;
+  tone?: "default" | "explorer";
 };
 
 export function FilterSelect({
@@ -21,6 +22,7 @@ export function FilterSelect({
   options,
   value,
   onChange,
+  tone = "default",
 }: FilterSelectProps) {
   const generatedId = useId();
   const selectId = id ?? generatedId;
@@ -56,7 +58,7 @@ export function FilterSelect({
 
   return (
     <div
-      className={`filter-field ${open ? "filter-field--open" : ""}`}
+      className={`filter-field filter-field--${tone} ${open ? "filter-field--open" : ""}`}
       ref={rootRef}
     >
       <span className="filter-field__label" id={`${selectId}-label`}>
@@ -67,7 +69,7 @@ export function FilterSelect({
         aria-expanded={open}
         aria-haspopup="listbox"
         aria-labelledby={`${selectId}-label ${selectId}-value`}
-        className="filter-select"
+        className={`filter-select filter-select--${tone}`}
         id={selectId}
         onClick={() => setOpen((current) => !current)}
         type="button"
@@ -81,14 +83,18 @@ export function FilterSelect({
       </button>
 
       {open ? (
-        <div className="filter-select__menu" id={`${selectId}-menu`} role="listbox">
+        <div
+          className={`filter-select__menu filter-select__menu--${tone}`}
+          id={`${selectId}-menu`}
+          role="listbox"
+        >
           {options.map((option) => {
             const isActive = option.value === value;
 
             return (
               <button
                 aria-selected={isActive}
-                className={`filter-select__option ${
+                className={`filter-select__option filter-select__option--${tone} ${
                   isActive ? "filter-select__option--active" : ""
                 }`}
                 key={option.value}
@@ -109,4 +115,3 @@ export function FilterSelect({
     </div>
   );
 }
-

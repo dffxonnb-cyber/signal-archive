@@ -25,13 +25,18 @@ function getProjectVisual(slug: string) {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const visual = getProjectVisual(project.slug);
+  const primaryTags = project.problemTypes.slice(0, 3);
+  const secondaryTags = project.badges.slice(0, 2);
 
   return (
     <article className="project-card">
       <div className="project-card__hero">
         <div className={`project-card__media project-card__media--${visual.tone}`}>{visual.mark}</div>
         <div className="project-card__header">
-          <span className="project-card__eyebrow">{project.domains.slice(0, 2).join(" / ")}</span>
+          <div className="project-card__header-top">
+            <span className="project-card__code">Dossier {visual.mark}</span>
+            <span className="project-card__eyebrow">{project.domains.slice(0, 2).join(" / ")}</span>
+          </div>
           <h2 className="project-card__title">
             <Link href={`/projects/${project.slug}`}>{project.title}</Link>
           </h2>
@@ -40,31 +45,54 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <p className="project-card__summary">{project.summary}</p>
 
-      <div className="project-card__meta-grid">
-        <div className="project-card__meta-item">
-          <span>Role</span>
-          <strong>{project.role.slice(0, 2).join(" / ")}</strong>
+      <div className="project-card__metadata">
+        <div className="project-card__metadata-group">
+          <span className="project-card__meta-label">Role</span>
+          <div className="project-card__chip-row">
+            {project.role.slice(0, 2).map((item) => (
+              <span className="project-card__chip" key={item}>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
-        <div className="project-card__meta-item">
-          <span>Tools</span>
-          <strong>{project.stack.slice(0, 3).join(" / ")}</strong>
+
+        <div className="project-card__metadata-group">
+          <span className="project-card__meta-label">Tools</span>
+          <div className="project-card__chip-row">
+            {project.stack.slice(0, 3).map((item) => (
+              <span className="project-card__chip project-card__chip--muted" key={item}>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
 
-      <div className="project-card__block">
-        <span className="project-card__label">핵심 태그</span>
-        <div className="tag-list">
-          {project.problemTypes.slice(0, 3).map((item) => (
-            <span className="tag" key={item}>
-              {item}
-            </span>
-          ))}
-          {project.badges.slice(0, 2).map((item) => (
-            <span className="tag tag--accent" key={item}>
-              {item}
-            </span>
-          ))}
+      <div className="project-card__tag-stack">
+        <div className="project-card__tag-group">
+          <span className="project-card__label">핵심 태그</span>
+          <div className="tag-list">
+            {primaryTags.map((item) => (
+              <span className="tag tag--primary" key={item}>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
+
+        {secondaryTags.length > 0 ? (
+          <div className="project-card__tag-group">
+            <span className="project-card__label">성격</span>
+            <div className="tag-list">
+              {secondaryTags.map((item) => (
+                <span className="tag tag--accent" key={item}>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        ) : null}
       </div>
 
       <div className="project-card__footer">
