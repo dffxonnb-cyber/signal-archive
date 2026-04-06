@@ -30,15 +30,10 @@ export function HomeProjectCard({
         <span className="home-project-card__lens">{lens}</span>
       </div>
 
-      <div className="home-project-card__section">
-        <span className="home-project-card__section-label">Project</span>
+      <div className="home-project-card__body">
         <h3 className="home-project-card__title">
           <Link href={`/projects/${project.slug}`}>{project.title}</Link>
         </h3>
-      </div>
-
-      <div className="home-project-card__section">
-        <span className="home-project-card__section-label">Problem framing</span>
         <p className="home-project-card__problem">{problem}</p>
       </div>
 
@@ -53,24 +48,18 @@ export function HomeProjectCard({
         </div>
       </dl>
 
-      <div className="home-project-card__section">
-        <span className="home-project-card__section-label">Key tags</span>
-        <div className="home-project-card__tags">
-          {tags.map((tag) => (
-            <span className="home-project-card__tag" key={tag}>
-              {tag}
-            </span>
-          ))}
-        </div>
+      <div className="home-project-card__tags">
+        {tags.map((tag) => (
+          <span className="home-project-card__tag" key={tag}>
+            {tag}
+          </span>
+        ))}
       </div>
 
-      <div className="home-project-card__section home-project-card__section--impact">
-        <div className="home-project-card__impact-copy">
-          <span className="home-project-card__section-label">Why it matters</span>
-          <p className="home-project-card__impact">{impact}</p>
-        </div>
+      <div className="home-project-card__footer">
+        <p className="home-project-card__impact">{impact}</p>
         <Link className="home-project-card__link" href={`/projects/${project.slug}`}>
-          상세 보기
+          사례 보기
         </Link>
       </div>
     </article>
