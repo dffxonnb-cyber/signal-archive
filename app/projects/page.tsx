@@ -12,10 +12,10 @@ export default function ProjectsPage() {
         <section className="surface-card page-header">
           <div>
             <span className="eyebrow">Projects</span>
-            <h1 className="page-title">문제를 어떻게 구조화했는지 먼저 보이는 프로젝트 아카이브</h1>
+            <h1 className="page-title">대표 프로젝트와 전체 아카이브</h1>
             <p className="page-intro">
-              결과물만 나열하는 대신, 도메인과 문제 유형을 기준으로 어떤 방식의
-              문제를 다뤄왔는지 직접 좁혀 볼 수 있게 구성했습니다.
+              결과물 나열보다 문제 유형과 도메인 기준으로 프로젝트를 직접 좁혀볼
+              수 있게 구성했습니다.
             </p>
           </div>
 
@@ -29,7 +29,7 @@ export default function ProjectsPage() {
               <dd>{featuredCount}</dd>
             </div>
             <div>
-              <dt>도메인 축</dt>
+              <dt>Focus</dt>
               <dd>공공 / 상권 / 커머스 / 스포츠</dd>
             </div>
           </dl>

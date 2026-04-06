@@ -7,33 +7,30 @@ export default function ResumePage() {
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
-        <section className="surface-card resume-hero">
-          <div className="resume-hero__main">
+        <section className="surface-card page-header">
+          <div>
             <span className="eyebrow">Resume</span>
-            <h1 className="page-title">압축된 채용용 요약</h1>
+            <h1 className="page-title">핵심 역량과 대표 작업 요약</h1>
             <p className="page-intro">
-              긴 자기소개보다 역할, 강점, 프로젝트, 외부 링크가 빠르게 읽히는
-              형태로 정리했습니다.
+              긴 자기소개 대신 역할, 강점, 도구, 대표 프로젝트만 빠르게 읽히는
+              압축본으로 정리했습니다.
             </p>
           </div>
 
-          <div className="resume-hero__side">
-            <article className="resume-side-card">
-              <span className="resume-side-card__label">Primary Role</span>
-              <div className="tag-list">
-                {profile.primaryRoles.map((role) => (
-                  <span className="tag tag--accent" key={role}>
-                    {role}
-                  </span>
-                ))}
-              </div>
-            </article>
-
-            <article className="resume-side-card">
-              <span className="resume-side-card__label">Keywords</span>
-              <p>{profile.keywords.slice(0, 4).join(" / ")}</p>
-            </article>
-          </div>
+          <dl className="overview-stats">
+            <div>
+              <dt>Primary Role</dt>
+              <dd>{profile.primaryRoles.join(" / ")}</dd>
+            </div>
+            <div>
+              <dt>Keywords</dt>
+              <dd>{profile.keywords.slice(0, 3).join(" / ")}</dd>
+            </div>
+            <div>
+              <dt>Access</dt>
+              <dd>public-safe summary</dd>
+            </div>
+          </dl>
         </section>
 
         <div className="resume-grid">
@@ -41,7 +38,10 @@ export default function ResumePage() {
             <span className="eyebrow">Profile</span>
             <h2 className="section-title">{profile.name}</h2>
             <p className="page-intro">{profile.headline}</p>
-            <p className="page-intro">개인 식별 정보와 직접 연락처는 공개 버전에서 제외했습니다.</p>
+            <p className="page-intro">
+              개인 식별 정보와 직접 연락처는 공개 버전에서 제외하고, 문제 해결
+              구조와 프로젝트 중심 정보만 남겼습니다.
+            </p>
             <div className="resume-profile-grid">
               <div className="project-card__block">
                 <span className="project-card__label">1순위 직무</span>
@@ -128,8 +128,8 @@ export default function ResumePage() {
           </section>
 
           <section className="surface-card detail-section resume-panel resume-panel--links">
-            <span className="eyebrow">Links</span>
-            <h2 className="section-title">외부 링크</h2>
+            <span className="eyebrow">Access</span>
+            <h2 className="section-title">공개 버전 가이드</h2>
             <div className="resume-links-grid">
               <div className="resume-link-card resume-link-card--muted">
                 <span className="resume-link-card__label">Contact</span>

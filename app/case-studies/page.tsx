@@ -11,13 +11,30 @@ export default function CaseStudiesPage() {
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
-        <section className="surface-card">
-          <span className="eyebrow">Case Studies</span>
-          <h1 className="page-title">프로젝트 결과물 뒤에 있는 문제 해결 방식</h1>
-          <p className="page-intro">
-            Projects가 무엇을 만들었는지를 보여준다면, Case Studies는 어떤
-            질문과 구조로 문제를 다뤘는지 따로 추출해 보여줍니다.
-          </p>
+        <section className="surface-card page-header">
+          <div>
+            <span className="eyebrow">Case Studies</span>
+            <h1 className="page-title">프로젝트 뒤에 있는 문제 해결 방식</h1>
+            <p className="page-intro">
+              결과물보다 먼저 어떤 질문과 구조로 문제를 다뤘는지 따로 추출한
+              페이지입니다.
+            </p>
+          </div>
+
+          <dl className="overview-stats">
+            <div>
+              <dt>Records</dt>
+              <dd>{caseStudies.length}</dd>
+            </div>
+            <div>
+              <dt>Linked Projects</dt>
+              <dd>{new Set(caseStudies.flatMap((item) => item.linkedProjects)).size}</dd>
+            </div>
+            <div>
+              <dt>Focus</dt>
+              <dd>문제 정의 / 구조 설계 / 스토리텔링</dd>
+            </div>
+          </dl>
         </section>
 
         <div className="highlight-grid">

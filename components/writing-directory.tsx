@@ -43,6 +43,11 @@ export function WritingDirectory({
       }),
     [category, entries, platform],
   );
+  const statusLabelMap: Record<WritingEntry["status"], string> = {
+    published: "Live",
+    inventory: "Archive",
+    planned: "Curation",
+  };
 
   return (
     <section className="page-grid">
@@ -50,10 +55,9 @@ export function WritingDirectory({
         <div className="filter-panel__header">
           <div>
             <span className="eyebrow">Directory</span>
-            <h2 className="section-title">글을 플랫폼이 아니라 역할로 정리하기</h2>
+            <h2 className="section-title">글의 역할로 탐색</h2>
             <p className="filter-panel__description">
-              먼저 성격과 플랫폼을 좁힌 뒤, 관련 프로젝트를 확인하는 흐름으로
-              구성했습니다.
+              플랫폼보다 성격과 연결 프로젝트를 기준으로 정리한 아카이브입니다.
             </p>
           </div>
         </div>
@@ -89,18 +93,16 @@ export function WritingDirectory({
         </div>
       </div>
 
-      <div className="project-grid">
+      <div className="archive-grid archive-grid--entries">
         {filteredEntries.map((entry) => (
-          <article className="project-card" key={entry.slug}>
-            <div className="project-card__header">
+          <article className="archive-card archive-card--entry" key={entry.slug}>
+            <div className="archive-card__meta">
               <div className="tag-list">
                 <span className="tag tag--accent">{entry.platform}</span>
-                <span className={`tag status-tag status-tag--${entry.status}`}>
-                  {entry.status}
-                </span>
               </div>
-              <h2 className="project-card__title">{entry.title}</h2>
+              <span className="archive-card__count">{statusLabelMap[entry.status]}</span>
             </div>
+            <h2 className="project-card__title">{entry.title}</h2>
 
             <p className="project-card__summary">{entry.summary}</p>
 
@@ -131,7 +133,7 @@ export function WritingDirectory({
             <div className="project-card__actions">
               {entry.href === "#" ? (
                 <span className="button-link button-link--secondary">
-                  준비 중
+                  아카이브 노트
                 </span>
               ) : (
                 <a

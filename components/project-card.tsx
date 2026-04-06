@@ -6,75 +6,69 @@ type ProjectCardProps = {
   project: Project;
 };
 
+function getProjectVisual(slug: string) {
+  switch (slug) {
+    case "lh-traffic-safety-analysis":
+      return { mark: "LH", tone: "forest" };
+    case "seoul-storefront-redveil":
+      return { mark: "RV", tone: "graphite" };
+    case "uk-online-retail-segment-analysis":
+      return { mark: "UK", tone: "slate" };
+    case "starbucks-promotion-analysis":
+      return { mark: "SB", tone: "forest" };
+    case "nba-game-player-analysis":
+      return { mark: "NBA", tone: "slate" };
+    default:
+      return { mark: "AR", tone: "graphite" };
+  }
+}
+
 export function ProjectCard({ project }: ProjectCardProps) {
+  const visual = getProjectVisual(project.slug);
+
   return (
     <article className="project-card">
-      <div className="project-card__header">
-        <div className="tag-list" aria-label="Project badges">
-          <span className="tag tag--accent">{project.category}</span>
-          {project.badges.map((badge) => (
-            <span className="tag" key={badge}>
-              {badge}
-            </span>
-          ))}
+      <div className="project-card__hero">
+        <div className={`project-card__media project-card__media--${visual.tone}`}>{visual.mark}</div>
+        <div className="project-card__header">
+          <span className="project-card__eyebrow">{project.domains.slice(0, 2).join(" / ")}</span>
+          <h2 className="project-card__title">
+            <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+          </h2>
         </div>
-        <h2 className="project-card__title">
-          <Link href={`/projects/${project.slug}`}>{project.title}</Link>
-        </h2>
       </div>
 
       <p className="project-card__summary">{project.summary}</p>
 
-      <dl className="meta-list meta-list--compact">
-        <div className="meta-item">
-          <dt>기간</dt>
-          <dd>{project.period}</dd>
+      <div className="project-card__meta-grid">
+        <div className="project-card__meta-item">
+          <span>Role</span>
+          <strong>{project.role.slice(0, 2).join(" / ")}</strong>
         </div>
-        <div className="meta-item">
-          <dt>형태</dt>
-          <dd>{project.format}</dd>
+        <div className="project-card__meta-item">
+          <span>Tools</span>
+          <strong>{project.stack.slice(0, 3).join(" / ")}</strong>
         </div>
-        <div className="meta-item">
-          <dt>도메인</dt>
-          <dd>{project.domains.join(" / ")}</dd>
-        </div>
-        <div className="meta-item">
-          <dt>역할</dt>
-          <dd>{project.role.slice(0, 3).join(", ")}</dd>
-        </div>
-      </dl>
+      </div>
 
       <div className="project-card__block">
-        <span className="project-card__label">문제 유형</span>
+        <span className="project-card__label">핵심 태그</span>
         <div className="tag-list">
-          {project.problemTypes.slice(0, 4).map((item) => (
+          {project.problemTypes.slice(0, 3).map((item) => (
             <span className="tag" key={item}>
+              {item}
+            </span>
+          ))}
+          {project.badges.slice(0, 2).map((item) => (
+            <span className="tag tag--accent" key={item}>
               {item}
             </span>
           ))}
         </div>
       </div>
 
-      <div className="project-card__block">
-        <span className="project-card__label">기술</span>
-        <div className="tag-list">
-          {project.stack.slice(0, 4).map((item) => (
-            <span className="tag" key={item}>
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <ul className="list-stack compact-list">
-        {project.focusPoints.slice(0, 2).map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ul>
-
-      <p className="project-card__outcome">{project.outcome}</p>
-
-      <div className="project-card__actions">
+      <div className="project-card__footer">
+        <p className="project-card__note">{project.focusPoints[0] ?? project.outcome}</p>
         <Link className="button-link" href={`/projects/${project.slug}`}>
           상세 보기
         </Link>
@@ -82,4 +76,3 @@ export function ProjectCard({ project }: ProjectCardProps) {
     </article>
   );
 }
-

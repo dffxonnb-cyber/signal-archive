@@ -4,210 +4,159 @@ import { caseStudies } from "@/content/case-studies";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
 import { writingEntries } from "@/content/writing";
+import { ProjectCard } from "@/components/project-card";
+
+const heroHeadline = "위험 신호와 구조를 먼저 짚는 데이터 분석가";
+const heroSummary =
+  "흩어진 데이터를 분석 가능한 구조로 정리하고, 표면적인 결과보다 맥락과 이상 신호를 먼저 살핍니다. 문제 정의부터 결과물 구현까지 검증 흐름으로 연결하는 방식을 선호합니다.";
+
+const frameItems = [
+  {
+    label: "Problem Frame",
+    title: "문제 정의",
+    description:
+      "무엇을 먼저 검증해야 하는지부터 다시 세우고, 좋아 보이는 결과를 바로 받아들이지 않습니다.",
+  },
+  {
+    label: "Structure",
+    title: "구조 설계",
+    description:
+      "흩어진 데이터를 분석 가능한 단위로 다시 묶고, 해석 기준이 흔들리지 않도록 구조를 정리합니다.",
+  },
+  {
+    label: "Verification",
+    title: "검증 중심",
+    description:
+      "수치 그 자체보다 위험 신호와 맥락을 먼저 보고, 결과를 끝까지 점검하는 흐름을 유지합니다.",
+  },
+];
 
 export default function HomePage() {
-  const featuredWriting = writingEntries.slice(0, 2);
-  const heroProjects = featuredProjects.slice(0, 2);
-
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
-        <section className="surface-card intro-panel">
-          <div className="intro-layout">
-            <div className="page-grid intro-main">
-              <div>
-                <span className="eyebrow">Signal Archive</span>
-                <p className="intro-name">공개용 버전</p>
-              </div>
-              <h1 className="page-title">{profile.headline}</h1>
-              <div className="copy-stack intro-copy">
-                {profile.summary.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-              <div className="tag-list">
-                {profile.primaryRoles.map((role) => (
-                  <span className="tag tag--accent" key={role}>
-                    {role}
-                  </span>
-                ))}
-                {profile.keywords.slice(0, 3).map((keyword) => (
-                  <span className="tag" key={keyword}>
-                    {keyword}
-                  </span>
-                ))}
-              </div>
-              <div className="button-row">
-                <Link className="button-link" href="/projects">
-                  대표 프로젝트 보기
-                </Link>
-                <Link className="button-link button-link--secondary" href="/resume">
-                  Resume 보기
-                </Link>
-              </div>
+        <section className="surface-card hero-card">
+          <div className="hero-card__copy">
+            <div>
+              <span className="eyebrow">Signal Archive</span>
+              <p className="intro-name">공개용 버전</p>
             </div>
-
-            <div className="hero-side">
-              <section className="hero-panel hero-panel--accent">
-                <div className="hero-panel__header">
-                  <span className="eyebrow">Core Frame</span>
-                  <h2 className="section-title">핵심 판단 프레임</h2>
-                </div>
-                <div className="hero-metric-list">
-                  <article className="hero-metric">
-                    <span className="hero-metric__index">01</span>
-                    <div>
-                      <h3>문제 정의</h3>
-                      <p>먼저 무엇을 검증해야 하는지부터 다시 세웁니다.</p>
-                    </div>
-                  </article>
-                  <article className="hero-metric">
-                    <span className="hero-metric__index">02</span>
-                    <div>
-                      <h3>구조 설계</h3>
-                      <p>흩어진 데이터를 분석 가능한 단위로 재구성합니다.</p>
-                    </div>
-                  </article>
-                  <article className="hero-metric">
-                    <span className="hero-metric__index">03</span>
-                    <div>
-                      <h3>검증 중심</h3>
-                      <p>겉으로 좋은 수치보다 위험 신호와 맥락을 먼저 봅니다.</p>
-                    </div>
-                  </article>
-                </div>
-              </section>
-
-              <section className="hero-panel">
-                <div className="hero-panel__header">
-                  <span className="eyebrow">Selected Work</span>
-                  <h2 className="section-title">대표 작업</h2>
-                </div>
-                <div className="hero-link-list">
-                  {heroProjects.map((project) => (
-                    <Link className="hero-link-card" href={`/projects/${project.slug}`} key={project.slug}>
-                      <div className="hero-link-card__top">
-                        <span className="tag tag--accent">{project.badges[0] ?? project.category}</span>
-                        <span className="hero-link-card__arrow">↗</span>
-                      </div>
-                      <h3>{project.title}</h3>
-                      <p>{project.summary}</p>
-                    </Link>
-                  ))}
-                </div>
-              </section>
+            <h1 className="hero-title">{heroHeadline}</h1>
+            <p className="hero-summary">{heroSummary}</p>
+            <div className="button-row">
+              <Link className="button-link" href="/projects">
+                대표 프로젝트 보기
+              </Link>
+              <Link className="button-link button-link--secondary" href="/resume">
+                Resume 보기
+              </Link>
             </div>
           </div>
-        </section>
 
-        <section className="overview-grid">
-          <article className="surface-card compact-panel">
-            <span className="eyebrow">Positioning</span>
-            <h2 className="section-title">어떤 분석가로 읽히는지</h2>
-            <p className="page-intro">
-              단순한 보고나 시각화보다 문제 정의, 구조 설계, 검증 과정을 중심에
-              두는 분석가로 보이도록 설계했습니다.
-            </p>
-          </article>
-
-          <article className="surface-card compact-panel">
-            <span className="eyebrow">Featured</span>
-            <h2 className="section-title">대표 프로젝트 3개</h2>
-            <ul className="inline-list">
-              {featuredProjects.map((project) => (
-                <li key={project.slug}>
-                  <Link href={`/projects/${project.slug}`}>{project.title}</Link>
-                </li>
-              ))}
-            </ul>
-          </article>
-
-          <article className="surface-card compact-panel compact-panel--accent">
-            <span className="eyebrow">Keywords</span>
-            <h2 className="section-title">기억할 키워드</h2>
-            <div className="tag-list">
-              {profile.keywords.map((keyword) => (
-                <span className="tag tag--accent" key={keyword}>
-                  {keyword}
-                </span>
-              ))}
+          <aside className="hero-card__aside">
+            <div className="hero-glance">
+              <span className="hero-glance__label">Primary</span>
+              <strong>{profile.primaryRoles.join(" / ")}</strong>
             </div>
-          </article>
+            <div className="hero-glance">
+              <span className="hero-glance__label">Frame</span>
+              <strong>{profile.strengths.slice(0, 3).join(" / ")}</strong>
+            </div>
+            <div className="hero-glance">
+              <span className="hero-glance__label">Scope</span>
+              <strong>공간데이터 / 비즈니스 / end-to-end</strong>
+            </div>
+          </aside>
         </section>
 
         <section className="page-grid">
-          <div className="section-head">
-            <span className="eyebrow">Featured Projects</span>
-            <h2 className="section-title">대표 프로젝트</h2>
+          <div className="section-head section-head--split">
+            <div>
+              <span className="eyebrow">Frame</span>
+              <h2 className="section-title">문제를 해석하는 기준</h2>
+            </div>
+            <p className="page-intro section-copy">
+              브랜딩 문장을 반복하기보다, 실제로 어떤 순서로 문제를 읽고 구조를
+              세우는지 세 개의 기준으로 압축했습니다.
+            </p>
           </div>
-          <div className="highlight-grid">
-            {featuredProjects.map((project) => (
-              <article className="summary-card" key={project.slug}>
-                <div className="tag-list">
-                  {project.badges.map((badge) => (
-                    <span className="tag" key={badge}>
-                      {badge}
-                    </span>
-                  ))}
-                </div>
-                <h3>
-                  <Link href={`/projects/${project.slug}`}>{project.title}</Link>
-                </h3>
-                <p>{project.summary}</p>
-                <ul className="list-stack compact-list">
-                  {project.focusPoints.slice(0, 2).map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
+
+          <div className="frame-grid">
+            {frameItems.map((item) => (
+              <article className="frame-card" key={item.title}>
+                <span className="frame-card__eyebrow">{item.label}</span>
+                <h3 className="frame-card__title">{item.title}</h3>
+                <p>{item.description}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section className="content-columns">
-          <div className="page-grid section-column">
-            <div className="section-head section-head--aligned">
-              <span className="eyebrow">Case Studies</span>
-              <h2 className="section-title">문제 해결 방식</h2>
+        <section className="page-grid">
+          <div className="section-head section-head--split">
+            <div>
+              <span className="eyebrow">Featured Projects</span>
+              <h2 className="section-title">대표 프로젝트</h2>
             </div>
-            <div className="highlight-grid">
-              {caseStudies.map((caseStudy) => (
-                <article className="summary-card" key={caseStudy.slug}>
-                  <span className="tag tag--accent">{caseStudy.category}</span>
-                  <h3>
-                    <Link href={`/case-studies#${caseStudy.slug}`}>{caseStudy.title}</Link>
-                  </h3>
-                  <p>{caseStudy.summary}</p>
-                </article>
-              ))}
-            </div>
+            <p className="page-intro section-copy">
+              가장 대표적인 세 프로젝트만 전면에 두고, 역할과 도구, 핵심 판단
+              포인트가 한눈에 읽히도록 구성했습니다.
+            </p>
           </div>
 
-          <div className="page-grid section-column">
-            <div className="section-head section-head--aligned">
-              <span className="eyebrow">Writing</span>
-              <h2 className="section-title">프로젝트 연계 글쓰기</h2>
+          <div className="project-grid project-grid--featured">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+        </section>
+
+        <section className="page-grid">
+          <div className="section-head section-head--split">
+            <div>
+              <span className="eyebrow">Archive</span>
+              <h2 className="section-title">케이스, 글, 요약 문서</h2>
             </div>
-            <div className="page-grid">
-              {featuredWriting.map((entry) => (
-                <article className="summary-card" key={entry.slug}>
-                  <div className="tag-list">
-                    <span className="tag tag--accent">{entry.platform}</span>
-                    <span className={`tag status-tag status-tag--${entry.status}`}>
-                      {entry.status}
-                    </span>
-                  </div>
-                  <h3>{entry.title}</h3>
-                  <p>{entry.summary}</p>
-                  <div className="tag-list">
-                    {entry.categories.map((item) => (
-                      <span className="tag" key={item}>
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </article>
-              ))}
+            <p className="page-intro section-copy">
+              프로젝트를 중심에 두되, 문제 해결 방식과 글, 요약 문서가 주변
+              아카이브처럼 연결되도록 정리했습니다.
+            </p>
+          </div>
+
+          <div className="archive-grid">
+            <Link className="archive-card" href="/case-studies">
+              <div className="archive-card__meta">
+                <span className="eyebrow">Case Studies</span>
+                <span className="archive-card__count">{caseStudies.length} records</span>
+              </div>
+              <h3>문제 해결 방식</h3>
+              <p>프로젝트 뒤에 있던 판단 기준과 해석 구조를 따로 추출한 기록입니다.</p>
+            </Link>
+
+            <Link className="archive-card" href="/writing">
+              <div className="archive-card__meta">
+                <span className="eyebrow">Writing</span>
+                <span className="archive-card__count">{writingEntries.length} notes</span>
+              </div>
+              <h3>연결된 글 아카이브</h3>
+              <p>분석 메모, 회고, 태도에 관한 글을 프로젝트와 이어 읽을 수 있게 묶었습니다.</p>
+            </Link>
+
+            <div className="archive-card">
+              <div className="archive-card__meta">
+                <span className="eyebrow">Resume & Contact</span>
+                <span className="archive-card__count">public-safe</span>
+              </div>
+              <h3>압축된 요약 문서</h3>
+              <p>Resume와 Contact는 공개 가능한 범위만 남기고, 검토용 구조를 우선 제공합니다.</p>
+              <div className="button-row">
+                <Link className="button-link button-link--secondary" href="/resume">
+                  Resume
+                </Link>
+                <Link className="button-link button-link--secondary" href="/contact">
+                  Contact
+                </Link>
+              </div>
             </div>
           </div>
         </section>

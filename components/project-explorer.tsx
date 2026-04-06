@@ -58,10 +58,9 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
         <div className="filter-panel__header">
           <div>
             <span className="eyebrow">Explorer</span>
-            <h2 className="section-title">문제 유형과 도메인으로 프로젝트를 읽기</h2>
+            <h2 className="section-title">필터로 프로젝트 좁히기</h2>
             <p className="filter-panel__description">
-              필터를 조합해 프로젝트를 좁히고, 필요하면 정렬 기준을 바꿔서
-              읽을 수 있습니다.
+              도메인, 문제 유형, 기술 기준으로 필요한 프로젝트만 빠르게 확인할 수 있습니다.
             </p>
           </div>
         </div>
