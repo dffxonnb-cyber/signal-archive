@@ -142,8 +142,8 @@ export default function HomePage() {
         </section>
 
         <section className="content-columns">
-          <div className="page-grid">
-            <div className="section-head">
+          <div className="page-grid section-column">
+            <div className="section-head section-head--aligned">
               <span className="eyebrow">Case Studies</span>
               <h2 className="section-title">문제 해결 방식</h2>
             </div>
@@ -160,10 +160,10 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="page-grid">
-            <div className="section-head">
+          <div className="page-grid section-column">
+            <div className="section-head section-head--aligned">
               <span className="eyebrow">Writing</span>
-              <h2 className="section-title">프로젝트와 연결되는 글쓰기</h2>
+              <h2 className="section-title">프로젝트 연계 글쓰기</h2>
             </div>
             <div className="page-grid">
               {featuredWriting.map((entry) => (
