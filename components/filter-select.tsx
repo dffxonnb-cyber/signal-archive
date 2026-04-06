@@ -78,7 +78,7 @@ export function FilterSelect({
           {selectedOption.label}
         </span>
         <span aria-hidden="true" className="filter-select__icon">
-          ▾
+          v
         </span>
       </button>
 
@@ -106,7 +106,6 @@ export function FilterSelect({
                 type="button"
               >
                 <span>{option.label}</span>
-                {isActive ? <span aria-hidden="true">선택</span> : null}
               </button>
             );
           })}

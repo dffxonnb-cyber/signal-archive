@@ -63,7 +63,8 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
             <span className="eyebrow">Explorer</span>
             <h2 className="section-title">필터로 프로젝트 좁히기</h2>
             <p className="filter-panel__description">
-              도메인, 문제 유형, 기술 기준으로 필요한 프로젝트만 빠르게 확인할 수 있습니다.
+              규모가 크지 않은 아카이브인 만큼, 필요한 프로젝트만 빠르게 고를 수 있도록 필터를 간결하게
+              정리했습니다.
             </p>
           </div>
 
@@ -153,7 +154,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
         <div className="surface-card empty-state">
           <h2 className="section-title">조건에 맞는 프로젝트가 없습니다.</h2>
           <p className="page-intro">
-            필터를 하나씩 해제하면 다른 도메인이나 문제 유형의 프로젝트가 다시 보입니다.
+            필터를 하나씩 해제하면 다른 도메인과 문제 유형의 프로젝트가 다시 보입니다.
           </p>
         </div>
       )}

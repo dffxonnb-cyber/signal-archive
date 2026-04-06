@@ -25,8 +25,10 @@ function getProjectVisual(slug: string) {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   const visual = getProjectVisual(project.slug);
+  const projectIndex = String(project.sortOrder).padStart(2, "0");
   const primaryTags = project.problemTypes.slice(0, 3);
   const secondaryTags = project.badges.slice(0, 2);
+  const scopeChips = [project.category, project.format].filter(Boolean).slice(0, 2);
 
   return (
     <article className="project-card">
@@ -34,7 +36,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className={`project-card__media project-card__media--${visual.tone}`}>{visual.mark}</div>
         <div className="project-card__header">
           <div className="project-card__header-top">
-            <span className="project-card__code">Dossier {visual.mark}</span>
+            <span className="project-card__code">Project {projectIndex}</span>
             <span className="project-card__eyebrow">{project.domains.slice(0, 2).join(" / ")}</span>
           </div>
           <h2 className="project-card__title">
@@ -47,7 +49,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="project-card__metadata">
         <div className="project-card__metadata-group">
-          <span className="project-card__meta-label">Role</span>
+          <span className="project-card__meta-label">역할</span>
           <div className="project-card__chip-row">
             {project.role.slice(0, 2).map((item) => (
               <span className="project-card__chip" key={item}>
@@ -58,7 +60,18 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
 
         <div className="project-card__metadata-group">
-          <span className="project-card__meta-label">Tools</span>
+          <span className="project-card__meta-label">범위</span>
+          <div className="project-card__chip-row">
+            {scopeChips.map((item) => (
+              <span className="project-card__chip project-card__chip--muted" key={item}>
+                {item}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="project-card__metadata-group">
+          <span className="project-card__meta-label">도구</span>
           <div className="project-card__chip-row">
             {project.stack.slice(0, 3).map((item) => (
               <span className="project-card__chip project-card__chip--muted" key={item}>
