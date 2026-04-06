@@ -1234,15 +1234,30 @@ main {
 }
 
 .projects-summary__value {
-  font-size: 1.18rem;
-  line-height: 1;
+  font-size: 1.38rem;
+  line-height: 0.94;
   letter-spacing: -0.02em;
 }
 
 .projects-summary__item--metric {
-  display: flex;
-  align-items: baseline;
-  min-width: 0;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 5px;
+  min-width: 108px;
+  min-height: 72px;
+  padding: 10px 14px 11px;
+  text-align: center;
+}
+
+.projects-summary__item--metric .projects-summary__label {
+  line-height: 1;
+}
+
+.projects-summary__item--metric .projects-summary__value {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .projects-summary__item--focus {
