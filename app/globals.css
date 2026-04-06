@@ -386,8 +386,10 @@ main {
 }
 
 .home-hero .hero-title {
-  max-width: 7.8ch;
-  font-size: 3rem;
+  max-width: 13ch;
+  font-size: 2.35rem;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
 }
 
 .home-hero__summary {
@@ -1249,9 +1251,10 @@ main {
     padding: 20px;
   }
 
-  .hero-title {
-    max-width: 10ch;
-    font-size: 2.24rem;
+  .home-hero .hero-title {
+    max-width: 15ch;
+    font-size: 1.85rem;
+    line-height: 1.12;
   }
 
   .home-hero,
