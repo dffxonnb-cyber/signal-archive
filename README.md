@@ -1,27 +1,17 @@
 # Signal Archive
 
-A hiring portfolio connecting data analysis, structured problem solving, and written communication.
+Signal Archive is a Korean-first portfolio site for presenting data analysis work, problem-framing patterns, and linked writing in one archive-style interface.
 
-## Overview
+## What It Shows
 
-Signal Archive is a Korean-first portfolio site prepared as a public-safe preview. Instead of a simple project gallery, the site is structured as an archive-style interface that connects:
+- `Home`: positioning, analytical lens, and featured project selection
+- `Projects`: filterable archive with per-project detail pages
+- `Case Studies`: recurring problem-solving patterns extracted across projects
+- `Writing`: article-level notes connected back to projects
+- `Resume`: compressed profile, strengths, stack, and project summary
+- `Contact`: public profile and review/contact routes
 
-- analysis projects
-- problem-solving case studies
-- writing and reflective notes
-
-The goal is to show not only what was built, but how problems were framed, structured, and verified.
-
-## Current structure
-
-- `Home`: positioning, featured projects, case study previews, writing entry points
-- `Projects`: filterable project archive with dynamic detail pages
-- `Case Studies`: extracted problem-solving patterns across projects
-- `Writing`: unified writing directory with platform and category filters
-- `Resume`: compressed hiring summary
-- `Contact`: public-safe contact placeholder
-
-## Content model
+## Content Model
 
 Portfolio content is stored as structured TypeScript data:
 
@@ -30,30 +20,45 @@ Portfolio content is stored as structured TypeScript data:
 - [`content/case-studies.ts`](./content/case-studies.ts)
 - [`content/writing.ts`](./content/writing.ts)
 
-This keeps the UI tied to reusable data instead of page-specific copy.
+This keeps the UI driven by reusable content objects instead of page-local copy.
 
-## Tech stack
+## Stack
 
 - Next.js App Router
+- React 19
 - TypeScript
-- CSS-based UI foundation for the initial scaffold
+- CSS-based custom UI
 
-## Local development
+## Local Development
 
 1. Install Node.js 20 or newer.
-2. Install dependencies:
+2. Install dependencies.
 
    ```bash
    npm install
    ```
 
-3. Run the development server:
+3. Run the development server.
 
    ```bash
    npm run dev
    ```
 
-## Notes
+## Checks
 
-- This repository was scaffolded in an environment without Node.js installed, so dependency installation and local runtime verification still need to be done on a machine with Node available.
-- The next implementation pass should focus on article-level writing entries, external project links, and deployment setup.
+- `npm run lint`
+- `npm run typecheck`
+- `npm run build`
+
+A GitHub Actions workflow is included to run lint, typecheck, and build on pushes and pull requests.
+
+## Current Scope
+
+- Real project links are wired into project detail pages.
+- Writing entries now have dedicated detail pages instead of placeholder cards.
+- Resume and Contact now expose public-safe profile routes instead of placeholders.
+- The portfolio copy is aligned to the current GitHub project archive.
+
+## Verification Note
+
+The current workspace does not have Node.js installed, so I could not run `npm install`, `npm run lint`, or `npm run build` locally in this environment. The repository has been updated to support those checks as soon as Node is available or CI runs on GitHub.

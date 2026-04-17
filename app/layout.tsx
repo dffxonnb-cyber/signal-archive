@@ -6,9 +6,12 @@ import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Signal Archive",
+  title: {
+    default: "Signal Archive",
+    template: "%s | Signal Archive",
+  },
   description:
-    "A hiring portfolio connecting data analysis, structured problem solving, and written communication.",
+    "문제 정의, 구조 설계, 검증 중심 분석을 정리한 데이터 분석 포트폴리오.",
 };
 
 export default function RootLayout({

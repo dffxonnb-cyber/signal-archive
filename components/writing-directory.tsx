@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { FilterSelect } from "@/components/filter-select";
@@ -107,6 +108,11 @@ export function WritingDirectory({
             <p className="project-card__summary">{entry.summary}</p>
 
             <div className="project-card__block">
+              <span className="project-card__label">게시 시점</span>
+              <p>{entry.publishedAt}</p>
+            </div>
+
+            <div className="project-card__block">
               <span className="project-card__label">분류</span>
               <div className="tag-list">
                 {entry.categories.map((item) => (
@@ -131,11 +137,11 @@ export function WritingDirectory({
             ) : null}
 
             <div className="project-card__actions">
-              {entry.href === "#" ? (
-                <span className="button-link button-link--secondary">
-                  아카이브 노트
-                </span>
-              ) : (
+              {entry.linkKind === "internal" ? (
+                <Link className="button-link" href={entry.href}>
+                  글 읽기
+                </Link>
+              ) : entry.linkKind === "external" ? (
                 <a
                   className="button-link"
                   href={entry.href}
@@ -144,6 +150,10 @@ export function WritingDirectory({
                 >
                   원문 보기
                 </a>
+              ) : (
+                <span className="button-link button-link--secondary">
+                  아카이브 노트
+                </span>
               )}
             </div>
           </article>

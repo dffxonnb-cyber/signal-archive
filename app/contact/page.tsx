@@ -1,3 +1,5 @@
+import { profile } from "@/content/profile";
+
 export default function ContactPage() {
   return (
     <main className="page-shell">
@@ -5,9 +7,9 @@ export default function ContactPage() {
         <section className="surface-card page-header">
           <div>
             <span className="eyebrow">Contact</span>
-            <h1 className="page-title">공개 버전에서 확인할 수 있는 범위</h1>
+            <h1 className="page-title">검토와 연락을 위한 공개 정보</h1>
             <p className="page-intro">
-              이 페이지는 직접 연락처보다 공개 가능한 범위와 후속 제공 항목을 정리한 안내용 섹션입니다.
+              프로젝트 검토를 먼저 할 수 있도록 공개 가능한 프로필과 연락 경로를 정리했습니다.
             </p>
           </div>
 
@@ -18,11 +20,11 @@ export default function ContactPage() {
             </div>
             <div>
               <dt>Direct Contact</dt>
-              <dd>hidden</dd>
+              <dd>{profile.contactLinks.length} routes</dd>
             </div>
             <div>
-              <dt>Resume PDF</dt>
-              <dd>on request</dd>
+              <dt>Profile</dt>
+              <dd>{profile.name}</dd>
             </div>
           </dl>
         </section>
@@ -30,27 +32,52 @@ export default function ContactPage() {
         <div className="archive-grid">
           <article className="archive-card">
             <div className="archive-card__meta">
-              <span className="eyebrow">Access</span>
-              <span className="archive-card__count">public-safe</span>
+              <span className="eyebrow">Profile</span>
+              <span className="archive-card__count">open</span>
             </div>
-            <h3>직접 연락처 비공개</h3>
-            <p>개인 메일과 외부 소셜 링크는 공개 사이트에서 제외하고, 프로젝트 검토에 필요한 정보만 남겼습니다.</p>
+            <h3>{profile.name}</h3>
+            <p>{profile.headline}</p>
+            <div className="tag-list">
+              {profile.primaryRoles.map((role) => (
+                <span className="tag tag--accent" key={role}>
+                  {role}
+                </span>
+              ))}
+            </div>
           </article>
           <article className="archive-card">
             <div className="archive-card__meta">
-              <span className="eyebrow">Resume</span>
-              <span className="archive-card__count">summary only</span>
+              <span className="eyebrow">Links</span>
+              <span className="archive-card__count">public</span>
             </div>
-            <h3>원본 이력서는 별도 제공</h3>
-            <p>공개 버전에서는 압축된 Resume만 제공하고, 원본 문서는 후속 단계에서 연결합니다.</p>
+            <h3>공개 프로필 및 연락 경로</h3>
+            <div className="resume-links-grid">
+              {profile.contactLinks.map((link) => (
+                <a
+                  className="resume-link-card"
+                  href={link.href}
+                  key={link.label}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="resume-link-card__label">{link.label}</span>
+                  <strong>{link.displayText ?? link.href.replace("mailto:", "")}</strong>
+                </a>
+              ))}
+            </div>
           </article>
           <article className="archive-card">
             <div className="archive-card__meta">
-              <span className="eyebrow">Next Step</span>
-              <span className="archive-card__count">in progress</span>
+              <span className="eyebrow">Review Flow</span>
+              <span className="archive-card__count">preferred</span>
             </div>
-            <h3>프로젝트와 구조 우선</h3>
-            <p>현재는 프로젝트, 문제 해결 방식, 기록 아카이브를 더 정교하게 다듬는 데 집중하고 있습니다.</p>
+            <h3>권장 검토 순서</h3>
+            <ul className="list-stack compact-list">
+              <li>Home에서 대표 사례 3개를 먼저 확인</li>
+              <li>Projects에서 도메인과 문제 유형으로 프로젝트를 좁혀보기</li>
+              <li>Case Studies와 Writing에서 문제 해결 방식 확인</li>
+              <li>필요 시 GitHub 저장소와 메일로 후속 연락</li>
+            </ul>
           </article>
         </div>
       </div>

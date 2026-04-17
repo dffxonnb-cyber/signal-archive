@@ -37,9 +37,11 @@ export default function ResumePage() {
             <span className="eyebrow">Profile</span>
             <h2 className="section-title">{profile.name}</h2>
             <p className="page-intro">{profile.headline}</p>
-            <p className="page-intro">
-              공개 버전에서는 개인 식별 정보와 직접 연락처를 제외하고, 문제 해결 구조와 프로젝트 중심 정보만 남겼습니다.
-            </p>
+            <div className="copy-stack">
+              {profile.summary.map((paragraph) => (
+                <p key={paragraph}>{paragraph}</p>
+              ))}
+            </div>
             <div className="resume-profile-grid">
               <div className="project-card__block">
                 <span className="project-card__label">1순위 직무</span>
@@ -127,20 +129,41 @@ export default function ResumePage() {
 
           <section className="surface-card detail-section resume-panel resume-panel--links">
             <span className="eyebrow">Access</span>
-            <h2 className="section-title">공개 버전 가이드</h2>
+            <h2 className="section-title">프로필 및 연락 경로</h2>
             <div className="resume-links-grid">
-              <div className="resume-link-card resume-link-card--muted">
-                <span className="resume-link-card__label">Contact</span>
-                <strong>직접 연락처 비공개</strong>
-              </div>
-              <div className="resume-link-card resume-link-card--muted">
-                <span className="resume-link-card__label">Profiles</span>
-                <strong>외부 프로필 비공개</strong>
-              </div>
-              <div className="resume-link-card resume-link-card--muted">
-                <span className="resume-link-card__label">Document</span>
-                <strong>PDF Resume 요청 시 제공</strong>
-              </div>
+              {profile.contactLinks.map((link) => (
+                <a
+                  className="resume-link-card"
+                  href={link.href}
+                  key={link.label}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  <span className="resume-link-card__label">{link.label}</span>
+                  <strong>{link.displayText ?? link.href.replace("mailto:", "")}</strong>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <section className="surface-card detail-section resume-panel">
+            <span className="eyebrow">Fit</span>
+            <h2 className="section-title">선호하지 않는 역할 신호</h2>
+            <ul className="list-stack">
+              {profile.avoidSignals.map((signal) => (
+                <li key={signal}>{signal}</li>
+              ))}
+            </ul>
+            <p className="page-intro">
+              반복 운영 리포트보다 문제 정의, 구조 설계, 검증과 해석이 함께 필요한 분석 역할에 더 잘 맞습니다.
+            </p>
+            <div className="button-row">
+              <Link className="button-link" href="/projects">
+                프로젝트 전체 보기
+              </Link>
+              <Link className="button-link button-link--secondary" href="/contact">
+                연락 정보 보기
+              </Link>
             </div>
           </section>
         </div>

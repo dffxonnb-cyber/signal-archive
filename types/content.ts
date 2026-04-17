@@ -1,9 +1,15 @@
 export type ExternalLink = {
   label: string;
   href: string;
+  displayText?: string;
 };
 
 export type ProjectSection = {
+  title: string;
+  paragraphs: string[];
+};
+
+export type WritingSection = {
   title: string;
   paragraphs: string[];
 };
@@ -49,10 +55,12 @@ export type WritingEntry = {
   platform: string;
   summary: string;
   href: string;
+  linkKind: "internal" | "external";
   status: "published" | "inventory" | "planned";
   categories: string[];
   relatedProjects: string[];
   publishedAt: string;
+  bodySections: WritingSection[];
 };
 
 export type SkillGroup = {
