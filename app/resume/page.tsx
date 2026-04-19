@@ -91,18 +91,20 @@ export default function ResumePage() {
 
           <section className="surface-card detail-section resume-panel resume-panel--skills">
             <span className="eyebrow">Skills</span>
-            <h2 className="section-title">기술 스택</h2>
+            <h2 className="section-title">Skill Matrix</h2>
+            <p className="page-intro">
+              도구 이름보다, 각 기술로 실제 어떤 작업을 수행하고 어떤 방식으로 결과를 전달하는지 중심으로 정리했습니다.
+            </p>
             <div className="resume-skill-grid">
               {profile.skillGroups.map((group) => (
                 <article className="resume-skill-card" key={group.title}>
                   <h3>{group.title}</h3>
-                  <div className="tag-list">
+                  {group.summary ? <p className="resume-skill-card__summary">{group.summary}</p> : null}
+                  <ul className="resume-skill-card__list">
                     {group.items.map((item) => (
-                      <span className="tag" key={item}>
-                        {item}
-                      </span>
+                      <li key={item}>{item}</li>
                     ))}
-                  </div>
+                  </ul>
                 </article>
               ))}
             </div>

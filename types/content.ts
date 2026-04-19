@@ -87,6 +87,7 @@ export type WritingEntry = {
 
 export type SkillGroup = {
   title: string;
+  summary?: string;
   items: string[];
 };
 

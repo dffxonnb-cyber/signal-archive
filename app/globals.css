@@ -1622,7 +1622,8 @@ main {
 }
 
 .resume-panel--profile,
-.resume-panel--projects {
+.resume-panel--projects,
+.resume-panel--skills {
   grid-column: span 2;
 }
 
@@ -1642,6 +1643,31 @@ main {
 .resume-links-grid {
   display: grid;
   gap: 12px;
+}
+
+.resume-skill-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.resume-skill-card {
+  align-content: start;
+}
+
+.resume-skill-card__summary {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.58;
+}
+
+.resume-skill-card__list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.58;
 }
 
 .resume-project-card__link {
@@ -1711,6 +1737,7 @@ main {
 
   .resume-panel--profile,
   .resume-panel--projects,
+  .resume-panel--skills,
   .resume-profile-grid__wide {
     grid-column: span 1;
   }
@@ -1802,6 +1829,7 @@ main {
   .project-card__meta-grid,
   .detail-overview-grid,
   .home-project-card__facts,
+  .resume-skill-grid,
   .resume-profile-grid,
   .resume-strength-grid,
   .meta-list--compact {
