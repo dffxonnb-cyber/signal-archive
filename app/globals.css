@@ -421,6 +421,11 @@ main {
   line-height: 1.66;
 }
 
+.home-hero__summary-line {
+  display: block;
+  white-space: nowrap;
+}
+
 .home-hero__meta-line {
   display: flex;
   flex-wrap: wrap;
@@ -1602,5 +1607,9 @@ main {
   .home-hero .hero-title {
     font-size: 1.45rem;
     line-height: 1.16;
+  }
+
+  .home-hero__summary-line {
+    white-space: normal;
   }
 }

@@ -99,8 +99,12 @@ export default function HomePage() {
             </h1>
 
             <p className="home-hero__summary">
-              흩어진 데이터를 판단 가능한 구조로 재편하고, 보기 좋은 결과보다 먼저 검증할 신호를
-              정리합니다.
+              <span className="home-hero__summary-line">
+                흩어진 데이터를 판단 가능한 구조로 재편하고,
+              </span>
+              <span className="home-hero__summary-line">
+                보기 좋은 결과보다 먼저 검증할 신호를 정리합니다.
+              </span>
             </p>
 
             <div className="home-hero__meta-line" aria-label="핵심 메타">
