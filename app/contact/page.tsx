@@ -1,6 +1,11 @@
+import Link from "next/link";
+
 import { profile } from "@/content/profile";
 
 export default function ContactPage() {
+  const githubLink = profile.contactLinks.find((link) => link.label === "GitHub");
+  const emailLink = profile.contactLinks.find((link) => link.label === "Email");
+
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
@@ -9,22 +14,37 @@ export default function ContactPage() {
             <span className="eyebrow">Contact</span>
             <h1 className="page-title">검토와 연락을 위한 공개 정보</h1>
             <p className="page-intro">
-              프로젝트 검토를 먼저 할 수 있도록 공개 가능한 프로필과 연락 경로를 정리했습니다.
+              공개용 페이지 기준으로 필요한 정보만 정리하되, 채용 검토와 후속 연락 흐름은 막히지 않도록 구성했습니다.
             </p>
+            <div className="button-row">
+              {githubLink ? (
+                <a className="button-link" href={githubLink.href} rel="noreferrer" target="_blank">
+                  View GitHub
+                </a>
+              ) : null}
+              <Link className="button-link button-link--secondary" href="/projects">
+                View Projects
+              </Link>
+              {emailLink ? (
+                <a className="button-link button-link--secondary" href={emailLink.href}>
+                  Contact / Email
+                </a>
+              ) : null}
+            </div>
           </div>
 
           <dl className="overview-stats">
             <div>
-              <dt>Projects</dt>
-              <dd>open for review</dd>
+              <dt>GitHub</dt>
+              <dd>{githubLink?.displayText ?? "public profile"}</dd>
             </div>
             <div>
-              <dt>Direct Contact</dt>
-              <dd>{profile.contactLinks.length} routes</dd>
+              <dt>Email</dt>
+              <dd>{emailLink?.displayText ?? "contact route available"}</dd>
             </div>
             <div>
-              <dt>Profile</dt>
-              <dd>{profile.name}</dd>
+              <dt>Resume PDF</dt>
+              <dd>준비 중</dd>
             </div>
           </dl>
         </section>
@@ -47,37 +67,66 @@ export default function ContactPage() {
           </article>
           <article className="archive-card">
             <div className="archive-card__meta">
-              <span className="eyebrow">Links</span>
+              <span className="eyebrow">Direct Access</span>
               <span className="archive-card__count">public</span>
             </div>
-            <h3>공개 프로필 및 연락 경로</h3>
+            <h3>바로 확인 가능한 연락 경로</h3>
+            <p>개인정보를 과도하게 노출하지 않으면서도, 채용 검토 후 바로 이어질 수 있는 공개 경로만 남겼습니다.</p>
             <div className="resume-links-grid">
-              {profile.contactLinks.map((link) => (
-                <a
-                  className="resume-link-card"
-                  href={link.href}
-                  key={link.label}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  <span className="resume-link-card__label">{link.label}</span>
-                  <strong>{link.displayText ?? link.href.replace("mailto:", "")}</strong>
+              {githubLink ? (
+                <a className="resume-link-card" href={githubLink.href} rel="noreferrer" target="_blank">
+                  <span className="resume-link-card__label">GitHub</span>
+                  <strong>{githubLink.displayText ?? githubLink.href}</strong>
                 </a>
-              ))}
+              ) : null}
+              {emailLink ? (
+                <a className="resume-link-card" href={emailLink.href}>
+                  <span className="resume-link-card__label">Email</span>
+                  <strong>{emailLink.displayText ?? emailLink.href.replace("mailto:", "")}</strong>
+                </a>
+              ) : null}
+              <article className="resume-link-card resume-link-card--muted">
+                <span className="resume-link-card__label">Resume PDF</span>
+                <strong>요청 시 제공 / 공개용 버전 준비 중</strong>
+              </article>
             </div>
           </article>
           <article className="archive-card">
             <div className="archive-card__meta">
-              <span className="eyebrow">Review Flow</span>
+              <span className="eyebrow">Quick Routes</span>
               <span className="archive-card__count">preferred</span>
             </div>
-            <h3>권장 검토 순서</h3>
+            <h3>바로가기와 권장 검토 흐름</h3>
             <ul className="list-stack compact-list">
-              <li>Home에서 대표 사례 3개를 먼저 확인</li>
-              <li>Projects에서 도메인과 문제 유형으로 프로젝트를 좁혀보기</li>
-              <li>Case Studies와 Writing에서 문제 해결 방식 확인</li>
-              <li>필요 시 GitHub 저장소와 메일로 후속 연락</li>
+              <li>Projects에서 대표 프로젝트와 도메인별 작업을 먼저 확인</li>
+              <li>Writing Archive에서 분석 관점과 문서화 방식을 함께 검토</li>
+              <li>Resume PDF는 공개용 버전 준비 중이며 요청 시 우선 제공 가능합니다.</li>
+              <li>후속 검토는 GitHub 또는 이메일 기준으로 이어갈 수 있습니다.</li>
             </ul>
+            <div className="button-row">
+              <Link className="button-link button-link--secondary" href="/projects">
+                Portfolio Projects
+              </Link>
+              <Link className="button-link button-link--secondary" href="/writing">
+                Writing Archive
+              </Link>
+            </div>
+          </article>
+          <article className="archive-card">
+            <div className="archive-card__meta">
+              <span className="eyebrow">Contact Note</span>
+              <span className="archive-card__count">open</span>
+            </div>
+            <h3>공개 범위와 응답 방식</h3>
+            <p>
+              공개 페이지에서는 최소한의 연락 경로만 유지합니다. 다만 채용 검토에 필요한 후속 자료, 이력서 PDF,
+              프로젝트 보충 설명은 요청 시 정리된 형태로 전달할 수 있습니다.
+            </p>
+            <div className="tag-list">
+              <span className="tag">GitHub 공개</span>
+              <span className="tag">이메일 연락 가능</span>
+              <span className="tag">Resume PDF 준비 중</span>
+            </div>
           </article>
         </div>
       </div>
