@@ -9,6 +9,26 @@ export type ProjectSection = {
   paragraphs: string[];
 };
 
+export type ProjectCardBrief = {
+  problem: string;
+  method: string;
+  output: string[];
+};
+
+export type ProjectDetailBrief = {
+  problem: {
+    what: string;
+    why: string;
+  };
+  dataMethod: {
+    dataTypes: string[];
+    process: string[];
+    metrics: string[];
+  };
+  limitations: string[];
+  linkNote?: string;
+};
+
 export type WritingSection = {
   title: string;
   paragraphs: string[];
@@ -33,6 +53,8 @@ export type Project = {
   context: string;
   outcome: string;
   supportingLine: string;
+  cardBrief: ProjectCardBrief;
+  detailBrief: ProjectDetailBrief;
   focusPoints: string[];
   links: ExternalLink[];
   sortOrder: number;

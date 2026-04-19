@@ -27,6 +27,14 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const visual = getProjectVisual(project.slug);
   const projectIndex = String(project.sortOrder).padStart(2, "0");
   const primaryTags = project.coreTags.slice(0, 4);
+  const cardLinks = [
+    { kind: "detail" as const, label: "Detail", href: `/projects/${project.slug}` },
+    ...project.links.map((link) => ({
+      kind: link.label.includes("Live") ? ("live" as const) : ("external" as const),
+      label: link.label.includes("GitHub") ? "GitHub" : link.label,
+      href: link.href,
+    })),
+  ];
 
   return (
     <article className="project-card">
@@ -46,22 +54,32 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <p className="project-card__summary">{project.summary}</p>
       <p className="project-card__supporting-line">{project.supportingLine}</p>
 
-      <div className="project-card__metadata">
-        <div className="project-card__metadata-group">
-          <span className="project-card__meta-label">역할</span>
-          <div className="project-card__chip-row">
-            {project.role.map((item) => (
-              <span className="project-card__chip" key={item}>
+      <div className="project-card__brief-grid">
+        <div className="project-card__brief-block">
+          <span className="project-card__meta-label">Problem</span>
+          <p className="project-card__brief-copy">{project.cardBrief.problem}</p>
+        </div>
+
+        <div className="project-card__brief-block">
+          <span className="project-card__meta-label">Method</span>
+          <p className="project-card__brief-copy">{project.cardBrief.method}</p>
+        </div>
+
+        <div className="project-card__brief-block">
+          <span className="project-card__meta-label">Output</span>
+          <div className="project-card__output-list">
+            {project.cardBrief.output.map((item) => (
+              <span className="project-card__output-chip" key={item}>
                 {item}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="project-card__metadata-group">
-          <span className="project-card__meta-label">도구</span>
+        <div className="project-card__brief-block">
+          <span className="project-card__meta-label">Stack</span>
           <div className="project-card__chip-row">
-            {project.cardTools.map((item) => (
+            {project.stack.map((item) => (
               <span className="project-card__chip project-card__chip--muted" key={item}>
                 {item}
               </span>
@@ -84,9 +102,26 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="project-card__footer">
-        <Link className="button-link button-link--secondary project-card__cta" href={`/projects/${project.slug}`}>
-          상세 보기
-        </Link>
+        <span className="project-card__meta-label">Link</span>
+        <div className="project-card__cta-row" aria-label={`${project.title} links`}>
+          {cardLinks.map((link) =>
+            link.kind === "detail" ? (
+              <Link className="button-link button-link--secondary project-card__cta" href={link.href} key={link.href}>
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                className={`button-link project-card__cta${link.kind === "live" ? "" : " button-link--secondary"}`}
+                href={link.href}
+                key={link.href}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {link.label}
+              </a>
+            ),
+          )}
+        </div>
       </div>
     </article>
   );

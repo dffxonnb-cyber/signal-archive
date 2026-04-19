@@ -4,9 +4,32 @@ import { HomeProjectCard } from "@/components/home-project-card";
 import { featuredProjects } from "@/content/projects";
 
 const heroMeta = [
-  "데이터 분석가 / 공간데이터 분석가",
-  "문제 정의 / 구조 설계 / 검증 중심",
+  "Data Analyst Candidate",
+  "도시 / 상권 / 사용자 데이터",
+  "문제 정의 / 구조화 / 지표 설계 / 검증",
+  "Python / SQL / GIS / Tableau",
 ];
+
+const coreStack = ["Python", "SQL", "pandas", "Jupyter", "Tableau", "JavaScript", "GIS"];
+
+const mainStrength = [
+  "문제 정의",
+  "데이터 구조화",
+  "지표 설계",
+  "검증",
+  "웹/문서 결과물 구현",
+];
+
+const targetRoles = [
+  "Data Analyst",
+  "Business Data Analyst",
+  "Spatial Data Analyst",
+  "CRM & Growth Data Analyst",
+];
+
+const focusDomains = ["도시", "상권", "사용자 데이터"];
+
+const featuredSignals = ["Redveil", "LH Traffic Safety", "UK Online Retail"];
 
 const lensItems = [
   {
@@ -152,6 +175,94 @@ export default function HomePage() {
               ))}
             </div>
           </aside>
+        </section>
+
+        <section className="surface-card home-snapshot">
+          <div className="home-snapshot__head">
+            <span className="eyebrow">Hiring Snapshot</span>
+            <h2 className="section-title">한 화면 요약</h2>
+            <p className="page-intro">
+              추상적인 문장보다 먼저, 어떤 역할을 목표로 하고 어떤 데이터를 다루며 어떤 기술과 결과물로
+              연결하는지 바로 읽히도록 정리했습니다.
+            </p>
+          </div>
+
+          <div className="home-snapshot__grid">
+            <article className="home-snapshot-card home-snapshot-card--stack">
+              <div className="home-snapshot-card__top">
+                <span className="eyebrow">Core Stack</span>
+                <h3>Python · SQL · pandas · Jupyter · Tableau · JavaScript · GIS</h3>
+              </div>
+
+              <p>
+                데이터 분석, 탐색, 시각화, 웹 전달물까지 하나의 흐름으로 연결할 때 실제로 가장 자주 사용하는
+                도구들입니다.
+              </p>
+
+              <div className="home-snapshot-card__chips" aria-label="핵심 기술 스택">
+                {coreStack.map((item) => (
+                  <span className="home-snapshot-card__chip" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+
+            <article className="home-snapshot-card home-snapshot-card--strength">
+              <div className="home-snapshot-card__top">
+                <span className="eyebrow">Main Strength</span>
+                <h3>문제 정의 → 데이터 구조화 → 지표 설계 → 검증 → 웹/문서 결과물 구현</h3>
+              </div>
+
+              <p>
+                보기 좋은 결과를 빠르게 나열하기보다, 다시 설명하고 검토할 수 있는 판단 구조와 산출물까지
+                남기는 쪽에 강점이 있습니다.
+              </p>
+
+              <div className="home-snapshot-card__chips" aria-label="핵심 강점">
+                {mainStrength.map((item) => (
+                  <span className="home-snapshot-card__chip" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+
+            <article className="home-snapshot-card home-snapshot-card--role">
+              <div className="home-snapshot-card__top">
+                <span className="eyebrow">Target Role</span>
+                <h3>
+                  Data Analyst / Business Data Analyst / Spatial Data Analyst / CRM & Growth Data
+                  Analyst
+                </h3>
+              </div>
+
+              <p>
+                도시, 상권, 사용자 데이터를 바탕으로 의사결정 구조를 설계하고 설명 가능한 결과로 번역하는 역할을
+                목표로 합니다.
+              </p>
+
+              <div className="home-snapshot-card__meta">
+                <div className="home-snapshot-card__meta-block">
+                  <span className="home-snapshot-card__meta-label">Focus Domain</span>
+                  <strong>{focusDomains.join(" · ")}</strong>
+                </div>
+
+                <div className="home-snapshot-card__meta-block">
+                  <span className="home-snapshot-card__meta-label">Featured Work</span>
+                  <strong>{featuredSignals.join(" · ")}</strong>
+                </div>
+              </div>
+
+              <div className="home-snapshot-card__chips" aria-label="타깃 역할">
+                {targetRoles.map((item) => (
+                  <span className="home-snapshot-card__chip" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </article>
+          </div>
         </section>
 
         <section className="surface-card home-lens">
