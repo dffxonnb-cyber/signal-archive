@@ -193,62 +193,62 @@ export const projects: Project[] = [
     slug: "uk-online-retail-segment-analysis",
     title: "UK Online Retail Segment Analysis",
     category: "대표 프로젝트",
-    primaryDomain: "커머스/CRM",
-    summary: "고객 분류보다 누구에게 먼저 액션해야 하는가를 설명하는 방향으로 정리한 CRM 세그먼트 분석입니다.",
+    primaryDomain: "UK Online Retail / E-commerce Analytics",
+    summary: "영국 온라인 리테일 거래 데이터를 기반으로 고객 구매 패턴과 세그먼트를 분석한 e-commerce 분석 프로젝트입니다.",
     period: "2026",
     format: "팀 프로젝트 기반 정리",
-    domains: ["CRM", "리테일", "세그먼트 분석", "비즈니스 해석"],
+    domains: ["UK Online Retail", "E-commerce Analytics", "구매 패턴 분석", "고객 세그먼트 분석"],
     role: ["RFM 해석 구조화", "통계 검정 정리", "캠페인 시나리오 번역"],
     filterTools: ["Python", "SQL"],
     cardTools: ["Python", "SQL"],
     stack: ["Python", "SQL", "Jupyter"],
-    problemTypes: ["세그먼트 분석"],
-    coreTags: ["RFM", "파레토 검증", "통계 검정", "액션 우선순위"],
-    badges: ["Featured", "CRM", "Priority Logic"],
+    problemTypes: ["구매 패턴 분석", "고객 세그먼트 분석", "매출/재구매 인사이트"],
+    coreTags: ["UK Online Retail", "E-commerce", "RFM", "Customer Segmentation", "Revenue Analysis"],
+    badges: ["Featured", "E-commerce", "Revenue Logic"],
     context:
-      "세그먼트 분석은 이름을 붙이는 데서 끝나기 쉽지만, 실제 CRM에서는 누구에게 먼저 예산과 액션을 배분할지가 더 중요한 질문입니다.",
+      "영국 온라인 리테일 거래 데이터는 구매 기록 자체는 풍부하지만, 어떤 패턴이 세그먼트 차이와 재구매 관점 인사이트로 이어지는지 구조적으로 정리할 필요가 있었습니다.",
     outcome:
-      "고객 세그먼트를 단순 분류 결과가 아니라 액션 우선순위와 운영 해석으로 연결되는 CRM 판단 구조로 정리했습니다.",
-    supportingLine: "세그먼트 이름보다 실행 우선순위를 앞세운 CRM 분석",
+      "거래 데이터를 구매 패턴, RFM, 세그먼트 기준으로 재구성하고, 매출 및 재구매 관점에서 해석 가능한 e-commerce 분석 결과로 정리했습니다.",
+    supportingLine: "구매 패턴과 고객 세그먼트를 함께 읽을 수 있게 정리한 UK 온라인 리테일 분석",
     cardBrief: {
       problem:
-        "고객을 분류하는 것만으로는 부족했고, 어떤 세그먼트에 먼저 액션해야 하는지를 사업 언어로 설명할 필요가 있었습니다.",
+        "거래 데이터는 많지만 고객 구매 패턴과 세그먼트 차이를 매출 및 재구매 관점으로 함께 읽기 어려웠습니다.",
       method:
-        "RFM과 구매 패턴을 재정리하고, 통계 검정과 운영 해석을 연결해 캠페인 우선순위를 설계했습니다.",
+        "거래 이력에서 RFM과 구매 패턴을 정리하고, 세그먼트별 차이를 비교해 e-commerce 관점 인사이트로 연결했습니다.",
       output: [
         "고객 세그먼트 분석",
         "RFM / 구매 패턴 분석",
-        "캠페인 액션 시나리오",
+        "매출 / 재구매 관점 인사이트",
         "매출 / 고객 유지 인사이트",
       ],
     },
     detailBrief: {
       problem: {
         what:
-          "세그먼트 이름만 정리하는 분석으로는 어떤 고객군에 먼저 액션해야 하는지 운영 판단까지 연결하기 어려웠습니다.",
+          "거래 데이터 자체는 풍부하지만, 고객 구매 패턴과 세그먼트 차이를 매출 및 재구매 관점으로 읽기 쉽게 정리하는 작업이 필요했습니다.",
         why:
-          "CRM 분석은 분류 결과보다 예산, 캠페인, 유지 전략으로 이어질 수 있는 우선순위 해석이 더 중요하기 때문입니다.",
+          "e-commerce 분석은 고객을 나누는 것만이 아니라 어떤 구매 패턴이 매출과 재구매 관점 해석으로 이어지는지 설명할 수 있어야 하기 때문입니다.",
       },
       dataMethod: {
-        dataTypes: ["거래 데이터", "고객 구매 이력", "RFM 기준 데이터"],
+        dataTypes: ["영국 온라인 리테일 거래 데이터", "고객 구매 이력", "RFM 기준 데이터"],
         process: [
           "고객군을 RFM과 구매 패턴 기준으로 재구성",
-          "통계 검정과 파레토 관점으로 차이 검증",
-          "운영 가능한 캠페인 시나리오로 결과 번역",
+          "세그먼트별 구매 차이를 비교하고 통계적으로 검토",
+          "매출 및 재구매 관점 인사이트로 결과 정리",
         ],
-        metrics: ["RFM 기준", "구매 패턴 비교", "액션 우선순위 기준"],
+        metrics: ["RFM 기준", "구매 패턴 비교", "매출 / 재구매 관점 해석 기준"],
       },
       limitations: [
         "데이터 규모와 기간 세부 정보는 추가 정리 예정입니다.",
-        "실제 캠페인 실행 결과와 연결한 검증은 후속 보완이 필요합니다.",
-        "채널별 반응 차이를 더 세분화한 검토가 추가로 필요합니다.",
+        "실제 운영 고객 식별 정보와 연결한 검증은 후속 보완이 필요합니다.",
+        "재구매 관점 인사이트의 후속 검증은 추가 분석이 필요합니다.",
       ],
       linkNote: "README / 관련 문서 추가 정리 예정",
     },
     focusPoints: [
-      "RFM 분류를 운영 해석과 KPI 기준으로 다시 정리",
-      "세그먼트별 차이를 통계 검정과 파레토 관점으로 검증",
-      "결과를 캠페인 시나리오와 채널 우선순위 언어로 번역",
+      "RFM과 구매 패턴을 함께 사용해 세그먼트 구조를 정리",
+      "세그먼트별 차이를 매출 및 재구매 관점으로 비교",
+      "거래 데이터를 e-commerce 해석 언어로 다시 정리",
     ],
     links: [
       {
@@ -285,31 +285,31 @@ export const projects: Project[] = [
     slug: "starbucks-promotion-analysis",
     title: "Starbucks Promotion Analysis",
     category: "서브 프로젝트",
-    primaryDomain: "리테일 마케팅",
-    summary: "반정형 이벤트 로그를 고객-오퍼-채널 구조로 재구성해 프로모션 우선순위를 읽을 수 있게 만든 CRM 분석입니다.",
+    primaryDomain: "CRM / Marketing Analytics",
+    summary: "고객, 오퍼, 채널 데이터를 기반으로 어떤 고객군이 어떤 제안에 반응하는지 분석한 CRM / 마케팅 분석 프로젝트입니다.",
     period: "2026",
     format: "개인 프로젝트",
-    domains: ["리테일 마케팅", "CRM", "프로모션 분석"],
+    domains: ["CRM", "Marketing Analytics", "고객 반응 분석", "오퍼/채널 성과 분석"],
     role: ["이벤트 구조 재설계", "추천 후보 해석", "Tableau 결과 정리"],
     filterTools: ["Python", "SQL"],
     cardTools: ["Python", "SQL", "Tableau"],
     stack: ["Python", "SQL", "Tableau"],
-    problemTypes: ["프로모션/추천 해석"],
-    coreTags: ["이벤트 로그", "고객-오퍼 구조", "채널 인사이트", "추천 후보"],
-    badges: ["CRM", "Event Restructuring"],
+    problemTypes: ["고객 반응 분석", "오퍼/채널 성과 분석", "마케팅 액션 인사이트"],
+    coreTags: ["CRM", "Offer Response", "Customer Segmentation", "Marketing Analytics", "Tableau"],
+    badges: ["CRM", "Marketing Analytics"],
     context:
-      "프로모션 로그는 고객, 오퍼, 채널이 분리된 이벤트 수준으로 흩어져 있어 그대로는 어떤 고객에게 무엇을 먼저 제안해야 하는지 읽기 어렵습니다.",
+      "고객, 오퍼, 채널 데이터가 분리된 상태에서는 어떤 고객군이 어떤 제안에 반응하는지와 오퍼/채널 성과 차이를 함께 읽기 어렵습니다.",
     outcome:
-      "반정형 로그를 고객-오퍼-채널 구조로 다시 묶고, 추천 후보와 채널 인사이트를 함께 읽을 수 있는 CRM 분석 결과로 정리했습니다.",
-    supportingLine: "고객-오퍼-채널 우선순위를 읽을 수 있게 만든 프로모션 분석",
+      "고객, 오퍼, 채널 데이터를 재구성해 고객 반응과 오퍼/채널 성과를 함께 해석할 수 있는 CRM / 마케팅 분석 결과로 정리했습니다.",
+    supportingLine: "고객군별 오퍼 반응과 채널 성과를 함께 읽을 수 있게 만든 CRM 분석",
     cardBrief: {
       problem:
-        "이벤트 로그가 고객, 오퍼, 채널 단위로 흩어져 있어 어떤 제안을 먼저 해야 하는지 바로 읽기 어려웠습니다.",
+        "고객, 오퍼, 채널 데이터가 분리되어 있어 어떤 고객군이 어떤 제안에 반응하는지 바로 파악하기 어려웠습니다.",
       method:
-        "반정형 로그를 조인 가능한 구조로 재편하고, 추천 후보와 반응 패턴을 Tableau까지 연결해 해석했습니다.",
+        "고객-오퍼-채널 구조로 데이터를 재편하고, 반응 패턴과 성과 차이를 Tableau까지 연결해 해석했습니다.",
       output: [
         "고객·오퍼·채널 데이터 통합",
-        "추천 후보 / 반응 분석",
+        "고객 반응 / 오퍼 성과 분석",
         "Tableau 대시보드",
         "마케팅 액션 인사이트",
       ],
@@ -317,18 +317,18 @@ export const projects: Project[] = [
     detailBrief: {
       problem: {
         what:
-          "이벤트 로그가 고객, 오퍼, 채널 기준으로 흩어져 있어 추천과 반응을 함께 읽을 수 있는 분석 구조가 필요했습니다.",
+          "고객, 오퍼, 채널 기준으로 흩어진 데이터를 한 구조에서 보고 고객 반응과 오퍼 성과를 함께 읽을 수 있는 분석 틀이 필요했습니다.",
         why:
-          "마케팅 액션은 단순 반응률보다 어떤 고객에게 어떤 오퍼를 어떤 채널로 제안할지까지 연결되어야 의미가 있기 때문입니다.",
+          "마케팅 분석은 단순 반응률이 아니라 어떤 고객군이 어떤 제안과 채널에 반응하는지까지 연결되어야 실행 인사이트가 되기 때문입니다.",
       },
       dataMethod: {
         dataTypes: ["이벤트 로그", "고객 정보", "오퍼 / 채널 데이터"],
         process: [
           "반정형 로그를 조인 가능한 테이블 구조로 전처리",
-          "추천 후보와 반응 패턴을 함께 비교",
+          "고객 반응과 오퍼 / 채널 성과를 함께 비교",
           "Tableau 대시보드와 해석 문서로 결과 정리",
         ],
-        metrics: ["반응 비교 기준", "추천 후보 해석 기준", "채널 인사이트 정리 기준"],
+        metrics: ["고객 반응 비교 기준", "오퍼 / 채널 성과 기준", "마케팅 인사이트 정리 기준"],
       },
       limitations: [
         "데이터 규모와 기간 세부 정보는 추가 정리 예정입니다.",
@@ -339,8 +339,8 @@ export const projects: Project[] = [
     },
     focusPoints: [
       "반정형 이벤트 로그를 분석 가능한 구조로 재정리",
-      "분류 성능뿐 아니라 추천 관점의 랭킹 지표까지 함께 해석",
-      "Tableau 대시보드와 README 스토리로 실무 의사결정 흐름을 강조",
+      "고객 반응과 오퍼 / 채널 성과를 함께 해석",
+      "Tableau 대시보드와 README 스토리로 마케팅 의사결정 흐름을 강조",
     ],
     links: [
       {
