@@ -94,7 +94,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="hero-title home-hero__title">
-              <span className="home-hero__title-prefix">위험 신호와 구조를 먼저 짚는</span>
+              <span className="home-hero__title-prefix">위험신호와 구조를 먼저 짚는</span>
               <span className="hero-title__accent home-hero__title-tail">데이터 분석가</span>
             </h1>
 

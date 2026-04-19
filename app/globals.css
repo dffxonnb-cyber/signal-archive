@@ -386,7 +386,8 @@ main {
 }
 
 .home-hero .hero-title {
-  max-width: 13ch;
+  width: fit-content;
+  max-width: 100%;
   font-size: 2.35rem;
   line-height: 1.12;
   letter-spacing: -0.02em;
@@ -403,6 +404,7 @@ main {
   display: block;
 }
 
+.home-hero__title-prefix,
 .home-hero__title-tail {
   white-space: nowrap;
 }
@@ -1533,7 +1535,8 @@ main {
   }
 
   .home-hero .hero-title {
-    max-width: 15ch;
+    width: fit-content;
+    max-width: 100%;
     font-size: 1.85rem;
     line-height: 1.12;
   }
@@ -1594,5 +1597,10 @@ main {
   .projects-summary {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .home-hero .hero-title {
+    font-size: 1.45rem;
+    line-height: 1.16;
   }
 }
