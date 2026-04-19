@@ -1623,7 +1623,8 @@ main {
 
 .resume-panel--profile,
 .resume-panel--projects,
-.resume-panel--skills {
+.resume-panel--skills,
+.resume-panel--workflow {
   grid-column: span 2;
 }
 
@@ -1738,6 +1739,7 @@ main {
   .resume-panel--profile,
   .resume-panel--projects,
   .resume-panel--skills,
+  .resume-panel--workflow,
   .resume-profile-grid__wide {
     grid-column: span 1;
   }

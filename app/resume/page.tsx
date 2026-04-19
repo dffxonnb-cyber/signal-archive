@@ -110,6 +110,18 @@ export default function ResumePage() {
             </div>
           </section>
 
+          <section className="surface-card detail-section resume-panel resume-panel--workflow">
+            <span className="eyebrow">Workflow</span>
+            <h2 className="section-title">AI-assisted Workflow</h2>
+            <p className="page-intro">{profile.aiWorkflow.summary}</p>
+            <ul className="list-stack">
+              {profile.aiWorkflow.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p className="page-intro">{profile.aiWorkflow.note}</p>
+          </section>
+
           <section className="surface-card detail-section resume-panel resume-panel--projects">
             <span className="eyebrow">Featured</span>
             <h2 className="section-title">대표 프로젝트 요약</h2>

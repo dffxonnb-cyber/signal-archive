@@ -91,6 +91,12 @@ export type SkillGroup = {
   items: string[];
 };
 
+export type AiWorkflow = {
+  summary: string;
+  items: string[];
+  note: string;
+};
+
 export type Profile = {
   name: string;
   primaryRoles: string[];
@@ -103,5 +109,6 @@ export type Profile = {
   keywords: string[];
   contactLinks: ExternalLink[];
   skillGroups: SkillGroup[];
+  aiWorkflow: AiWorkflow;
 };
 
