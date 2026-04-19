@@ -572,6 +572,11 @@ main {
   line-height: 1.54;
 }
 
+.home-lens__summary-line {
+  display: block;
+  white-space: nowrap;
+}
+
 .home-selected {
   gap: 12px;
 }
@@ -1610,6 +1615,10 @@ main {
   }
 
   .home-hero__summary-line {
+    white-space: normal;
+  }
+
+  .home-lens__summary-line {
     white-space: normal;
   }
 }

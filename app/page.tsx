@@ -13,19 +13,28 @@ const lensItems = [
     index: "01",
     title: "문제 정의",
     label: "signals first",
-    summary: "무엇을 의심하고 어떤 질문을 다시 세워야 하는지 먼저 정리합니다.",
+    summaryLines: [
+      "무엇을 의심하고 어떤 질문을 다시 세워야 하는지",
+      "우선 정리합니다.",
+    ],
   },
   {
     index: "02",
     title: "구조 설계",
     label: "analysis structure",
-    summary: "흩어진 데이터를 판단 가능한 구조로 다시 묶고 해석 기준을 세웁니다.",
+    summaryLines: [
+      "흩어진 데이터를 판단 가능한 구조로 다시 묶고",
+      "해석 기준을 세웁니다.",
+    ],
   },
   {
     index: "03",
     title: "검증 중심",
     label: "decision ready",
-    summary: "보기 좋은 결과보다 다시 설명하고 검토할 수 있는 결과를 남깁니다.",
+    summaryLines: [
+      "보기 좋은 결과보다 다시 설명하고 검토할 수 있는",
+      "결과를 남깁니다.",
+    ],
   },
 ];
 
@@ -159,7 +168,13 @@ export default function HomePage() {
                   <span className="home-lens__axis-label">{item.label}</span>
                 </div>
                 <h3>{item.title}</h3>
-                <p>{item.summary}</p>
+                <p>
+                  {item.summaryLines.map((line) => (
+                    <span className="home-lens__summary-line" key={line}>
+                      {line}
+                    </span>
+                  ))}
+                </p>
               </article>
             ))}
           </div>
