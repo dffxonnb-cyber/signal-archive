@@ -16,7 +16,7 @@ export default function CaseStudiesPage() {
             <span className="eyebrow">Case Studies</span>
             <h1 className="page-title">프로젝트 뒤에 있는 문제 해결 방식</h1>
             <p className="page-intro">
-              결과물보다 먼저 어떤 질문과 구조로 문제를 다뤘는지 따로 추출한 페이지입니다.
+              개별 프로젝트 설명을 반복하기보다, 여러 작업에 공통으로 적용한 사고방식과 해석 프레임을 정리한 페이지입니다.
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export default function CaseStudiesPage() {
             </div>
             <div>
               <dt>Focus</dt>
-              <dd>문제 정의 / 구조 설계 / 스토리텔링</dd>
+              <dd>공통 프레임 / 해석 기준 / 판단 순서</dd>
             </div>
           </dl>
         </section>

@@ -12,7 +12,7 @@ export default function ResumePage() {
             <span className="eyebrow">Resume</span>
             <h1 className="page-title">핵심 역량과 대표 작업 요약</h1>
             <p className="page-intro">
-              긴 자기소개 대신 역할, 강점, 도구, 대표 프로젝트만 빠르게 읽히는 압축본입니다.
+              포트폴리오 전체 설명 대신, 채용 검토에 필요한 역할 적합성, 기술 범위, 대표 작업만 빠르게 확인할 수 있는 압축본입니다.
             </p>
           </div>
 
@@ -169,7 +169,7 @@ export default function ResumePage() {
               ))}
             </ul>
             <p className="page-intro">
-              반복 운영 리포트보다 문제 정의, 구조 설계, 검증과 해석이 함께 필요한 분석 역할에 더 잘 맞습니다.
+              정해진 리포트를 반복 생산하는 역할보다, 질문 정의 이후 분석 구조를 만들고 결과를 설명해야 하는 역할에 더 잘 맞습니다.
             </p>
             <div className="button-row">
               <Link className="button-link" href="/projects">

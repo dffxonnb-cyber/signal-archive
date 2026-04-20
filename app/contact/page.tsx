@@ -14,7 +14,7 @@ export default function ContactPage() {
             <span className="eyebrow">Contact</span>
             <h1 className="page-title">검토와 연락을 위한 공개 정보</h1>
             <p className="page-intro">
-              공개용 페이지 기준으로 필요한 정보만 정리하되, 채용 검토와 후속 연락 흐름은 막히지 않도록 구성했습니다.
+              이 페이지는 소개보다 동선에 집중합니다. 공개 가능한 연락 경로와, 어떤 순서로 검토하면 좋은지만 짧게 정리했습니다.
             </p>
             <div className="button-row">
               {githubLink ? (
@@ -71,7 +71,7 @@ export default function ContactPage() {
               <span className="archive-card__count">public</span>
             </div>
             <h3>바로 확인 가능한 연락 경로</h3>
-            <p>개인정보를 과도하게 노출하지 않으면서도, 채용 검토 후 바로 이어질 수 있는 공개 경로만 남겼습니다.</p>
+            <p>검토 후 바로 연결될 수 있도록 GitHub와 이메일만 남겼습니다. 이 페이지에서는 소개 문구보다 접근 경로를 우선합니다.</p>
             <div className="resume-links-grid">
               {githubLink ? (
                 <a className="resume-link-card" href={githubLink.href} rel="noreferrer" target="_blank">
@@ -98,17 +98,17 @@ export default function ContactPage() {
             </div>
             <h3>바로가기와 권장 검토 흐름</h3>
             <ul className="list-stack compact-list">
-              <li>Projects에서 대표 프로젝트와 도메인별 작업을 먼저 확인</li>
-              <li>Writing Archive에서 분석 관점과 문서화 방식을 함께 검토</li>
-              <li>Resume PDF는 공개용 버전 준비 중이며 요청 시 우선 제공 가능합니다.</li>
-              <li>후속 검토는 GitHub 또는 이메일 기준으로 이어갈 수 있습니다.</li>
+              <li>Projects에서 대표 프로젝트와 근거 지표를 먼저 확인</li>
+              <li>Resume에서 역할 적합성과 기술 범위를 빠르게 확인</li>
+              <li>추가 자료가 필요하면 이메일로 후속 요청</li>
+              <li>GitHub에서는 저장소와 작업 흐름을 직접 검토 가능</li>
             </ul>
             <div className="button-row">
               <Link className="button-link button-link--secondary" href="/projects">
                 Portfolio Projects
               </Link>
-              <Link className="button-link button-link--secondary" href="/writing">
-                Writing Archive
+              <Link className="button-link button-link--secondary" href="/resume">
+                Resume Summary
               </Link>
             </div>
           </article>
