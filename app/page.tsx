@@ -4,10 +4,10 @@ import { HomeProjectCard } from "@/components/home-project-card";
 import { featuredProjects } from "@/content/projects";
 
 const heroMeta = [
-  "Data Analyst Candidate",
-  "도시 / 상권 / 사용자 데이터",
-  "문제 정의 / 구조화 / 지표 설계 / 검증",
-  "Python / SQL / GIS / Tableau",
+  "Primary Role: Data Analyst / Spatial Data Analyst",
+  "Secondary Fit: Business Data Analyst / CRM Analytics",
+  "Domain: 도시 / 상권 / 사용자 데이터",
+  "Tools: Python / SQL / GIS / Tableau",
 ];
 
 const coreStack = ["Python", "SQL", "pandas", "Jupyter", "Tableau", "JavaScript", "GIS"];
@@ -20,16 +20,9 @@ const mainStrength = [
   "웹/문서 결과물 구현",
 ];
 
-const targetRoles = [
-  "Data Analyst",
-  "Business Data Analyst",
-  "Spatial Data Analyst",
-  "CRM & Growth Data Analyst",
-];
+const primaryRoles = ["Data Analyst", "Spatial Data Analyst"];
 
-const focusDomains = ["도시", "상권", "사용자 데이터"];
-
-const featuredSignals = ["Redveil", "LH Traffic Safety", "UK Online Retail"];
+const secondaryRoles = ["Business Data Analyst", "CRM & Growth Data Analyst"];
 
 const lensItems = [
   {
@@ -82,28 +75,28 @@ const homeProjectMeta: Record<
 > = {
   "lh-traffic-safety-analysis": {
     lens: "spatial / public / risk",
-    note: "공간 분석과 위험도 해석",
+    note: "공공 안전 우선순위 설계",
     problem: "사고 건수 집계가 아니라 도시 인프라 관점에서 먼저 읽어야 할 위험 신호가 필요했다.",
-    roleLabel: "spatial analysis / indicator design",
-    scopeLabel: "public safety / spatial risk reading",
+    roleLabel: "공간 분석 / 우선순위 지표 설계",
+    scopeLabel: "공공 안전 / 설치 판단 구조",
     tags: ["공간 분석", "공공데이터", "위험 해석", "지표 설계"],
     impact: "교통안전 해석을 빈도 정리에서 우선순위 판단 구조로 전환한 사례.",
   },
   "seoul-storefront-redveil": {
     lens: "end-to-end / decision tool",
-    note: "리스크 판단 기준 설계",
+    note: "상권 리스크 판단 도구 구현",
     problem: "좋아 보이는 상가보다 매입 전에 먼저 걸러야 할 리스크 신호를 구조적으로 보여줄 필요가 있었다.",
-    roleLabel: "service framing / web implementation",
-    scopeLabel: "commercial risk / end-to-end build",
+    roleLabel: "리스크 기준 설계 / 웹 구현",
+    scopeLabel: "상권 매입 검토 / 의사결정 도구",
     tags: ["리스크 기준", "SQL", "웹 구현", "상권 분석"],
     impact: "분석 결과를 문서에 멈추지 않고 웹 기반 판단 도구까지 연결한 사례.",
   },
   "uk-online-retail-segment-analysis": {
     lens: "commerce / segmentation / insight",
-    note: "비즈니스 해석 중심 세그먼트",
+    note: "매출·재구매 해석 중심 세그먼트",
     problem: "세그먼트 분류 자체보다, 어떤 고객 해석이 사업 판단으로 이어지는지가 더 중요했다.",
-    roleLabel: "segment analysis / business reading",
-    scopeLabel: "retail data / business interpretation",
+    roleLabel: "세그먼트 해석 / 인사이트 정리",
+    scopeLabel: "리테일 데이터 / 매출·재구매 해석",
     tags: ["커머스", "세그먼트", "고객 해석", "인사이트"],
     impact: "리테일 데이터를 사업 질문과 연결된 해석 구조로 정리한 사례.",
   },
@@ -126,16 +119,16 @@ export default function HomePage() {
             </div>
 
             <h1 className="hero-title home-hero__title">
-              <span className="home-hero__title-prefix">위험신호와 구조를 먼저 짚는</span>
+              <span className="home-hero__title-prefix">의사결정에 바로 쓰이도록 데이터를 구조화하는</span>
               <span className="hero-title__accent home-hero__title-tail">데이터 분석가</span>
             </h1>
 
             <p className="home-hero__summary">
               <span className="home-hero__summary-line">
-                흩어진 데이터를 판단 가능한 구조로 재편하고,
+                도시·상권·사용자 데이터를 문제 정의부터 지표 설계까지 연결하고,
               </span>
               <span className="home-hero__summary-line">
-                보기 좋은 결과보다 먼저 검증할 신호를 정리합니다.
+                설명 가능한 분석 구조와 결과물로 정리합니다.
               </span>
             </p>
 
@@ -182,8 +175,8 @@ export default function HomePage() {
             <span className="eyebrow">Hiring Snapshot</span>
             <h2 className="section-title">한 화면 요약</h2>
             <p className="page-intro">
-              추상적인 문장보다 먼저, 어떤 역할을 목표로 하고 어떤 데이터를 다루며 어떤 기술과 결과물로
-              연결하는지 바로 읽히도록 정리했습니다.
+              채용 담당자가 첫 화면에서 바로 읽을 수 있도록, 목표 역할과 핵심 도메인, 작업 방식과 대표 결과물을
+              한 화면에 압축했습니다.
             </p>
           </div>
 
@@ -230,32 +223,29 @@ export default function HomePage() {
 
             <article className="home-snapshot-card home-snapshot-card--role">
               <div className="home-snapshot-card__top">
-                <span className="eyebrow">Target Role</span>
-                <h3>
-                  Data Analyst / Business Data Analyst / Spatial Data Analyst / CRM & Growth Data
-                  Analyst
-                </h3>
+                <span className="eyebrow">Role Fit</span>
+                <h3>Data Analyst / Spatial Data Analyst</h3>
               </div>
 
               <p>
-                도시, 상권, 사용자 데이터를 바탕으로 의사결정 구조를 설계하고 설명 가능한 결과로 번역하는 역할을
-                목표로 합니다.
+                도시, 상권, 사용자 데이터를 구조화하고 설명 가능한 지표와 결과물로 연결하는 역할에 가장 잘 맞습니다.
+                비즈니스 데이터 분석과 CRM/Growth 분석은 2순위 확장 역할로 보고 있습니다.
               </p>
 
               <div className="home-snapshot-card__meta">
                 <div className="home-snapshot-card__meta-block">
-                  <span className="home-snapshot-card__meta-label">Focus Domain</span>
-                  <strong>{focusDomains.join(" · ")}</strong>
+                  <span className="home-snapshot-card__meta-label">Primary Role</span>
+                  <strong>{primaryRoles.join(" · ")}</strong>
                 </div>
 
                 <div className="home-snapshot-card__meta-block">
-                  <span className="home-snapshot-card__meta-label">Featured Work</span>
-                  <strong>{featuredSignals.join(" · ")}</strong>
+                  <span className="home-snapshot-card__meta-label">Secondary Fit</span>
+                  <strong>{secondaryRoles.join(" · ")}</strong>
                 </div>
               </div>
 
               <div className="home-snapshot-card__chips" aria-label="타깃 역할">
-                {targetRoles.map((item) => (
+                {[...primaryRoles, ...secondaryRoles].map((item) => (
                   <span className="home-snapshot-card__chip" key={item}>
                     {item}
                   </span>
@@ -295,6 +285,10 @@ export default function HomePage() {
           <div className="home-selected__head">
             <span className="eyebrow">Selected Projects</span>
             <h2 className="section-title">대표 사례 3개</h2>
+            <p className="page-intro">
+              각 프로젝트가 어떤 분석 역할 적합성을 보여주는지 빠르게 읽히도록, 문제 유형과 결과물 기준으로
+              다시 정리했습니다.
+            </p>
           </div>
 
           <div className="home-selected__grid">
