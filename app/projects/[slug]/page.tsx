@@ -29,6 +29,13 @@ export default async function ProjectDetailPage({
   const relatedCaseStudies = caseStudies.filter((caseStudy) =>
     project.caseStudySlugs.includes(caseStudy.slug),
   );
+  const detailHeroFacts = [
+    { label: "Primary Domain", value: project.primaryDomain },
+    { label: "Role", value: project.role.join(" / ") },
+    { label: "Period", value: project.period },
+    { label: "Format", value: project.format },
+  ];
+  const detailHeroLinks = project.links.slice(0, 2);
 
   return (
     <main className="page-shell">
@@ -46,14 +53,47 @@ export default async function ProjectDetailPage({
             ))}
           </div>
           <h1 className="page-title detail-title">{project.title}</h1>
+          <p className="detail-hero__supporting-line">{project.supportingLine}</p>
           <p className="page-intro">{project.summary}</p>
+
+          <div className="detail-hero__meta-grid" aria-label="project quick facts">
+            {detailHeroFacts.map((item) => (
+              <div className="detail-hero__meta-item" key={`${project.slug}-${item.label}`}>
+                <span className="project-card__meta-label">{item.label}</span>
+                <strong>{item.value}</strong>
+              </div>
+            ))}
+          </div>
+
+          <div className="detail-hero__context">
+            <span className="project-card__meta-label">Context</span>
+            <p>{project.context}</p>
+          </div>
+
+          {detailHeroLinks.length > 0 ? (
+            <div className="button-row detail-hero__actions">
+              {detailHeroLinks.map((link, index) => (
+                <a
+                  className={index === 0 ? "button-link" : "button-link button-link--secondary"}
+                  href={link.href}
+                  key={link.href}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+          ) : null}
         </section>
 
         <div className="page-grid detail-flow">
           <section className="surface-card detail-section">
-            <span className="eyebrow">Overview</span>
-            <h2 className="section-title">Overview</h2>
-            <p className="page-intro">{project.supportingLine}</p>
+            <div className="detail-section__head">
+              <span className="eyebrow">Overview</span>
+              <h2 className="section-title">Overview</h2>
+              <p className="page-intro">프로젝트 범위와 역할을 빠르게 훑을 수 있도록 핵심 정보를 먼저 압축했습니다.</p>
+            </div>
 
             <dl className="detail-overview-grid">
               <div className="detail-overview-item detail-overview-item--wide">
@@ -82,8 +122,10 @@ export default async function ProjectDetailPage({
           </section>
 
           <section className="surface-card detail-section">
-            <span className="eyebrow">Problem</span>
-            <h2 className="section-title">Problem</h2>
+            <div className="detail-section__head">
+              <span className="eyebrow">Problem</span>
+              <h2 className="section-title">Problem</h2>
+            </div>
             <div className="detail-split-grid">
               <div className="detail-note">
                 <span className="project-card__meta-label">What</span>
@@ -96,9 +138,28 @@ export default async function ProjectDetailPage({
             </div>
           </section>
 
+          {project.evidencePoints && project.evidencePoints.length > 0 ? (
+            <section className="surface-card detail-section detail-section--evidence">
+              <div className="detail-section__head">
+                <span className="eyebrow">Evidence Snapshot</span>
+                <h2 className="section-title">Evidence Snapshot</h2>
+              </div>
+              <div className="detail-overview-grid detail-overview-grid--evidence">
+                {project.evidencePoints.map((item) => (
+                  <div className="detail-overview-item" key={`${project.slug}-${item.label}`}>
+                    <dt>{item.label}</dt>
+                    <dd>{item.value}</dd>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           <section className="surface-card detail-section">
-            <span className="eyebrow">Data & Method</span>
-            <h2 className="section-title">Data & Method</h2>
+            <div className="detail-section__head">
+              <span className="eyebrow">Data & Method</span>
+              <h2 className="section-title">Data & Method</h2>
+            </div>
             <div className="detail-method-grid">
               <div className="detail-note">
                 <span className="project-card__meta-label">Data</span>
@@ -127,9 +188,11 @@ export default async function ProjectDetailPage({
             </div>
           </section>
 
-          <section className="surface-card detail-section">
-            <span className="eyebrow">Output</span>
-            <h2 className="section-title">Output</h2>
+          <section className="surface-card detail-section detail-section--output">
+            <div className="detail-section__head">
+              <span className="eyebrow">Output</span>
+              <h2 className="section-title">Output</h2>
+            </div>
             <p className="page-intro">{project.outcome}</p>
             <div className="detail-output-chips" aria-label="project outputs">
               {project.cardBrief.output.map((item) => (
@@ -138,28 +201,13 @@ export default async function ProjectDetailPage({
                 </span>
               ))}
             </div>
-          {project.evidencePoints && project.evidencePoints.length > 0 ? (
-            <section className="surface-card detail-section detail-section--evidence">
-              <div className="detail-section__head">
-                <span className="eyebrow">Evidence Snapshot</span>
-                <h2 className="section-title">Evidence Snapshot</h2>
-              </div>
-              <div className="detail-overview-grid detail-overview-grid--evidence">
-                {project.evidencePoints.map((item) => (
-                  <div className="detail-overview-item" key={`${project.slug}-${item.label}`}>
-                    <dt>{item.label}</dt>
-                    <dd>{item.value}</dd>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ) : null}
-
           </section>
 
           <section className="surface-card detail-section">
-            <span className="eyebrow">Key Insight</span>
-            <h2 className="section-title">Key Insight</h2>
+            <div className="detail-section__head">
+              <span className="eyebrow">Key Insight</span>
+              <h2 className="section-title">Key Insight</h2>
+            </div>
             <ul className="list-stack">
               {project.focusPoints.slice(0, 3).map((item) => (
                 <li key={item}>{item}</li>
@@ -168,8 +216,10 @@ export default async function ProjectDetailPage({
           </section>
 
           <section className="surface-card detail-section">
-            <span className="eyebrow">Limitations</span>
-            <h2 className="section-title">Limitations</h2>
+            <div className="detail-section__head">
+              <span className="eyebrow">Limitations</span>
+              <h2 className="section-title">Limitations</h2>
+            </div>
             <ul className="list-stack">
               {project.detailBrief.limitations.map((item) => (
                 <li key={item}>{item}</li>
@@ -178,13 +228,15 @@ export default async function ProjectDetailPage({
           </section>
 
           <section className="surface-card detail-section">
-            <span className="eyebrow">Links</span>
-            <h2 className="section-title">Links</h2>
+            <div className="detail-section__head">
+              <span className="eyebrow">Links</span>
+              <h2 className="section-title">Links</h2>
+            </div>
             {project.links.length > 0 ? (
               <div className="detail-links">
                 {project.links.map((link) => (
                   <a
-                    className="button-link"
+                    className="button-link button-link--secondary"
                     href={link.href}
                     key={link.label}
                     rel="noreferrer"
@@ -200,8 +252,10 @@ export default async function ProjectDetailPage({
 
           {relatedCaseStudies.length > 0 ? (
             <section className="surface-card detail-section">
-              <span className="eyebrow">Case Studies</span>
-              <h2 className="section-title">연결된 문제 해결 방식</h2>
+              <div className="detail-section__head">
+                <span className="eyebrow">Case Studies</span>
+                <h2 className="section-title">연결된 문제 해결 방식</h2>
+              </div>
               <div className="related-grid">
                 {relatedCaseStudies.map((caseStudy) => (
                   <article className="related-card" key={caseStudy.slug}>
