@@ -6,6 +6,15 @@ type ProjectCardProps = {
   project: Project;
 };
 
+function renderMultilineText(text: string) {
+  return text.split("\n").map((line, index) => (
+    <span key={`${text}-${index}`}>
+      {index > 0 ? <br /> : null}
+      {line}
+    </span>
+  ));
+}
+
 function getProjectVisual(slug: string) {
   switch (slug) {
     case "lh-traffic-safety-analysis":
@@ -51,8 +60,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <p className="project-card__summary">{project.summary}</p>
-      <p className="project-card__supporting-line">{project.supportingLine}</p>
+      <p className="project-card__summary">{renderMultilineText(project.summary)}</p>
+      <p className="project-card__supporting-line">{renderMultilineText(project.supportingLine)}</p>
 
       {project.evidencePoints && project.evidencePoints.length > 0 ? (
         <div className="project-card__proof-stack">

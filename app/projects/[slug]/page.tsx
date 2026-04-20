@@ -16,6 +16,15 @@ export function generateStaticParams() {
   }));
 }
 
+function renderMultilineText(text: string) {
+  return text.split("\n").map((line, index) => (
+    <span key={`${text}-${index}`}>
+      {index > 0 ? <br /> : null}
+      {line}
+    </span>
+  ));
+}
+
 export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps) {
@@ -53,8 +62,8 @@ export default async function ProjectDetailPage({
             ))}
           </div>
           <h1 className="page-title detail-title">{project.title}</h1>
-          <p className="detail-hero__supporting-line">{project.supportingLine}</p>
-          <p className="page-intro detail-hero__summary">{project.summary}</p>
+          <p className="detail-hero__supporting-line">{renderMultilineText(project.supportingLine)}</p>
+          <p className="page-intro detail-hero__summary">{renderMultilineText(project.summary)}</p>
 
           <div className="detail-hero__meta-grid" aria-label="project quick facts">
             {detailHeroFacts.map((item) => (
@@ -98,7 +107,7 @@ export default async function ProjectDetailPage({
             <dl className="detail-overview-grid">
               <div className="detail-overview-item detail-overview-item--wide">
                 <dt>프로젝트 한 줄 정의</dt>
-                <dd>{project.summary}</dd>
+                <dd>{renderMultilineText(project.summary)}</dd>
               </div>
               <div className="detail-overview-item">
                 <dt>도메인</dt>
