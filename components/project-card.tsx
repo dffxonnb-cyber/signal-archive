@@ -28,7 +28,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   const projectIndex = String(project.sortOrder).padStart(2, "0");
   const primaryTags = project.coreTags.slice(0, 4);
   const cardLinks = [
-    { kind: "detail" as const, label: "Detail", href: `/projects/${project.slug}` },
+    { kind: "detail" as const, label: "상세 보기", href: `/projects/${project.slug}` },
     ...project.links.map((link) => ({
       kind: link.label.includes("Live") ? ("live" as const) : ("external" as const),
       label: link.label.includes("GitHub") ? "GitHub" : link.label,
@@ -120,12 +120,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <div className="project-card__cta-row" aria-label={`${project.title} links`}>
           {cardLinks.map((link) =>
             link.kind === "detail" ? (
-              <Link className="button-link button-link--secondary project-card__cta" href={link.href} key={link.href}>
+              <Link className="button-link project-card__cta project-card__cta--primary" href={link.href} key={link.href}>
                 {link.label}
               </Link>
             ) : (
               <a
-                className={`button-link project-card__cta${link.kind === "live" ? "" : " button-link--secondary"}`}
+                className="button-link button-link--secondary project-card__cta"
                 href={link.href}
                 key={link.href}
                 rel="noreferrer"

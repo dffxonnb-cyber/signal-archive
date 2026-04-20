@@ -34,16 +34,17 @@ export function HomeProjectCard({
         <h3 className="home-project-card__title">
           <Link href={`/projects/${project.slug}`}>{project.title}</Link>
         </h3>
+        <span className="home-project-card__section-label">핵심 문제</span>
         <p className="home-project-card__problem">{problem}</p>
       </div>
 
       <dl className="home-project-card__facts">
         <div className="home-project-card__fact">
-          <dt>Role</dt>
+          <dt>역할</dt>
           <dd>{roleLabel}</dd>
         </div>
         <div className="home-project-card__fact">
-          <dt>Scope</dt>
+          <dt>범위</dt>
           <dd>{scopeLabel}</dd>
         </div>
       </dl>
@@ -57,9 +58,12 @@ export function HomeProjectCard({
       </div>
 
       <div className="home-project-card__footer">
-        <p className="home-project-card__impact">{impact}</p>
-        <Link className="home-project-card__link" href={`/projects/${project.slug}`}>
-          사례 보기
+        <div className="home-project-card__signal">
+          <span className="home-project-card__section-label">핵심 근거</span>
+          <p className="home-project-card__impact">{impact}</p>
+        </div>
+        <Link className="button-link button-link--secondary home-project-card__link" href={`/projects/${project.slug}`}>
+          상세 보기
         </Link>
       </div>
     </article>
