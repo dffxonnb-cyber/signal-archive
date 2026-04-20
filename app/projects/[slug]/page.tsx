@@ -54,7 +54,7 @@ export default async function ProjectDetailPage({
           </div>
           <h1 className="page-title detail-title">{project.title}</h1>
           <p className="detail-hero__supporting-line">{project.supportingLine}</p>
-          <p className="page-intro">{project.summary}</p>
+          <p className="page-intro detail-hero__summary">{project.summary}</p>
 
           <div className="detail-hero__meta-grid" aria-label="project quick facts">
             {detailHeroFacts.map((item) => (

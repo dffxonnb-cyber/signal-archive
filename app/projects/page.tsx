@@ -15,7 +15,9 @@ export default function ProjectsPage() {
               <span className="projects-header__title-tail">전체 아카이브</span>
             </h1>
             <p className="page-intro">
-              각 프로젝트의 사례를 더 정확히 선택할 수 있도록 분류 체계를 재정리했습니다.
+              각 프로젝트의 사례를 더 정확히 선택할 수 있도록
+              <br />
+              분류 체계를 재정리했습니다.
             </p>
           </div>
 

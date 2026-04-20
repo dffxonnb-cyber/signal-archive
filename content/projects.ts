@@ -6,7 +6,7 @@ export const projects: Project[] = [
     title: "LH Traffic Safety Analysis",
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
-    summary: "사고 건수 합계보다, 신도시에도 적용 가능한 설치 우선순위 기준을 세우는 교통안전 분석 프로젝트입니다.",
+    summary: "신도시에 적용 가능한 설치 우선 순위 기준을\n명확히 도출한 교통안전 분석 프로젝트입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "도시", "교통", "공간 데이터 분석"],
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     title: "Seoul Storefront Redveil",
     category: "대표 프로젝트",
     primaryDomain: "상권/부동산",
-    summary: "좋아 보이는 매물 추천보다, 매입 전에 먼저 보류해야 할 이유를 구조적으로 보여주는 상권 리스크 서비스입니다.",
+    summary: "좋아 보이는 매물 추천보다, 매입 이전 보류해야 할\n근거를 구조적으로 도출한 상권 리스크 서비스입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["상권 분석", "공공데이터", "리스크 모델링", "웹 구현"],
@@ -131,7 +131,7 @@ export const projects: Project[] = [
       "상권 분석 자료는 많지만, 실제 매입 판단 단계에서 먼저 어떤 신호를 보류 사유로 읽어야 하는지까지 연결해주는 도구는 드뭅니다. 추천보다 보류 판단을 먼저 도와주는 서비스 구조가 필요했습니다.",
     outcome:
       "공공데이터와 상권 데이터를 묶어 매입 리스크를 설명하는 웹 기반 판단 도구를 만들고, 대체 후보 비교까지 가능한 서비스 흐름으로 정리했습니다.",
-    supportingLine: "먼저 보류해야 할 이유를 보여주는 상권 리스크 판단 서비스",
+    supportingLine: "보류 근거를 명확히 보여주는 상권 리스크 판단 서비스",
     cardBrief: {
       problem:
         "좋아 보이는 매물 추천보다, 매입 전에 먼저 보류해야 할 리스크 신호를 구조적으로 보여줄 필요가 있었습니다.",
@@ -230,7 +230,7 @@ export const projects: Project[] = [
     title: "UK Online Retail Segment Analysis",
     category: "대표 프로젝트",
     primaryDomain: "이커머스",
-    summary: "영국 온라인 리테일 거래 데이터를 기반으로 고객 구매 패턴과 세그먼트를 분석한 e-commerce 분석 프로젝트입니다.",
+    summary: "영국 온라인 리테일 거래 데이터를 기반으로\n세그먼트를 분석한 이커머스 분석 프로젝트입니다.",
     period: "2026",
     format: "팀 프로젝트 기반 정리",
     domains: ["UK Online Retail", "E-commerce Analytics", "구매 패턴 분석", "고객 세그먼트 분석"],
@@ -245,7 +245,7 @@ export const projects: Project[] = [
       "영국 온라인 리테일 거래 데이터는 구매 기록 자체는 풍부하지만, 어떤 패턴이 세그먼트 차이와 재구매 관점 인사이트로 이어지는지 구조적으로 정리할 필요가 있었습니다.",
     outcome:
       "거래 데이터를 구매 패턴, RFM, 세그먼트 기준으로 재구성하고, 매출 및 재구매 관점에서 해석 가능한 e-commerce 분석 결과로 정리했습니다.",
-    supportingLine: "구매 패턴과 고객 세그먼트를 함께 읽을 수 있게 정리한 UK 온라인 리테일 분석",
+    supportingLine: "구매 패턴 | 고객 세그먼트를 함께 파악할 수 있도록\n분석한 UK 온라인 리테일 분석",
     cardBrief: {
       problem:
         "거래 데이터는 많지만 고객 구매 패턴과 세그먼트 차이를 매출 및 재구매 관점으로 함께 읽기 어려웠습니다.",
@@ -340,7 +340,7 @@ export const projects: Project[] = [
     title: "Starbucks Promotion Analysis",
     category: "서브 프로젝트",
     primaryDomain: "마케팅",
-    summary: "고객, 오퍼, 채널 데이터를 기반으로 어떤 고객군이 어떤 제안에 반응하는지 분석한 CRM / 마케팅 분석 프로젝트입니다.",
+    summary: "고객, 오퍼, 채널 데이터를 기반으로\n세그먼트와 오퍼 반응의 상관관계를 분석한\nCRM / 마케팅 분석 프로젝트입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["CRM", "Marketing Analytics", "고객 반응 분석", "오퍼/채널 성과 분석"],
@@ -355,7 +355,7 @@ export const projects: Project[] = [
       "고객, 오퍼, 채널 데이터가 분리된 상태에서는 어떤 고객군이 어떤 제안에 반응하는지와 오퍼/채널 성과 차이를 함께 읽기 어렵습니다.",
     outcome:
       "고객, 오퍼, 채널 데이터를 재구성해 고객 반응과 오퍼/채널 성과를 함께 해석할 수 있는 CRM / 마케팅 분석 결과로 정리했습니다.",
-    supportingLine: "고객군별 오퍼 반응과 채널 성과를 함께 읽을 수 있게 만든 CRM 분석",
+    supportingLine: "고객군별 오퍼 반응과 채널 성과를\n함께 도출한 CRM 분석",
     cardBrief: {
       problem:
         "고객, 오퍼, 채널 데이터가 분리되어 있어 어떤 고객군이 어떤 제안에 반응하는지 바로 파악하기 어려웠습니다.",
@@ -424,7 +424,7 @@ export const projects: Project[] = [
     title: "NBA Game & Player Analysis",
     category: "서브 프로젝트",
     primaryDomain: "스포츠 분석",
-    summary: "승리 요인, 선수 성과, 플레이 스타일을 하나의 분석 파이프라인으로 연결한 스포츠 데이터 분석입니다.",
+    summary: "승리 요인, 선수 성과, 플레이 스타일을\n하나의 분석 파이프라인으로 연결한\n스포츠 데이터 분석입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["스포츠 분석", "예측 모델링", "EDA", "파이프라인"],
@@ -439,7 +439,7 @@ export const projects: Project[] = [
       "스포츠 분석은 승패 요인, 선수 성과, 플레이 스타일이 따로 노는 경우가 많지만, 실제로는 하나의 흐름으로 같이 읽혀야 해석 가치가 커집니다.",
     outcome:
       "경기 데이터와 선수 데이터를 묶고, EDA부터 통계 검정, 예측, 군집화까지 이어지는 하나의 분석 파이프라인으로 정리했습니다.",
-    supportingLine: "승리 요인과 선수 성과를 하나의 파이프라인으로 묶은 스포츠 분석",
+    supportingLine: "승리 요인과 선수 성과를 하나의 파이프라인으로 묶은\n스포츠 분석",
     cardBrief: {
       problem:
         "승리 요인, 선수 성과, 팀 특성이 각각 분리되어 있어 경기 해석이 한 흐름으로 읽히지 않는 문제가 있었습니다.",

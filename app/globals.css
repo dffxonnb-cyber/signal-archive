@@ -1383,6 +1383,7 @@ main {
   max-width: none;
   font-size: 0.9rem;
   line-height: 1.62;
+  white-space: pre-line;
 }
 
 .project-card__supporting-line {
@@ -1391,6 +1392,7 @@ main {
   color: var(--text-muted);
   font-size: 0.8rem;
   line-height: 1.5;
+  white-space: pre-line;
 }
 
 .tag--primary {
@@ -1593,6 +1595,11 @@ main {
   font-size: 0.94rem;
   font-weight: 600;
   line-height: 1.5;
+  white-space: pre-line;
+}
+
+.detail-hero__summary {
+  white-space: pre-line;
 }
 
 .detail-hero__meta-grid {
@@ -1706,6 +1713,7 @@ main {
   color: var(--text-primary);
   font-size: 0.93rem;
   line-height: 1.62;
+  white-space: pre-line;
 }
 
 .detail-split-grid,
