@@ -119,7 +119,7 @@ export default function HomePage() {
             </div>
 
             <h1 className="hero-title home-hero__title">
-              <span className="home-hero__title-prefix">의사결정에 바로 쓰이도록 데이터를 구조화하는</span>
+              <span className="home-hero__title-prefix">데이터를 판단 가능한 구조로 바꾸는</span>
               <span className="hero-title__accent home-hero__title-tail">데이터 분석가</span>
             </h1>
 
