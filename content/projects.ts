@@ -34,6 +34,24 @@ export const projects: Project[] = [
         "지도 기반 시각화",
       ],
     },
+    evidencePoints: [
+      {
+        label: "Coverage",
+        value: "4개 신도시 권역 비교와 교산 적용 시나리오까지 포함",
+      },
+      {
+        label: "Analysis Unit",
+        value: "격자 기반 위험 구간과 설치 후보 위치 단위로 재구성",
+      },
+      {
+        label: "Validation",
+        value: "Mean AUC 0.8604 / Top-10% Lift 4.39x",
+      },
+      {
+        label: "Decision Output",
+        value: "추천 패키지와 추천 사유까지 설명 가능한 결과물로 연결",
+      },
+    ],
     detailBrief: {
       problem: {
         what:
@@ -126,6 +144,24 @@ export const projects: Project[] = [
         "웹 기반 공개 페이지",
       ],
     },
+    evidencePoints: [
+      {
+        label: "Coverage",
+        value: "서울 25개 구, 행정동 428개, 취약 상권 1,570개 비교",
+      },
+      {
+        label: "Transaction Data",
+        value: "상업용 부동산 거래 12,074건 기반 검토",
+      },
+      {
+        label: "Analysis Unit",
+        value: "구 단위 비교 + 매물 1건 검토 + 대체 후보 비교 흐름",
+      },
+      {
+        label: "Delivery",
+        value: "리스크 점수, 보류 사유, 대체 후보를 공개 웹에서 바로 확인",
+      },
+    ],
     detailBrief: {
       problem: {
         what:
@@ -222,6 +258,24 @@ export const projects: Project[] = [
         "매출 / 고객 유지 인사이트",
       ],
     },
+    evidencePoints: [
+      {
+        label: "Dataset",
+        value: "UK Online Retail 공개 거래 데이터와 고객 구매 이력 기반",
+      },
+      {
+        label: "Analysis Unit",
+        value: "고객 단위 RFM 세그먼트와 월별 매출·재구매 패턴 비교",
+      },
+      {
+        label: "Revenue Signal",
+        value: "상위 20% 고객이 전체 매출의 73.5% 차지",
+      },
+      {
+        label: "Risk Signal",
+        value: "이탈위험 고객군 11월 매출이 10월 대비 84.2% 감소",
+      },
+    ],
     detailBrief: {
       problem: {
         what:

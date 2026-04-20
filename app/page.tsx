@@ -80,7 +80,7 @@ const homeProjectMeta: Record<
     roleLabel: "공간 분석 / 우선순위 지표 설계",
     scopeLabel: "공공 안전 / 설치 판단 구조",
     tags: ["공간 분석", "공공데이터", "위험 해석", "지표 설계"],
-    impact: "교통안전 해석을 빈도 정리에서 우선순위 판단 구조로 전환한 사례.",
+    impact: "Mean AUC 0.8604와 Top-10% Lift 4.39x로 위험 격자 기반 우선순위 구조를 검증한 사례.",
   },
   "seoul-storefront-redveil": {
     lens: "end-to-end / decision tool",
@@ -89,7 +89,7 @@ const homeProjectMeta: Record<
     roleLabel: "리스크 기준 설계 / 웹 구현",
     scopeLabel: "상권 매입 검토 / 의사결정 도구",
     tags: ["리스크 기준", "SQL", "웹 구현", "상권 분석"],
-    impact: "분석 결과를 문서에 멈추지 않고 웹 기반 판단 도구까지 연결한 사례.",
+    impact: "서울 25개 구와 거래 12,074건을 바탕으로 보류 사유와 대체 후보까지 보여주는 공개 판단 도구 사례.",
   },
   "uk-online-retail-segment-analysis": {
     lens: "commerce / segmentation / insight",
@@ -98,7 +98,7 @@ const homeProjectMeta: Record<
     roleLabel: "세그먼트 해석 / 인사이트 정리",
     scopeLabel: "리테일 데이터 / 매출·재구매 해석",
     tags: ["커머스", "세그먼트", "고객 해석", "인사이트"],
-    impact: "리테일 데이터를 사업 질문과 연결된 해석 구조로 정리한 사례.",
+    impact: "상위 20% 고객이 매출의 73.5%를 차지한다는 신호를 바탕으로 세그먼트를 액션 언어로 번역한 사례.",
   },
 };
 

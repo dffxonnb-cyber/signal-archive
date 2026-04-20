@@ -54,6 +54,20 @@ export function ProjectCard({ project }: ProjectCardProps) {
       <p className="project-card__summary">{project.summary}</p>
       <p className="project-card__supporting-line">{project.supportingLine}</p>
 
+      {project.evidencePoints && project.evidencePoints.length > 0 ? (
+        <div className="project-card__proof-stack">
+          <span className="project-card__meta-label">핵심 근거</span>
+          <div className="project-card__proof-grid" aria-label={`${project.title} evidence snapshot`}>
+            {project.evidencePoints.slice(0, 3).map((item) => (
+              <div className="project-card__proof-item" key={`${project.slug}-${item.label}`}>
+                <span className="project-card__meta-label">{item.label}</span>
+                <p className="project-card__brief-copy">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ) : null}
+
       <div className="project-card__brief-grid">
         <div className="project-card__brief-block">
           <span className="project-card__meta-label">Problem</span>

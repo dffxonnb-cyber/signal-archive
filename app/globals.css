@@ -1273,6 +1273,39 @@ main {
 .project-card__chip-row {
   display: flex;
   flex-wrap: wrap;
+.project-card__proof-stack {
+  display: grid;
+  gap: 10px;
+}
+
+.project-card__proof-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.project-card__proof-item {
+  display: grid;
+  gap: 7px;
+  min-height: 100%;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.project-card__proof-item:first-child {
+  grid-column: 1 / -1;
+  border-color: rgba(165, 176, 184, 0.22);
+  background:
+    radial-gradient(circle at top right, rgba(147, 161, 173, 0.12), transparent 44%),
+    rgba(255, 255, 255, 0.02);
+}
+
+.project-card__proof-item .project-card__brief-copy {
+  color: var(--text-primary);
+}
+
   gap: 5px;
 }
 
@@ -1841,6 +1874,7 @@ main {
   .project-card__footer,
   .home-project-card__footer,
   .home-project-card__head,
+  .project-card__proof-grid,
   .project-card__header-top {
     flex-direction: column;
     align-items: flex-start;

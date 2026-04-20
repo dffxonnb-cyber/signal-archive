@@ -138,6 +138,23 @@ export default async function ProjectDetailPage({
                 </span>
               ))}
             </div>
+          {project.evidencePoints && project.evidencePoints.length > 0 ? (
+            <section className="surface-card detail-section detail-section--evidence">
+              <div className="detail-section__head">
+                <span className="eyebrow">Evidence Snapshot</span>
+                <h2 className="section-title">Evidence Snapshot</h2>
+              </div>
+              <div className="detail-overview-grid detail-overview-grid--evidence">
+                {project.evidencePoints.map((item) => (
+                  <div className="detail-overview-item" key={`${project.slug}-${item.label}`}>
+                    <dt>{item.label}</dt>
+                    <dd>{item.value}</dd>
+                  </div>
+                ))}
+              </div>
+            </section>
+          ) : null}
+
           </section>
 
           <section className="surface-card detail-section">

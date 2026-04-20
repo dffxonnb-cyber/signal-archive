@@ -15,6 +15,11 @@ export type ProjectCardBrief = {
   output: string[];
 };
 
+export type ProjectEvidencePoint = {
+  label: string;
+  value: string;
+};
+
 export type ProjectDetailBrief = {
   problem: {
     what: string;
@@ -54,6 +59,7 @@ export type Project = {
   outcome: string;
   supportingLine: string;
   cardBrief: ProjectCardBrief;
+  evidencePoints?: ProjectEvidencePoint[];
   detailBrief: ProjectDetailBrief;
   focusPoints: string[];
   links: ExternalLink[];
