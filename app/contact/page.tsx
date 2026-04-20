@@ -44,7 +44,7 @@ export default function ContactPage() {
             </div>
             <div>
               <dt>Resume PDF</dt>
-              <dd>준비 중</dd>
+              <dd>요청 시 안내</dd>
             </div>
           </dl>
         </section>
@@ -87,7 +87,7 @@ export default function ContactPage() {
               ) : null}
               <article className="resume-link-card resume-link-card--muted">
                 <span className="resume-link-card__label">Resume PDF</span>
-                <strong>요청 시 제공 / 공개용 버전 준비 중</strong>
+                <strong>요청 시 제공</strong>
               </article>
             </div>
           </article>
@@ -125,7 +125,8 @@ export default function ContactPage() {
             <div className="tag-list">
               <span className="tag">GitHub 공개</span>
               <span className="tag">이메일 연락 가능</span>
-              <span className="tag">Resume PDF 준비 중</span>
+              <span className="tag">Resume PDF 요청 가능</span>
+              <span className="tag">후속 자료 요청 가능</span>
             </div>
           </article>
         </div>

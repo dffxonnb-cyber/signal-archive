@@ -27,7 +27,7 @@ export default function ResumePage() {
             </div>
             <div>
               <dt>Access</dt>
-              <dd>public-safe summary</dd>
+              <dd>public summary</dd>
             </div>
           </dl>
         </section>
