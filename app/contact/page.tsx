@@ -1,16 +1,23 @@
 import Link from "next/link";
 
+import { PageSummary } from "@/components/page-summary";
 import { profile } from "@/content/profile";
 
 export default function ContactPage() {
   const githubLink = profile.contactLinks.find((link) => link.label === "GitHub");
   const emailLink = profile.contactLinks.find((link) => link.label === "Email");
+  const openChannels = [githubLink, emailLink].filter(Boolean).length;
+  const quickRoutes = [
+    githubLink ? "github" : null,
+    "projects",
+    emailLink ? "email" : null,
+  ].filter(Boolean).length;
 
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
         <section className="surface-card page-header">
-          <div>
+          <div className="page-header__lead">
             <span className="eyebrow">Contact</span>
             <h1 className="page-title">검토와 연락을 위한 공개 정보</h1>
             <p className="page-intro">
@@ -33,20 +40,14 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <dl className="overview-stats">
-            <div>
-              <dt>GitHub</dt>
-              <dd>{githubLink?.displayText ?? "public profile"}</dd>
-            </div>
-            <div>
-              <dt>Email</dt>
-              <dd>{emailLink?.displayText ?? "contact route available"}</dd>
-            </div>
-            <div>
-              <dt>Resume PDF</dt>
-              <dd>요청 시 안내</dd>
-            </div>
-          </dl>
+          <PageSummary
+            ariaLabel="contact summary"
+            focusItems={["GitHub", "Email", "후속 자료 요청"]}
+            metrics={[
+              { label: "Open Channels", value: openChannels },
+              { label: "Quick Routes", value: quickRoutes },
+            ]}
+          />
         </section>
 
         <div className="archive-grid">

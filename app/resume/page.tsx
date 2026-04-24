@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PageSummary } from "@/components/page-summary";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
 
@@ -8,7 +9,7 @@ export default function ResumePage() {
     <main className="page-shell">
       <div className="site-container page-grid">
         <section className="surface-card page-header">
-          <div>
+          <div className="page-header__lead">
             <span className="eyebrow">Resume</span>
             <h1 className="page-title">핵심 역량과 대표 작업 요약</h1>
             <p className="page-intro">
@@ -16,20 +17,14 @@ export default function ResumePage() {
             </p>
           </div>
 
-          <dl className="overview-stats">
-            <div>
-              <dt>Primary Role</dt>
-              <dd>{profile.primaryRoles.join(" / ")}</dd>
-            </div>
-            <div>
-              <dt>Keywords</dt>
-              <dd>{profile.keywords.slice(0, 3).join(" / ")}</dd>
-            </div>
-            <div>
-              <dt>Access</dt>
-              <dd>public summary</dd>
-            </div>
-          </dl>
+          <PageSummary
+            ariaLabel="resume summary"
+            focusItems={["문제 정의", "지표 설계", "결과물 구현"]}
+            metrics={[
+              { label: "Primary Roles", value: profile.primaryRoles.length },
+              { label: "Skill Groups", value: profile.skillGroups.length },
+            ]}
+          />
         </section>
 
         <div className="resume-grid">

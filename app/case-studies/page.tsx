@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PageSummary } from "@/components/page-summary";
 import { caseStudies } from "@/content/case-studies";
 import { projects } from "@/content/projects";
 
@@ -7,12 +8,13 @@ export default function CaseStudiesPage() {
   const projectTitleMap = new Map(
     projects.map((project) => [project.slug, project.title] as const),
   );
+  const linkedProjectCount = new Set(caseStudies.flatMap((item) => item.linkedProjects)).size;
 
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
         <section className="surface-card page-header">
-          <div>
+          <div className="page-header__lead">
             <span className="eyebrow">Case Studies</span>
             <h1 className="page-title">프로젝트 뒤에 있는 문제 해결 방식</h1>
             <p className="page-intro">
@@ -20,20 +22,14 @@ export default function CaseStudiesPage() {
             </p>
           </div>
 
-          <dl className="overview-stats">
-            <div>
-              <dt>Records</dt>
-              <dd>{caseStudies.length}</dd>
-            </div>
-            <div>
-              <dt>Linked Projects</dt>
-              <dd>{new Set(caseStudies.flatMap((item) => item.linkedProjects)).size}</dd>
-            </div>
-            <div>
-              <dt>Focus</dt>
-              <dd>공통 프레임 / 해석 기준 / 판단 순서</dd>
-            </div>
-          </dl>
+          <PageSummary
+            ariaLabel="case studies summary"
+            focusItems={["공통 프레임", "해석 기준", "판단 순서"]}
+            metrics={[
+              { label: "Records", value: caseStudies.length },
+              { label: "Linked Projects", value: linkedProjectCount },
+            ]}
+          />
         </section>
 
         <div className="highlight-grid">

@@ -1,3 +1,4 @@
+import { PageSummary } from "@/components/page-summary";
 import { WritingDirectory } from "@/components/writing-directory";
 import { writingCategories, writingEntries } from "@/content/writing";
 
@@ -10,7 +11,7 @@ export default function WritingPage() {
     <main className="page-shell">
       <div className="site-container page-grid">
         <section className="surface-card page-header">
-          <div>
+          <div className="page-header__lead">
             <span className="eyebrow">Writing</span>
             <h1 className="page-title">프로젝트를 둘러싼 기록 아카이브</h1>
             <p className="page-intro">
@@ -18,20 +19,14 @@ export default function WritingPage() {
             </p>
           </div>
 
-          <dl className="overview-stats">
-            <div>
-              <dt>Entries</dt>
-              <dd>{writingEntries.length}</dd>
-            </div>
-            <div>
-              <dt>Categories</dt>
-              <dd>{writingCategories.length}</dd>
-            </div>
-            <div>
-              <dt>Connected Projects</dt>
-              <dd>{relatedProjectCount}</dd>
-            </div>
-          </dl>
+          <PageSummary
+            ariaLabel="writing summary"
+            focusItems={writingCategories.slice(0, 4)}
+            metrics={[
+              { label: "Entries", value: writingEntries.length },
+              { label: "Connected Projects", value: relatedProjectCount },
+            ]}
+          />
         </section>
 
         <WritingDirectory categories={writingCategories} entries={writingEntries} />
