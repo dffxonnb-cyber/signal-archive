@@ -27,6 +27,8 @@ function getProjectVisual(slug: string) {
       return { mark: "SB", tone: "forest" };
     case "nba-game-player-analysis":
       return { mark: "NBA", tone: "slate" };
+    case "shopeasy":
+      return { mark: "SE", tone: "graphite" };
     default:
       return { mark: "AR", tone: "graphite" };
   }

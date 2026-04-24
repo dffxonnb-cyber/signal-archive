@@ -25,7 +25,7 @@ export const caseStudies: CaseStudy[] = [
       "무엇을 판단해야 하는지부터 인터페이스와 카피에 반영합니다.",
       "문서, 페이지, 링크를 하나의 포트폴리오 흐름으로 묶습니다.",
     ],
-    linkedProjects: ["seoul-storefront-redveil"],
+    linkedProjects: ["seoul-storefront-redveil", "shopeasy"],
   },
   {
     slug: "segmenting-for-business-meaning",
