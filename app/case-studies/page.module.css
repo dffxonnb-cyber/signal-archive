@@ -148,7 +148,7 @@
 }
 
 .reframeSample {
-  align-self: start;
+  align-self: center;
   justify-self: end;
   gap: 16px;
   width: min(100%, 392px);
@@ -386,6 +386,7 @@
   }
 
   .reframeSample {
+    align-self: start;
     justify-self: stretch;
     width: 100%;
     min-height: 0;
