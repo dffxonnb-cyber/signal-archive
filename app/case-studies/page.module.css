@@ -3,7 +3,9 @@
 }
 
 .hero {
-  gap: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+  gap: 24px;
   padding: 34px 32px;
   background:
     radial-gradient(circle at top right, rgba(128, 141, 151, 0.1), transparent 34%),
@@ -20,7 +22,13 @@
 .caseFileHeader,
 .caseFileBlocks,
 .caseBlock,
-.caseFileFooter {
+.caseFileFooter,
+.decisionLens,
+.decisionLensHead,
+.decisionLensRows,
+.decisionLensRow,
+.decisionLensCopy,
+.archiveScope {
   display: grid;
 }
 
@@ -34,7 +42,10 @@
 .caseFileLabel,
 .caseFileMeta,
 .caseBlockLabel,
-.heroFlowLabel {
+.scopeLabel,
+.decisionLensIndex,
+.decisionLensFlowLabel,
+.decisionLensFooter {
   font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -75,7 +86,6 @@
   font-size: 0.96rem;
 }
 
-.heroMeta,
 .panelNote {
   margin: 0;
   color: var(--text-muted);
@@ -83,41 +93,130 @@
   line-height: 1.6;
 }
 
-.heroMeta {
-  padding-top: 2px;
+.decisionLens {
+  align-self: start;
+  gap: 16px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 16px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.026), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.012);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 14px 28px rgba(0, 0, 0, 0.14);
 }
 
-.heroFlow {
+.decisionLensHead {
+  gap: 4px;
+}
+
+.decisionLensRows {
+  gap: 8px;
+}
+
+.decisionLensRow {
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  padding: 10px 0;
+  border-top: 1px solid rgba(226, 233, 229, 0.06);
+}
+
+.decisionLensRow:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.decisionLensIndex {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+}
+
+.decisionLensCopy {
+  gap: 2px;
+}
+
+.decisionLensCopy strong {
+  font-size: 0.96rem;
+  line-height: 1.4;
+}
+
+.decisionLensCopy span {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.decisionLensFlow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 10px;
-  padding-top: 18px;
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
+  padding-top: 2px;
 }
 
-.heroFlowStep {
+.decisionLensFlowStep {
   display: inline-flex;
   align-items: center;
   gap: 10px;
 }
 
-.heroFlowLabel {
+.decisionLensFlowLabel {
   display: inline-flex;
   align-items: center;
-  min-height: 32px;
-  padding: 0 12px;
+  min-height: 30px;
+  padding: 0 11px;
   border: 1px solid rgba(226, 233, 229, 0.08);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.016);
+  background: rgba(255, 255, 255, 0.015);
   color: var(--accent-strong);
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 600;
 }
 
-.heroFlowArrow {
+.decisionLensFlowArrow {
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.86rem;
+}
+
+.archiveScope {
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(226, 233, 229, 0.08);
+}
+
+.scopeLabel {
+  color: var(--text-muted);
+  font-size: 0.67rem;
+  font-weight: 600;
+}
+
+.scopeChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.scopeChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.016);
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  line-height: 1;
+}
+
+.decisionLensFooter {
+  color: var(--text-muted);
+  font-size: 0.64rem;
+  font-weight: 600;
 }
 
 .sectionHead {
@@ -137,6 +236,7 @@
 
 .archiveSection {
   gap: 18px;
+  padding-top: 4px;
 }
 
 .caseFileList {
@@ -267,9 +367,11 @@
 
 @media (max-width: 800px) {
   .hero {
+    grid-template-columns: 1fr;
     padding: 24px 20px;
   }
 
+  .decisionLens,
   .caseFileBody,
   .caseFileRail {
     padding: 16px;
@@ -297,11 +399,11 @@
     font-size: 0.88rem;
   }
 
-  .heroFlow {
+  .decisionLensFlow {
     gap: 8px;
   }
 
-  .heroFlowStep {
+  .decisionLensFlowStep {
     width: 100%;
     justify-content: flex-start;
   }
