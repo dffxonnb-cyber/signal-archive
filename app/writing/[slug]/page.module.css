@@ -1,5 +1,5 @@
 .page {
-  gap: 30px;
+  gap: 34px;
 }
 
 .articleHero,
@@ -29,17 +29,17 @@
 
 .articleHero {
   grid-template-columns: minmax(0, 1.06fr) minmax(280px, 0.94fr);
-  gap: 28px;
-  align-items: end;
-  padding: 34px 32px;
+  gap: 34px;
+  align-items: center;
+  padding: 40px 38px;
   background:
     radial-gradient(circle at top right, rgba(117, 130, 139, 0.12), transparent 36%),
     linear-gradient(180deg, rgba(18, 23, 25, 0.98), rgba(13, 17, 18, 0.98));
 }
 
 .heroCopy {
-  gap: 14px;
-  max-width: 60ch;
+  gap: 16px;
+  max-width: 58ch;
 }
 
 .heroMeta {
@@ -72,8 +72,8 @@
 
 .articleTitle {
   max-width: 14ch;
-  font-size: clamp(2.2rem, 4.8vw, 3rem);
-  line-height: 1.08;
+  font-size: clamp(2.35rem, 4.9vw, 3.2rem);
+  line-height: 1.04;
 }
 
 .articleLead,
@@ -111,14 +111,26 @@
 }
 
 .heroQuote {
-  gap: 12px;
-  padding: 18px 20px;
+  position: relative;
+  gap: 14px;
+  padding: 24px 24px 22px;
   border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 18px;
+  border-radius: 22px;
   background:
     radial-gradient(circle at top right, rgba(139, 149, 157, 0.08), transparent 38%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.012);
+}
+
+.heroQuote::before {
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 16px;
+  color: rgba(220, 226, 230, 0.16);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 4.8rem;
+  line-height: 1;
 }
 
 .heroQuoteText,
@@ -129,18 +141,18 @@
 }
 
 .heroQuoteText {
-  font-size: 1.08rem;
-  line-height: 1.82;
+  position: relative;
+  padding-top: 24px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.18rem;
+  line-height: 1.9;
 }
 
 .lensBlock {
   gap: 18px;
-  padding: 22px 24px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
+  padding: 20px 0 22px;
+  border-top: 1px solid rgba(226, 233, 229, 0.08);
+  border-bottom: 1px solid rgba(226, 233, 229, 0.08);
 }
 
 .lensHead {
@@ -187,13 +199,13 @@
 
 .articleBody {
   gap: 28px;
-  padding: 28px 32px;
+  max-width: 980px;
 }
 
 .articleSection {
   grid-template-columns: 64px minmax(0, 1fr);
   gap: 18px;
-  padding-top: 28px;
+  padding-top: 34px;
   border-top: 1px solid rgba(226, 233, 229, 0.08);
 }
 
@@ -208,16 +220,17 @@
 }
 
 .sectionTitle {
-  font-size: 1.28rem;
+  font-size: 1.36rem;
   line-height: 1.34;
 }
 
 .sectionQuote {
-  max-width: 34ch;
-  padding-left: 16px;
+  max-width: 40ch;
+  padding-left: 18px;
   border-left: 1px solid rgba(226, 233, 229, 0.12);
-  font-size: 1rem;
-  line-height: 1.78;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.06rem;
+  line-height: 1.84;
 }
 
 .prose {
@@ -225,8 +238,9 @@
 }
 
 .prose p {
-  font-size: 0.98rem;
-  line-height: 1.9;
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.96;
 }
 
 .articleFooter {
@@ -234,7 +248,7 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 16px;
-  padding-top: 24px;
+  padding-top: 28px;
   border-top: 1px solid rgba(226, 233, 229, 0.08);
 }
 
@@ -242,6 +256,7 @@
   color: var(--text-muted);
   font-size: 0.84rem;
   line-height: 1.4;
+  letter-spacing: 0.02em;
   transition: color 160ms ease;
 }
 
@@ -300,7 +315,11 @@
 @media (max-width: 800px) {
   .articleHero,
   .articleBody {
-    padding: 24px 20px;
+    padding-inline: 0;
+  }
+
+  .articleHero {
+    padding: 26px 20px;
   }
 
   .articleTitle {

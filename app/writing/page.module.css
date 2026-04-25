@@ -1,5 +1,5 @@
 .page {
-  gap: 42px;
+  gap: 48px;
 }
 
 .hero,
@@ -25,18 +25,20 @@
 }
 
 .hero {
+  position: relative;
+  overflow: hidden;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 30px;
+  gap: 36px;
   align-items: center;
-  padding: 34px 32px;
+  padding: 40px 38px;
   background:
     radial-gradient(circle at top right, rgba(116, 128, 137, 0.11), transparent 34%),
     linear-gradient(180deg, rgba(19, 24, 26, 0.98), rgba(12, 16, 17, 0.98));
 }
 
 .heroCopy {
-  gap: 14px;
-  max-width: 48ch;
+  gap: 16px;
+  max-width: 46ch;
 }
 
 .archiveStamp {
@@ -56,8 +58,8 @@
 .heroTitle {
   margin: 0;
   max-width: 11ch;
-  font-size: clamp(2.2rem, 4.8vw, 3.2rem);
-  line-height: 1.06;
+  font-size: clamp(2.35rem, 4.9vw, 3.4rem);
+  line-height: 1.03;
   letter-spacing: -0.04em;
 }
 
@@ -79,7 +81,9 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 10px 12px;
-  padding-top: 4px;
+  width: fit-content;
+  padding-top: 12px;
+  border-top: 1px solid rgba(226, 233, 229, 0.08);
 }
 
 .heroFlowStep {
@@ -101,16 +105,28 @@
 }
 
 .selectedSentence {
+  position: relative;
   justify-self: end;
-  gap: 14px;
-  width: min(100%, 360px);
-  padding: 22px 24px;
+  gap: 16px;
+  width: min(100%, 390px);
+  padding: 26px 28px 24px;
   border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 18px;
+  border-radius: 22px;
   background:
     radial-gradient(circle at top right, rgba(138, 147, 153, 0.08), transparent 36%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.026), rgba(255, 255, 255, 0.014)),
     rgba(255, 255, 255, 0.012);
+}
+
+.selectedSentence::before {
+  content: "“";
+  position: absolute;
+  top: 10px;
+  left: 18px;
+  color: rgba(220, 226, 230, 0.16);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 4.8rem;
+  line-height: 1;
 }
 
 .panelLabel,
@@ -130,7 +146,12 @@
 }
 
 .selectedQuote {
+  position: relative;
+  padding-top: 26px;
   color: var(--accent-strong);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  line-height: 1.92;
 }
 
 .notesSection,
@@ -156,22 +177,42 @@
 .noteGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
 .noteCard {
+  position: relative;
   gap: 16px;
   min-height: 100%;
-  padding: 22px;
+  padding: 24px 24px 22px;
   border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 18px;
+  border-radius: 22px;
   background:
     radial-gradient(circle at top right, rgba(109, 122, 130, 0.08), transparent 40%),
     linear-gradient(180deg, rgba(18, 23, 25, 0.98), rgba(13, 17, 18, 0.98));
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.noteCard::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(220, 226, 230, 0.22), rgba(220, 226, 230, 0));
+}
+
+.noteCard:hover,
+.noteCard:focus-within {
+  transform: translateY(-3px);
+  border-color: rgba(226, 233, 229, 0.14);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.18);
 }
 
 .noteHead {
-  gap: 8px;
+  gap: 10px;
 }
 
 .noteTitle,
@@ -181,25 +222,26 @@
 }
 
 .noteTitle {
-  font-size: 1.16rem;
-  line-height: 1.42;
+  font-size: 1.22rem;
+  line-height: 1.4;
 }
 
 .noteThemes {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 6px;
 }
 
 .noteTheme {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
-  padding: 0 10px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.03);
+  min-height: 26px;
+  padding: 0 9px;
+  border: 1px solid rgba(226, 233, 229, 0.05);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.024);
   color: var(--text-secondary);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   line-height: 1;
 }
 
@@ -210,11 +252,14 @@
 }
 
 .noteExcerpt {
-  padding-top: 14px;
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
+  padding-top: 0;
+  padding-left: 14px;
+  border-top: 0;
+  border-left: 1px solid rgba(226, 233, 229, 0.12);
   color: var(--accent-strong);
-  font-size: 0.93rem;
-  line-height: 1.72;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 0.98rem;
+  line-height: 1.76;
 }
 
 .noteLink {
@@ -247,23 +292,27 @@
 .strengthGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
-  border-bottom: 1px solid rgba(226, 233, 229, 0.08);
+  overflow: hidden;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top right, rgba(109, 122, 130, 0.06), transparent 38%),
+    rgba(255, 255, 255, 0.012);
 }
 
 .strengthItem {
   display: grid;
-  gap: 8px;
-  padding: 18px 22px 18px 0;
+  gap: 10px;
+  min-height: 140px;
+  padding: 22px 24px;
 }
 
 .strengthItem + .strengthItem {
-  padding-left: 22px;
   border-left: 1px solid rgba(226, 233, 229, 0.08);
 }
 
 .strengthTitle {
-  font-size: 0.98rem;
+  font-size: 1.06rem;
   line-height: 1.4;
 }
 
@@ -301,7 +350,7 @@
 
 @media (max-width: 800px) {
   .hero {
-    padding: 24px 20px;
+    padding: 26px 20px;
   }
 
   .noteGrid {
@@ -314,7 +363,7 @@
 
   .heroTitle {
     max-width: 10ch;
-    font-size: 2rem;
+    font-size: 2.12rem;
   }
 }
 
@@ -329,6 +378,6 @@
   }
 
   .selectedQuote {
-    font-size: 0.98rem;
+    font-size: 1.04rem;
   }
 }

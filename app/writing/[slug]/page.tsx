@@ -98,7 +98,7 @@ export default async function WritingDetailPage({
           </div>
         </section>
 
-        <section className={`surface-card ${styles.articleBody}`}>
+        <section className={styles.articleBody}>
           {entry.bodySections.map((section, index) => (
             <section className={styles.articleSection} key={section.title}>
               <span className={styles.sectionIndex}>
