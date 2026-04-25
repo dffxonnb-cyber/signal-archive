@@ -113,68 +113,35 @@ export default function CaseStudiesPage() {
         <section className={`surface-card ${styles.hero}`}>
           <div className={styles.heroCopy}>
             <span className={styles.archiveStamp}>Signal Archive: Decision Files</span>
-            <h1 className={styles.heroTitle}>Case Studies</h1>
-            <p className={styles.heroSubtitle}>판단이 만들어진 기록들</p>
+            <h1 className={styles.heroTitle}>판단이 만들어진 기록들</h1>
             <p className={styles.heroDescription}>
-              프로젝트마다 데이터와 도메인은 달랐지만, 반복된 질문은 같았습니다. 무엇이 문제의
-              신호인가. 어떤 기준으로 해석해야 하는가. 그리고 다음 판단은 무엇이어야 하는가.
+              데이터의 이상 신호를 읽고, 해석 기준을 세우고, 다음 행동으로 바꾼 과정입니다.
+            </p>
+            <p className={styles.heroMeta}>
+              {formatCount(decisionFiles.length)} case files · {formatCount(linkedProjectCount)} linked
+              projects · public / commerce / CRM / sports
             </p>
           </div>
 
-          <section aria-label="archive index" className={styles.archiveIndex}>
-            <div className={styles.archiveIndexHead}>
-              <span className={styles.panelLabel}>Archive Index</span>
-              <p className={styles.panelNote}>
-                데이터 신호를 기준과 판단, 그리고 검토 가능한 산출물로 바꾼 방식의 기록입니다.
-              </p>
-            </div>
-
-            <div className={styles.archiveIndexGrid}>
-              <article className={styles.indexCard}>
-                <span className={styles.indexLabel}>Case Files</span>
-                <strong className={styles.indexValue}>{formatCount(decisionFiles.length)}</strong>
-                <p className={styles.indexDescription}>문제 정의와 판단 흐름을 정리한 기록</p>
-              </article>
-
-              <article className={styles.indexCard}>
-                <span className={styles.indexLabel}>Linked Projects</span>
-                <strong className={styles.indexValue}>{formatCount(linkedProjectCount)}</strong>
-                <p className={styles.indexDescription}>
-                  공공·상권·커머스·CRM·스포츠 분석 프로젝트
-                </p>
-              </article>
-
-              <article className={`${styles.indexCard} ${styles.indexCardWide}`}>
-                <div className={styles.coreLensHead}>
-                  <span className={styles.indexLabel}>Core Lens</span>
-                  <p className={styles.indexDescription}>
-                    신호를 읽고, 기준을 세우고, 다음 판단으로 번역하는 공통 흐름
-                  </p>
-                </div>
-
-                <div aria-label="signal to decision flow" className={styles.coreLensFlow}>
-                  {archiveFlow.map((step, index) => (
-                    <div className={styles.coreLensStep} key={step}>
-                      <span className={styles.coreLensStepLabel}>{step}</span>
-                      {index < archiveFlow.length - 1 ? (
-                        <span aria-hidden="true" className={styles.coreLensArrow}>
-                          →
-                        </span>
-                      ) : null}
-                    </div>
-                  ))}
-                </div>
-              </article>
-            </div>
-          </section>
+          <div aria-label="signal to decision flow" className={styles.heroFlow}>
+            {archiveFlow.map((step, index) => (
+              <div className={styles.heroFlowStep} key={step}>
+                <span className={styles.heroFlowLabel}>{step}</span>
+                {index < archiveFlow.length - 1 ? (
+                  <span aria-hidden="true" className={styles.heroFlowArrow}>
+                    →
+                  </span>
+                ) : null}
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className={styles.archiveSection}>
           <div className={styles.sectionHead}>
-            <span className={styles.panelLabel}>Decision Files</span>
+            <span className={styles.panelLabel}>05 Case Files</span>
             <p className={styles.panelNote}>
-              흐릿한 문제를 판단 질문으로 바꾸고, 기준과 산출물까지 이어진 구조를 파일 단위로
-              정리했습니다.
+              신호, 기준, 판단이 어떻게 파일처럼 정리되었는지 카드 단위로 읽을 수 있게 구성했습니다.
             </p>
           </div>
 

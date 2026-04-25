@@ -1,21 +1,16 @@
 .page {
-  gap: 28px;
+  gap: 40px;
 }
 
 .hero {
-  gap: 24px;
-  padding: 28px;
+  gap: 18px;
+  padding: 34px 32px;
   background:
-    radial-gradient(circle at top right, rgba(128, 141, 151, 0.14), transparent 36%),
+    radial-gradient(circle at top right, rgba(128, 141, 151, 0.1), transparent 34%),
     linear-gradient(180deg, rgba(19, 24, 26, 0.98), rgba(12, 16, 17, 0.98));
 }
 
 .heroCopy,
-.archiveIndex,
-.archiveIndexHead,
-.archiveIndexGrid,
-.indexCard,
-.coreLensHead,
 .archiveSection,
 .sectionHead,
 .caseFileList,
@@ -30,17 +25,16 @@
 }
 
 .heroCopy {
-  gap: 10px;
-  max-width: 72ch;
+  gap: 12px;
+  max-width: 66ch;
 }
 
 .archiveStamp,
 .panelLabel,
-.indexLabel,
 .caseFileLabel,
 .caseFileMeta,
 .caseBlockLabel,
-.coreLensStepLabel {
+.heroFlowLabel {
   font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -50,34 +44,25 @@
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  min-height: 30px;
-  padding: 0 11px;
-  border: 1px solid rgba(226, 233, 229, 0.1);
+  min-height: 26px;
+  padding: 0 9px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.022);
-  color: var(--accent);
-  font-size: 0.69rem;
+  background: rgba(255, 255, 255, 0.016);
+  color: var(--text-muted);
+  font-size: 0.64rem;
   font-weight: 600;
 }
 
 .heroTitle {
   margin: 0;
-  font-size: clamp(2.2rem, 5vw, 3.25rem);
-  line-height: 0.98;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1;
   letter-spacing: -0.04em;
-}
-
-.heroSubtitle {
-  margin: 0;
-  color: var(--accent-strong);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.45;
 }
 
 .heroDescription,
 .panelNote,
-.indexDescription,
 .caseFileSubtitle,
 .caseBlock p {
   margin: 0;
@@ -86,24 +71,58 @@
 }
 
 .heroDescription {
-  max-width: 58ch;
-  font-size: 0.98rem;
+  max-width: 46ch;
+  font-size: 0.96rem;
 }
 
-.archiveIndex {
-  gap: 16px;
-  padding: 18px;
-  border: 1px solid rgba(226, 233, 229, 0.09);
-  border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.014)),
-    rgba(255, 255, 255, 0.014);
+.heroMeta,
+.panelNote {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.77rem;
+  line-height: 1.6;
 }
 
-.archiveIndexHead,
+.heroMeta {
+  padding-top: 2px;
+}
+
+.heroFlow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 10px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(226, 233, 229, 0.08);
+}
+
+.heroFlowStep {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.heroFlowLabel {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0 12px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.016);
+  color: var(--accent-strong);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.heroFlowArrow {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
 .sectionHead {
   gap: 6px;
-  max-width: 64ch;
+  max-width: 58ch;
 }
 
 .panelLabel {
@@ -112,81 +131,12 @@
   font-weight: 600;
 }
 
-.panelNote,
-.indexDescription,
 .caseBlock p {
   font-size: 0.9rem;
 }
 
-.archiveIndexGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.indexCard {
-  gap: 10px;
-  min-height: 148px;
-  padding: 16px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 14px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-}
-
-.indexCardWide {
-  grid-column: 1 / -1;
-  gap: 14px;
-}
-
-.indexLabel {
-  color: var(--text-muted);
-  font-size: 0.69rem;
-  font-weight: 600;
-}
-
-.indexValue {
-  font-size: 2.1rem;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-.coreLensHead {
-  gap: 6px;
-}
-
-.coreLensFlow {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-}
-
-.coreLensStep {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 10px;
-  align-items: center;
-  min-height: 58px;
-  padding: 0 14px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-.coreLensStepLabel {
-  color: var(--accent-strong);
-  font-size: 0.78rem;
-  font-weight: 600;
-}
-
-.coreLensArrow {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-}
-
 .archiveSection {
-  gap: 14px;
+  gap: 18px;
 }
 
 .caseFileList {
@@ -317,10 +267,9 @@
 
 @media (max-width: 800px) {
   .hero {
-    padding: 22px 20px;
+    padding: 24px 20px;
   }
 
-  .archiveIndex,
   .caseFileBody,
   .caseFileRail {
     padding: 16px;
@@ -341,20 +290,19 @@
 }
 
 @media (max-width: 720px) {
-  .archiveIndexGrid,
-  .coreLensFlow {
-    grid-template-columns: 1fr;
-  }
-
-  .coreLensStep {
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
   .heroDescription,
   .panelNote,
-  .indexDescription,
   .caseFileSubtitle,
   .caseBlock p {
     font-size: 0.88rem;
+  }
+
+  .heroFlow {
+    gap: 8px;
+  }
+
+  .heroFlowStep {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
