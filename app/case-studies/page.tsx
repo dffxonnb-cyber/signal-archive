@@ -97,24 +97,6 @@ const projectDisplayNames: Record<string, string> = {
 
 const archiveFlow = ["Signal", "Criteria", "Decision"] as const;
 
-const decisionLensRows = [
-  {
-    index: "01",
-    title: "Signal",
-    description: "이상 신호 포착",
-  },
-  {
-    index: "02",
-    title: "Criteria",
-    description: "판단 기준 설계",
-  },
-  {
-    index: "03",
-    title: "Decision",
-    description: "다음 행동 연결",
-  },
-] as const;
-
 function formatCount(value: number) {
   return value.toString().padStart(2, "0");
 }
@@ -135,31 +117,13 @@ export default function CaseStudiesPage() {
             <p className={styles.heroDescription}>
               데이터의 이상 신호를 읽고, 해석 기준을 세우고, 다음 행동으로 바꾼 과정입니다.
             </p>
-          </div>
 
-          <aside aria-label="decision lens" className={styles.decisionLens}>
-            <div className={styles.decisionLensHead}>
-              <span className={styles.panelLabel}>Decision Lens</span>
-            </div>
-
-            <div className={styles.decisionLensRows}>
-              {decisionLensRows.map((row) => (
-                <div className={styles.decisionLensRow} key={row.index}>
-                  <span className={styles.decisionLensIndex}>{row.index}</span>
-                  <div className={styles.decisionLensCopy}>
-                    <strong>{row.title}</strong>
-                    <span>{row.description}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className={styles.decisionLensFlow} aria-label="signal to decision flow">
+            <div aria-label="signal to decision flow" className={styles.heroFlow}>
               {archiveFlow.map((step, index) => (
-                <div className={styles.decisionLensFlowStep} key={step}>
-                  <span className={styles.decisionLensFlowLabel}>{step}</span>
+                <div className={styles.heroFlowStep} key={step}>
+                  <span className={styles.heroFlowLabel}>{step}</span>
                   {index < archiveFlow.length - 1 ? (
-                    <span aria-hidden="true" className={styles.decisionLensFlowArrow}>
+                    <span aria-hidden="true" className={styles.heroFlowArrow}>
                       →
                     </span>
                   ) : null}
@@ -167,21 +131,30 @@ export default function CaseStudiesPage() {
               ))}
             </div>
 
-            <div className={styles.archiveScope}>
-              <span className={styles.scopeLabel}>Archive Scope</span>
-              <div className={styles.scopeChips}>
-                <span className={styles.scopeChip}>{formatCount(decisionFiles.length)} Case Files</span>
-                <span className={styles.scopeChip}>
-                  {formatCount(linkedProjectCount)} Linked Projects
-                </span>
-                <span className={styles.scopeChip}>Public</span>
-                <span className={styles.scopeChip}>Commerce</span>
-                <span className={styles.scopeChip}>CRM</span>
-                <span className={styles.scopeChip}>Sports</span>
-              </div>
+            <div className={styles.heroMeta}>
+              <span className={styles.heroMetaChip}>{formatCount(decisionFiles.length)} Case Files</span>
+              <span className={styles.heroMetaChip}>
+                {formatCount(linkedProjectCount)} Linked Projects
+              </span>
+              <span className={styles.heroMetaChip}>Public</span>
+              <span className={styles.heroMetaChip}>Commerce</span>
+              <span className={styles.heroMetaChip}>CRM</span>
+              <span className={styles.heroMetaChip}>Sports</span>
             </div>
+          </div>
 
-            <div className={styles.decisionLensFooter}>used across {linkedProjectCount} projects</div>
+          <aside aria-label="decision note" className={styles.decisionNote}>
+            <span className={styles.panelLabel}>Decision Note</span>
+            <p className={styles.decisionNoteCopy}>
+              Not a project list.
+              <br />
+              A record of how each problem was reframed.
+            </p>
+            <div aria-hidden="true" className={styles.decisionNoteMarks}>
+              <span />
+              <span />
+              <span />
+            </div>
           </aside>
         </section>
 

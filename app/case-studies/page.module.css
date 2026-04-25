@@ -23,17 +23,12 @@
 .caseFileBlocks,
 .caseBlock,
 .caseFileFooter,
-.decisionLens,
-.decisionLensHead,
-.decisionLensRows,
-.decisionLensRow,
-.decisionLensCopy,
-.archiveScope {
+.decisionNote {
   display: grid;
 }
 
 .heroCopy {
-  gap: 12px;
+  gap: 14px;
   max-width: 66ch;
 }
 
@@ -42,10 +37,7 @@
 .caseFileLabel,
 .caseFileMeta,
 .caseBlockLabel,
-.scopeLabel,
-.decisionLensIndex,
-.decisionLensFlowLabel,
-.decisionLensFooter {
+.heroFlowLabel {
   font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -86,121 +78,43 @@
   font-size: 0.96rem;
 }
 
-.panelNote {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.77rem;
-  line-height: 1.6;
-}
-
-.decisionLens {
-  align-self: start;
-  gap: 16px;
-  min-width: 0;
-  padding: 18px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 16px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.026), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    0 14px 28px rgba(0, 0, 0, 0.14);
-}
-
-.decisionLensHead {
-  gap: 4px;
-}
-
-.decisionLensRows {
-  gap: 8px;
-}
-
-.decisionLensRow {
-  grid-template-columns: 46px minmax(0, 1fr);
-  gap: 12px;
-  align-items: start;
-  padding: 10px 0;
-  border-top: 1px solid rgba(226, 233, 229, 0.06);
-}
-
-.decisionLensRow:first-child {
-  padding-top: 0;
-  border-top: 0;
-}
-
-.decisionLensIndex {
-  color: var(--text-muted);
-  font-size: 0.68rem;
-  font-weight: 600;
-}
-
-.decisionLensCopy {
-  gap: 2px;
-}
-
-.decisionLensCopy strong {
-  font-size: 0.96rem;
-  line-height: 1.4;
-}
-
-.decisionLensCopy span {
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  line-height: 1.55;
-}
-
-.decisionLensFlow {
+.heroFlow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 10px;
-  padding-top: 2px;
+  padding-top: 4px;
 }
 
-.decisionLensFlowStep {
+.heroFlowStep {
   display: inline-flex;
   align-items: center;
   gap: 10px;
 }
 
-.decisionLensFlowLabel {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 0 11px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.015);
+.heroFlowLabel {
   color: var(--accent-strong);
-  font-size: 0.7rem;
+  font-size: 0.74rem;
   font-weight: 600;
 }
 
-.decisionLensFlowArrow {
+.heroFlowArrow {
   color: var(--text-muted);
   font-size: 0.86rem;
 }
 
-.archiveScope {
-  gap: 10px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
-}
-
-.scopeLabel {
-  color: var(--text-muted);
-  font-size: 0.67rem;
-  font-weight: 600;
-}
-
+.heroMeta,
 .scopeChips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.scopeChip {
+.heroMeta {
+  padding-top: 4px;
+}
+
+.heroMetaChip {
   display: inline-flex;
   align-items: center;
   min-height: 28px;
@@ -213,10 +127,50 @@
   line-height: 1;
 }
 
-.decisionLensFooter {
+.panelNote {
+  margin: 0;
   color: var(--text-muted);
-  font-size: 0.64rem;
-  font-weight: 600;
+  font-size: 0.77rem;
+  line-height: 1.6;
+}
+
+.decisionNote {
+  align-self: start;
+  justify-self: end;
+  gap: 14px;
+  width: min(100%, 320px);
+  min-height: 220px;
+  padding: 18px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at top right, rgba(135, 148, 160, 0.08), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.012);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.decisionNoteCopy {
+  margin: 0;
+  max-width: 18ch;
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.68;
+}
+
+.decisionNoteMarks {
+  display: grid;
+  gap: 8px;
+  align-self: end;
+  margin-top: auto;
+}
+
+.decisionNoteMarks span {
+  display: block;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(226, 233, 229, 0.2), transparent);
 }
 
 .sectionHead {
@@ -371,10 +325,16 @@
     padding: 24px 20px;
   }
 
-  .decisionLens,
+  .decisionNote,
   .caseFileBody,
   .caseFileRail {
     padding: 16px;
+  }
+
+  .decisionNote {
+    justify-self: stretch;
+    width: 100%;
+    min-height: 0;
   }
 
   .caseFileCard {
@@ -399,11 +359,11 @@
     font-size: 0.88rem;
   }
 
-  .decisionLensFlow {
+  .heroFlow {
     gap: 8px;
   }
 
-  .decisionLensFlowStep {
+  .heroFlowStep {
     width: 100%;
     justify-content: flex-start;
   }
