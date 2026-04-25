@@ -4,8 +4,8 @@
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
-  gap: 24px;
+  grid-template-columns: minmax(0, 1.14fr) minmax(280px, 0.86fr);
+  gap: 28px;
   padding: 34px 32px;
   background:
     radial-gradient(circle at top right, rgba(128, 141, 151, 0.1), transparent 34%),
@@ -23,12 +23,15 @@
 .caseFileBlocks,
 .caseBlock,
 .caseFileFooter,
-.decisionNote {
+.heroMetaBlock,
+.reframeSample,
+.reframeField,
+.reframeEvidence {
   display: grid;
 }
 
 .heroCopy {
-  gap: 14px;
+  gap: 12px;
   max-width: 66ch;
 }
 
@@ -37,7 +40,9 @@
 .caseFileLabel,
 .caseFileMeta,
 .caseBlockLabel,
-.heroFlowLabel {
+.heroFlowLabel,
+.heroMetaLabel,
+.reframeLabel {
   font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -59,8 +64,8 @@
 
 .heroTitle {
   margin: 0;
-  font-size: clamp(2.25rem, 5vw, 3.5rem);
-  line-height: 1;
+  font-size: clamp(2.05rem, 4.4vw, 3rem);
+  line-height: 1.04;
   letter-spacing: -0.04em;
 }
 
@@ -83,7 +88,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 8px 10px;
-  padding-top: 4px;
+  padding-top: 6px;
 }
 
 .heroFlowStep {
@@ -103,15 +108,22 @@
   font-size: 0.86rem;
 }
 
+.heroMetaBlock {
+  gap: 8px;
+  padding-top: 2px;
+}
+
 .heroMeta,
-.scopeChips {
+.reframeEvidenceList {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.heroMeta {
-  padding-top: 4px;
+.heroMetaLabel {
+  color: var(--text-muted);
+  font-size: 0.67rem;
+  font-weight: 600;
 }
 
 .heroMetaChip {
@@ -134,17 +146,17 @@
   line-height: 1.6;
 }
 
-.decisionNote {
+.reframeSample {
   align-self: start;
   justify-self: end;
   gap: 14px;
-  width: min(100%, 320px);
-  min-height: 220px;
+  width: min(100%, 328px);
+  min-height: 0;
   padding: 18px;
   border: 1px solid rgba(226, 233, 229, 0.08);
   border-radius: 16px;
   background:
-    radial-gradient(circle at top right, rgba(135, 148, 160, 0.08), transparent 36%),
+    radial-gradient(circle at top right, rgba(135, 148, 160, 0.08), transparent 34%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.012);
   box-shadow:
@@ -152,25 +164,57 @@
     0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.decisionNoteCopy {
-  margin: 0;
-  max-width: 18ch;
-  color: var(--text-secondary);
-  font-size: 0.92rem;
-  line-height: 1.68;
-}
-
-.decisionNoteMarks {
-  display: grid;
+.reframeField,
+.reframeEvidence {
   gap: 8px;
-  align-self: end;
-  margin-top: auto;
 }
 
-.decisionNoteMarks span {
-  display: block;
-  height: 1px;
-  background: linear-gradient(90deg, rgba(226, 233, 229, 0.2), transparent);
+.reframeLabel {
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  font-weight: 600;
+}
+
+.reframeValue {
+  font-size: 1rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.reframeFieldStrong {
+  padding: 14px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.014)),
+    rgba(255, 255, 255, 0.014);
+}
+
+.reframeArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.014);
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1;
+}
+
+.reframeEvidenceChip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(226, 233, 229, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.016);
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  line-height: 1;
 }
 
 .sectionHead {
@@ -325,13 +369,13 @@
     padding: 24px 20px;
   }
 
-  .decisionNote,
+  .reframeSample,
   .caseFileBody,
   .caseFileRail {
     padding: 16px;
   }
 
-  .decisionNote {
+  .reframeSample {
     justify-self: stretch;
     width: 100%;
     min-height: 0;
@@ -366,5 +410,9 @@
   .heroFlowStep {
     width: 100%;
     justify-content: flex-start;
+  }
+
+  .heroMeta {
+    gap: 6px;
   }
 }

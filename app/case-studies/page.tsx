@@ -131,29 +131,45 @@ export default function CaseStudiesPage() {
               ))}
             </div>
 
-            <div className={styles.heroMeta}>
-              <span className={styles.heroMetaChip}>{formatCount(decisionFiles.length)} Case Files</span>
-              <span className={styles.heroMetaChip}>
-                {formatCount(linkedProjectCount)} Linked Projects
-              </span>
-              <span className={styles.heroMetaChip}>Public</span>
-              <span className={styles.heroMetaChip}>Commerce</span>
-              <span className={styles.heroMetaChip}>CRM</span>
-              <span className={styles.heroMetaChip}>Sports</span>
+            <div className={styles.heroMetaBlock}>
+              <span className={styles.heroMetaLabel}>Archive Scope</span>
+              <div className={styles.heroMeta}>
+                <span className={styles.heroMetaChip}>{formatCount(decisionFiles.length)} Case Files</span>
+                <span className={styles.heroMetaChip}>
+                  {formatCount(linkedProjectCount)} Linked Projects
+                </span>
+                <span className={styles.heroMetaChip}>Public</span>
+                <span className={styles.heroMetaChip}>Commerce</span>
+                <span className={styles.heroMetaChip}>CRM</span>
+                <span className={styles.heroMetaChip}>Sports</span>
+              </div>
             </div>
           </div>
 
-          <aside aria-label="decision note" className={styles.decisionNote}>
-            <span className={styles.panelLabel}>Decision Note</span>
-            <p className={styles.decisionNoteCopy}>
-              Not a project list.
-              <br />
-              A record of how each problem was reframed.
-            </p>
-            <div aria-hidden="true" className={styles.decisionNoteMarks}>
-              <span />
-              <span />
-              <span />
+          <aside aria-label="reframe sample" className={styles.reframeSample}>
+            <span className={styles.panelLabel}>Reframe Sample</span>
+
+            <div className={styles.reframeField}>
+              <span className={styles.reframeLabel}>From</span>
+              <strong className={styles.reframeValue}>상권 데이터 분석</strong>
+            </div>
+
+            <div aria-hidden="true" className={styles.reframeArrow}>
+              ↓
+            </div>
+
+            <div className={`${styles.reframeField} ${styles.reframeFieldStrong}`}>
+              <span className={styles.reframeLabel}>To</span>
+              <strong className={styles.reframeValue}>매입 보류 판단</strong>
+            </div>
+
+            <div className={styles.reframeEvidence}>
+              <span className={styles.reframeLabel}>Evidence</span>
+              <div className={styles.reframeEvidenceList}>
+                <span className={styles.reframeEvidenceChip}>리스크 점수</span>
+                <span className={styles.reframeEvidenceChip}>보류 사유</span>
+                <span className={styles.reframeEvidenceChip}>대체 후보</span>
+              </div>
             </div>
           </aside>
         </section>
