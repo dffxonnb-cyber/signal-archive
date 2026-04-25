@@ -4,8 +4,8 @@
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.14fr) minmax(280px, 0.86fr);
-  gap: 28px;
+  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+  gap: 30px;
   padding: 34px 32px;
   background:
     radial-gradient(circle at top right, rgba(128, 141, 151, 0.1), transparent 34%),
@@ -25,7 +25,8 @@
 .caseFileFooter,
 .heroMetaBlock,
 .reframeSample,
-.reframeField,
+.reframeTransform,
+.reframeTransformPair,
 .reframeEvidence {
   display: grid;
 }
@@ -149,10 +150,10 @@
 .reframeSample {
   align-self: start;
   justify-self: end;
-  gap: 14px;
-  width: min(100%, 328px);
+  gap: 16px;
+  width: min(100%, 392px);
   min-height: 0;
-  padding: 18px;
+  padding: 18px 20px;
   border: 1px solid rgba(226, 233, 229, 0.08);
   border-radius: 16px;
   background:
@@ -164,7 +165,23 @@
     0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
-.reframeField,
+.reframeTransform {
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.reframeTransformPair {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+  min-width: 0;
+}
+
+.reframeTransformPairTo {
+  justify-content: flex-start;
+}
+
 .reframeEvidence {
   gap: 8px;
 }
@@ -173,47 +190,40 @@
   color: var(--text-muted);
   font-size: 0.66rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 .reframeValue {
   font-size: 1rem;
-  line-height: 1.45;
+  line-height: 1.35;
   letter-spacing: -0.01em;
 }
 
-.reframeFieldStrong {
-  padding: 14px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 12px;
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.014)),
-    rgba(255, 255, 255, 0.014);
+.reframeTransformPairTo .reframeValue {
+  color: var(--accent-strong);
+  font-size: 1.05rem;
+  font-weight: 700;
 }
 
-.reframeArrow {
+.reframeTransformArrow {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.014);
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   line-height: 1;
 }
 
 .reframeEvidenceChip {
   display: inline-flex;
   align-items: center;
-  min-height: 28px;
+  min-height: 26px;
   padding: 0 10px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.016);
+  border: 1px solid rgba(226, 233, 229, 0.05);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.024);
   color: var(--text-secondary);
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   line-height: 1;
 }
 
@@ -414,5 +424,21 @@
 
   .heroMeta {
     gap: 6px;
+  }
+
+  .reframeTransform {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .reframeTransformArrow {
+    justify-self: start;
+    font-size: 0.88rem;
+    transform: rotate(90deg);
+  }
+
+  .reframeTransformPair {
+    gap: 8px;
+    flex-wrap: wrap;
   }
 }

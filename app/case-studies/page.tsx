@@ -149,18 +149,20 @@ export default function CaseStudiesPage() {
           <aside aria-label="reframe sample" className={styles.reframeSample}>
             <span className={styles.panelLabel}>Reframe Sample</span>
 
-            <div className={styles.reframeField}>
-              <span className={styles.reframeLabel}>From</span>
-              <strong className={styles.reframeValue}>상권 데이터 분석</strong>
-            </div>
+            <div className={styles.reframeTransform}>
+              <div className={styles.reframeTransformPair}>
+                <span className={styles.reframeLabel}>From</span>
+                <strong className={styles.reframeValue}>상권 데이터 분석</strong>
+              </div>
 
-            <div aria-hidden="true" className={styles.reframeArrow}>
-              ↓
-            </div>
+              <span aria-hidden="true" className={styles.reframeTransformArrow}>
+                →
+              </span>
 
-            <div className={`${styles.reframeField} ${styles.reframeFieldStrong}`}>
-              <span className={styles.reframeLabel}>To</span>
-              <strong className={styles.reframeValue}>매입 보류 판단</strong>
+              <div className={`${styles.reframeTransformPair} ${styles.reframeTransformPairTo}`}>
+                <span className={styles.reframeLabel}>To</span>
+                <strong className={styles.reframeValue}>매입 보류 판단</strong>
+              </div>
             </div>
 
             <div className={styles.reframeEvidence}>
