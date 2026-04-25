@@ -37,6 +37,18 @@ export type ProjectDetailBrief = {
 export type WritingSection = {
   title: string;
   paragraphs: string[];
+  quote?: string;
+};
+
+export type WritingLens = {
+  observe: string;
+  interpret: string;
+  sentence: string;
+};
+
+export type WritingStrength = {
+  title: string;
+  description: string;
 };
 
 export type Project = {
@@ -82,12 +94,15 @@ export type WritingEntry = {
   title: string;
   platform: string;
   summary: string;
+  lead: string;
+  excerpt?: string;
   href: string;
   linkKind: "internal" | "external";
   status: "published" | "inventory" | "planned";
   categories: string[];
   relatedProjects: string[];
   publishedAt: string;
+  lens: WritingLens;
   bodySections: WritingSection[];
 };
 

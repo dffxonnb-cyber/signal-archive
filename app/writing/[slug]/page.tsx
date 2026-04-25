@@ -4,11 +4,17 @@ import { notFound } from "next/navigation";
 import { projects } from "@/content/projects";
 import { writingEntries } from "@/content/writing";
 
+import styles from "./page.module.css";
+
 type WritingDetailPageProps = {
   params: Promise<{
     slug: string;
   }>;
 };
+
+function formatNoteNumber(value: number) {
+  return value.toString().padStart(2, "0");
+}
 
 export function generateStaticParams() {
   return writingEntries
@@ -22,7 +28,8 @@ export default async function WritingDetailPage({
   params,
 }: WritingDetailPageProps) {
   const { slug } = await params;
-  const entry = writingEntries.find((item) => item.slug === slug);
+  const entryIndex = writingEntries.findIndex((item) => item.slug === slug);
+  const entry = writingEntries[entryIndex];
 
   if (!entry) {
     notFound();
@@ -34,76 +41,111 @@ export default async function WritingDetailPage({
 
   return (
     <main className="page-shell">
-      <div className="site-container page-grid">
-        <section className="surface-card detail-hero">
-          <Link className="back-link" href="/writing">
-            Writing
-          </Link>
-          <div className="tag-list" aria-label="Writing metadata">
-            <span className="tag tag--accent">{entry.platform}</span>
-            {entry.categories.map((category) => (
-              <span className="tag" key={category}>
-                {category}
+      <div className={`site-container page-grid ${styles.page}`}>
+        <section className={`surface-card ${styles.articleHero}`}>
+          <div className={styles.heroCopy}>
+            <div className={styles.heroMeta}>
+              <span className={styles.noteLabel}>Writing Note</span>
+              <span className={styles.noteIndex}>
+                {formatNoteNumber(entryIndex + 1)}
               </span>
-            ))}
+            </div>
+
+            <h1 className={styles.articleTitle}>{entry.title}</h1>
+            <p className={styles.articleLead}>{entry.lead}</p>
+
+            <div aria-label="article themes" className={styles.themeList}>
+              {entry.categories.map((category) => (
+                <span className={styles.themeTag} key={category}>
+                  {category}
+                </span>
+              ))}
+            </div>
           </div>
-          <h1 className="page-title detail-title">{entry.title}</h1>
-          <p className="page-intro">{entry.summary}</p>
+
+          <aside aria-label="selected sentence" className={styles.heroQuote}>
+            <span className={styles.quoteLabel}>Selected Sentence</span>
+            <blockquote className={styles.heroQuoteText}>
+              “{entry.lens.sentence}”
+            </blockquote>
+          </aside>
         </section>
 
-        <div className="detail-layout">
-          <aside className="surface-card detail-sidebar">
-            <dl className="detail-meta">
-              <div>
-                <dt>플랫폼</dt>
-                <dd>{entry.platform}</dd>
-              </div>
-              <div>
-                <dt>상태</dt>
-                <dd>{entry.status}</dd>
-              </div>
-              <div>
-                <dt>게시 시점</dt>
-                <dd>{entry.publishedAt}</dd>
-              </div>
-              <div>
-                <dt>연결 프로젝트</dt>
-                <dd>{relatedProjects.length}개</dd>
-              </div>
-            </dl>
-          </aside>
+        <section className={styles.lensBlock}>
+          <div className={styles.lensHead}>
+            <span className={styles.noteLabel}>Writing Lens</span>
+            <p className={styles.lensSummary}>
+              이 글이 감각을 읽고 구조를 만들고 문장으로 남기는 방식을 세 가지
+              축으로 정리했습니다.
+            </p>
+          </div>
 
-          <div className="page-grid">
-            {entry.bodySections.map((section) => (
-              <section className="surface-card detail-section" key={section.title}>
-                <h2 className="section-title">{section.title}</h2>
-                <div className="copy-stack">
+          <div className={styles.lensGrid}>
+            <article className={styles.lensItem}>
+              <span className={styles.lensLabel}>Observe</span>
+              <p>{entry.lens.observe}</p>
+            </article>
+
+            <article className={styles.lensItem}>
+              <span className={styles.lensLabel}>Interpret</span>
+              <p>{entry.lens.interpret}</p>
+            </article>
+
+            <article className={styles.lensItem}>
+              <span className={styles.lensLabel}>Sentence</span>
+              <p>{entry.lens.sentence}</p>
+            </article>
+          </div>
+        </section>
+
+        <section className={`surface-card ${styles.articleBody}`}>
+          {entry.bodySections.map((section, index) => (
+            <section className={styles.articleSection} key={section.title}>
+              <span className={styles.sectionIndex}>
+                {formatNoteNumber(index + 1)}
+              </span>
+
+              <div className={styles.sectionContent}>
+                <h2 className={styles.sectionTitle}>{section.title}</h2>
+
+                {section.quote ? (
+                  <blockquote className={styles.sectionQuote}>
+                    “{section.quote}”
+                  </blockquote>
+                ) : null}
+
+                <div className={styles.prose}>
                   {section.paragraphs.map((paragraph) => (
                     <p key={paragraph}>{paragraph}</p>
                   ))}
                 </div>
-              </section>
-            ))}
+              </div>
+            </section>
+          ))}
+
+          <footer className={styles.articleFooter}>
+            <Link className={styles.backLink} href="/writing">
+              Back to Writing
+            </Link>
 
             {relatedProjects.length > 0 ? (
-              <section className="surface-card detail-section">
-                <span className="eyebrow">Related Projects</span>
-                <h2 className="section-title">함께 보면 좋은 프로젝트</h2>
-                <div className="related-grid">
+              <div className={styles.relatedProjects}>
+                <span className={styles.footerLabel}>Related Projects</span>
+                <div className={styles.relatedProjectList}>
                   {relatedProjects.map((project) => (
-                    <article className="related-card" key={project.slug}>
-                      <h3>{project.title}</h3>
-                      <p>{project.summary}</p>
-                      <Link className="button-link button-link--secondary" href={`/projects/${project.slug}`}>
-                        프로젝트 보기
-                      </Link>
-                    </article>
+                    <Link
+                      className={styles.relatedProjectLink}
+                      href={`/projects/${project.slug}`}
+                      key={project.slug}
+                    >
+                      {project.title}
+                    </Link>
                   ))}
                 </div>
-              </section>
+              </div>
             ) : null}
-          </div>
-        </div>
+          </footer>
+        </section>
       </div>
     </main>
   );
