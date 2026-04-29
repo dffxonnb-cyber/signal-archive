@@ -1,64 +1,77 @@
 # Signal Archive
 
-Signal Archive는 데이터 분석 작업물, 문제 정의 패턴, 그리고 연결된 글쓰기를 아카이브형 인터페이스 하나에 담아 보여주는 한국어 중심 포트폴리오 사이트입니다.
+Signal Archive는 문제 정의, 구조 설계, 검증 중심 분석을 정리한 한국어 데이터 분석 포트폴리오입니다. 도시, 상권, 사용자 데이터를 판단 가능한 구조로 바꾸고, 분석 결과를 웹 페이지와 문서 결과물까지 연결하는 흐름을 보여줍니다.
 
-## 구성 내용
+- Live Site: [signal-archive.vercel.app](https://signal-archive.vercel.app)
+- Repository Description: 문제 정의, 구조 설계, 검증 중심 분석을 정리한 데이터 분석 포트폴리오.
+- Primary Role: Data Analyst / Spatial Data Analyst
+- Secondary Fit: Business Data Analyst / CRM Analytics
+- Core Tools: Python, SQL, pandas, Jupyter, Tableau, JavaScript, GIS
 
-- `Home`: 포지셔닝, 분석 관점, 추천 프로젝트
-- `Projects`: 필터 가능한 아카이브와 프로젝트별 상세 페이지
-- `Case Studies`: 여러 프로젝트에서 반복적으로 드러난 문제 해결 패턴
-- `Writing`: 프로젝트와 연결되는 글 단위의 노트
-- `Resume`: 요약 프로필, 강점, 기술 스택, 프로젝트 정리
-- `Contact`: 공개 프로필과 리뷰/연락 경로
+## Portfolio Focus
 
-## 콘텐츠 모델
+이 사이트는 단순 프로젝트 목록보다 채용 담당자가 빠르게 읽을 수 있는 분석 포트폴리오를 목표로 합니다.
 
-포트폴리오 콘텐츠는 구조화된 TypeScript 데이터로 관리됩니다.
+- 문제를 다시 정의하고 분석 단위를 세우는 과정
+- 흩어진 데이터를 판단 가능한 구조로 정리하는 방식
+- 지표 설계와 검증을 통해 설명 가능한 결과를 남기는 흐름
+- 분석 결과를 README, 문서, 웹 결과물로 전달하는 방식
 
-- [`content/profile.ts`](./content/profile.ts)
-- [`content/projects.ts`](./content/projects.ts)
-- [`content/case-studies.ts`](./content/case-studies.ts)
-- [`content/writing.ts`](./content/writing.ts)
+## Website Structure
 
-이 구조 덕분에 페이지마다 개별 문구를 직접 넣기보다, 재사용 가능한 콘텐츠 객체를 기반으로 UI를 구성할 수 있습니다.
+| Route | Purpose |
+| --- | --- |
+| `/` | 역할 포지셔닝, 핵심 강점, 대표 프로젝트 3개 요약 |
+| `/projects` | 필터 가능한 프로젝트 아카이브와 상세 페이지 |
+| `/case-studies` | 여러 프로젝트에서 반복되는 문제 해결 방식 정리 |
+| `/writing` | 분석과 결과물 전달 방식에 대한 짧은 글 |
+| `/resume` | 역할 적합성, 기술 스택, 프로젝트 기반 이력 요약 |
+| `/contact` | 공개 프로필과 연락 경로 |
 
-## 스택
+## Featured Projects
 
-- Next.js App Router
+- **LH Traffic Safety Analysis**: 공공 안전 우선순위와 공간 위험도 구조를 설계한 분석 사례
+- **Seoul Storefront Redveil**: 상권 매입 전 리스크 신호와 대체 후보를 보여주는 의사결정 도구
+- **UK Online Retail Segment Analysis**: 고객 세그먼트를 매출과 재구매 관점으로 해석한 이커머스 분석 사례
+
+## Content Model
+
+포트폴리오 문구와 프로젝트 정보는 구조화된 TypeScript 데이터로 관리합니다. 페이지별 텍스트를 흩어 두지 않고, 재사용 가능한 콘텐츠 객체를 기반으로 UI를 구성합니다.
+
+- [`content/profile.ts`](./content/profile.ts): 이름, 역할, 강점, 연락처, 기술 스택
+- [`content/projects.ts`](./content/projects.ts): 프로젝트 카드, 상세 페이지, 링크, 검증 포인트
+- [`content/case-studies.ts`](./content/case-studies.ts): 문제 해결 패턴과 연결 프로젝트
+- [`content/writing.ts`](./content/writing.ts): 글 목록, 본문 섹션, 관련 프로젝트
+
+## Tech Stack
+
+- Next.js 15 App Router
 - React 19
 - TypeScript
-- CSS 기반 커스텀 UI
+- CSS Modules and custom CSS
+- Vercel deployment
 
-## 로컬 개발
+## Local Development
 
-1. Node.js 20 이상을 설치합니다.
-2. 의존성을 설치합니다.
+```bash
+npm install
+npm run dev
+```
 
-   ```bash
-   npm install
-   ```
+## Quality Checks
 
-3. 개발 서버를 실행합니다.
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
 
-   ```bash
-   npm run dev
-   ```
+GitHub Actions는 `main` 브랜치 push와 pull request에서 `npm ci`, `typecheck`, `lint`, `build`를 실행합니다.
 
-## 점검 명령
+## GitHub About
 
-- `npm run lint`
-- `npm run typecheck`
-- `npm run build`
+이 저장소의 GitHub About 영역은 사이트 메타데이터와 같은 방향으로 맞춥니다.
 
-GitHub Actions 워크플로우가 포함되어 있어, push와 pull request 시 lint, typecheck, build를 자동으로 실행합니다.
-
-## 현재 범위
-
-- 실제 프로젝트 링크가 프로젝트 상세 페이지에 연결되어 있습니다.
-- Writing 항목은 더 이상 플레이스홀더 카드가 아니라 전용 상세 페이지를 가집니다.
-- Resume와 Contact는 플레이스홀더 대신 공개 가능한 프로필 경로를 노출합니다.
-- 포트폴리오 문구는 현재 GitHub 프로젝트 아카이브 기준에 맞춰 정렬되어 있습니다.
-
-## 검증 메모
-
-현재 작업 환경에는 Node.js가 설치되어 있지 않아, 이 환경에서 `npm install`, `npm run lint`, `npm run build`를 직접 실행하지는 못했습니다. 저장소는 Node 사용 가능 환경이나 GitHub CI에서 바로 해당 점검을 수행할 수 있도록 업데이트되어 있습니다.
+- Description: `문제 정의, 구조 설계, 검증 중심 분석을 정리한 데이터 분석 포트폴리오.`
+- Website: `https://signal-archive.vercel.app`
+- Topics: `data-analysis`, `portfolio`, `nextjs`, `typescript`, `react`, `spatial-analysis`, `business-intelligence`, `crm-analytics`, `gis`, `public-data`
