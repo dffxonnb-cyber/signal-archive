@@ -1,10 +1,33 @@
 import Link from "next/link";
 
-import { PageSummary } from "@/components/page-summary";
+import { RecruiterChecklistModule } from "@/components/page-summary";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
 
 export default function ResumePage() {
+  const recruiterChecklist = [
+    {
+      label: "문제 정의",
+      detail: "대표 프로젝트와 케이스 스터디에서 판단 기준을 다시 세우는 흐름을 확인할 수 있습니다.",
+    },
+    {
+      label: "지표 설계",
+      detail: "공공, 상권, CRM 맥락별 비교 지표와 우선순위 기준을 직접 설계했습니다.",
+    },
+    {
+      label: "결과 해석",
+      detail: "세그먼트, 리스크, 우선순위를 의사결정 언어로 번역하는 작업을 중심에 둡니다.",
+    },
+    {
+      label: "결과물 전달",
+      detail: "README, 웹 페이지, 대시보드까지 직접 연결해 검토 가능한 형태로 마무리합니다.",
+    },
+  ];
+  const skillMatrix = profile.skillGroups.map((group) => ({
+    label: group.title,
+    value: group.items.slice(0, 2).join(" / "),
+  }));
+
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
@@ -17,13 +40,11 @@ export default function ResumePage() {
             </p>
           </div>
 
-          <PageSummary
-            ariaLabel="resume summary"
-            focusItems={["문제 정의", "지표 설계", "결과물 구현"]}
-            metrics={[
-              { label: "Primary Roles", value: profile.primaryRoles.length },
-              { label: "Skill Groups", value: profile.skillGroups.length },
-            ]}
+          <RecruiterChecklistModule
+            ariaLabel="resume recruiter checklist"
+            checklist={recruiterChecklist}
+            roleFit={[...profile.primaryRoles, ...profile.secondaryRoles]}
+            skillMatrix={skillMatrix}
           />
         </section>
 
@@ -86,7 +107,7 @@ export default function ResumePage() {
 
           <section className="surface-card detail-section resume-panel resume-panel--skills">
             <span className="eyebrow">Skills</span>
-            <h2 className="section-title">Skill Matrix</h2>
+            <h2 className="section-title">기술 구성</h2>
             <p className="page-intro">
               도구 이름보다, 각 기술로 실제 어떤 작업을 수행하고 어떤 방식으로 결과를 전달하는지 중심으로 정리했습니다.
             </p>
@@ -108,13 +129,16 @@ export default function ResumePage() {
           <section className="surface-card detail-section resume-panel resume-panel--workflow">
             <span className="eyebrow">Workflow</span>
             <h2 className="section-title">AI-assisted Workflow</h2>
-            <p className="page-intro">{profile.aiWorkflow.summary}</p>
+            <p className="page-intro">
+              AI-assisted workflow를 활용해 아이디어 구조화, 코드 초안 작성, 디버깅, 문서화를 효율화합니다. 문제 정의,
+              지표 설계, 결과 해석, 최종 판단 기준은 직접 검토하며, AI는 반복 작업을 줄이고 검증 시간을 확보하기 위한
+              보조 도구로 사용합니다.
+            </p>
             <ul className="list-stack">
               {profile.aiWorkflow.items.map((item) => (
                 <li key={item}>{item}</li>
               ))}
             </ul>
-            <p className="page-intro">{profile.aiWorkflow.note}</p>
           </section>
 
           <section className="surface-card detail-section resume-panel resume-panel--projects">
@@ -126,7 +150,7 @@ export default function ResumePage() {
                   <div className="resume-project-card__top">
                     <span className="tag tag--accent">{project.badges[0] ?? project.category}</span>
                     <Link className="resume-project-card__link" href={`/projects/${project.slug}`}>
-                      보기
+                      상세 보기
                     </Link>
                   </div>
                   <h3>{project.title}</h3>
@@ -148,7 +172,7 @@ export default function ResumePage() {
                   rel="noreferrer"
                   target="_blank"
                 >
-                  <span className="resume-link-card__label">{link.label}</span>
+                  <span className="resume-link-card__label">{link.label === "Email" ? "이메일" : link.label}</span>
                   <strong>{link.displayText ?? link.href.replace("mailto:", "")}</strong>
                 </a>
               ))}
@@ -157,21 +181,16 @@ export default function ResumePage() {
 
           <section className="surface-card detail-section resume-panel">
             <span className="eyebrow">Fit</span>
-            <h2 className="section-title">선호하지 않는 역할 신호</h2>
-            <ul className="list-stack">
-              {profile.avoidSignals.map((signal) => (
-                <li key={signal}>{signal}</li>
-              ))}
-            </ul>
+            <h2 className="section-title">업무 적합성 메모</h2>
             <p className="page-intro">
-              정해진 리포트를 반복 생산하는 역할보다, 질문 정의 이후 분석 구조를 만들고 결과를 설명해야 하는 역할에 더 잘 맞습니다.
+              반복 리포팅만 수행하는 역할보다, 문제 정의·지표 설계·해석·개선 제안까지 연결되는 분석 업무에서 더 강점을 발휘합니다.
             </p>
             <div className="button-row">
               <Link className="button-link" href="/projects">
                 프로젝트 전체 보기
               </Link>
               <Link className="button-link button-link--secondary" href="/contact">
-                연락 정보 보기
+                연락하기
               </Link>
             </div>
           </section>

@@ -38,20 +38,43 @@ export default async function ProjectDetailPage({
   const relatedCaseStudies = caseStudies.filter((caseStudy) =>
     project.caseStudySlugs.includes(caseStudy.slug),
   );
+  const isLhTrafficSafety = project.slug === "lh-traffic-safety-analysis";
+  const isRedveil = project.slug === "seoul-storefront-redveil";
+  const detailHeroLead = isLhTrafficSafety
+    ? "신도시 교통안전 시설 설치 우선순위를 설명 가능하게 도출한 공간 분석 프로젝트입니다."
+    : project.supportingLine;
+  const overviewHighlight = isLhTrafficSafety
+    ? "공공 교통사고 데이터와 공간 정보를 격자 단위로 재구성하고, 전이 검증을 통해 저이력 지역에도 적용 가능한 위험도 판단 흐름을 설계했습니다."
+    : project.outcome;
   const detailHeroFacts = [
-    { label: "Primary Domain", value: project.primaryDomain },
-    { label: "Role", value: project.role.join(" / ") },
-    { label: "Period", value: project.period },
-    { label: "Format", value: project.format },
+    { label: "주요 도메인", value: project.primaryDomain },
+    { label: "역할", value: project.role.join(" / ") },
+    { label: "기간", value: project.period },
+    { label: "형태", value: project.format },
   ];
-  const detailHeroLinks = project.links.slice(0, 2);
+  const detailHeroLinks = project.links.slice(0, 2).map((link) => ({
+    ...link,
+    label: link.label.includes("GitHub")
+      ? "GitHub 보기"
+      : link.label.includes("Live") || link.label.includes("웹")
+        ? "서비스 보기"
+        : link.label,
+  }));
+  const detailLinks = project.links.map((link) => ({
+    ...link,
+    label: link.label.includes("GitHub")
+      ? "GitHub 보기"
+      : link.label.includes("Live") || link.label.includes("웹")
+        ? "서비스 보기"
+        : link.label,
+  }));
 
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
         <section className="surface-card detail-hero">
           <Link className="back-link" href="/projects">
-            Projects
+            프로젝트 목록
           </Link>
           <div className="tag-list" aria-label="Project badges">
             <span className="tag tag--accent">{project.category}</span>
@@ -62,7 +85,7 @@ export default async function ProjectDetailPage({
             ))}
           </div>
           <h1 className="page-title detail-title">{project.title}</h1>
-          <p className="detail-hero__supporting-line">{renderMultilineText(project.supportingLine)}</p>
+          <p className="detail-hero__supporting-line">{renderMultilineText(detailHeroLead)}</p>
           <p className="page-intro detail-hero__summary">{renderMultilineText(project.summary)}</p>
 
           <div className="detail-hero__meta-grid" aria-label="project quick facts">
@@ -75,7 +98,7 @@ export default async function ProjectDetailPage({
           </div>
 
           <div className="detail-hero__context">
-            <span className="project-card__meta-label">Context</span>
+            <span className="project-card__meta-label">배경</span>
             <p>{project.context}</p>
           </div>
 
@@ -100,14 +123,14 @@ export default async function ProjectDetailPage({
           <section className="surface-card detail-section">
             <div className="detail-section__head">
               <span className="eyebrow">Overview</span>
-              <h2 className="section-title">Overview</h2>
+              <h2 className="section-title">프로젝트 개요</h2>
               <p className="page-intro">프로젝트 범위와 역할을 빠르게 훑을 수 있도록 핵심 정보를 먼저 압축했습니다.</p>
             </div>
 
             <dl className="detail-overview-grid">
               <div className="detail-overview-item detail-overview-item--wide">
-                <dt>프로젝트 한 줄 정의</dt>
-                <dd>{renderMultilineText(project.summary)}</dd>
+                <dt>핵심 결과</dt>
+                <dd>{renderMultilineText(overviewHighlight)}</dd>
               </div>
               <div className="detail-overview-item">
                 <dt>도메인</dt>
@@ -133,15 +156,15 @@ export default async function ProjectDetailPage({
           <section className="surface-card detail-section">
             <div className="detail-section__head">
               <span className="eyebrow">Problem</span>
-              <h2 className="section-title">Problem</h2>
+              <h2 className="section-title">핵심 과제</h2>
             </div>
             <div className="detail-split-grid">
               <div className="detail-note">
-                <span className="project-card__meta-label">What</span>
+                <span className="project-card__meta-label">무엇을 풀었는가</span>
                 <p>{project.detailBrief.problem.what}</p>
               </div>
               <div className="detail-note">
-                <span className="project-card__meta-label">Why It Matters</span>
+                <span className="project-card__meta-label">왜 중요했는가</span>
                 <p>{project.detailBrief.problem.why}</p>
               </div>
             </div>
@@ -151,7 +174,7 @@ export default async function ProjectDetailPage({
             <section className="surface-card detail-section detail-section--evidence">
               <div className="detail-section__head">
                 <span className="eyebrow">Evidence Snapshot</span>
-                <h2 className="section-title">Evidence Snapshot</h2>
+                <h2 className="section-title">핵심 근거</h2>
               </div>
               <div className="detail-overview-grid detail-overview-grid--evidence">
                 {project.evidencePoints.map((item) => (
@@ -167,11 +190,11 @@ export default async function ProjectDetailPage({
           <section className="surface-card detail-section">
             <div className="detail-section__head">
               <span className="eyebrow">Data & Method</span>
-              <h2 className="section-title">Data & Method</h2>
+              <h2 className="section-title">데이터와 접근</h2>
             </div>
             <div className="detail-method-grid">
               <div className="detail-note">
-                <span className="project-card__meta-label">Data</span>
+                <span className="project-card__meta-label">데이터</span>
                 <ul className="list-stack list-stack--compact">
                   {project.detailBrief.dataMethod.dataTypes.map((item) => (
                     <li key={item}>{item}</li>
@@ -179,7 +202,7 @@ export default async function ProjectDetailPage({
                 </ul>
               </div>
               <div className="detail-note">
-                <span className="project-card__meta-label">Method</span>
+                <span className="project-card__meta-label">접근</span>
                 <ul className="list-stack list-stack--compact">
                   {project.detailBrief.dataMethod.process.map((item) => (
                     <li key={item}>{item}</li>
@@ -187,7 +210,7 @@ export default async function ProjectDetailPage({
                 </ul>
               </div>
               <div className="detail-note">
-                <span className="project-card__meta-label">Metric / Criteria</span>
+                <span className="project-card__meta-label">지표 / 기준</span>
                 <ul className="list-stack list-stack--compact">
                   {project.detailBrief.dataMethod.metrics.map((item) => (
                     <li key={item}>{item}</li>
@@ -200,7 +223,7 @@ export default async function ProjectDetailPage({
           <section className="surface-card detail-section detail-section--output">
             <div className="detail-section__head">
               <span className="eyebrow">Output</span>
-              <h2 className="section-title">Output</h2>
+              <h2 className="section-title">결과물</h2>
             </div>
             <p className="page-intro">{project.outcome}</p>
             <div className="detail-output-chips" aria-label="project outputs">
@@ -210,12 +233,17 @@ export default async function ProjectDetailPage({
                 </span>
               ))}
             </div>
+            {isRedveil ? (
+              <p className="detail-footnote">
+                본 프로젝트는 공개 데이터를 기반으로 한 분석 포트폴리오이며, 실제 투자 판단을 대체하지 않습니다.
+              </p>
+            ) : null}
           </section>
 
           <section className="surface-card detail-section">
             <div className="detail-section__head">
               <span className="eyebrow">Key Insight</span>
-              <h2 className="section-title">Key Insight</h2>
+              <h2 className="section-title">핵심 포인트</h2>
             </div>
             <ul className="list-stack">
               {project.focusPoints.slice(0, 3).map((item) => (
@@ -226,8 +254,8 @@ export default async function ProjectDetailPage({
 
           <section className="surface-card detail-section">
             <div className="detail-section__head">
-              <span className="eyebrow">Limitations</span>
-              <h2 className="section-title">Limitations</h2>
+              <span className="eyebrow">Notes</span>
+              <h2 className="section-title">검토 메모</h2>
             </div>
             <ul className="list-stack">
               {project.detailBrief.limitations.map((item) => (
@@ -239,11 +267,11 @@ export default async function ProjectDetailPage({
           <section className="surface-card detail-section">
             <div className="detail-section__head">
               <span className="eyebrow">Links</span>
-              <h2 className="section-title">Links</h2>
+              <h2 className="section-title">바로가기</h2>
             </div>
-            {project.links.length > 0 ? (
+            {detailLinks.length > 0 ? (
               <div className="detail-links">
-                {project.links.map((link) => (
+                {detailLinks.map((link) => (
                   <a
                     className="button-link button-link--secondary"
                     href={link.href}
@@ -271,7 +299,7 @@ export default async function ProjectDetailPage({
                     <h3>{caseStudy.title}</h3>
                     <p>{caseStudy.summary}</p>
                     <Link className="button-link button-link--secondary" href={`/case-studies#${caseStudy.slug}`}>
-                      Case Studies에서 보기
+                      연결 글 보기
                     </Link>
                   </article>
                 ))}

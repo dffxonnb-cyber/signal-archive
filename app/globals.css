@@ -427,7 +427,10 @@ main {
   display: block;
 }
 
-.home-hero__title-prefix,
+.home-hero__title-prefix {
+  white-space: normal;
+}
+
 .home-hero__title-tail {
   white-space: nowrap;
 }

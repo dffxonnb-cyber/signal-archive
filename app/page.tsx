@@ -1,13 +1,14 @@
 import Link from "next/link";
 
 import { HomeProjectCard } from "@/components/home-project-card";
-import { featuredProjects } from "@/content/projects";
+import { IdentitySnapshotModule } from "@/components/page-summary";
+import { featuredProjects, projects } from "@/content/projects";
 
 const heroMeta = [
-  "Primary Role: Data Analyst / Spatial Data Analyst",
-  "Secondary Fit: Business Data Analyst / CRM Analytics",
-  "Domain: 도시 / 상권 / 사용자 데이터",
-  "Tools: Python / SQL / GIS / Tableau",
+  "주요 역할: 데이터 분석가 / 공간 데이터 분석가",
+  "확장 역할: 비즈니스 데이터 분석 / CRM 분석",
+  "도메인: 도시 / 상권 / 사용자 데이터",
+  "도구: Python / SQL / GIS / Tableau",
 ];
 
 const coreStack = ["Python", "SQL", "pandas", "Jupyter", "Tableau", "JavaScript", "GIS"];
@@ -23,6 +24,9 @@ const mainStrength = [
 const primaryRoles = ["Data Analyst", "Spatial Data Analyst"];
 
 const secondaryRoles = ["Business Data Analyst", "CRM & Growth Data Analyst"];
+const identityRoles = ["데이터 분석가", "공간 데이터 분석가"];
+const identitySecondaryRoles = ["비즈니스 데이터 분석", "CRM 분석"];
+const identityDomains = ["공공데이터", "도시", "상권/부동산", "CRM"];
 
 const lensItems = [
   {
@@ -56,10 +60,16 @@ const lensItems = [
 
 const archiveRoutes = [
   { href: "/case-studies", label: "Case Studies", summary: "문제 해결 방식" },
-  { href: "/writing", label: "Writing", summary: "linked notes / essays" },
-  { href: "/resume", label: "Resume", summary: "압축된 경력 정보" },
-  { href: "/contact", label: "Contact", summary: "공개 버전 안내" },
+  { href: "/writing", label: "Writing", summary: "분석 메모와 회고" },
+  { href: "/resume", label: "Resume", summary: "이력 요약과 역할 적합성" },
+  { href: "/contact", label: "Contact", summary: "연락 경로와 검토 안내" },
 ];
+
+const selectedProjectSlugs = [
+  "seoul-storefront-redveil",
+  "lh-traffic-safety-analysis",
+  "starbucks-promotion-analysis",
+] as const;
 
 const homeProjectMeta: Record<
   string,
@@ -76,36 +86,54 @@ const homeProjectMeta: Record<
   "lh-traffic-safety-analysis": {
     lens: "spatial / public / risk",
     note: "공공 안전 우선순위 설계",
-    problem: "사고 건수 집계가 아니라 도시 인프라 관점에서 먼저 읽어야 할 위험 신호가 필요했다.",
+    problem: "사고 건수 집계만으로는 신도시 같은 저이력 지역의 설치 우선순위를 설명하기 어려웠다.",
     roleLabel: "공간 분석 / 우선순위 지표 설계",
-    scopeLabel: "공공 안전 / 설치 판단 구조",
-    tags: ["공간 분석", "공공데이터", "위험 해석", "지표 설계"],
-    impact: "Mean AUC 0.8604와 Top-10% Lift 4.39x로 위험 격자 기반 우선순위 구조를 검증한 사례.",
+    scopeLabel: "공공 안전 / 설치 우선순위",
+    tags: ["공간 분석", "공공데이터", "우선순위 비교", "지표 설계"],
+    impact: "Mean AUC 0.8604와 Top-10% Lift 4.39x를 바탕으로 설치 우선순위를 비교 가능한 형태로 정리한 사례.",
   },
   "seoul-storefront-redveil": {
     lens: "end-to-end / decision tool",
-    note: "상권 리스크 판단 도구 구현",
-    problem: "좋아 보이는 상가보다 매입 전에 먼저 걸러야 할 리스크 신호를 구조적으로 보여줄 필요가 있었다.",
-    roleLabel: "리스크 기준 설계 / 웹 구현",
-    scopeLabel: "상권 매입 검토 / 의사결정 도구",
-    tags: ["리스크 기준", "SQL", "웹 구현", "상권 분석"],
-    impact: "서울 25개 구와 거래 12,074건을 바탕으로 보류 사유와 대체 후보까지 보여주는 공개 판단 도구 사례.",
+    note: "상권 검토 서비스 구현",
+    problem: "매입 전 검토에서 추천보다 먼저 확인해야 할 항목을 한 화면에 보여줄 필요가 있었다.",
+    roleLabel: "비교 기준 설계 / 웹 구현",
+    scopeLabel: "상권 매입 검토 / 공개 서비스",
+    tags: ["상권 분석", "비교 기준", "웹 구현", "공공데이터"],
+    impact: "서울 25개 구와 거래 12,074건을 바탕으로 매물 비교와 확인 포인트를 공개 웹으로 정리한 사례.",
   },
   "uk-online-retail-segment-analysis": {
     lens: "commerce / segmentation / insight",
     note: "매출·재구매 해석 중심 세그먼트",
-    problem: "세그먼트 분류 자체보다, 어떤 고객 해석이 사업 판단으로 이어지는지가 더 중요했다.",
+    problem: "세그먼트 분류 자체보다, 어떤 고객 해석이 매출과 재구매 액션으로 이어지는지가 더 중요했다.",
     roleLabel: "세그먼트 해석 / 인사이트 정리",
     scopeLabel: "리테일 데이터 / 매출·재구매 해석",
     tags: ["커머스", "세그먼트", "고객 해석", "인사이트"],
     impact: "상위 20% 고객이 매출의 73.5%를 차지한다는 신호를 바탕으로 세그먼트를 액션 언어로 번역한 사례.",
   },
+  "starbucks-promotion-analysis": {
+    lens: "crm / offer / response",
+    note: "CRM 반응 구조 분석",
+    problem: "고객, 오퍼, 채널 데이터가 흩어져 있어 어떤 제안이 어떤 반응으로 이어졌는지 한 번에 읽기 어려웠다.",
+    roleLabel: "오퍼 반응 해석 / Tableau 결과물",
+    scopeLabel: "CRM / 마케팅 반응 분석",
+    tags: ["CRM", "오퍼 반응", "채널 효과", "Tableau"],
+    impact: "고객-오퍼-채널 구조를 다시 묶어 세그먼트 반응과 마케팅 액션까지 연결한 사례.",
+  },
 };
 
 export default function HomePage() {
-  const selectedProjects = featuredProjects.slice(0, 3).map((project) => ({
-    project,
-    meta: homeProjectMeta[project.slug],
+  const selectedProjects = selectedProjectSlugs
+    .map((slug) => projects.find((project) => project.slug === slug))
+    .filter((project): project is (typeof projects)[number] => Boolean(project))
+    .map((project) => ({
+      project,
+      meta: homeProjectMeta[project.slug],
+    }));
+  const projectSignals = selectedProjects.map(({ project, meta }) => ({
+    label: project.title,
+    href: `/projects/${project.slug}`,
+    detail: meta?.note ?? project.badges[0] ?? project.format,
+    kind: "internal" as const,
   }));
 
   return (
@@ -119,16 +147,16 @@ export default function HomePage() {
             </div>
 
             <h1 className="hero-title home-hero__title">
-              <span className="home-hero__title-prefix">데이터를 판단 가능한 구조로 바꾸는</span>
+              <span className="home-hero__title-prefix">문제를 다시 정의하고, 데이터를 판단 가능한 구조로 바꾸는</span>
               <span className="hero-title__accent home-hero__title-tail">데이터 분석가</span>
             </h1>
 
             <p className="home-hero__summary">
               <span className="home-hero__summary-line">
-                도시·상권·사용자 데이터를 문제 정의부터 지표 설계까지 연결하고,
+                흩어진 데이터를 분석 가능한 단위로 정리하고,
               </span>
               <span className="home-hero__summary-line">
-                설명 가능한 분석 구조와 결과물로 정리합니다.
+                문제 정의·지표 설계·검증 과정을 거쳐 의사결정에 필요한 결과물로 연결합니다.
               </span>
             </p>
 
@@ -145,29 +173,24 @@ export default function HomePage() {
                 대표 프로젝트 보기
               </Link>
               <Link className="button-link button-link--secondary" href="/resume">
-                Resume 보기
+                이력서 보기
               </Link>
             </div>
           </div>
 
-          <aside className="home-rail">
-            <div className="home-rail__head">
-              <span className="eyebrow">Selected Dossiers</span>
-              <strong>대표 사례 3개</strong>
-            </div>
-
-            <div className="home-rail__list">
-              {selectedProjects.map(({ project, meta }, index) => (
-                <Link className="home-rail__item" href={`/projects/${project.slug}`} key={project.slug}>
-                  <span className="home-rail__index">{`0${index + 1}`}</span>
-                  <div className="home-rail__body">
-                    <strong>{project.title}</strong>
-                    <span>{meta?.note ?? project.badges[0] ?? project.format}</span>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </aside>
+          <IdentitySnapshotModule
+            ariaLabel="home identity snapshot"
+            domains={identityDomains}
+            projectSignals={projectSignals}
+            roles={identityRoles}
+            secondaryRoles={identitySecondaryRoles}
+            stack={coreStack}
+            stats={[
+              { label: "역할 축", value: identityRoles.length },
+              { label: "도메인 축", value: identityDomains.length },
+              { label: "대표 신호", value: projectSignals.length },
+            ]}
+          />
         </section>
 
         <section className="surface-card home-snapshot">
@@ -204,12 +227,12 @@ export default function HomePage() {
             <article className="home-snapshot-card home-snapshot-card--strength">
               <div className="home-snapshot-card__top">
                 <span className="eyebrow">Main Strength</span>
-                <h3>문제 정의 → 데이터 구조화 → 지표 설계 → 검증 → 웹/문서 결과물 구현</h3>
+                <h3>문제 정의 → 데이터 정리 → 지표 설계 → 검증 → 웹/문서 결과물 구현</h3>
               </div>
 
               <p>
-                보기 좋은 결과를 빠르게 나열하기보다, 다시 설명하고 검토할 수 있는 판단 구조와 산출물까지
-                남기는 쪽에 강점이 있습니다.
+                보기 좋은 결과를 빠르게 나열하기보다, 질문을 다시 세우고 검증 가능한 방식으로 결과물까지
+                연결하는 작업 방식을 중요하게 생각합니다.
               </p>
 
               <div className="home-snapshot-card__chips" aria-label="핵심 강점">

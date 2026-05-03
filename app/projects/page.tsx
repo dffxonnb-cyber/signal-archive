@@ -1,9 +1,17 @@
+import { ProjectIndexModule } from "@/components/page-summary";
 import { ProjectExplorer } from "@/components/project-explorer";
 import { featuredProjects, projects } from "@/content/projects";
 
-const focusAreas = ["공공데이터", "커머스", "리테일/마케팅", "스포츠"];
-
 export default function ProjectsPage() {
+  const projectDomains = Array.from(new Set(projects.map((project) => project.primaryDomain)));
+  const projectTypes = Array.from(new Set(projects.flatMap((project) => project.problemTypes))).slice(0, 6);
+  const quickLinks = featuredProjects.map((project) => ({
+    label: project.title,
+    href: `/projects/${project.slug}`,
+    detail: `${project.primaryDomain} · ${project.format}`,
+    kind: "internal" as const,
+  }));
+
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
@@ -15,34 +23,21 @@ export default function ProjectsPage() {
               <span className="projects-header__title-tail">전체 아카이브</span>
             </h1>
             <p className="page-intro">
-              각 프로젝트의 사례를 더 정확히 선택할 수 있도록
-              <br />
-              분류 체계를 재정리했습니다.
+              각 프로젝트의 도메인, 문제 유형, 사용 기술을 기준으로 빠르게 비교할 수 있도록 정리했습니다.
             </p>
           </div>
 
-          <div className="projects-summary" aria-label="프로젝트 요약">
-            <article className="projects-summary__item projects-summary__item--metric">
-              <span className="projects-summary__label">전체 프로젝트</span>
-              <strong className="projects-summary__value">{projects.length}</strong>
-            </article>
-
-            <article className="projects-summary__item projects-summary__item--metric">
-              <span className="projects-summary__label">대표 프로젝트</span>
-              <strong className="projects-summary__value">{featuredProjects.length}</strong>
-            </article>
-
-            <article className="projects-summary__item projects-summary__item--focus">
-              <span className="projects-summary__label">Focus</span>
-              <div className="projects-summary__chips" aria-label="focus categories">
-                {focusAreas.map((area) => (
-                  <span className="projects-summary__chip" key={area}>
-                    {area}
-                  </span>
-                ))}
-              </div>
-            </article>
-          </div>
+          <ProjectIndexModule
+            ariaLabel="projects index overview"
+            domainChips={projectDomains}
+            quickLinks={quickLinks}
+            stats={[
+              { label: "전체 프로젝트", value: projects.length },
+              { label: "대표 프로젝트", value: featuredProjects.length },
+              { label: "도메인", value: projectDomains.length },
+            ]}
+            typeChips={projectTypes}
+          />
         </section>
 
         <ProjectExplorer projects={projects} />

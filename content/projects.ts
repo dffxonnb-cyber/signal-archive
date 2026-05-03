@@ -36,20 +36,20 @@ export const projects: Project[] = [
     },
     evidencePoints: [
       {
-        label: "Coverage",
+        label: "적용 범위",
         value: "4개 신도시 권역 비교와 교산 적용 시나리오까지 포함",
       },
       {
-        label: "Analysis Unit",
+        label: "분석 단위",
         value: "격자 기반 위험 구간과 설치 후보 위치 단위로 재구성",
       },
       {
-        label: "Validation",
+        label: "검증 결과",
         value: "Mean AUC 0.8604 / Top-10% Lift 4.39x",
       },
       {
-        label: "Decision Output",
-        value: "추천 패키지와 추천 사유까지 설명 가능한 결과물로 연결",
+        label: "결과물 연결",
+        value: "설치 후보와 우선순위 사유를 함께 설명하는 결과물로 연결",
       },
     ],
     detailBrief: {
@@ -116,7 +116,7 @@ export const projects: Project[] = [
     title: "Seoul Storefront Redveil",
     category: "대표 프로젝트",
     primaryDomain: "상권/부동산",
-    summary: "좋아 보이는 매물 추천보다, 매입 이전 보류해야 할\n근거를 구조적으로 도출한 상권 리스크 서비스입니다.",
+    summary: "좋아 보이는 매물 추천보다, 매입 전에 확인해야 할\n근거를 한 화면에 정리한 상권 검토 서비스입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["상권 분석", "공공데이터", "리스크 모델링", "웹 구현"],
@@ -134,7 +134,7 @@ export const projects: Project[] = [
     supportingLine: "보류 근거를 명확히 보여주는 상권 리스트 판단 서비스",
     cardBrief: {
       problem:
-        "좋아 보이는 매물 추천보다, 매입 전에 먼저 보류해야 할 리스크 신호를 구조적으로 보여줄 필요가 있었음.",
+        "좋아 보이는 매물 추천보다, 매입 전에 먼저 확인해야 할 항목을 한눈에 보여줄 필요가 있었음.",
       method:
         "공공데이터와 상권 데이터를 결합해 리스크 기준을 설계하고, 비교 가능한 웹 서비스 흐름으로 구현함.",
       output: [
@@ -183,7 +183,7 @@ export const projects: Project[] = [
         "실시간 공실률, 유동 인구, 운영 매출 같은 추가 변수는 아직 결합하지 않았습니다.",
         "실제 투자 판단 결과와의 장기 검증은 후속 작업이 필요합니다.",
       ],
-      linkNote: "Live Site와 GitHub 저장소 문서에서 서비스 흐름과 설명 자료를 함께 확인할 수 있습니다.",
+      linkNote: "서비스 페이지와 GitHub 저장소 문서에서 서비스 흐름과 설명 자료를 함께 확인할 수 있습니다.",
     },
     focusPoints: [
       "분석 결과를 문서에 두지 않고 공개 웹사이트 형태로 구현",
@@ -192,7 +192,7 @@ export const projects: Project[] = [
     ],
     links: [
       {
-        label: "Live Site",
+        label: "서비스 보기",
         href: "https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/",
       },
       {
@@ -206,7 +206,7 @@ export const projects: Project[] = [
       {
         title: "프로젝트 개요",
         paragraphs: [
-          "Redveil은 서울 상가 매입 전 검토에 필요한 리스크 신호를 빠르게 읽을 수 있게 만든 공개 서비스입니다.",
+          "Redveil은 서울 상가 매입 전 검토에 필요한 확인 포인트를 빠르게 읽을 수 있게 만든 공개 서비스입니다.",
           "좋아 보이는 매물을 추천하는 것보다 먼저 사지 말아야 할 이유를 보여주는 흐름을 중심에 두고 설계했습니다.",
         ],
       },
@@ -260,19 +260,19 @@ export const projects: Project[] = [
     },
     evidencePoints: [
       {
-        label: "Dataset",
+        label: "데이터셋",
         value: "UK Online Retail 공개 거래 데이터와 고객 구매 이력 기반",
       },
       {
-        label: "Analysis Unit",
+        label: "분석 단위",
         value: "고객 단위 RFM 세그먼트와 월별 매출·재구매 패턴 비교",
       },
       {
-        label: "Revenue Signal",
+        label: "매출 핵심 지표",
         value: "상위 20% 고객이 전체 매출의 73.5% 차지",
       },
       {
-        label: "Risk Signal",
+        label: "이탈 징후",
         value: "이탈위험 고객군 11월 매출이 10월 대비 84.2% 감소",
       },
     ],
@@ -584,7 +584,7 @@ export const projects: Project[] = [
     ],
     links: [
       {
-        label: "Live Site",
+        label: "서비스 보기",
         href: "https://dffxonnb-cyber.github.io/ShopEasy/",
       },
       {
