@@ -68,6 +68,8 @@ npm run build
 
 GitHub Actions는 `main` 브랜치 push와 pull request에서 `npm ci`, `typecheck`, `lint`, `build`를 실행합니다.
 
+재현성 기준과 pinned 프로젝트별 검증 범위는 [VERIFY.md](./VERIFY.md)에 정리했습니다.
+
 ## GitHub About
 
 Repository About 영역은 아래처럼 맞추는 것을 권장합니다.
