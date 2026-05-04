@@ -38,9 +38,9 @@ npm run build
 | --- | --- | --- |
 | Seoul Storefront Redveil | Unit tests, public-safe payload build, GitHub Pages deployment | Full raw-data rebuild requires public API/source snapshots excluded from the repo. |
 | LH Traffic Safety Analysis | Public-safe dashboard smoke tests, validation docs, review CSV/images | Original competition data is not included. |
-| Starbucks Promotion Analysis | Public artifact check and pipeline entry-point compile check | Full notebook execution requires Kaggle CSV files. |
-| UK Online Retail Segment Analysis | Public artifact check and pipeline entry-point compile check | Full notebook execution requires UCI Online Retail CSV. |
-| ShopEasy | Static dashboard and CSV artifact check | Current repo verifies published synthetic artifacts rather than regenerating the dataset. |
+| Starbucks Promotion Analysis | Public artifact check, pipeline entry-point compile check, public smoke tests | Full notebook execution requires Kaggle CSV files. |
+| UK Online Retail Segment Analysis | Public artifact check, pipeline entry-point compile check, public smoke tests | Full notebook execution requires UCI Online Retail CSV. |
+| ShopEasy | Static dashboard, deterministic synthetic dataset generator, CSV schema/row count/key metric checks | Synthetic data is generated for portfolio review, not production behavior simulation. |
 
 ## Known Limits
 

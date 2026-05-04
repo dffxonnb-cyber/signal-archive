@@ -240,7 +240,7 @@ export const projects: Project[] = [
     stack: ["Python", "SQL", "Jupyter"],
     problemTypes: ["구매 패턴 분석", "고객 세그먼트 분석", "매출/재구매 인사이트"],
     coreTags: ["UK Online Retail", "E-commerce", "RFM", "Customer Segmentation", "Revenue Analysis"],
-    badges: ["Featured", "E-commerce", "Revenue Logic"],
+    badges: ["Featured", "E-commerce", "Revenue Logic", "CI Verified"],
     context:
       "영국 온라인 리테일 거래 데이터는 구매 기록 자체는 풍부하지만, 어떤 패턴이 세그먼트 차이와 재구매 관점 인사이트로 이어지는지 구조적으로 정리할 필요가 있었습니다.",
     outcome:
@@ -274,6 +274,10 @@ export const projects: Project[] = [
       {
         label: "이탈 징후",
         value: "이탈위험 고객군 11월 매출이 10월 대비 84.2% 감소",
+      },
+      {
+        label: "공개 검증",
+        value: "artifact checker + public smoke tests가 GitHub Actions에서 통과",
       },
     ],
     detailBrief: {
@@ -350,7 +354,7 @@ export const projects: Project[] = [
     stack: ["Python", "SQL", "Tableau"],
     problemTypes: ["고객 반응 분석", "오퍼/채널 성과 분석", "마케팅 액션 인사이트"],
     coreTags: ["CRM", "Offer Response", "Customer Segmentation", "Marketing Analytics", "Tableau"],
-    badges: ["CRM", "Marketing Analytics"],
+    badges: ["CRM", "Marketing Analytics", "Model Metrics", "CI Verified"],
     context:
       "고객, 오퍼, 채널 데이터가 분리된 상태에서는 어떤 고객군이 어떤 제안에 반응하는지와 오퍼/채널 성과 차이를 함께 읽기 어렵습니다.",
     outcome:
@@ -368,6 +372,24 @@ export const projects: Project[] = [
         "마케팅 액션 인사이트",
       ],
     },
+    evidencePoints: [
+      {
+        label: "모델 성능",
+        value: "AUC 0.8147 / Recall 0.8712 / Precision 0.6830 / F1 0.7657",
+      },
+      {
+        label: "추천 검증",
+        value: "Recall@5% 0.0855 / Recall@10% 0.1642 / NDCG@5 1.0000",
+      },
+      {
+        label: "검증 설계",
+        value: "시간 기반 train/test split으로 미래 정보 누수 가능성을 줄임",
+      },
+      {
+        label: "공개 검증",
+        value: "artifact checker + public smoke tests가 GitHub Actions에서 통과",
+      },
+    ],
     detailBrief: {
       problem: {
         what:
@@ -518,7 +540,7 @@ export const projects: Project[] = [
     stack: ["Python", "Pandas", "HTML/CSS/JS"],
     problemTypes: ["전환율 분석", "서비스 진단", "실험 설계"],
     coreTags: ["주문 감소", "모바일 전환", "전자기기 완료율", "A/B Test"],
-    badges: ["Commerce", "Dashboard", "Experiment"],
+    badges: ["Commerce", "Dashboard", "Experiment", "Reproducible Data"],
     context:
       "주문 감소를 단순 유입 하락으로만 보면 어떤 구간을 먼저 고쳐야 하는지 알기 어렵습니다. 고객 세그먼트, 카테고리, 진입 페이지, 디바이스, 이탈 페이지를 함께 읽어 실제 개선 실험까지 연결하는 구조가 필요했습니다.",
     outcome:
@@ -552,6 +574,10 @@ export const projects: Project[] = [
       {
         label: "Experiment Output",
         value: "모바일 전자기기 상품상세·장바구니 개선 A/B 테스트 제안",
+      },
+      {
+        label: "Public Verification",
+        value: "seed 고정 데이터 생성기와 CSV schema/row count/핵심 지표 검증 추가",
       },
     ],
     detailBrief: {
