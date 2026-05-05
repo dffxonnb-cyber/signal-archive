@@ -23,6 +23,8 @@
 .caseFileBlocks,
 .caseBlock,
 .caseFileFooter,
+.frameworkGrid,
+.frameworkCard,
 .heroMetaBlock,
 .reframeSample,
 .reframeTransform,
@@ -247,6 +249,42 @@
   padding-top: 4px;
 }
 
+.frameworkGrid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.frameworkCard {
+  gap: 8px;
+  min-height: 132px;
+  padding: 14px;
+  border: 1px solid rgba(226, 233, 229, 0.09);
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(159, 185, 173, 0.045), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.012);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
+}
+
+.frameworkIndex {
+  color: var(--accent-warm);
+  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.frameworkCard strong {
+  font-size: 0.94rem;
+  line-height: 1.3;
+}
+
+.frameworkCard p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  line-height: 1.58;
+}
+
 .caseFileList {
   gap: 16px;
 }
@@ -254,8 +292,8 @@
 .caseFileCard {
   grid-template-columns: 168px minmax(0, 1fr);
   gap: 0;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 16px;
+  border: 1px solid rgba(226, 233, 229, 0.1);
+  border-radius: 10px;
   overflow: hidden;
   background:
     radial-gradient(circle at top right, rgba(114, 128, 139, 0.08), transparent 36%),
@@ -316,8 +354,8 @@
   gap: 10px;
   min-height: 100%;
   padding: 14px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 12px;
+  border: 1px solid rgba(226, 233, 229, 0.09);
+  border-radius: 10px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.012);
@@ -368,7 +406,8 @@
 }
 
 @media (max-width: 1080px) {
-  .caseFileBlocks {
+  .caseFileBlocks,
+  .frameworkGrid {
     grid-template-columns: 1fr;
   }
 }

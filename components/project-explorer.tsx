@@ -13,6 +13,11 @@ type ProjectExplorerProps = {
 type SortMode = "featured" | "title";
 
 const ALL = "전체";
+const priorityProjectSlugs = new Set([
+  "seoul-storefront-redveil",
+  "lh-traffic-safety-analysis",
+  "starbucks-promotion-analysis",
+]);
 
 export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   const [domain, setDomain] = useState(ALL);
@@ -54,6 +59,23 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
     problemType !== ALL ? problemType : null,
     stack !== ALL ? stack : null,
   ].filter(Boolean) as string[];
+  const featuredResults = filteredProjects.filter((project) => priorityProjectSlugs.has(project.slug));
+  const supportingResults = filteredProjects.filter((project) => !priorityProjectSlugs.has(project.slug));
+
+  const renderProjectSection = (title: string, description: string, items: Project[]) =>
+    items.length > 0 ? (
+      <section className="project-result-section" key={title}>
+        <div className="project-result-section__head">
+          <span className="eyebrow">{title}</span>
+          <p>{description}</p>
+        </div>
+        <div className={`project-grid ${title === "Featured Projects" ? "project-grid--featured" : ""}`}>
+          {items.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      </section>
+    ) : null;
 
   return (
     <section className="page-grid">
@@ -140,15 +162,39 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
               <span>전체 기준</span>
             )}
           </div>
+
+          <div className="filter-quick-chips" aria-label="quick domain filters">
+            {[ALL, ...domains.slice(0, 5)].map((item) => {
+              const isActive = domain === item;
+
+              return (
+                <button
+                  className={`filter-quick-chip ${isActive ? "filter-quick-chip--active" : ""}`}
+                  key={item}
+                  onClick={() => setDomain(item)}
+                  type="button"
+                >
+                  {item}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       {filteredProjects.length > 0 ? (
-        <div className="project-grid">
-          {filteredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
+        <>
+          {renderProjectSection(
+            "Featured Projects",
+            "역할 적합성과 검증 신호가 가장 빠르게 읽히는 대표 작업입니다.",
+            featuredResults,
+          )}
+          {renderProjectSection(
+            "Supporting Projects",
+            "도메인과 산출물 범위를 넓혀 보여주는 보조 사례입니다.",
+            supportingResults,
+          )}
+        </>
       ) : (
         <div className="surface-card empty-state">
           <h2 className="section-title">조건에 맞는 프로젝트가 없습니다.</h2>

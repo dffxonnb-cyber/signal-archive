@@ -4,6 +4,12 @@ import { RecruiterChecklistModule } from "@/components/page-summary";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
 
+const resumeMetricChips: Record<string, string[]> = {
+  "seoul-storefront-redveil": ["25 Seoul Districts", "12,074 Transactions"],
+  "lh-traffic-safety-analysis": ["AUC 0.8604", "Top-10% Lift 4.39x"],
+  "uk-online-retail-segment-analysis": ["Top 20% = 73.5% Sales", "84.2% MoM Drop"],
+};
+
 export default function ResumePage() {
   const recruiterChecklist = [
     {
@@ -116,11 +122,13 @@ export default function ResumePage() {
                 <article className="resume-skill-card" key={group.title}>
                   <h3>{group.title}</h3>
                   {group.summary ? <p className="resume-skill-card__summary">{group.summary}</p> : null}
-                  <ul className="resume-skill-card__list">
+                  <div className="resume-skill-card__chips">
                     {group.items.map((item) => (
-                      <li key={item}>{item}</li>
+                      <span className="chip chip--quiet" key={item}>
+                        {item}
+                      </span>
                     ))}
-                  </ul>
+                  </div>
                 </article>
               ))}
             </div>
@@ -155,6 +163,15 @@ export default function ResumePage() {
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.summary}</p>
+                  {resumeMetricChips[project.slug]?.length ? (
+                    <div className="resume-project-card__metrics">
+                      {resumeMetricChips[project.slug].map((metric) => (
+                        <span className="chip chip--metric" key={metric}>
+                          {metric}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                 </article>
               ))}
             </div>
@@ -183,7 +200,8 @@ export default function ResumePage() {
             <span className="eyebrow">Fit</span>
             <h2 className="section-title">업무 적합성 메모</h2>
             <p className="page-intro">
-              반복 리포팅만 수행하는 역할보다, 문제 정의·지표 설계·해석·개선 제안까지 연결되는 분석 업무에서 더 강점을 발휘합니다.
+              리포트와 분석이 판단 기준, 의사결정, 개선 액션으로 연결되는 역할에서 가장 강점을 발휘합니다. 기본 리포팅도
+              전체 분석 흐름을 안정적으로 만드는 중요한 출발점으로 보고 있습니다.
             </p>
             <div className="button-row">
               <Link className="button-link" href="/projects">

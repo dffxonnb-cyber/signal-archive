@@ -12,6 +12,7 @@ const heroMeta = [
 ];
 
 const coreStack = ["Python", "SQL", "pandas", "Jupyter", "Tableau", "JavaScript", "GIS"];
+const identityChips = ["Data Analysis", "Spatial Analytics", "Decision Systems", "Web-based Outputs"];
 
 const mainStrength = [
   "문제 정의",
@@ -27,6 +28,13 @@ const secondaryRoles = ["Business Data Analyst", "CRM & Growth Data Analyst"];
 const identityRoles = ["데이터 분석가", "공간 데이터 분석가"];
 const identitySecondaryRoles = ["비즈니스 데이터 분석", "CRM 분석"];
 const identityDomains = ["공공데이터", "도시", "상권/부동산", "CRM"];
+const proofPoints = [
+  { label: "Traffic Safety", value: "AUC 0.8604", note: "공간 위험도 검증" },
+  { label: "Priority Lift", value: "Top-10% Lift 4.39x", note: "설치 우선순위 신호" },
+  { label: "Redveil", value: "12,074 Transactions", note: "상업용 부동산 거래 검토" },
+  { label: "Seoul Scope", value: "25 Districts", note: "구 단위 상권 비교" },
+  { label: "CRM Model", value: "AUC 0.8147", note: "프로모션 반응 모델" },
+];
 
 const lensItems = [
   {
@@ -160,6 +168,14 @@ export default function HomePage() {
               </span>
             </p>
 
+            <div className="home-hero__identity-chips" aria-label="identity chips">
+              {identityChips.map((item) => (
+                <span className="chip chip--category" key={item}>
+                  {item}
+                </span>
+              ))}
+            </div>
+
             <div className="home-hero__meta-line" aria-label="핵심 메타">
               {heroMeta.map((item) => (
                 <span className="home-hero__meta-token" key={item}>
@@ -194,6 +210,22 @@ export default function HomePage() {
               { label: "대표 신호", value: projectSignals.length },
             ]}
           />
+        </section>
+
+        <section className="home-proof">
+          <div className="home-proof__head">
+            <span className="eyebrow">Proof Points</span>
+            <h2 className="section-title">숫자로 확인되는 대표 근거</h2>
+          </div>
+          <div className="home-proof__grid">
+            {proofPoints.map((point) => (
+              <article className="home-proof-card" key={`${point.label}-${point.value}`}>
+                <span className="home-proof-card__label">{point.label}</span>
+                <strong className="home-proof-card__value">{point.value}</strong>
+                <span className="home-proof-card__note">{point.note}</span>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className="surface-card home-snapshot">

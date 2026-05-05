@@ -96,6 +96,28 @@ const projectDisplayNames: Record<string, string> = {
 };
 
 const archiveFlow = ["Signal", "Criteria", "Decision"] as const;
+const frameworkSteps = [
+  {
+    label: "Problem",
+    detail: "무엇을 판단해야 하는지 먼저 좁힙니다.",
+  },
+  {
+    label: "Criteria",
+    detail: "비교 기준과 보류 조건을 명확히 둡니다.",
+  },
+  {
+    label: "Analysis",
+    detail: "데이터를 판단 단위에 맞춰 다시 묶습니다.",
+  },
+  {
+    label: "Output",
+    detail: "README, 대시보드, 웹 화면처럼 검토 가능한 형태로 남깁니다.",
+  },
+  {
+    label: "Decision Value",
+    detail: "다음 행동이나 우선순위로 이어지게 정리합니다.",
+  },
+];
 
 function formatCount(value: number) {
   return value.toString().padStart(2, "0");
@@ -182,6 +204,16 @@ export default function CaseStudiesPage() {
             <p className={styles.panelNote}>
               신호, 기준, 판단이 어떻게 파일처럼 정리되었는지 카드 단위로 읽을 수 있게 구성했습니다.
             </p>
+          </div>
+
+          <div className={styles.frameworkGrid} aria-label="case study framework">
+            {frameworkSteps.map((step, index) => (
+              <article className={styles.frameworkCard} key={step.label}>
+                <span className={styles.frameworkIndex}>{formatCount(index + 1)}</span>
+                <strong>{step.label}</strong>
+                <p>{step.detail}</p>
+              </article>
+            ))}
           </div>
 
           <div className={styles.caseFileList}>

@@ -86,7 +86,7 @@ export const projects: Project[] = [
         href: "https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis",
       },
     ],
-    sortOrder: 1,
+    sortOrder: 2,
     caseStudySlugs: ["risk-signals-before-volume"],
     sections: [
       {
@@ -200,7 +200,7 @@ export const projects: Project[] = [
         href: "https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil",
       },
     ],
-    sortOrder: 2,
+    sortOrder: 1,
     caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool"],
     sections: [
       {
@@ -314,7 +314,7 @@ export const projects: Project[] = [
         href: "https://github.com/dffxonnb-cyber/UK-OnlineRetail-Segment-analysis",
       },
     ],
-    sortOrder: 3,
+    sortOrder: 4,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -424,7 +424,7 @@ export const projects: Project[] = [
         href: "https://github.com/dffxonnb-cyber/starbucks-promotion-analysis",
       },
     ],
-    sortOrder: 4,
+    sortOrder: 3,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -508,7 +508,7 @@ export const projects: Project[] = [
         href: "https://github.com/dffxonnb-cyber/nba-game-player-analysis",
       },
     ],
-    sortOrder: 5,
+    sortOrder: 6,
     caseStudySlugs: [],
     sections: [
       {
@@ -618,7 +618,7 @@ export const projects: Project[] = [
         href: "https://github.com/dffxonnb-cyber/ShopEasy",
       },
     ],
-    sortOrder: 6,
+    sortOrder: 5,
     caseStudySlugs: ["turn-analysis-into-a-decision-tool"],
     sections: [
       {
