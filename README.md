@@ -1,5 +1,9 @@
 # Signal Archive
 
+[![CI](https://github.com/dffxonnb-cyber/signal-archive/actions/workflows/ci.yml/badge.svg)](https://github.com/dffxonnb-cyber/signal-archive/actions/workflows/ci.yml)
+[![Live](https://img.shields.io/badge/live-signal--archive-0f766e)](https://signal-archive.vercel.app)
+[![Next.js](https://img.shields.io/badge/Next.js-15-111827)](https://nextjs.org)
+
 Signal Archive는 문제 정의, 분석 설계, 검증 중심 작업을 정리한 데이터 분석 포트폴리오입니다.
 도시, 상권, 공공데이터, CRM 데이터를 판단 가능한 구조로 바꾸고, 분석 결과를 웹 페이지와 문서형 결과물까지 연결하는 흐름을 보여줍니다.
 
