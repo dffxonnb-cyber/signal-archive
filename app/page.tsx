@@ -175,6 +175,9 @@ export default function HomePage() {
               <Link className="button-link button-link--secondary" href="/resume">
                 이력서 보기
               </Link>
+              <Link className="button-link button-link--secondary" href="/start-here">
+                3분 리뷰 가이드
+              </Link>
             </div>
           </div>
 
