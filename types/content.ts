@@ -1,7 +1,12 @@
+export type ProjectStatus = "featured" | "supporting" | "archive";
+
+export type ProjectLinkType = "primary" | "secondary" | "text";
+
 export type ExternalLink = {
   label: string;
   href: string;
   displayText?: string;
+  type?: ProjectLinkType;
 };
 
 export type ProjectSection = {
@@ -16,6 +21,11 @@ export type ProjectCardBrief = {
 };
 
 export type ProjectEvidencePoint = {
+  label: string;
+  value: string;
+};
+
+export type ProjectMetric = {
   label: string;
   value: string;
 };
@@ -52,8 +62,10 @@ export type WritingStrength = {
 };
 
 export type Project = {
+  id: string;
   slug: string;
   title: string;
+  status: ProjectStatus;
   category: "대표 프로젝트" | "서브 프로젝트";
   primaryDomain: string;
   summary: string;
@@ -71,6 +83,7 @@ export type Project = {
   outcome: string;
   supportingLine: string;
   cardBrief: ProjectCardBrief;
+  metrics: ProjectMetric[];
   evidencePoints?: ProjectEvidencePoint[];
   detailBrief: ProjectDetailBrief;
   focusPoints: string[];

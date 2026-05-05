@@ -60,7 +60,7 @@
   max-width: 11ch;
   font-size: clamp(2.35rem, 4.9vw, 3.4rem);
   line-height: 1.03;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
 }
 
 .heroDescription,
@@ -142,7 +142,7 @@
   margin: 0;
   font-size: 1.06rem;
   line-height: 1.82;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .selectedQuote {
@@ -218,7 +218,7 @@
 .noteTitle,
 .strengthTitle {
   margin: 0;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .noteTitle {

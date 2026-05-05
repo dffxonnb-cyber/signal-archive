@@ -2,7 +2,9 @@ import Link from "next/link";
 
 import { HomeProjectCard } from "@/components/home-project-card";
 import { IdentitySnapshotModule } from "@/components/page-summary";
-import { featuredProjects, projects } from "@/content/projects";
+import { ProofPointGrid } from "@/components/proof-point-grid";
+import { projects } from "@/content/projects";
+import { homeProofPoints } from "@/content/proof-points";
 
 const heroMeta = [
   "주요 역할: 데이터 분석가 / 공간 데이터 분석가",
@@ -28,13 +30,6 @@ const secondaryRoles = ["Business Data Analyst", "CRM & Growth Data Analyst"];
 const identityRoles = ["데이터 분석가", "공간 데이터 분석가"];
 const identitySecondaryRoles = ["비즈니스 데이터 분석", "CRM 분석"];
 const identityDomains = ["공공데이터", "도시", "상권/부동산", "CRM"];
-const proofPoints = [
-  { label: "Traffic Safety", value: "AUC 0.8604", note: "공간 위험도 검증" },
-  { label: "Priority Lift", value: "Top-10% Lift 4.39x", note: "설치 우선순위 신호" },
-  { label: "Redveil", value: "12,074 Transactions", note: "상업용 부동산 거래 검토" },
-  { label: "Seoul Scope", value: "25 Districts", note: "구 단위 상권 비교" },
-  { label: "CRM Model", value: "AUC 0.8147", note: "프로모션 반응 모델" },
-];
 
 const lensItems = [
   {
@@ -72,12 +67,6 @@ const archiveRoutes = [
   { href: "/resume", label: "Resume", summary: "이력 요약과 역할 적합성" },
   { href: "/contact", label: "Contact", summary: "연락 경로와 검토 안내" },
 ];
-
-const selectedProjectSlugs = [
-  "seoul-storefront-redveil",
-  "lh-traffic-safety-analysis",
-  "starbucks-promotion-analysis",
-] as const;
 
 const homeProjectMeta: Record<
   string,
@@ -130,9 +119,10 @@ const homeProjectMeta: Record<
 };
 
 export default function HomePage() {
-  const selectedProjects = selectedProjectSlugs
-    .map((slug) => projects.find((project) => project.slug === slug))
-    .filter((project): project is (typeof projects)[number] => Boolean(project))
+  const selectedProjects = projects
+    .filter((project) => project.status === "featured")
+    .sort((left, right) => left.sortOrder - right.sortOrder)
+    .slice(0, 3)
     .map((project) => ({
       project,
       meta: homeProjectMeta[project.slug],
@@ -217,15 +207,7 @@ export default function HomePage() {
             <span className="eyebrow">Proof Points</span>
             <h2 className="section-title">숫자로 확인되는 대표 근거</h2>
           </div>
-          <div className="home-proof__grid">
-            {proofPoints.map((point) => (
-              <article className="home-proof-card" key={`${point.label}-${point.value}`}>
-                <span className="home-proof-card__label">{point.label}</span>
-                <strong className="home-proof-card__value">{point.value}</strong>
-                <span className="home-proof-card__note">{point.note}</span>
-              </article>
-            ))}
-          </div>
+          <ProofPointGrid points={homeProofPoints} />
         </section>
 
         <section className="surface-card home-snapshot">

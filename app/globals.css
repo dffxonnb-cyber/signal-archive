@@ -1,4 +1,5 @@
 :root {
+  /* Portfolio design tokens: adjust these first when the system grows. */
   --background: #0b0e0f;
   --background-elevated: #111618;
   --surface: rgba(17, 22, 24, 0.92);
@@ -22,6 +23,52 @@
   --shadow-raised: 0 22px 58px rgba(0, 0, 0, 0.28);
   --shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
   --max-width: 1220px;
+  --color-bg: var(--background);
+  --color-bg-muted: var(--background-elevated);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-surface-soft: var(--surface-soft);
+  --color-section-tint: var(--surface-tint);
+  --color-text: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent-primary);
+  --color-accent-strong: var(--accent-primary-strong);
+  --color-accent-tint: var(--accent-primary-soft);
+  --color-border-subtle: var(--border);
+  --color-border-strong: var(--border-strong);
+  --font-size-caption: 0.69rem;
+  --font-size-meta: 0.72rem;
+  --font-size-body: 0.92rem;
+  --font-size-card-title: 1.16rem;
+  --font-size-section-title: 1.32rem;
+  --font-size-page-title: 2.35rem;
+  --font-size-hero-title: 3.62rem;
+  --font-weight-regular: 400;
+  --font-weight-medium: 550;
+  --font-weight-semibold: 650;
+  --font-weight-bold: 750;
+  --font-weight-hero: 800;
+  --line-height-tight: 1.12;
+  --line-height-title: 1.32;
+  --line-height-body: 1.72;
+  --line-height-meta: 1.45;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-pill: 999px;
+  --container-page: var(--max-width);
+  --container-copy: 760px;
+  --transition-fast: 160ms ease;
+  --transition-medium: 220ms ease;
   color-scheme: dark;
 }
 
@@ -250,7 +297,7 @@ main {
   max-width: 13ch;
   font-size: 2.35rem;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .hero-title {
@@ -258,7 +305,7 @@ main {
   max-width: 9ch;
   font-size: 3.5rem;
   line-height: 1.02;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .section-title,
@@ -469,7 +516,7 @@ main {
   max-width: 100%;
   font-size: 2.35rem;
   line-height: 1.12;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
 }
 
 .home-hero__title {
@@ -669,7 +716,7 @@ main {
   margin: 0;
   font-size: 1.04rem;
   line-height: 1.42;
-  letter-spacing: -0.012em;
+  letter-spacing: 0;
   text-wrap: balance;
 }
 
@@ -836,7 +883,7 @@ main {
   margin: 0;
   font-size: 1.08rem;
   line-height: 1.34;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .home-project-card__section-label {
@@ -1476,7 +1523,7 @@ main {
   margin: 0;
   font-size: 1.02rem;
   line-height: 1.34;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .project-card__title a:hover,
@@ -1764,7 +1811,7 @@ main {
   margin: 0;
   font-size: 1.04rem;
   line-height: 1.35;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .case-lens__description,
@@ -1811,7 +1858,7 @@ main {
 .case-lens__stat-value {
   font-size: 2rem;
   line-height: 1;
-  letter-spacing: -0.04em;
+  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -2018,7 +2065,7 @@ main {
   margin: 0;
   font-size: 1rem;
   line-height: 1.36;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
   word-break: keep-all;
 }
 
@@ -2070,7 +2117,7 @@ main {
   font-size: 1.18rem;
   font-weight: 700;
   line-height: 1.1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -2291,7 +2338,7 @@ main {
   font-size: 1.42rem;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -2331,7 +2378,7 @@ main {
   max-width: 18ch;
   font-size: 2.16rem;
   line-height: 1.15;
-  letter-spacing: -0.024em;
+  letter-spacing: 0;
   text-wrap: balance;
   word-break: keep-all;
   overflow-wrap: normal;
@@ -2384,7 +2431,7 @@ main {
   font-size: 1.28rem;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 }
 
@@ -2751,18 +2798,25 @@ main {
 .hero-title,
 .page-title {
   color: var(--text-primary);
-  font-weight: 800;
+  font-weight: var(--font-weight-hero);
   letter-spacing: 0;
 }
 
 .hero-title {
-  font-size: 3.62rem;
+  font-size: var(--font-size-hero-title);
+  line-height: var(--line-height-tight);
+}
+
+.page-title {
+  font-size: var(--font-size-page-title);
+  line-height: var(--line-height-tight);
 }
 
 .section-title {
   color: var(--text-primary);
-  font-size: 1.32rem;
-  font-weight: 750;
+  font-size: var(--font-size-section-title);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-title);
   letter-spacing: 0;
 }
 
@@ -2772,7 +2826,8 @@ main {
 .resume-skill-card h3,
 .resume-strength-card h3 {
   color: var(--text-primary);
-  font-weight: 750;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-title);
   letter-spacing: 0;
 }
 
@@ -2782,7 +2837,8 @@ main {
 .resume-skill-card__summary,
 .copy-stack p {
   color: var(--text-secondary);
-  line-height: 1.72;
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
 }
 
 .eyebrow,
@@ -2791,7 +2847,7 @@ main {
 .project-card__meta-label,
 .resume-link-card__label {
   color: var(--text-muted);
-  font-size: 0.69rem;
+  font-size: var(--font-size-caption);
   letter-spacing: 0.08em;
 }
 
@@ -2819,6 +2875,30 @@ main {
   box-shadow: none;
 }
 
+.button-link--text {
+  min-height: 34px;
+  padding-inline: 4px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--accent-primary-strong);
+  box-shadow: none;
+}
+
+.button-link--text:hover,
+.button-link--text:focus-visible {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-primary);
+  box-shadow: none;
+}
+
+.button-link[aria-disabled="true"],
+.button-link--disabled {
+  cursor: not-allowed;
+  opacity: 0.54;
+  pointer-events: none;
+}
+
 .chip {
   display: inline-flex;
   align-items: center;
@@ -2826,15 +2906,15 @@ main {
   min-height: 27px;
   padding: 0 10px;
   border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.73rem;
-  font-weight: 650;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-meta);
+  font-weight: var(--font-weight-semibold);
   line-height: 1;
   transition:
-    border-color 160ms ease,
-    background 160ms ease,
-    color 160ms ease,
-    transform 160ms ease;
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast),
+    transform var(--transition-fast);
 }
 
 .chip--category {
@@ -2864,6 +2944,12 @@ main {
   background: rgba(255, 255, 255, 0.018);
   color: var(--text-secondary);
   font-size: 0.72rem;
+}
+
+.chip--filter-active {
+  border-color: rgba(159, 185, 173, 0.34);
+  background: rgba(159, 185, 173, 0.14);
+  color: var(--accent-primary-strong);
 }
 
 .chip:hover {
@@ -2923,6 +3009,7 @@ main {
 
 .home-hero__identity-chips,
 .home-proof__grid,
+.proof-point-grid,
 .project-card__meta-row,
 .project-card__metric-row,
 .project-card__tag-row,
@@ -2954,13 +3041,15 @@ main {
   padding-top: 4px;
 }
 
-.home-proof__grid {
+.home-proof__grid,
+.proof-point-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 10px;
 }
 
-.home-proof-card {
+.home-proof-card,
+.proof-point-card {
   display: grid;
   gap: 7px;
   min-height: 112px;
@@ -2974,7 +3063,9 @@ main {
 }
 
 .home-proof-card__label,
-.home-proof-card__note {
+.home-proof-card__note,
+.proof-point-card__label,
+.proof-point-card__note {
   color: var(--text-muted);
   font-size: 0.7rem;
   font-weight: 650;
@@ -2982,14 +3073,16 @@ main {
   text-transform: uppercase;
 }
 
-.home-proof-card__value {
+.home-proof-card__value,
+.proof-point-card__value {
   color: var(--accent-primary-strong);
   font-size: 1.02rem;
   line-height: 1.2;
   font-variant-numeric: tabular-nums;
 }
 
-.home-proof-card__note {
+.home-proof-card__note,
+.proof-point-card__note {
   margin-top: auto;
   text-transform: none;
   letter-spacing: 0;

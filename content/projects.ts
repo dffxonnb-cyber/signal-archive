@@ -2,8 +2,10 @@ import type { Project } from "@/types/content";
 
 export const projects: Project[] = [
   {
+    id: "lh-traffic-safety-analysis",
     slug: "lh-traffic-safety-analysis",
     title: "LH Traffic Safety Analysis",
+    status: "featured",
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
     summary: "신도시에 적용 가능한 설치 우선 순위 기준을\n명확히 도출한 교통안전 분석 프로젝트입니다.",
@@ -34,6 +36,10 @@ export const projects: Project[] = [
         "지도 기반 시각화",
       ],
     },
+    metrics: [
+      { label: "Model Quality", value: "AUC 0.8604" },
+      { label: "Priority Signal", value: "Top-10% Lift 4.39x" },
+    ],
     evidencePoints: [
       {
         label: "적용 범위",
@@ -84,6 +90,7 @@ export const projects: Project[] = [
       {
         label: "GitHub 저장소",
         href: "https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis",
+        type: "secondary",
       },
     ],
     sortOrder: 2,
@@ -112,8 +119,10 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "seoul-storefront-redveil",
     slug: "seoul-storefront-redveil",
     title: "Seoul Storefront Redveil",
+    status: "featured",
     category: "대표 프로젝트",
     primaryDomain: "상권/부동산",
     summary: "좋아 보이는 매물 추천보다, 매입 전에 확인해야 할\n근거를 한 화면에 정리한 상권 검토 서비스입니다.",
@@ -144,6 +153,11 @@ export const projects: Project[] = [
         "웹 기반 공개 페이지",
       ],
     },
+    metrics: [
+      { label: "Scope", value: "25 Seoul Districts" },
+      { label: "Transactions", value: "12,074 Transactions" },
+      { label: "Admin Units", value: "428 Dongs" },
+    ],
     evidencePoints: [
       {
         label: "Coverage",
@@ -194,10 +208,12 @@ export const projects: Project[] = [
       {
         label: "서비스 보기",
         href: "https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/",
+        type: "secondary",
       },
       {
         label: "GitHub 저장소",
         href: "https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil",
+        type: "secondary",
       },
     ],
     sortOrder: 1,
@@ -226,9 +242,11 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "uk-online-retail-segment-analysis",
     slug: "uk-online-retail-segment-analysis",
     title: "UK Online Retail Segment Analysis",
-    category: "대표 프로젝트",
+    status: "supporting",
+    category: "서브 프로젝트",
     primaryDomain: "이커머스",
     summary: "영국 온라인 리테일 거래 데이터를 기반으로\n세그먼트를 분석한 이커머스 분석 프로젝트입니다.",
     period: "2026",
@@ -258,6 +276,10 @@ export const projects: Project[] = [
         "매출 / 고객 유지 인사이트",
       ],
     },
+    metrics: [
+      { label: "Revenue Share", value: "Top 20% = 73.5% Sales" },
+      { label: "Risk Signal", value: "84.2% MoM Drop" },
+    ],
     evidencePoints: [
       {
         label: "데이터셋",
@@ -312,6 +334,7 @@ export const projects: Project[] = [
       {
         label: "GitHub 저장소",
         href: "https://github.com/dffxonnb-cyber/UK-OnlineRetail-Segment-analysis",
+        type: "secondary",
       },
     ],
     sortOrder: 4,
@@ -340,9 +363,11 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "starbucks-promotion-analysis",
     slug: "starbucks-promotion-analysis",
     title: "Starbucks Promotion Analysis",
-    category: "서브 프로젝트",
+    status: "featured",
+    category: "대표 프로젝트",
     primaryDomain: "마케팅",
     summary: "고객, 오퍼, 채널 데이터를 기반으로\n세그먼트와 오퍼 반응의 상관관계를 분석한\nCRM / 마케팅 분석 프로젝트입니다.",
     period: "2026",
@@ -372,6 +397,11 @@ export const projects: Project[] = [
         "마케팅 액션 인사이트",
       ],
     },
+    metrics: [
+      { label: "Model Quality", value: "AUC 0.8147" },
+      { label: "Response Recall", value: "Recall 0.8712" },
+      { label: "Recommendation Rank", value: "NDCG@5 1.0000" },
+    ],
     evidencePoints: [
       {
         label: "모델 성능",
@@ -422,6 +452,7 @@ export const projects: Project[] = [
       {
         label: "GitHub 저장소",
         href: "https://github.com/dffxonnb-cyber/starbucks-promotion-analysis",
+        type: "secondary",
       },
     ],
     sortOrder: 3,
@@ -442,8 +473,10 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "nba-game-player-analysis",
     slug: "nba-game-player-analysis",
     title: "NBA Game & Player Analysis",
+    status: "supporting",
     category: "서브 프로젝트",
     primaryDomain: "스포츠 분석",
     summary: "승리 요인, 선수 성과, 플레이 스타일을\n하나의 분석 파이프라인으로 연결한\n스포츠 데이터 분석입니다.",
@@ -474,6 +507,7 @@ export const projects: Project[] = [
         "시각화 결과",
       ],
     },
+    metrics: [],
     detailBrief: {
       problem: {
         what:
@@ -506,6 +540,7 @@ export const projects: Project[] = [
       {
         label: "GitHub 저장소",
         href: "https://github.com/dffxonnb-cyber/nba-game-player-analysis",
+        type: "secondary",
       },
     ],
     sortOrder: 6,
@@ -526,8 +561,10 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "shopeasy",
     slug: "shopeasy",
     title: "ShopEasy",
+    status: "supporting",
     category: "서브 프로젝트",
     primaryDomain: "커머스",
     summary: "2025년 3분기 주문 감소 원인을\n고객·카테고리·세션 흐름으로 분해하고\nA/B 테스트까지 제안한 서비스 분석 프로젝트입니다.",
@@ -558,6 +595,11 @@ export const projects: Project[] = [
         "A/B 테스트 설계안",
       ],
     },
+    metrics: [
+      { label: "Orders", value: "1,000 Orders" },
+      { label: "Mobile CVR", value: "6.38% Mobile CVR" },
+      { label: "Category Gap", value: "52.34% Electronics" },
+    ],
     evidencePoints: [
       {
         label: "Coverage",
@@ -612,10 +654,12 @@ export const projects: Project[] = [
       {
         label: "서비스 보기",
         href: "https://dffxonnb-cyber.github.io/ShopEasy/",
+        type: "secondary",
       },
       {
         label: "GitHub 저장소",
         href: "https://github.com/dffxonnb-cyber/ShopEasy",
+        type: "secondary",
       },
     ],
     sortOrder: 5,
@@ -646,5 +690,5 @@ export const projects: Project[] = [
 ];
 
 export const featuredProjects = projects
-  .filter((project) => project.category === "대표 프로젝트")
+  .filter((project) => project.status === "featured")
   .sort((left, right) => left.sortOrder - right.sortOrder);

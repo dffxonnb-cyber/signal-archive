@@ -4,12 +4,6 @@ import { RecruiterChecklistModule } from "@/components/page-summary";
 import { profile } from "@/content/profile";
 import { featuredProjects } from "@/content/projects";
 
-const resumeMetricChips: Record<string, string[]> = {
-  "seoul-storefront-redveil": ["25 Seoul Districts", "12,074 Transactions"],
-  "lh-traffic-safety-analysis": ["AUC 0.8604", "Top-10% Lift 4.39x"],
-  "uk-online-retail-segment-analysis": ["Top 20% = 73.5% Sales", "84.2% MoM Drop"],
-};
-
 export default function ResumePage() {
   const recruiterChecklist = [
     {
@@ -163,11 +157,11 @@ export default function ResumePage() {
                   </div>
                   <h3>{project.title}</h3>
                   <p>{project.summary}</p>
-                  {resumeMetricChips[project.slug]?.length ? (
+                  {project.metrics.length ? (
                     <div className="resume-project-card__metrics">
-                      {resumeMetricChips[project.slug].map((metric) => (
-                        <span className="chip chip--metric" key={metric}>
-                          {metric}
+                      {project.metrics.slice(0, 2).map((metric) => (
+                        <span className="chip chip--metric" key={`${metric.label}-${metric.value}`}>
+                          {metric.value}
                         </span>
                       ))}
                     </div>

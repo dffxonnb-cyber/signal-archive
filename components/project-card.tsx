@@ -6,50 +6,60 @@ type ProjectCardProps = {
   project: Project;
 };
 
-const priorityProjectSlugs = new Set([
-  "seoul-storefront-redveil",
-  "lh-traffic-safety-analysis",
-  "starbucks-promotion-analysis",
-]);
-
-const metricChipMap: Record<string, string[]> = {
-  "lh-traffic-safety-analysis": ["AUC 0.8604", "Top-10% Lift 4.39x"],
-  "seoul-storefront-redveil": ["25 Seoul Districts", "12,074 Transactions", "428 Dongs"],
-  "uk-online-retail-segment-analysis": ["Top 20% = 73.5% Sales", "84.2% MoM Drop"],
-  "starbucks-promotion-analysis": ["AUC 0.8147", "Recall 0.8712", "NDCG@5 1.0000"],
-  "shopeasy": ["1,000 Orders", "6.38% Mobile CVR", "52.34% Electronics"],
+const statusLabels: Record<Project["status"], string> = {
+  featured: "Featured",
+  supporting: "Supporting",
+  archive: "Archive",
 };
 
-function getProjectVisual(slug: string) {
-  switch (slug) {
-    case "lh-traffic-safety-analysis":
-      return { mark: "LH", tone: "forest" };
-    case "seoul-storefront-redveil":
-      return { mark: "RV", tone: "graphite" };
-    case "uk-online-retail-segment-analysis":
-      return { mark: "UK", tone: "slate" };
-    case "starbucks-promotion-analysis":
-      return { mark: "SB", tone: "forest" };
-    case "nba-game-player-analysis":
-      return { mark: "NBA", tone: "slate" };
-    case "shopeasy":
-      return { mark: "SE", tone: "graphite" };
-    default:
-      return { mark: "AR", tone: "graphite" };
+function getProjectMark(title: string) {
+  const mark = title
+    .replace(/&/g, " ")
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((word) => word[0])
+    .join("")
+    .slice(0, 3)
+    .toUpperCase();
+
+  return mark || "AR";
+}
+
+function getProjectTone(project: Project) {
+  if (project.status === "featured") {
+    return "forest";
   }
+
+  if (project.primaryDomain.includes("스포츠")) {
+    return "slate";
+  }
+
+  return "graphite";
+}
+
+function getLinkLabel(label: string) {
+  if (label.includes("GitHub")) {
+    return "GitHub 보기";
+  }
+
+  if (label.includes("Live") || label.includes("웹") || label.includes("서비스")) {
+    return "서비스 보기";
+  }
+
+  return label;
 }
 
 export function ProjectCard({ project }: ProjectCardProps) {
-  const visual = getProjectVisual(project.slug);
+  const visual = { mark: getProjectMark(project.title), tone: getProjectTone(project) };
   const projectIndex = String(project.sortOrder).padStart(2, "0");
   const primaryTags = project.coreTags.slice(0, 3);
-  const metricChips = metricChipMap[project.slug] ?? [];
+  const metricChips = project.metrics;
+  const isPriority = project.status === "featured";
   const statusChips = [
-    priorityProjectSlugs.has(project.slug) ? "Featured" : null,
+    statusLabels[project.status],
     project.format,
-    project.badges.find((badge) => badge !== "Featured"),
+    !isPriority ? project.badges.find((badge) => badge !== "Featured") : null,
   ].filter(Boolean) as string[];
-  const isPriority = priorityProjectSlugs.has(project.slug);
   const keyEvidence = project.evidencePoints?.[0]
     ? project.evidencePoints[0]
     : {
@@ -57,15 +67,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
         value: project.focusPoints[0] ?? project.outcome,
       };
   const cardLinks = [
-    { kind: "detail" as const, label: "상세 보기", href: `/projects/${project.slug}` },
+    { type: "primary" as const, label: "상세 보기", href: `/projects/${project.slug}`, external: false },
     ...project.links.map((link) => ({
-      kind: link.label.includes("Live") ? ("live" as const) : ("external" as const),
-      label: link.label.includes("GitHub")
-        ? "GitHub 보기"
-        : link.label.includes("Live") || link.label.includes("웹")
-          ? "서비스 보기"
-          : link.label,
+      type: link.type ?? ("secondary" as const),
+      label: getLinkLabel(link.label),
       href: link.href,
+      external: true,
     })),
   ];
 
@@ -106,8 +113,8 @@ export function ProjectCard({ project }: ProjectCardProps) {
       {metricChips.length > 0 ? (
         <div className="project-card__metric-row" aria-label={`${project.title} key metrics`}>
           {metricChips.slice(0, isPriority ? 3 : 2).map((item) => (
-            <span className="chip chip--metric" key={item}>
-              {item}
+            <span className="chip chip--metric" key={`${item.label}-${item.value}`}>
+              {item.value}
             </span>
           ))}
         </div>
@@ -136,13 +143,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
         <span className="project-card__meta-label">바로가기</span>
         <div className="project-card__cta-row" aria-label={`${project.title} links`}>
           {cardLinks.map((link) =>
-            link.kind === "detail" ? (
+            !link.external ? (
               <Link className="button-link project-card__cta project-card__cta--primary" href={link.href} key={link.href}>
                 {link.label}
               </Link>
             ) : (
               <a
-                className="button-link button-link--secondary project-card__cta"
+                className={`button-link ${
+                  link.type === "text" ? "button-link--text" : "button-link--secondary"
+                } project-card__cta`}
                 href={link.href}
                 key={link.href}
                 rel="noreferrer"

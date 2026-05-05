@@ -13,11 +13,6 @@ type ProjectExplorerProps = {
 type SortMode = "featured" | "title";
 
 const ALL = "전체";
-const priorityProjectSlugs = new Set([
-  "seoul-storefront-redveil",
-  "lh-traffic-safety-analysis",
-  "starbucks-promotion-analysis",
-]);
 
 export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   const [domain, setDomain] = useState(ALL);
@@ -59,8 +54,8 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
     problemType !== ALL ? problemType : null,
     stack !== ALL ? stack : null,
   ].filter(Boolean) as string[];
-  const featuredResults = filteredProjects.filter((project) => priorityProjectSlugs.has(project.slug));
-  const supportingResults = filteredProjects.filter((project) => !priorityProjectSlugs.has(project.slug));
+  const featuredResults = filteredProjects.filter((project) => project.status === "featured");
+  const supportingResults = filteredProjects.filter((project) => project.status !== "featured");
 
   const renderProjectSection = (title: string, description: string, items: Project[]) =>
     items.length > 0 ? (
