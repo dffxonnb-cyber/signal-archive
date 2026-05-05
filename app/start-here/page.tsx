@@ -1,0 +1,186 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+import { SignalArchiveLogo } from "@/components/signal-archive-logo";
+import { projects } from "@/content/projects";
+
+export const metadata: Metadata = {
+  title: "Start Here",
+  description:
+    "Signal Archive를 처음 보는 리뷰어와 채용 담당자를 위한 빠른 판단 가이드입니다.",
+};
+
+const roleTracks = [
+  {
+    label: "Data Analyst",
+    summary: "문제 정의, 지표 설계, 검증 가능한 분석 결과물 정리에 가장 직접적으로 맞습니다.",
+    proof: ["Python / SQL / pandas", "통계 검정과 모델 지표", "README와 웹 결과물로 전달"],
+  },
+  {
+    label: "Spatial Data Analyst",
+    summary: "도시, 상권, 공공데이터를 공간 단위 판단 구조로 바꾸는 프로젝트가 강점입니다.",
+    proof: ["공공 안전 우선순위", "상권 리스크 기준", "지도/지역 단위 비교"],
+  },
+  {
+    label: "CRM / Business Analyst",
+    summary: "고객·오퍼·세그먼트 데이터를 액션 우선순위 언어로 번역하는 확장 역할입니다.",
+    proof: ["RFM / 세그먼트", "오퍼 반응 구조", "전환 병목과 실험 가설"],
+  },
+];
+
+const reviewFlow = [
+  {
+    step: "01",
+    title: "첫 판단",
+    href: "/",
+    detail: "메인 화면에서 역할 적합성, 대표 프로젝트, 핵심 근거를 1분 안에 확인합니다.",
+  },
+  {
+    step: "02",
+    title: "프로젝트 검증",
+    href: "/projects",
+    detail: "프로젝트별 문제, 방법, 산출물, 공개 링크, 검증 신호를 비교합니다.",
+  },
+  {
+    step: "03",
+    title: "이력 압축",
+    href: "/resume",
+    detail: "역할, 스택, 강점, 연락 경로를 채용 검토 관점으로 빠르게 확인합니다.",
+  },
+  {
+    step: "04",
+    title: "연락",
+    href: "/contact",
+    detail: "포트폴리오와 GitHub를 본 뒤 다음 대화로 이어질 공개 경로를 확인합니다.",
+  },
+];
+
+const highlightedSlugs = [
+  "lh-traffic-safety-analysis",
+  "seoul-storefront-redveil",
+  "starbucks-promotion-analysis",
+  "shopeasy",
+];
+
+function getProject(slug: string) {
+  const project = projects.find((item) => item.slug === slug);
+
+  if (!project) {
+    throw new Error(`Missing project: ${slug}`);
+  }
+
+  return project;
+}
+
+const highlightedProjects = highlightedSlugs.map((slug) => getProject(slug));
+
+export default function StartHerePage() {
+  return (
+    <main className="page-shell">
+      <div className="site-container page-grid">
+        <section className="surface-card start-hero">
+          <div className="start-hero__mark" aria-hidden="true">
+            <SignalArchiveLogo className="start-hero__logo" />
+          </div>
+
+          <div className="start-hero__copy">
+            <span className="eyebrow">Start Here</span>
+            <h1 className="page-title start-hero__title">
+              3분 안에 읽는 Signal Archive 리뷰어 가이드
+            </h1>
+            <p className="page-intro">
+              이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 문제를 어떻게 정의하고
+              데이터를 어떤 판단 구조로 바꾸는지를 보여주는 아카이브입니다. 처음 보는 사람은 아래
+              순서대로 보면 가장 빠르게 역량을 판단할 수 있습니다.
+            </p>
+            <div className="button-row">
+              <Link className="button-link" href="/projects">
+                프로젝트 검토하기
+              </Link>
+              <Link className="button-link button-link--secondary" href="/resume">
+                이력 요약 보기
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="start-section">
+          <div className="section-head">
+            <span className="eyebrow">Role Fit</span>
+            <h2 className="section-title">어떤 역할에 맞는가</h2>
+          </div>
+
+          <div className="start-card-grid start-card-grid--three">
+            {roleTracks.map((track) => (
+              <article className="start-card" key={track.label}>
+                <h3>{track.label}</h3>
+                <p>{track.summary}</p>
+                <div className="start-card__chips">
+                  {track.proof.map((item) => (
+                    <span className="start-chip" key={item}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="start-section start-section--flow">
+          <div className="section-head">
+            <span className="eyebrow">Review Flow</span>
+            <h2 className="section-title">처음 보는 사람이 따라갈 순서</h2>
+          </div>
+
+          <div className="start-flow">
+            {reviewFlow.map((item) => (
+              <Link className="start-flow__item" href={item.href} key={item.step}>
+                <span className="start-flow__step">{item.step}</span>
+                <strong>{item.title}</strong>
+                <span>{item.detail}</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="start-section">
+          <div className="section-head">
+            <span className="eyebrow">Evidence Map</span>
+            <h2 className="section-title">대표 근거를 어디서 볼 것인가</h2>
+            <p className="page-intro">
+              각 프로젝트는 문제, 분석 구조, 공개 결과물, 검증 신호가 연결되어 있는지를 기준으로
+              배치했습니다.
+            </p>
+          </div>
+
+          <div className="start-card-grid start-card-grid--two">
+            {highlightedProjects.map((project) => (
+              <article className="start-card start-card--project" key={project.slug}>
+                <div className="start-card__topline">
+                  <span className="eyebrow">{project.primaryDomain}</span>
+                  <span>{project.format}</span>
+                </div>
+                <h3>
+                  <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+                </h3>
+                <p>{project.summary}</p>
+                <dl className="start-proof-list">
+                  {project.evidencePoints?.slice(0, 3).map((point) => (
+                    <div key={point.label}>
+                      <dt>{point.label}</dt>
+                      <dd>{point.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+                <Link className="button-link button-link--secondary start-card__link" href={`/projects/${project.slug}`}>
+                  상세 근거 보기
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
+  );
+}
