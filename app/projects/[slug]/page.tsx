@@ -25,6 +25,30 @@ function renderMultilineText(text: string) {
   ));
 }
 
+function getProjectLinkLabel(label: string, href: string) {
+  const normalizedLabel = label.toLowerCase();
+  const normalizedHref = href.toLowerCase();
+
+  if (normalizedHref.includes("github.com")) {
+    return "GitHub 저장소 보기";
+  }
+
+  if (
+    normalizedHref.includes("github.io") ||
+    normalizedLabel.includes("live") ||
+    normalizedLabel.includes("서비스") ||
+    normalizedLabel.includes("웹")
+  ) {
+    return "공개 서비스 열기";
+  }
+
+  if (normalizedLabel.includes("tableau")) {
+    return "Tableau 결과물 보기";
+  }
+
+  return label;
+}
+
 export default async function ProjectDetailPage({
   params,
 }: ProjectDetailPageProps) {
@@ -38,6 +62,9 @@ export default async function ProjectDetailPage({
   const relatedCaseStudies = caseStudies.filter((caseStudy) =>
     project.caseStudySlugs.includes(caseStudy.slug),
   );
+  const sortedProjects = [...projects].sort((left, right) => left.sortOrder - right.sortOrder);
+  const currentProjectIndex = sortedProjects.findIndex((item) => item.slug === project.slug);
+  const nextProject = sortedProjects[(currentProjectIndex + 1) % sortedProjects.length];
   const isRedveil = project.slug === "seoul-storefront-redveil";
   const detailHeroFacts = [
     { label: "주요 도메인", value: project.primaryDomain },
@@ -47,53 +74,42 @@ export default async function ProjectDetailPage({
   ];
   const detailHeroLinks = project.links.slice(0, 2).map((link) => ({
     ...link,
-    label: link.label.includes("GitHub")
-      ? "GitHub 보기"
-      : link.label.includes("Live") || link.label.includes("웹")
-        ? "서비스 보기"
-        : link.label,
+    label: getProjectLinkLabel(link.label, link.href),
   }));
   const detailLinks = project.links.map((link) => ({
     ...link,
-    label: link.label.includes("GitHub")
-      ? "GitHub 보기"
-      : link.label.includes("Live") || link.label.includes("웹")
-        ? "서비스 보기"
-        : link.label,
+    label: getProjectLinkLabel(link.label, link.href),
   }));
+  const evidenceSnapshot =
+    project.evidencePoints && project.evidencePoints.length > 0
+      ? project.evidencePoints
+      : [
+          { label: "Key Evidence", value: project.decisionMoment.keyEvidence },
+          { label: "Final Deliverable", value: project.decisionMoment.finalDeliverable },
+          { label: "What this proves", value: project.decisionMoment.proves },
+        ];
 
   return (
     <main className="page-shell">
-      <div className="site-container page-grid">
+      <div className="site-container page-grid project-detail">
         <section className="surface-card detail-hero">
           <Link className="back-link" href="/projects">
             프로젝트 목록
           </Link>
-          <div className="tag-list" aria-label="Project badges">
-            <span className="tag tag--accent">{project.category}</span>
-            {project.badges.map((badge) => (
-              <span className="tag" key={badge}>
-                {badge}
-              </span>
-            ))}
+          <div className="detail-hero__topline">
+            <div className="tag-list" aria-label="Project badges">
+              <span className="tag tag--accent">{project.category}</span>
+              {project.badges.map((badge) => (
+                <span className="tag" key={badge}>
+                  {badge}
+                </span>
+              ))}
+            </div>
+            <span className="detail-hero__stamp">Project Detail</span>
           </div>
           <h1 className="page-title detail-title">{project.title}</h1>
           <p className="detail-hero__supporting-line">{renderMultilineText(project.review.decisionQuestion)}</p>
           <p className="page-intro detail-hero__summary">{renderMultilineText(project.summary)}</p>
-
-          <div className="detail-hero__meta-grid" aria-label="project quick facts">
-            {detailHeroFacts.map((item) => (
-              <div className="detail-hero__meta-item" key={`${project.slug}-${item.label}`}>
-                <span className="project-card__meta-label">{item.label}</span>
-                <strong>{item.value}</strong>
-              </div>
-            ))}
-          </div>
-
-          <div className="detail-hero__context">
-            <span className="project-card__meta-label">배경</span>
-            <p>{project.context}</p>
-          </div>
 
           {detailHeroLinks.length > 0 ? (
             <div className="button-row detail-hero__actions">
@@ -116,102 +132,93 @@ export default async function ProjectDetailPage({
           <section className="surface-card detail-section detail-decision">
             <div className="detail-section__head">
               <span className="eyebrow">Decision Moment</span>
-              <h2 className="section-title">질문을 바꾼 장면</h2>
+              <h2 className="section-title">질문이 바뀐 순간</h2>
               <p className="page-intro">
-                프로젝트마다 분석의 방향을 바꾼 질문, 핵심 근거, 최종 산출물을 먼저 확인할 수 있습니다.
+                이 프로젝트가 단순 분석에서 의사결정 구조로 넘어간 핵심 장면입니다.
               </p>
             </div>
 
-            <dl className="detail-decision-grid">
-              <div className="detail-overview-item">
-                <dt>Original Question</dt>
-                <dd>{project.decisionMoment.originalQuestion}</dd>
+            <div className="detail-decision__frame">
+              <div className="detail-decision__question-flow" aria-label="decision question shift">
+                <div className="detail-decision__question">
+                  <span>Original Question</span>
+                  <strong>{project.decisionMoment.originalQuestion}</strong>
+                </div>
+                <div className="detail-decision__connector" aria-hidden="true">
+                  to
+                </div>
+                <div className="detail-decision__question detail-decision__question--reframed">
+                  <span>Reframed Question</span>
+                  <strong>{project.decisionMoment.reframedQuestion}</strong>
+                </div>
               </div>
-              <div className="detail-overview-item detail-overview-item--wide">
-                <dt>Reframed Question</dt>
-                <dd>{project.decisionMoment.reframedQuestion}</dd>
-              </div>
-              <div className="detail-overview-item">
-                <dt>Key Evidence</dt>
-                <dd>{project.decisionMoment.keyEvidence}</dd>
-              </div>
-              <div className="detail-overview-item">
-                <dt>Final Deliverable</dt>
-                <dd>{project.decisionMoment.finalDeliverable}</dd>
-              </div>
-              <div className="detail-overview-item detail-overview-item--wide">
-                <dt>What this proves</dt>
-                <dd>{project.decisionMoment.proves}</dd>
-              </div>
-            </dl>
+
+              <dl className="detail-decision__proof-grid">
+                <div className="detail-decision__proof detail-decision__proof--evidence">
+                  <dt>Key Evidence</dt>
+                  <dd>{project.decisionMoment.keyEvidence}</dd>
+                </div>
+                <div className="detail-decision__proof">
+                  <dt>Final Deliverable</dt>
+                  <dd>{project.decisionMoment.finalDeliverable}</dd>
+                </div>
+                <div className="detail-decision__proof detail-decision__proof--wide">
+                  <dt>What this proves</dt>
+                  <dd>{project.decisionMoment.proves}</dd>
+                </div>
+              </dl>
+            </div>
           </section>
 
-          <section className="surface-card detail-section">
+          <section className="surface-card detail-section detail-section--evidence">
             <div className="detail-section__head">
-              <span className="eyebrow">Overview</span>
-              <h2 className="section-title">프로젝트 개요</h2>
-              <p className="page-intro">프로젝트 범위와 역할을 빠르게 훑을 수 있도록 핵심 정보를 먼저 압축했습니다.</p>
+              <span className="eyebrow">Evidence Snapshot</span>
+              <h2 className="section-title">근거 스냅샷</h2>
+              <p className="page-intro">숫자가 있는 프로젝트는 검증 지표를 먼저, 데이터가 부족한 프로젝트는 확인 가능한 산출물 중심으로 정리했습니다.</p>
             </div>
-
-            <dl className="detail-overview-grid">
-              <div className="detail-overview-item detail-overview-item--wide">
-                <dt>핵심 결과</dt>
-                <dd>{renderMultilineText(project.outcome)}</dd>
-              </div>
-              <div className="detail-overview-item">
-                <dt>도메인</dt>
-                <dd>{project.domains.join(" / ")}</dd>
-              </div>
-              <div className="detail-overview-item">
-                <dt>역할</dt>
-                <dd>{project.role.join(", ")}</dd>
-              </div>
-              <div className="detail-overview-item">
-                <dt>사용 기술</dt>
-                <dd>{project.stack.join(", ")}</dd>
-              </div>
-              <div className="detail-overview-item">
-                <dt>기간 / 진행 상태</dt>
-                <dd>
-                  {project.period} / {project.format}
-                </dd>
-              </div>
-            </dl>
+            <div className="detail-evidence-grid">
+              {evidenceSnapshot.map((item, index) => (
+                <article
+                  className={index === 0 ? "detail-evidence-item detail-evidence-item--lead" : "detail-evidence-item"}
+                  key={`${project.slug}-${item.label}`}
+                >
+                  <span>{item.label}</span>
+                  <strong>{item.value}</strong>
+                </article>
+              ))}
+            </div>
           </section>
 
-          <section className="surface-card detail-section">
+          <section className="surface-card detail-section detail-section--context">
             <div className="detail-section__head">
-              <span className="eyebrow">Problem</span>
-              <h2 className="section-title">핵심 과제</h2>
+              <span className="eyebrow">Problem / Context</span>
+              <h2 className="section-title">문제와 맥락</h2>
             </div>
-            <div className="detail-split-grid">
-              <div className="detail-note">
-                <span className="project-card__meta-label">무엇을 풀었는가</span>
-                <p>{project.detailBrief.problem.what}</p>
-              </div>
-              <div className="detail-note">
-                <span className="project-card__meta-label">왜 중요했는가</span>
-                <p>{project.detailBrief.problem.why}</p>
+            <dl className="detail-scope-strip" aria-label="project scope">
+              {detailHeroFacts.map((item) => (
+                <div className="detail-scope-strip__item" key={`${project.slug}-${item.label}`}>
+                  <dt>{item.label}</dt>
+                  <dd>{item.value}</dd>
+                </div>
+              ))}
+            </dl>
+            <div className="detail-context-grid">
+              <article className="detail-note detail-note--context">
+                <span className="project-card__meta-label">Context</span>
+                <p>{project.context}</p>
+              </article>
+              <div className="detail-split-grid">
+                <div className="detail-note">
+                  <span className="project-card__meta-label">Problem</span>
+                  <p>{project.detailBrief.problem.what}</p>
+                </div>
+                <div className="detail-note">
+                  <span className="project-card__meta-label">Why it mattered</span>
+                  <p>{project.detailBrief.problem.why}</p>
+                </div>
               </div>
             </div>
           </section>
-
-          {project.evidencePoints && project.evidencePoints.length > 0 ? (
-            <section className="surface-card detail-section detail-section--evidence">
-              <div className="detail-section__head">
-                <span className="eyebrow">Evidence Snapshot</span>
-                <h2 className="section-title">핵심 근거</h2>
-              </div>
-              <div className="detail-overview-grid detail-overview-grid--evidence">
-                {project.evidencePoints.map((item) => (
-                  <div className="detail-overview-item" key={`${project.slug}-${item.label}`}>
-                    <dt>{item.label}</dt>
-                    <dd>{item.value}</dd>
-                  </div>
-                ))}
-              </div>
-            </section>
-          ) : null}
 
           <section className="surface-card detail-section">
             <div className="detail-section__head">
@@ -280,8 +287,9 @@ export default async function ProjectDetailPage({
 
           <section className="surface-card detail-section">
             <div className="detail-section__head">
-              <span className="eyebrow">Notes</span>
-              <h2 className="section-title">검토 메모</h2>
+              <span className="eyebrow">Limits / Notes</span>
+              <h2 className="section-title">한계와 검토 메모</h2>
+              <p className="page-intro">검증 범위와 추가로 확인해야 할 조건을 숨기지 않고 함께 남겼습니다.</p>
             </div>
             <ul className="list-stack">
               {project.detailBrief.limitations.map((item) => (
@@ -293,7 +301,7 @@ export default async function ProjectDetailPage({
           <section className="surface-card detail-section">
             <div className="detail-section__head">
               <span className="eyebrow">Links</span>
-              <h2 className="section-title">바로가기</h2>
+              <h2 className="section-title">확인 가능한 산출물</h2>
             </div>
             {detailLinks.length > 0 ? (
               <div className="detail-links">
@@ -301,7 +309,7 @@ export default async function ProjectDetailPage({
                   <a
                     className="button-link button-link--secondary"
                     href={link.href}
-                    key={link.label}
+                    key={link.href}
                     rel="noreferrer"
                     target="_blank"
                   >
@@ -330,6 +338,21 @@ export default async function ProjectDetailPage({
                   </article>
                 ))}
               </div>
+            </section>
+          ) : nextProject ? (
+            <section className="surface-card detail-section">
+              <div className="detail-section__head">
+                <span className="eyebrow">Next Project</span>
+                <h2 className="section-title">다음 프로젝트</h2>
+              </div>
+              <article className="related-card related-card--next">
+                <span className="project-card__meta-label">{nextProject.primaryDomain}</span>
+                <h3>{nextProject.title}</h3>
+                <p>{nextProject.decisionMoment.reframedQuestion}</p>
+                <Link className="button-link button-link--secondary" href={`/projects/${nextProject.slug}`}>
+                  다음 프로젝트 보기
+                </Link>
+              </article>
             </section>
           ) : null}
         </div>
