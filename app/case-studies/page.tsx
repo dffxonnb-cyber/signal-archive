@@ -155,7 +155,7 @@ export default function CaseStudiesPage() {
             <span className={styles.archiveStamp}>Signal Archive: Decision Files</span>
             <h1 className={styles.heroTitle}>판단이 만들어진 기록들</h1>
             <p className={styles.heroDescription}>
-              이 페이지는 프로젝트 목록이 아니라, 문제를 판단 질문으로 바꾸고 근거와 산출물로 연결하는 반복 가능한 분석 사고방식을 정리한 페이지입니다.
+              이 페이지는 프로젝트 목록이 아니라, 데이터를 판단 가능한 질문과 산출물로 바꾸는 반복 가능한 사고방식을 정리한 기록입니다.
             </p>
 
             <div aria-label="signal to decision flow" className={styles.heroFlow}>
@@ -235,20 +235,18 @@ export default function CaseStudiesPage() {
           </div>
 
           <div className={styles.caseFileList}>
-            {decisionFiles.map((file) => {
+            {decisionFiles.map((file, index) => {
               const caseBlocks = [
                 { label: "Signal", value: file.signal },
                 { label: "Criteria", value: file.criteria },
                 { label: "Decision", value: file.decision },
-                { label: "Before", value: file.before },
-                { label: "After", value: file.after },
-                { label: "Hiring Signal", value: file.hiringSignal },
               ];
 
               return (
                 <article className={styles.caseFileCard} id={file.id} key={file.id}>
                   <div className={styles.caseFileRail}>
-                    <span className={styles.caseFileLabel}>{file.label}</span>
+                    <span className={styles.caseFileLabel}>Case File</span>
+                    <strong className={styles.caseFileNumber}>{formatCount(index + 1)}</strong>
                     <span className={styles.caseFileMeta}>Decision Log</span>
                   </div>
 
@@ -267,15 +265,33 @@ export default function CaseStudiesPage() {
                       ))}
                     </div>
 
-                    <div className={styles.caseFileFooter}>
-                      <span className={styles.caseBlockLabel}>Linked Projects</span>
-                      <div className={styles.projectPills}>
-                        {file.linkedProjects.map((slug) => (
-                          <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
-                            {projectDisplayNames[slug] ?? projectTitleMap.get(slug) ?? slug}
-                          </Link>
-                        ))}
+                    <div className={styles.beforeAfterGrid}>
+                      <section className={`${styles.beforeAfterBlock} ${styles.beforeBlock}`}>
+                        <span className={styles.caseBlockLabel}>Before</span>
+                        <p>{file.before}</p>
+                      </section>
+                      <section className={`${styles.beforeAfterBlock} ${styles.afterBlock}`}>
+                        <span className={styles.caseBlockLabel}>After</span>
+                        <p>{file.after}</p>
+                      </section>
+                    </div>
+
+                    <div className={styles.caseFileUtility}>
+                      <div className={styles.caseFileFooter}>
+                        <span className={styles.caseBlockLabel}>Linked Projects</span>
+                        <div className={styles.projectPills}>
+                          {file.linkedProjects.map((slug) => (
+                            <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
+                              {projectDisplayNames[slug] ?? projectTitleMap.get(slug) ?? slug}
+                            </Link>
+                          ))}
+                        </div>
                       </div>
+
+                      <aside className={styles.hiringSignalBox}>
+                        <span className={styles.caseBlockLabel}>Hiring Signal</span>
+                        <p>{file.hiringSignal}</p>
+                      </aside>
                     </div>
                   </div>
                 </article>

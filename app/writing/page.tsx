@@ -6,6 +6,7 @@ import {
   writingFlow,
   writingStrengths,
 } from "@/content/writing";
+import { projects } from "@/content/projects";
 
 import styles from "./page.module.css";
 
@@ -14,6 +15,10 @@ function formatNoteNumber(value: number) {
 }
 
 export default function WritingPage() {
+  const projectTitleMap = new Map(
+    projects.map((project) => [project.slug, project.title] as const),
+  );
+
   return (
     <main className="page-shell">
       <div className={`site-container page-grid ${styles.page}`}>
@@ -41,11 +46,41 @@ export default function WritingPage() {
           </div>
 
           <aside aria-label="selected sentence" className={styles.selectedSentence}>
-            <span className={styles.panelLabel}>Selected Sentence</span>
-            <blockquote className={styles.selectedQuote}>
-              “{selectedSentence}”
-            </blockquote>
+            <span className={styles.panelLabel}>Evidence Sample</span>
+            <dl className={styles.sampleStack}>
+              <div>
+                <dt>Observe</dt>
+                <dd>이름 붙이기 전의 반응</dd>
+              </div>
+              <div>
+                <dt>Interpret</dt>
+                <dd>감정이 아니라 신호로 읽기</dd>
+              </div>
+              <div>
+                <dt>Sentence</dt>
+                <dd>“{selectedSentence}”</dd>
+              </div>
+            </dl>
           </aside>
+        </section>
+
+        <section className={styles.strengthSection}>
+          <div className={styles.sectionHeadCompact}>
+            <span className={styles.sectionLabel}>Writing Strength</span>
+            <p className={styles.sectionDescription}>
+              데이터 분석가 포트폴리오 안에서 Writing이 맡는 보조 증거의 역할을 세 가지 역량으로 정리했습니다.
+            </p>
+          </div>
+
+          <div className={styles.strengthGrid}>
+            {writingStrengths.map((item, index) => (
+              <article className={styles.strengthItem} key={item.title}>
+                <span className={styles.strengthIndex}>{formatNoteNumber(index + 1)}</span>
+                <h2 className={styles.strengthTitle}>{item.title}</h2>
+                <p className={styles.strengthDescription}>{item.description}</p>
+              </article>
+            ))}
+          </div>
         </section>
 
         <section className={styles.notesSection}>
@@ -62,9 +97,13 @@ export default function WritingPage() {
               <article className={styles.noteCard} key={entry.slug}>
                 <div className={styles.noteHead}>
                   <span className={styles.noteLabel}>
-                    WRITING NOTE {formatNoteNumber(index + 1)}
+                    WRITING FILE {formatNoteNumber(index + 1)}
                   </span>
                   <h2 className={styles.noteTitle}>{entry.title}</h2>
+                  <div className={styles.noteMetaLine}>
+                    <span>{entry.platform}</span>
+                    <span>{entry.publishedAt}</span>
+                  </div>
                 </div>
 
                 <div aria-label={`${entry.title} themes`} className={styles.noteThemes}>
@@ -77,33 +116,45 @@ export default function WritingPage() {
 
                 <p className={styles.noteDescription}>{entry.summary}</p>
 
+                <dl className={styles.noteLensGrid}>
+                  <div className={styles.noteLensItem}>
+                    <dt>Observation</dt>
+                    <dd>{entry.lens.observe}</dd>
+                  </div>
+                  <div className={styles.noteLensItem}>
+                    <dt>Interpretation</dt>
+                    <dd>{entry.lens.interpret}</dd>
+                  </div>
+                  <div className={styles.noteLensItem}>
+                    <dt>Sentence</dt>
+                    <dd>{entry.lens.sentence}</dd>
+                  </div>
+                </dl>
+
                 {entry.excerpt ? (
                   <blockquote className={styles.noteExcerpt}>
                     “{entry.excerpt}”
                   </blockquote>
                 ) : null}
 
-                <Link className={styles.noteLink} href={entry.href}>
-                  글 보기
-                </Link>
-              </article>
-            ))}
-          </div>
-        </section>
+                {entry.relatedProjects.length > 0 ? (
+                  <div className={styles.relatedProjects}>
+                    <span className={styles.noteLabel}>Linked Evidence</span>
+                    <div className={styles.projectPills}>
+                      {entry.relatedProjects.map((slug) => (
+                        <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
+                          {projectTitleMap.get(slug) ?? slug}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
 
-        <section className={styles.strengthSection}>
-          <div className={styles.sectionHeadCompact}>
-            <span className={styles.sectionLabel}>Writing Strength</span>
-            <p className={styles.sectionDescription}>
-              데이터 분석가 포트폴리오 안에서 Writing이 맡는 보조 증거의 역할을 세 가지 역량으로 정리했습니다.
-            </p>
-          </div>
-
-          <div className={styles.strengthGrid}>
-            {writingStrengths.map((item) => (
-              <article className={styles.strengthItem} key={item.title}>
-                <h2 className={styles.strengthTitle}>{item.title}</h2>
-                <p className={styles.strengthDescription}>{item.description}</p>
+                <div className={styles.noteActions}>
+                  <Link className={styles.noteLink} href={entry.href}>
+                    글 보기
+                  </Link>
+                </div>
               </article>
             ))}
           </div>
