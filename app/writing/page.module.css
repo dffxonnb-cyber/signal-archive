@@ -1,5 +1,5 @@
 .page {
-  gap: 48px;
+  gap: var(--space-section-y);
 }
 
 .hero,
@@ -37,16 +37,16 @@
   position: relative;
   overflow: hidden;
   grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: 36px;
+  gap: var(--space-card);
   align-items: center;
-  padding: 40px 38px;
+  padding: var(--space-card-featured);
   background:
     radial-gradient(circle at top right, rgba(116, 128, 137, 0.11), transparent 34%),
     linear-gradient(180deg, rgba(19, 24, 26, 0.98), rgba(12, 16, 17, 0.98));
 }
 
 .heroCopy {
-  gap: 16px;
+  gap: var(--space-card-compact);
   max-width: 46ch;
 }
 
@@ -56,8 +56,8 @@
   width: fit-content;
   min-height: 26px;
   padding: 0 9px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 999px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.016);
   color: var(--text-muted);
   font-size: 0.64rem;
@@ -92,16 +92,16 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 10px 12px;
+  gap: var(--space-grid-tight) var(--space-card-gap-compact);
   width: fit-content;
   padding-top: 12px;
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
+  border-top: 1px solid var(--border-divider);
 }
 
 .heroFlowStep {
   display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-card-gap-compact);
 }
 
 .heroFlowLabel {
@@ -119,11 +119,11 @@
 .selectedSentence {
   position: relative;
   justify-self: end;
-  gap: 14px;
+  gap: var(--space-card-gap-compact);
   width: min(100%, 390px);
-  padding: 20px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 8px;
+  padding: var(--space-card-dense);
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-md);
   background:
     linear-gradient(90deg, rgba(138, 162, 180, 0.045), transparent 62%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.026), rgba(255, 255, 255, 0.014)),
@@ -141,8 +141,8 @@
 .sampleStack {
   gap: 0;
   margin: 0;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 8px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-md);
   overflow: hidden;
 }
 
@@ -150,7 +150,7 @@
   display: grid;
   gap: 6px;
   padding: 13px 14px;
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
+  border-top: 1px solid var(--border-divider);
   background: rgba(255, 255, 255, 0.012);
 }
 
@@ -198,16 +198,16 @@
 
 .notesSection,
 .strengthSection {
-  gap: 18px;
+  gap: var(--space-grid);
 }
 
 .sectionHead {
-  gap: 8px;
+  gap: var(--space-inline-gap);
   max-width: 58ch;
 }
 
 .sectionHeadCompact {
-  gap: 8px;
+  gap: var(--space-inline-gap);
   max-width: 52ch;
 }
 
@@ -219,17 +219,17 @@
 .noteGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 12px;
+  gap: var(--space-card-gap-compact);
 }
 
 .noteCard {
   position: relative;
-  gap: 14px;
+  gap: var(--space-card-gap-compact);
   min-height: 100%;
-  padding: 18px;
-  border: 1px solid rgba(226, 233, 229, 0.09);
+  padding: var(--space-card-dense);
+  border: 1px solid var(--border-subtle);
   border-left: 2px solid rgba(138, 162, 180, 0.38);
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   background:
     linear-gradient(90deg, rgba(138, 162, 180, 0.035), transparent 44%),
     linear-gradient(180deg, rgba(18, 23, 25, 0.98), rgba(13, 17, 18, 0.98));
@@ -256,7 +256,7 @@
 }
 
 .noteHead {
-  gap: 8px;
+  gap: var(--space-inline-gap);
 }
 
 .noteTitle,
@@ -273,7 +273,7 @@
 .noteMetaLine {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 12px;
+  gap: var(--space-inline-gap) var(--space-card-gap-compact);
   color: var(--text-muted);
   font-size: 0.66rem;
   font-weight: 700;
@@ -282,7 +282,7 @@
 .noteThemes {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: var(--space-inline-gap);
 }
 
 .noteTheme {
@@ -291,7 +291,7 @@
   min-height: 26px;
   padding: 0 9px;
   border: 1px solid rgba(226, 233, 229, 0.05);
-  border-radius: 8px;
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.024);
   color: var(--text-secondary);
   font-size: 0.74rem;
@@ -306,7 +306,7 @@
 
 .noteLensGrid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+  gap: var(--space-grid-tight);
   margin: 0;
 }
 
@@ -314,8 +314,8 @@
   gap: 7px;
   min-width: 0;
   padding: 12px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 8px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-md);
   background: rgba(255, 255, 255, 0.014);
 }
 
@@ -355,14 +355,14 @@
 }
 
 .relatedProjects {
-  gap: 9px;
+  gap: var(--space-inline-gap);
   padding-top: 2px;
 }
 
 .projectPills {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
+  gap: var(--space-inline-gap);
 }
 
 .projectPill {
@@ -370,8 +370,8 @@
   align-items: center;
   min-height: 28px;
   padding: 0 10px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 8px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.016);
   color: var(--text-secondary);
   font-size: 0.72rem;
@@ -391,13 +391,13 @@
 
 .noteActions {
   padding-top: 12px;
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
+  border-top: 1px solid var(--border-divider);
 }
 
 .noteLink {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-inline-gap);
   width: fit-content;
   margin-top: auto;
   color: var(--accent-strong);
@@ -425,8 +425,8 @@
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: hidden;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 8px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-md);
   background:
     radial-gradient(circle at top right, rgba(109, 122, 130, 0.06), transparent 38%),
     rgba(255, 255, 255, 0.012);
@@ -434,13 +434,13 @@
 
 .strengthItem {
   display: grid;
-  gap: 10px;
+  gap: var(--space-grid-tight);
   min-height: 140px;
-  padding: 22px 24px;
+  padding: var(--space-card);
 }
 
 .strengthItem + .strengthItem {
-  border-left: 1px solid rgba(226, 233, 229, 0.08);
+  border-left: 1px solid var(--border-divider);
 }
 
 .strengthTitle {
@@ -471,12 +471,12 @@
   }
 
   .strengthItem {
-    padding: 16px;
+    padding: var(--space-card-compact);
   }
 
   .strengthItem + .strengthItem {
     border-left: 0;
-    border-top: 1px solid rgba(226, 233, 229, 0.08);
+    border-top: 1px solid var(--border-divider);
   }
 
   .noteLensGrid {
@@ -486,7 +486,7 @@
 
 @media (max-width: 800px) {
   .hero {
-    padding: 26px 20px;
+    padding: var(--space-card-mobile);
   }
 
   .noteGrid {
@@ -494,7 +494,7 @@
   }
 
   .noteCard {
-    padding: 20px;
+    padding: var(--space-card-mobile);
   }
 
   .heroTitle {
@@ -510,7 +510,7 @@
   }
 
   .selectedSentence {
-    padding: 18px;
+    padding: var(--space-card-dense);
   }
 
   .selectedQuote {

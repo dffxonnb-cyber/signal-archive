@@ -1,12 +1,12 @@
 .page {
-  gap: 40px;
+  gap: var(--space-section-y);
 }
 
 .hero {
   display: grid;
   grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-  gap: 30px;
-  padding: 34px 32px;
+  gap: var(--space-card);
+  padding: var(--space-card-featured);
   background:
     radial-gradient(circle at top right, rgba(128, 141, 151, 0.1), transparent 34%),
     linear-gradient(180deg, rgba(19, 24, 26, 0.98), rgba(12, 16, 17, 0.98));
@@ -38,7 +38,7 @@
 }
 
 .heroCopy {
-  gap: 12px;
+  gap: var(--space-card-gap-compact);
   max-width: 66ch;
 }
 
@@ -61,8 +61,8 @@
   width: fit-content;
   min-height: 26px;
   padding: 0 9px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 999px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.016);
   color: var(--text-muted);
   font-size: 0.64rem;
@@ -94,7 +94,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px 10px;
+  gap: var(--space-inline-gap) var(--space-grid-tight);
   padding-top: 6px;
 }
 
@@ -124,7 +124,7 @@
 .reframeEvidenceList {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-inline-gap);
 }
 
 .heroMetaLabel {
@@ -138,8 +138,8 @@
   align-items: center;
   min-height: 28px;
   padding: 0 10px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 999px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.016);
   color: var(--text-secondary);
   font-size: 0.74rem;
@@ -156,12 +156,12 @@
 .reframeSample {
   align-self: center;
   justify-self: end;
-  gap: 16px;
+  gap: var(--space-card-compact);
   width: min(100%, 392px);
   min-height: 0;
-  padding: 18px 20px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 8px;
+  padding: var(--space-card-dense);
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-md);
   background:
     radial-gradient(circle at top right, rgba(135, 148, 160, 0.08), transparent 34%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
@@ -173,7 +173,7 @@
 
 .reframeTransform {
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  gap: 12px;
+  gap: var(--space-card-gap-compact);
   align-items: center;
 }
 
@@ -226,7 +226,7 @@
   min-height: 26px;
   padding: 0 10px;
   border: 1px solid rgba(226, 233, 229, 0.05);
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.024);
   color: var(--text-secondary);
   font-size: 0.72rem;
@@ -234,7 +234,7 @@
 }
 
 .sectionHead {
-  gap: 6px;
+  gap: var(--space-inline-gap);
   max-width: 58ch;
 }
 
@@ -249,21 +249,21 @@
 }
 
 .archiveSection {
-  gap: 18px;
+  gap: var(--space-grid);
   padding-top: 4px;
 }
 
 .frameworkGrid {
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--space-grid-tight);
 }
 
 .frameworkCard {
   gap: 8px;
   min-height: 132px;
   padding: 14px;
-  border: 1px solid rgba(226, 233, 229, 0.09);
-  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   background:
     linear-gradient(180deg, rgba(159, 185, 173, 0.045), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.012);
@@ -290,14 +290,14 @@
 }
 
 .caseFileList {
-  gap: 16px;
+  gap: var(--space-grid);
 }
 
 .caseFileCard {
   grid-template-columns: 168px minmax(0, 1fr);
   gap: 0;
-  border: 1px solid rgba(226, 233, 229, 0.1);
-  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   overflow: hidden;
   background:
     radial-gradient(circle at top right, rgba(114, 128, 139, 0.08), transparent 36%),
@@ -310,8 +310,8 @@
 .caseFileRail {
   gap: 8px;
   align-content: start;
-  padding: 18px 16px 20px;
-  border-right: 1px solid rgba(226, 233, 229, 0.08);
+  padding: var(--space-card-dense) var(--space-card-compact);
+  border-right: 1px solid var(--border-divider);
   background:
     linear-gradient(180deg, rgba(211, 179, 111, 0.07), rgba(255, 255, 255, 0.01)),
     rgba(255, 255, 255, 0.012);
@@ -340,8 +340,8 @@
 }
 
 .caseFileBody {
-  gap: 18px;
-  padding: 18px;
+  gap: var(--space-grid);
+  padding: var(--space-card-dense);
 }
 
 .caseFileHeader {
@@ -361,15 +361,15 @@
 
 .caseFileBlocks {
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--space-grid-tight);
 }
 
 .caseBlock {
   gap: 9px;
   min-height: 100%;
   padding: 13px 14px;
-  border: 1px solid rgba(226, 233, 229, 0.09);
-  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.012);
@@ -383,15 +383,15 @@
 
 .beforeAfterGrid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: var(--space-grid-tight);
 }
 
 .beforeAfterBlock {
   gap: 8px;
   min-height: 94px;
   padding: 14px;
-  border: 1px solid rgba(226, 233, 229, 0.09);
-  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
 }
 
 .beforeAfterBlock p,
@@ -425,10 +425,10 @@
 
 .caseFileUtility {
   grid-template-columns: minmax(0, 1fr) minmax(260px, 0.82fr);
-  gap: 12px;
+  gap: var(--space-card-gap-compact);
   align-items: stretch;
   padding-top: 14px;
-  border-top: 1px solid rgba(226, 233, 229, 0.08);
+  border-top: 1px solid var(--border-divider);
 }
 
 .caseFileFooter {
@@ -440,7 +440,7 @@
   gap: 9px;
   padding: 14px;
   border: 1px solid rgba(211, 179, 111, 0.2);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   background:
     linear-gradient(180deg, rgba(211, 179, 111, 0.072), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.012);
@@ -455,7 +455,7 @@
 .projectPills {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: var(--space-inline-gap);
 }
 
 .projectPill {
@@ -463,8 +463,8 @@
   align-items: center;
   min-height: 30px;
   padding: 0 11px;
-  border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 999px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
   background: rgba(255, 255, 255, 0.018);
   color: var(--text-secondary);
   font-size: 0.76rem;
@@ -498,20 +498,20 @@
 
   .frameworkCard {
     min-height: 118px;
-    padding: 12px;
+    padding: var(--space-card-gap-compact);
   }
 }
 
 @media (max-width: 800px) {
   .hero {
     grid-template-columns: 1fr;
-    padding: 24px 20px;
+    padding: var(--space-card-mobile);
   }
 
   .reframeSample,
   .caseFileBody,
   .caseFileRail {
-    padding: 16px;
+    padding: var(--space-card-compact);
   }
 
   .reframeSample {
@@ -527,7 +527,7 @@
 
   .caseFileRail {
     border-right: 0;
-    border-bottom: 1px solid rgba(226, 233, 229, 0.08);
+    border-bottom: 1px solid var(--border-divider);
   }
 
   .beforeAfterGrid {
@@ -548,7 +548,7 @@
   }
 
   .heroFlow {
-    gap: 8px;
+    gap: var(--space-inline-gap);
   }
 
   .heroFlowStep {
@@ -557,12 +557,12 @@
   }
 
   .heroMeta {
-    gap: 6px;
+    gap: var(--space-inline-gap);
   }
 
   .reframeTransform {
     grid-template-columns: 1fr;
-    gap: 10px;
+    gap: var(--space-grid-tight);
   }
 
   .reframeTransformArrow {
@@ -572,7 +572,7 @@
   }
 
   .reframeTransformPair {
-    gap: 8px;
+    gap: var(--space-inline-gap);
     flex-wrap: wrap;
   }
 }
