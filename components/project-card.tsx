@@ -2,8 +2,12 @@ import Link from "next/link";
 
 import type { Project } from "@/types/content";
 
+type ProjectCardVariant = "featured" | "supporting";
+
 type ProjectCardProps = {
   project: Project;
+  index?: number;
+  variant?: ProjectCardVariant;
 };
 
 const statusLabels: Record<Project["status"], string> = {
@@ -42,19 +46,20 @@ function getLinkLabel(label: string) {
     return "GitHub 보기";
   }
 
-  if (label.includes("Live") || label.includes("웹") || label.includes("서비스")) {
+  if (label.includes("Live") || label.includes("웹") || label.includes("서비스") || label.includes("대시보드")) {
     return "서비스 보기";
   }
 
   return label;
 }
 
-export function ProjectCard({ project }: ProjectCardProps) {
+export function ProjectCard({ project, index, variant = "featured" }: ProjectCardProps) {
   const visual = { mark: getProjectMark(project.title), tone: getProjectTone(project) };
-  const projectIndex = String(project.sortOrder).padStart(2, "0");
-  const primaryTags = project.coreTags.slice(0, 3);
+  const projectIndex = String(index ?? project.sortOrder).padStart(2, "0");
   const metricChips = project.metrics;
-  const isPriority = project.status === "featured";
+  const isPriority = variant === "featured";
+  const projectType = project.problemTypes[0] ?? project.format;
+  const tools = (project.cardTools.length > 0 ? project.cardTools : project.stack).slice(0, 4);
   const statusChips = [
     statusLabels[project.status],
     project.format,
@@ -62,9 +67,7 @@ export function ProjectCard({ project }: ProjectCardProps) {
   ].filter(Boolean) as string[];
   const proofBlocks = [
     { label: "My Role", value: project.review.myRole },
-    { label: "Evidence", value: project.review.evidence },
     { label: "Deliverable", value: project.review.deliverable },
-    { label: "Hiring Signal", value: project.review.hiringSignal },
   ];
   const cardLinks = [
     { type: "primary" as const, label: "상세 보기", href: `/projects/${project.slug}`, external: false },
@@ -76,17 +79,80 @@ export function ProjectCard({ project }: ProjectCardProps) {
     })),
   ];
 
-  return (
-    <article className={`project-card ${isPriority ? "project-card--featured" : "project-card--supporting"}`}>
-      {isPriority ? <span className="project-card__accent-line" aria-hidden="true" /> : null}
+  if (variant === "supporting") {
+    return (
+      <article className="project-card project-card--supporting-proof" aria-label={`${project.title} project proof card`}>
+        <div className="project-card__supporting-top">
+          <span className="project-card__board-index">{projectIndex}</span>
+          <div className="project-card__supporting-meta">
+            <span className="chip chip--category">{project.primaryDomain}</span>
+            <span className="chip chip--status">{projectType}</span>
+          </div>
+        </div>
 
-      <div className="project-card__meta-row">
-        <span className="chip chip--category">{project.primaryDomain}</span>
-        {statusChips.slice(0, 2).map((item) => (
-          <span className="chip chip--status" key={item}>
-            {item}
-          </span>
-        ))}
+        <div className="project-card__supporting-head">
+          <h2 className="project-card__title">
+            <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+          </h2>
+          <span className="project-card__eyebrow">{project.period}</span>
+        </div>
+
+        <div className="project-card__supporting-proof">
+          <span className="project-card__meta-label">Decision Question</span>
+          <p>{project.review.decisionQuestion}</p>
+        </div>
+
+        <div className="project-card__supporting-signal">
+          <span className="project-card__meta-label">What it proves</span>
+          <p>{project.review.hiringSignal}</p>
+        </div>
+
+        <div className="project-card__tools" aria-label={`${project.title} tools`}>
+          {tools.map((tool) => (
+            <span className="chip chip--quiet" key={tool}>
+              {tool}
+            </span>
+          ))}
+        </div>
+
+        <div className="project-card__cta-row project-card__cta-row--compact" aria-label={`${project.title} links`}>
+          {cardLinks.slice(0, 2).map((link) =>
+            !link.external ? (
+              <Link className="button-link project-card__cta project-card__cta--primary" href={link.href} key={link.href}>
+                {link.label}
+              </Link>
+            ) : (
+              <a
+                className="button-link button-link--secondary project-card__cta"
+                href={link.href}
+                key={link.href}
+                rel="noreferrer"
+                target="_blank"
+              >
+                {link.label}
+              </a>
+            ),
+          )}
+        </div>
+      </article>
+    );
+  }
+
+  return (
+    <article className="project-card project-card--featured-proof" aria-label={`${project.title} featured proof card`}>
+      <span className="project-card__accent-line" aria-hidden="true" />
+
+      <div className="project-card__board-top">
+        <span className="project-card__board-index">{projectIndex}</span>
+        <div className="project-card__meta-row">
+          <span className="chip chip--category">{project.primaryDomain}</span>
+          <span className="chip chip--status">{projectType}</span>
+          {statusChips.slice(0, 1).map((item) => (
+            <span className="chip chip--status" key={item}>
+              {item}
+            </span>
+          ))}
+        </div>
       </div>
 
       <div className="project-card__hero">
@@ -99,24 +165,28 @@ export function ProjectCard({ project }: ProjectCardProps) {
           <h2 className="project-card__title">
             <Link href={`/projects/${project.slug}`}>{project.title}</Link>
           </h2>
-          <p className="project-card__definition">{project.supportingLine}</p>
         </div>
       </div>
 
-      <div className="project-card__proof-stack">
+      <div className="project-card__decision">
         <span className="project-card__meta-label">Decision Question</span>
-        <p className="project-card__brief-copy">{project.review.decisionQuestion}</p>
+        <p>{project.review.decisionQuestion}</p>
       </div>
 
-      {metricChips.length > 0 ? (
-        <div className="project-card__metric-row" aria-label={`${project.title} key metrics`}>
-          {metricChips.slice(0, isPriority ? 3 : 2).map((item) => (
-            <span className="chip chip--metric" key={`${item.label}-${item.value}`}>
-              {item.value}
-            </span>
-          ))}
-        </div>
-      ) : null}
+      <div className="project-card__evidence-panel">
+        <span className="project-card__meta-label">Evidence</span>
+        <p>{project.review.evidence}</p>
+        {metricChips.length > 0 ? (
+          <div className="project-card__metric-strip" aria-label={`${project.title} key metrics`}>
+            {metricChips.slice(0, 3).map((item) => (
+              <span className="project-card__metric-pill" key={`${item.label}-${item.value}`}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </span>
+            ))}
+          </div>
+        ) : null}
+      </div>
 
       <div className="project-card__proof-grid" aria-label={`${project.title} hiring review fields`}>
         {proofBlocks.map((item) => (
@@ -127,23 +197,17 @@ export function ProjectCard({ project }: ProjectCardProps) {
         ))}
       </div>
 
-      <div className="project-card__tag-row" aria-label={`${project.title} focus tags`}>
-        {primaryTags.map((item) => (
+      <div className="project-card__tools" aria-label={`${project.title} tools`}>
+        {tools.map((item) => (
           <span className="chip chip--quiet" key={item}>
             {item}
           </span>
         ))}
       </div>
 
-      <div className="project-card__brief-grid">
-        <div className="project-card__brief-block">
-          <span className="project-card__meta-label">Tools</span>
-          <p className="project-card__brief-copy">{project.stack.slice(0, 4).join(" · ")}</p>
-        </div>
-        <div className="project-card__brief-block">
-          <span className="project-card__meta-label">Output</span>
-          <p className="project-card__brief-copy">{project.cardBrief.output.slice(0, 2).join(" · ")}</p>
-        </div>
+      <div className="project-card__hiring-signal">
+        <span className="project-card__meta-label">Hiring Signal</span>
+        <p>{project.review.hiringSignal}</p>
       </div>
 
       <div className="project-card__footer">

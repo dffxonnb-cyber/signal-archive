@@ -11,6 +11,7 @@ type ProjectExplorerProps = {
 };
 
 type SortMode = "featured" | "title";
+type ProjectSectionVariant = "featured" | "supporting";
 
 const ALL = "전체";
 
@@ -57,16 +58,21 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
   const featuredResults = filteredProjects.filter((project) => project.status === "featured");
   const supportingResults = filteredProjects.filter((project) => project.status !== "featured");
 
-  const renderProjectSection = (title: string, description: string, items: Project[]) =>
+  const renderProjectSection = (
+    title: string,
+    description: string,
+    items: Project[],
+    variant: ProjectSectionVariant,
+  ) =>
     items.length > 0 ? (
       <section className="project-result-section" key={title}>
         <div className="project-result-section__head">
           <span className="eyebrow">{title}</span>
           <p>{description}</p>
         </div>
-        <div className={`project-grid ${title === "Featured Projects" ? "project-grid--featured" : ""}`}>
-          {items.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+        <div className={`project-grid project-grid--${variant}`}>
+          {items.map((project, index) => (
+            <ProjectCard index={index + 1} key={project.slug} project={project} variant={variant} />
           ))}
         </div>
       </section>
@@ -77,10 +83,10 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
       <div className="surface-card filter-panel filter-panel--projects">
         <div className="filter-panel__header filter-panel__header--projects">
           <div className="filter-panel__intro">
-            <span className="eyebrow">Explorer</span>
-            <h2 className="section-title">필터로 프로젝트 좁히기</h2>
+            <span className="eyebrow">Filter / Sort</span>
+            <h2 className="section-title">Evidence Board 좁혀보기</h2>
             <p className="filter-panel__description">
-              도메인, 문제 유형, 기술 스택을 기준으로 역할 적합성 증거를 빠르게 좁혀볼 수 있습니다.
+              도메인, 문제 유형, 기술 스택 기준으로 어떤 프로젝트가 어떤 역량을 증명하는지 빠르게 비교합니다.
             </p>
           </div>
 
@@ -181,13 +187,15 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
         <>
           {renderProjectSection(
             "Featured Projects",
-            "채용 검토 우선순위가 높은 대표 작업입니다.",
+            "의사결정 질문, 근거 지표, 산출물, Hiring Signal을 우선 확인할 대표 증거입니다.",
             featuredResults,
+            "featured",
           )}
           {renderProjectSection(
             "Supporting Projects",
-            "도메인 확장성과 작업 범위를 보여주는 보조 사례입니다.",
+            "도메인 확장성과 작업 범위를 압축해서 보여주는 보조 증거입니다.",
             supportingResults,
+            "supporting",
           )}
         </>
       ) : (
