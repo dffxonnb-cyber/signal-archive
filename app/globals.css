@@ -3062,12 +3062,67 @@ main {
   gap: 20px;
 }
 
+.resume-fast-scan {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(218, 228, 224, 0.1);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(148, 184, 170, 0.055), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.014);
+}
+
+.resume-fast-scan__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.resume-fast-scan__list div {
+  display: grid;
+  gap: 5px;
+  padding: 11px 0;
+  border-top: 1px solid rgba(218, 228, 224, 0.08);
+}
+
+.resume-fast-scan__list div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.resume-fast-scan__list div:last-child {
+  padding-bottom: 0;
+}
+
+.resume-fast-scan__list dt {
+  color: var(--accent-steel);
+  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: var(--font-size-caption);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume-fast-scan__list dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.48;
+}
+
 .resume-panel--profile,
 .resume-panel--role-fit,
 .resume-panel--projects,
 .resume-panel--skills,
 .resume-panel--workflow {
   grid-column: span 2;
+}
+
+.resume-panel--role-fit {
+  order: -1;
 }
 
 .resume-profile-grid__wide {
@@ -3111,6 +3166,20 @@ main {
   line-height: 1.38;
 }
 
+.resume-role-fit-card__head {
+  display: grid;
+  gap: 7px;
+}
+
+.resume-role-fit-card__index {
+  color: var(--accent-warm);
+  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
 .resume-role-fit-card__list {
   display: grid;
   gap: 12px;
@@ -3142,6 +3211,39 @@ main {
   color: var(--text-secondary);
   font-size: 0.86rem;
   line-height: 1.58;
+}
+
+.resume-chip-row,
+.resume-evidence-row,
+.resume-proof-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.resume-proof-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid rgba(226, 233, 229, 0.1);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.018);
+  color: var(--text-secondary);
+  font-size: 0.74rem;
+  font-weight: 650;
+  line-height: 1;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.resume-proof-link:hover,
+.resume-proof-link:focus-visible {
+  border-color: rgba(148, 184, 170, 0.28);
+  background: rgba(148, 184, 170, 0.065);
+  color: var(--accent-primary-strong);
 }
 
 .resume-skill-grid {
@@ -3186,6 +3288,55 @@ main {
 }
 
 .contact-email-actions {
+  padding-top: 4px;
+}
+
+.contact-direct-card {
+  order: -1;
+  grid-column: span 2;
+  border-color: rgba(148, 184, 170, 0.18);
+  background:
+    linear-gradient(90deg, rgba(148, 184, 170, 0.045), transparent 58%),
+    var(--surface-card);
+}
+
+.contact-direct-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.contact-direct-item {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(218, 228, 224, 0.1);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.014);
+}
+
+.contact-direct-item strong {
+  color: var(--text-primary);
+  font-size: 0.93rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.contact-direct-item--primary {
+  grid-column: span 2;
+  border-color: rgba(148, 184, 170, 0.26);
+  background:
+    linear-gradient(180deg, rgba(148, 184, 170, 0.07), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.014);
+}
+
+.contact-direct-item--muted {
+  border-color: rgba(218, 228, 224, 0.08);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.contact-direct-actions {
   padding-top: 4px;
 }
 
@@ -4778,5 +4929,23 @@ main {
   .detail-evidence-item--lead {
     grid-column: auto;
     min-height: 0;
+  }
+
+  .contact-direct-card,
+  .contact-direct-item--primary {
+    grid-column: auto;
+  }
+
+  .contact-direct-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-direct-actions {
+    flex-direction: column;
+  }
+
+  .contact-direct-actions .button-link,
+  .contact-direct-actions .email-copy-button {
+    width: 100%;
   }
 }

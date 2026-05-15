@@ -1,53 +1,41 @@
 import Link from "next/link";
 
-import { RecruiterChecklistModule } from "@/components/page-summary";
 import { profile } from "@/content/profile";
-import { featuredProjects } from "@/content/projects";
+import { featuredProjects, projects } from "@/content/projects";
 
 export default function ResumePage() {
-  const recruiterChecklist = [
-    {
-      label: "문제 정의",
-      detail: "대표 프로젝트와 케이스 스터디에서 판단 기준을 다시 세우는 흐름을 확인할 수 있습니다.",
-    },
-    {
-      label: "지표 설계",
-      detail: "공공, 상권, CRM 맥락별 비교 지표와 우선순위 기준을 직접 설계했습니다.",
-    },
-    {
-      label: "결과 해석",
-      detail: "세그먼트, 리스크, 우선순위를 의사결정 언어로 번역하는 작업을 중심에 둡니다.",
-    },
-    {
-      label: "결과물 전달",
-      detail: "README, 웹 페이지, 대시보드까지 직접 연결해 검토 가능한 형태로 마무리합니다.",
-    },
-  ];
-  const skillMatrix = profile.skillGroups.map((group) => ({
-    label: group.title,
-    value: group.items.slice(0, 2).join(" / "),
-  }));
+  const projectTitleMap = new Map(
+    projects.map((project) => [project.slug, project.title] as const),
+  );
   const roleFits = [
     {
       title: "Data Analyst Fit",
-      relevantWork: "데이터 정리, EDA, 지표 설계, 결과 해석, 문서화",
-      coreSkills: "SQL, Python, pandas, Jupyter, Tableau",
-      proofProjects: ["Starbucks", "UK Online Retail", "ShopEasy"],
-      evidence: "AUC 0.8147, RFM/세그먼트 분석, 전환 병목 분석",
+      relevantWork: ["데이터 정리", "EDA", "지표 설계", "결과 해석", "문서화"],
+      coreSkills: ["SQL", "Python", "pandas", "Jupyter", "Tableau"],
+      proofProjects: [
+        "starbucks-promotion-analysis",
+        "uk-online-retail-segment-analysis",
+        "shopeasy",
+      ],
+      evidence: ["고객 반응 분석", "세그먼트 분석", "전환 병목 분석"],
     },
     {
       title: "Spatial Data Analyst Fit",
-      relevantWork: "지역 단위 비교, 공간 위험도 구조화, 공공데이터 기반 우선순위 설계",
-      coreSkills: "Python, GIS, 공간 데이터 전처리, 격자 기반 분석",
-      proofProjects: ["LH Traffic Safety", "Redveil"],
-      evidence: "AUC 0.8604, Top-10% Lift 4.39x, 서울 25개 구 비교",
+      relevantWork: ["지역 단위 비교", "공간 위험도 구조화", "공공데이터 기반 우선순위 설계"],
+      coreSkills: ["Python", "GIS", "공간 데이터 전처리", "격자 기반 분석"],
+      proofProjects: ["lh-traffic-safety-analysis", "seoul-storefront-redveil"],
+      evidence: ["AUC 0.8604", "Top-10% Lift 4.39x", "서울 25개 구 비교"],
     },
     {
       title: "Business / CRM Analyst Fit",
-      relevantWork: "고객 세그먼트, 반응률, 채널 성과, 액션/KPI 번역",
-      coreSkills: "SQL, Python, Tableau, CRM 분석",
-      proofProjects: ["Starbucks", "UK Online Retail", "ShopEasy"],
-      evidence: "Recall 0.8712, 고객-오퍼-채널 구조, 매출/재구매 인사이트",
+      relevantWork: ["고객 세그먼트", "반응률", "채널 성과", "액션/KPI 번역"],
+      coreSkills: ["SQL", "Python", "Tableau", "CRM 분석"],
+      proofProjects: [
+        "starbucks-promotion-analysis",
+        "uk-online-retail-segment-analysis",
+        "shopeasy",
+      ],
+      evidence: ["고객-오퍼-채널 구조", "매출/재구매 인사이트"],
     },
   ];
 
@@ -57,18 +45,29 @@ export default function ResumePage() {
         <section className="surface-card page-header">
           <div className="page-header__lead">
             <span className="eyebrow">Resume</span>
-            <h1 className="page-title">핵심 역량과 대표 작업 요약</h1>
+            <h1 className="page-title">채용 검토용 요약 패널</h1>
             <p className="page-intro">
-              포트폴리오 전체 설명 대신, 채용 검토에 필요한 역할 적합성, 기술 범위, 대표 작업만 빠르게 확인할 수 있는 압축본입니다.
+              직무별 적합성, 기술 범위, 증거 프로젝트를 빠르게 대조할 수 있도록 정리했습니다.
             </p>
           </div>
 
-          <RecruiterChecklistModule
-            ariaLabel="resume recruiter checklist"
-            checklist={recruiterChecklist}
-            roleFit={[...profile.primaryRoles, ...profile.secondaryRoles]}
-            skillMatrix={skillMatrix}
-          />
+          <aside aria-label="resume fast scan" className="resume-fast-scan">
+            <span className="eyebrow">Fast Scan</span>
+            <dl className="resume-fast-scan__list">
+              <div>
+                <dt>Primary Fit</dt>
+                <dd>{profile.primaryRoles.join(" / ")}</dd>
+              </div>
+              <div>
+                <dt>Proof Projects</dt>
+                <dd>Starbucks · LH Traffic Safety · Redveil · ShopEasy</dd>
+              </div>
+              <div>
+                <dt>Resume PDF</dt>
+                <dd>Available on Request</dd>
+              </div>
+            </dl>
+          </aside>
         </section>
 
         <div className="resume-grid">
@@ -119,28 +118,63 @@ export default function ResumePage() {
             <span className="eyebrow">Role Fit</span>
             <h2 className="section-title">직무별 적합성</h2>
             <p className="page-intro">
-              같은 프로젝트를 반복 설명하지 않고, 직무별로 어떤 작업과 증거를 먼저 봐야 하는지 분리했습니다.
+              직무별로 먼저 확인할 작업, 기술, 증거 프로젝트를 분리했습니다.
             </p>
             <div className="resume-role-fit-grid">
-              {roleFits.map((fit) => (
+              {roleFits.map((fit, index) => (
                 <article className="resume-role-fit-card" key={fit.title}>
-                  <h3>{fit.title}</h3>
+                  <div className="resume-role-fit-card__head">
+                    <span className="resume-role-fit-card__index">{`0${index + 1}`}</span>
+                    <h3>{fit.title}</h3>
+                  </div>
                   <dl className="resume-role-fit-card__list">
                     <div>
                       <dt>Relevant Work</dt>
-                      <dd>{fit.relevantWork}</dd>
+                      <dd>
+                        <div className="resume-chip-row">
+                          {fit.relevantWork.map((item) => (
+                            <span className="chip" key={item}>
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </dd>
                     </div>
                     <div>
                       <dt>Core Skills</dt>
-                      <dd>{fit.coreSkills}</dd>
+                      <dd>
+                        <div className="resume-chip-row">
+                          {fit.coreSkills.map((item) => (
+                            <span className="chip chip--quiet" key={item}>
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </dd>
                     </div>
                     <div>
                       <dt>Proof Projects</dt>
-                      <dd>{fit.proofProjects.join(" · ")}</dd>
+                      <dd>
+                        <div className="resume-proof-links">
+                          {fit.proofProjects.map((slug) => (
+                            <Link className="resume-proof-link" href={`/projects/${slug}`} key={slug}>
+                              {projectTitleMap.get(slug) ?? slug}
+                            </Link>
+                          ))}
+                        </div>
+                      </dd>
                     </div>
                     <div>
                       <dt>Evidence</dt>
-                      <dd>{fit.evidence}</dd>
+                      <dd>
+                        <div className="resume-evidence-row">
+                          {fit.evidence.map((item) => (
+                            <span className="chip chip--metric" key={item}>
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </dd>
                     </div>
                   </dl>
                 </article>
@@ -242,6 +276,10 @@ export default function ResumePage() {
                   <strong>{link.displayText ?? link.href.replace("mailto:", "")}</strong>
                 </a>
               ))}
+              <article className="resume-link-card resume-link-card--muted">
+                <span className="resume-link-card__label">Resume PDF</span>
+                <strong>Available on Request</strong>
+              </article>
             </div>
           </section>
 

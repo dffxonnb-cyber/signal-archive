@@ -3,11 +3,13 @@ import Link from "next/link";
 import { EmailCopyButton } from "@/components/email-copy-button";
 import { ContactDockModule } from "@/components/page-summary";
 import { profile } from "@/content/profile";
+import { projects } from "@/content/projects";
 
 export default function ContactPage() {
   const githubLink = profile.contactLinks.find((link) => link.label === "GitHub");
   const emailLink = profile.contactLinks.find((link) => link.label === "Email");
   const emailAddress = emailLink?.displayText ?? emailLink?.href.replace("mailto:", "") ?? "dffxonnb@gmail.com";
+  const mainProject = projects.find((project) => project.slug === "seoul-storefront-redveil");
   const contactDockLinks = [
     ...(emailLink
       ? [
@@ -40,6 +42,12 @@ export default function ContactPage() {
       detail: "역할 적합성과 기술 요약 보기",
       kind: "internal" as const,
     },
+    {
+      label: "Case Studies",
+      href: "/case-studies",
+      detail: "반복 가능한 문제 해결 방식 보기",
+      kind: "internal" as const,
+    },
   ];
 
   return (
@@ -48,7 +56,7 @@ export default function ContactPage() {
         <section className="surface-card page-header">
           <div className="page-header__lead">
             <span className="eyebrow">Contact</span>
-            <h1 className="page-title">검토와 연락을 위한 공개 정보</h1>
+            <h1 className="page-title">연락과 추가 검토 경로</h1>
             <p className="page-intro">
               포트폴리오 검토 후 바로 연락할 수 있도록 이메일, GitHub, Resume, 대표 프로젝트 경로를 정리했습니다.
             </p>
@@ -77,40 +85,44 @@ export default function ContactPage() {
               ))}
             </div>
           </article>
-          <article className="archive-card">
+          <article className="archive-card contact-direct-card">
             <div className="archive-card__meta">
               <span className="eyebrow">Direct Access</span>
               <span className="archive-card__count">public</span>
             </div>
-            <h3>바로 확인 가능한 경로</h3>
-            <p>이메일, GitHub, Resume 상태, 대표 프로젝트 검토 흐름을 한 곳에 모았습니다.</p>
-            <div className="resume-links-grid">
-              {emailLink ? (
-                <a className="resume-link-card" href={emailLink.href}>
-                  <span className="resume-link-card__label">Email</span>
-                  <strong>{emailAddress}</strong>
-                </a>
-              ) : null}
+            <h3>바로 연락하거나 검토 이어가기</h3>
+            <p>이메일, GitHub, 대표 프로젝트, Resume 상태를 한 카드에서 확인할 수 있습니다.</p>
+            <div className="contact-direct-grid">
+              <div className="contact-direct-item contact-direct-item--primary">
+                <span className="resume-link-card__label">Email</span>
+                <strong>{emailAddress}</strong>
+                <div className="button-row contact-direct-actions">
+                  <a className="button-link" href={`mailto:${emailAddress}`}>
+                    이메일 보내기
+                  </a>
+                  <EmailCopyButton email={emailAddress} />
+                </div>
+              </div>
               {githubLink ? (
-                <a className="resume-link-card" href={githubLink.href} rel="noreferrer" target="_blank">
+                <a className="contact-direct-item" href={githubLink.href} rel="noreferrer" target="_blank">
                   <span className="resume-link-card__label">GitHub</span>
                   <strong>{githubLink.displayText ?? githubLink.href}</strong>
                 </a>
               ) : null}
-              <Link className="resume-link-card" href="/resume">
-                <span className="resume-link-card__label">Resume</span>
-                <strong>Resume 페이지 보기</strong>
-              </Link>
-              <article className="resume-link-card resume-link-card--muted">
+              <div className="contact-direct-item">
+                <span className="resume-link-card__label">Portfolio Review Route</span>
+                <strong>Projects → Resume → Case Studies → GitHub</strong>
+              </div>
+              {mainProject ? (
+                <Link className="contact-direct-item" href={`/projects/${mainProject.slug}`}>
+                  <span className="resume-link-card__label">Main Project</span>
+                  <strong>{mainProject.title}</strong>
+                </Link>
+              ) : null}
+              <div className="contact-direct-item contact-direct-item--muted">
                 <span className="resume-link-card__label">Resume PDF</span>
-                <strong>PDF Resume Available on Request</strong>
-              </article>
-            </div>
-            <div className="button-row contact-email-actions">
-              <a className="button-link" href={`mailto:${emailAddress}`}>
-                이메일 연락
-              </a>
-              <EmailCopyButton email={emailAddress} />
+                <strong>Available on Request</strong>
+              </div>
             </div>
           </article>
           <article className="archive-card">
