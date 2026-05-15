@@ -7,16 +7,16 @@ export const selectedSentence =
 
 export const writingStrengths: WritingStrength[] = [
   {
-    title: "관찰력",
-    description: "작은 장면에서 감정의 변화와 관계의 신호를 포착합니다.",
+    title: "Observation",
+    description: "작은 장면에서 의미 있는 신호를 포착하는 능력",
   },
   {
-    title: "구조화",
-    description: "흩어진 감각을 원인, 반응, 거리감, 판단의 흐름으로 정리합니다.",
+    title: "Structuring",
+    description: "감각과 상황을 원인, 반응, 흐름으로 나누는 능력",
   },
   {
-    title: "전달력",
-    description: "추상적인 감정을 읽는 사람이 따라갈 수 있는 문장으로 바꿉니다.",
+    title: "Communication",
+    description: "복잡한 내용을 읽히는 문장으로 바꾸는 능력",
   },
 ];
 

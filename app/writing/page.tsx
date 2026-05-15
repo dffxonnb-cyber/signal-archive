@@ -22,9 +22,8 @@ export default function WritingPage() {
             <span className={styles.archiveStamp}>Signal Archive: Writing Notes</span>
             <h1 className={styles.heroTitle}>감각을 구조로 바꾸는 기록</h1>
             <p className={styles.heroDescription}>
-              글쓰기는 흩어진 감각을 붙잡아 해석 가능한 문장으로 바꾸는 일입니다.
-              이 페이지는 데이터 밖의 신호를 읽고, 장면과 감정 사이의 관계를
-              정리한 기록입니다.
+              Writing은 분석 밖의 취미 기록이 아니라, 관찰한 신호를 해석하고 읽히는 문장으로 바꾸는 전달력의 보조 증거입니다.
+              문학적 결은 유지하되, 분석가 포트폴리오 안에서는 관찰·구조화·전달 역량을 보여주는 역할을 맡습니다.
             </p>
 
             <div aria-label="writing flow" className={styles.heroFlow}>
@@ -53,9 +52,8 @@ export default function WritingPage() {
           <div className={styles.sectionHead}>
             <span className={styles.sectionLabel}>Writing Notes</span>
             <p className={styles.sectionDescription}>
-              관찰과 해석이 어떻게 문장으로 남는지 보여주는 세 개의 노트를
-              골랐습니다. 각 글은 감정, 분석, 액션이라는 다른 장면에서 같은
-              질문을 다룹니다.
+              관찰한 장면을 어떻게 해석 가능한 구조와 문장으로 남기는지 보여주는 세 개의 노트를 골랐습니다.
+              각 글은 감정, 분석, 액션이라는 다른 장면에서 같은 질문을 다룹니다.
             </p>
           </div>
 
@@ -86,7 +84,7 @@ export default function WritingPage() {
                 ) : null}
 
                 <Link className={styles.noteLink} href={entry.href}>
-                  Read Note
+                  글 보기
                 </Link>
               </article>
             ))}
@@ -97,8 +95,7 @@ export default function WritingPage() {
           <div className={styles.sectionHeadCompact}>
             <span className={styles.sectionLabel}>Writing Strength</span>
             <p className={styles.sectionDescription}>
-              왜 이 포트폴리오에 Writing이 필요한지, 문장 바깥의 작업 방식으로
-              설명합니다.
+              데이터 분석가 포트폴리오 안에서 Writing이 맡는 보조 증거의 역할을 세 가지 역량으로 정리했습니다.
             </p>
           </div>
 

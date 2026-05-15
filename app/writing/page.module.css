@@ -111,7 +111,7 @@
   width: min(100%, 390px);
   padding: 26px 28px 24px;
   border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 22px;
+  border-radius: 8px;
   background:
     radial-gradient(circle at top right, rgba(138, 147, 153, 0.08), transparent 36%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.026), rgba(255, 255, 255, 0.014)),
@@ -186,7 +186,7 @@
   min-height: 100%;
   padding: 24px 24px 22px;
   border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 22px;
+  border-radius: 8px;
   background:
     radial-gradient(circle at top right, rgba(109, 122, 130, 0.08), transparent 40%),
     linear-gradient(180deg, rgba(18, 23, 25, 0.98), rgba(13, 17, 18, 0.98));
@@ -294,7 +294,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   overflow: hidden;
   border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 22px;
+  border-radius: 8px;
   background:
     radial-gradient(circle at top right, rgba(109, 122, 130, 0.06), transparent 38%),
     rgba(255, 255, 255, 0.012);

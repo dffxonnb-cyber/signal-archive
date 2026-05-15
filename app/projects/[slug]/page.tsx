@@ -38,14 +38,7 @@ export default async function ProjectDetailPage({
   const relatedCaseStudies = caseStudies.filter((caseStudy) =>
     project.caseStudySlugs.includes(caseStudy.slug),
   );
-  const isLhTrafficSafety = project.slug === "lh-traffic-safety-analysis";
   const isRedveil = project.slug === "seoul-storefront-redveil";
-  const detailHeroLead = isLhTrafficSafety
-    ? "신도시 교통안전 시설 설치 우선순위를 설명 가능하게 도출한 공간 분석 프로젝트입니다."
-    : project.supportingLine;
-  const overviewHighlight = isLhTrafficSafety
-    ? "공공 교통사고 데이터와 공간 정보를 격자 단위로 재구성하고, 전이 검증을 통해 저이력 지역에도 적용 가능한 위험도 판단 흐름을 설계했습니다."
-    : project.outcome;
   const detailHeroFacts = [
     { label: "주요 도메인", value: project.primaryDomain },
     { label: "역할", value: project.role.join(" / ") },
@@ -85,7 +78,7 @@ export default async function ProjectDetailPage({
             ))}
           </div>
           <h1 className="page-title detail-title">{project.title}</h1>
-          <p className="detail-hero__supporting-line">{renderMultilineText(detailHeroLead)}</p>
+          <p className="detail-hero__supporting-line">{renderMultilineText(project.review.decisionQuestion)}</p>
           <p className="page-intro detail-hero__summary">{renderMultilineText(project.summary)}</p>
 
           <div className="detail-hero__meta-grid" aria-label="project quick facts">
@@ -120,6 +113,39 @@ export default async function ProjectDetailPage({
         </section>
 
         <div className="page-grid detail-flow">
+          <section className="surface-card detail-section detail-decision">
+            <div className="detail-section__head">
+              <span className="eyebrow">Decision Moment</span>
+              <h2 className="section-title">질문을 바꾼 장면</h2>
+              <p className="page-intro">
+                프로젝트마다 분석의 방향을 바꾼 질문, 핵심 근거, 최종 산출물을 먼저 확인할 수 있습니다.
+              </p>
+            </div>
+
+            <dl className="detail-decision-grid">
+              <div className="detail-overview-item">
+                <dt>Original Question</dt>
+                <dd>{project.decisionMoment.originalQuestion}</dd>
+              </div>
+              <div className="detail-overview-item detail-overview-item--wide">
+                <dt>Reframed Question</dt>
+                <dd>{project.decisionMoment.reframedQuestion}</dd>
+              </div>
+              <div className="detail-overview-item">
+                <dt>Key Evidence</dt>
+                <dd>{project.decisionMoment.keyEvidence}</dd>
+              </div>
+              <div className="detail-overview-item">
+                <dt>Final Deliverable</dt>
+                <dd>{project.decisionMoment.finalDeliverable}</dd>
+              </div>
+              <div className="detail-overview-item detail-overview-item--wide">
+                <dt>What this proves</dt>
+                <dd>{project.decisionMoment.proves}</dd>
+              </div>
+            </dl>
+          </section>
+
           <section className="surface-card detail-section">
             <div className="detail-section__head">
               <span className="eyebrow">Overview</span>
@@ -130,7 +156,7 @@ export default async function ProjectDetailPage({
             <dl className="detail-overview-grid">
               <div className="detail-overview-item detail-overview-item--wide">
                 <dt>핵심 결과</dt>
-                <dd>{renderMultilineText(overviewHighlight)}</dd>
+                <dd>{renderMultilineText(project.outcome)}</dd>
               </div>
               <div className="detail-overview-item">
                 <dt>도메인</dt>

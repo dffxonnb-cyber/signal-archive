@@ -27,6 +27,29 @@ export default function ResumePage() {
     label: group.title,
     value: group.items.slice(0, 2).join(" / "),
   }));
+  const roleFits = [
+    {
+      title: "Data Analyst Fit",
+      relevantWork: "데이터 정리, EDA, 지표 설계, 결과 해석, 문서화",
+      coreSkills: "SQL, Python, pandas, Jupyter, Tableau",
+      proofProjects: ["Starbucks", "UK Online Retail", "ShopEasy"],
+      evidence: "AUC 0.8147, RFM/세그먼트 분석, 전환 병목 분석",
+    },
+    {
+      title: "Spatial Data Analyst Fit",
+      relevantWork: "지역 단위 비교, 공간 위험도 구조화, 공공데이터 기반 우선순위 설계",
+      coreSkills: "Python, GIS, 공간 데이터 전처리, 격자 기반 분석",
+      proofProjects: ["LH Traffic Safety", "Redveil"],
+      evidence: "AUC 0.8604, Top-10% Lift 4.39x, 서울 25개 구 비교",
+    },
+    {
+      title: "Business / CRM Analyst Fit",
+      relevantWork: "고객 세그먼트, 반응률, 채널 성과, 액션/KPI 번역",
+      coreSkills: "SQL, Python, Tableau, CRM 분석",
+      proofProjects: ["Starbucks", "UK Online Retail", "ShopEasy"],
+      evidence: "Recall 0.8712, 고객-오퍼-채널 구조, 매출/재구매 인사이트",
+    },
+  ];
 
   return (
     <main className="page-shell">
@@ -92,6 +115,39 @@ export default function ResumePage() {
             </div>
           </section>
 
+          <section className="surface-card detail-section resume-panel resume-panel--role-fit">
+            <span className="eyebrow">Role Fit</span>
+            <h2 className="section-title">직무별 적합성</h2>
+            <p className="page-intro">
+              같은 프로젝트를 반복 설명하지 않고, 직무별로 어떤 작업과 증거를 먼저 봐야 하는지 분리했습니다.
+            </p>
+            <div className="resume-role-fit-grid">
+              {roleFits.map((fit) => (
+                <article className="resume-role-fit-card" key={fit.title}>
+                  <h3>{fit.title}</h3>
+                  <dl className="resume-role-fit-card__list">
+                    <div>
+                      <dt>Relevant Work</dt>
+                      <dd>{fit.relevantWork}</dd>
+                    </div>
+                    <div>
+                      <dt>Core Skills</dt>
+                      <dd>{fit.coreSkills}</dd>
+                    </div>
+                    <div>
+                      <dt>Proof Projects</dt>
+                      <dd>{fit.proofProjects.join(" · ")}</dd>
+                    </div>
+                    <div>
+                      <dt>Evidence</dt>
+                      <dd>{fit.evidence}</dd>
+                    </div>
+                  </dl>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section className="surface-card detail-section resume-panel resume-panel--strengths">
             <span className="eyebrow">Strengths</span>
             <h2 className="section-title">핵심 강점</h2>
@@ -132,9 +188,8 @@ export default function ResumePage() {
             <span className="eyebrow">Workflow</span>
             <h2 className="section-title">AI-assisted Workflow</h2>
             <p className="page-intro">
-              AI-assisted workflow를 활용해 아이디어 구조화, 코드 초안 작성, 디버깅, 문서화를 효율화합니다. 문제 정의,
-              지표 설계, 결과 해석, 최종 판단 기준은 직접 검토하며, AI는 반복 작업을 줄이고 검증 시간을 확보하기 위한
-              보조 도구로 사용합니다.
+              AI는 아이디어 구조화, 코드 초안, 디버깅, 문서화의 반복 시간을 줄이는 보조 도구로 사용합니다.
+              문제 정의, 지표 설계, 결과 해석, 최종 판단 기준은 직접 검토합니다.
             </p>
             <ul className="list-stack">
               {profile.aiWorkflow.items.map((item) => (
@@ -191,18 +246,17 @@ export default function ResumePage() {
           </section>
 
           <section className="surface-card detail-section resume-panel">
-            <span className="eyebrow">Fit</span>
-            <h2 className="section-title">업무 적합성 메모</h2>
+            <span className="eyebrow">Next Review</span>
+            <h2 className="section-title">다음 검토 경로</h2>
             <p className="page-intro">
-              리포트와 분석이 판단 기준, 의사결정, 개선 액션으로 연결되는 역할에서 가장 강점을 발휘합니다. 기본 리포팅도
-              전체 분석 흐름을 안정적으로 만드는 중요한 출발점으로 보고 있습니다.
+              직무 적합성을 확인했다면, 대표 프로젝트의 Decision Moment와 GitHub 문서를 함께 보면 작업 방식이 더 빠르게 보입니다.
             </p>
             <div className="button-row">
               <Link className="button-link" href="/projects">
                 프로젝트 전체 보기
               </Link>
               <Link className="button-link button-link--secondary" href="/contact">
-                연락하기
+                이메일 연락
               </Link>
             </div>
           </section>

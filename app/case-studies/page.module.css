@@ -157,7 +157,7 @@
   min-height: 0;
   padding: 18px 20px;
   border: 1px solid rgba(226, 233, 229, 0.08);
-  border-radius: 16px;
+  border-radius: 8px;
   background:
     radial-gradient(circle at top right, rgba(135, 148, 160, 0.08), transparent 34%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),

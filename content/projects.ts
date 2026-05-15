@@ -24,6 +24,20 @@ export const projects: Project[] = [
     outcome:
       "교통안전 시설 설치를 사고 빈도 정리에서 벗어나, 위험 격자와 우선순위 논리로 설명할 수 있는 공간 분석 구조로 재정리했습니다.",
     supportingLine: "신도시에서도 설치 우선순위를 설명 가능하게 만든 교통안전 분석",
+    review: {
+      decisionQuestion: "사고 이력이 부족한 신도시에서도 어떤 구간을 먼저 검토해야 하는가?",
+      myRole: "공간 위험도 구조화, 전이 검증 설계, 설치 우선순위 도출",
+      evidence: "Mean AUC 0.8604 / Top-10% Lift 4.39x",
+      deliverable: "격자 기반 위험도 분석과 우선순위 검토 구조",
+      hiringSignal: "공간 데이터 기반 우선순위 설계와 검증 가능",
+    },
+    decisionMoment: {
+      originalQuestion: "사고가 많은 곳은 어디인가?",
+      reframedQuestion: "사고 이력이 부족한 신도시에서도 먼저 설치를 검토할 구간은 어디인가?",
+      keyEvidence: "Mean AUC 0.8604, Top-10% Lift 4.39x",
+      finalDeliverable: "격자 기반 위험도 분석과 우선순위 검토 구조",
+      proves: "공간 데이터 기반 우선순위 설계와 검증 역량",
+    },
     cardBrief: {
       problem:
         "사고 건수 집계만으로는 신도시와 같은 저이력 지역의 교통 취약 구역 우선순위를 설명하기 어려움.",
@@ -141,6 +155,20 @@ export const projects: Project[] = [
     outcome:
       "공공데이터와 상권 데이터를 묶어 매입 리스크를 설명하는 웹 기반 판단 도구를 만들고, 대체 후보 비교까지 가능한 서비스 흐름으로 정리했습니다.",
     supportingLine: "보류 근거를 명확히 보여주는 상권 리스트 판단 서비스",
+    review: {
+      decisionQuestion: "매입 후보를 추천하기 전에 어떤 보류 신호를 먼저 확인해야 하는가?",
+      myRole: "리스크 기준 설계, 거래/상권 데이터 구조화, 공개 웹 서비스 구현",
+      evidence: "서울 25개 구 / 행정동 428개 / 거래 12,074건 / 취약 상권 1,570개",
+      deliverable: "공개 웹 기반 상권 리스크 검토 서비스",
+      hiringSignal: "분석 결과를 실제 의사결정 UI로 번역할 수 있음",
+    },
+    decisionMoment: {
+      originalQuestion: "어떤 상권이 좋아 보이는가?",
+      reframedQuestion: "매입 전에 먼저 보류해야 할 신호는 무엇인가?",
+      keyEvidence: "서울 25개 구, 행정동 428개, 취약 상권 1,570개, 거래 12,074건",
+      finalDeliverable: "공개 웹 기반 상권 리스크 검토 서비스",
+      proves: "분석 결과를 의사결정 UI로 번역하는 역량",
+    },
     cardBrief: {
       problem:
         "좋아 보이는 매물 추천보다, 매입 전에 먼저 확인해야 할 항목을 한눈에 보여줄 필요가 있었음.",
@@ -264,6 +292,20 @@ export const projects: Project[] = [
     outcome:
       "거래 데이터를 구매 패턴, RFM, 세그먼트 기준으로 재구성하고, 매출 및 재구매 관점에서 해석 가능한 e-commerce 분석 결과로 정리했습니다.",
     supportingLine: "구매 패턴 | 고객 세그먼트를 함께 파악할 수 있도록\n분석한 UK 온라인 리테일 분석",
+    review: {
+      decisionQuestion: "어떤 고객군을 유지·재활성화 우선순위로 볼 것인가?",
+      myRole: "RFM 해석 구조화, 통계 검정 정리, 캠페인 시나리오 번역",
+      evidence: "Top 20% = 73.5% Sales / 이탈위험 고객군 84.2% MoM Drop",
+      deliverable: "RFM 세그먼트 분석과 매출·재구매 인사이트",
+      hiringSignal: "거래 데이터를 CRM/커머스 액션 언어로 번역 가능",
+    },
+    decisionMoment: {
+      originalQuestion: "고객 세그먼트는 어떻게 나뉘는가?",
+      reframedQuestion: "어떤 고객군을 유지·재활성화 우선순위로 볼 것인가?",
+      keyEvidence: "Top 20% = 73.5% Sales, 이탈위험 고객군 84.2% MoM Drop",
+      finalDeliverable: "RFM 세그먼트 분석과 매출·재구매 인사이트",
+      proves: "고객 세그먼트를 액션과 KPI 언어로 번역하는 역량",
+    },
     cardBrief: {
       problem:
         "거래 데이터는 많지만 고객 구매 패턴과 세그먼트 차이를 매출 및 재구매 관점으로 함께 읽기 어려움.",
@@ -385,6 +427,20 @@ export const projects: Project[] = [
     outcome:
       "고객, 오퍼, 채널 데이터를 재구성해 고객 반응과 오퍼/채널 성과를 함께 해석할 수 있는 CRM / 마케팅 분석 결과로 정리했습니다.",
     supportingLine: "고객군별 오퍼 반응과 채널 성과를\n함께 도출한 CRM 분석",
+    review: {
+      decisionQuestion: "어떤 고객군이 어떤 오퍼와 채널에 반응하는가?",
+      myRole: "이벤트 구조 재설계, 추천 후보 해석, Tableau 결과 정리",
+      evidence: "AUC 0.8147 / Recall 0.8712 / Precision 0.6830 / F1 0.7657",
+      deliverable: "CRM 반응 분석과 Tableau 결과물",
+      hiringSignal: "고객·오퍼·채널 데이터를 액션 언어로 번역 가능",
+    },
+    decisionMoment: {
+      originalQuestion: "어떤 오퍼가 성과가 좋은가?",
+      reframedQuestion: "어떤 고객군이 어떤 오퍼와 채널에 반응하는가?",
+      keyEvidence: "AUC 0.8147, Recall 0.8712, Precision 0.6830, F1 0.7657",
+      finalDeliverable: "CRM 반응 분석과 Tableau 결과물",
+      proves: "고객·오퍼·채널 구조를 액션 가능한 분석으로 바꾸는 역량",
+    },
     cardBrief: {
       problem:
         "고객, 오퍼, 채널 데이터가 분리되어 있어 어떤 고객군이 어떤 제안에 반응하는지 바로 파악하기 어려움.",
@@ -495,6 +551,20 @@ export const projects: Project[] = [
     outcome:
       "경기 데이터와 선수 데이터를 묶고, EDA부터 통계 검정, 예측, 군집화까지 이어지는 하나의 분석 파이프라인으로 정리했습니다.",
     supportingLine: "승리 요인과 선수 성과를 하나의 파이프라인으로 묶은\n스포츠 분석",
+    review: {
+      decisionQuestion: "승리 요인과 선수 성과를 한 흐름에서 어떻게 해석할 것인가?",
+      myRole: "경기·선수 데이터 통합, 모델링, 결과 해석",
+      evidence: "EDA, 통계 검정, 모델링, 군집화를 하나의 파이프라인으로 구성",
+      deliverable: "경기/선수 분석 파이프라인과 시각화 결과",
+      hiringSignal: "분리된 데이터를 재현 가능한 분석 흐름으로 통합 가능",
+    },
+    decisionMoment: {
+      originalQuestion: "승리 팀은 어떤 특징이 있는가?",
+      reframedQuestion: "승리 요인과 선수 성과를 한 분석 흐름에서 어떻게 설명할 것인가?",
+      keyEvidence: "경기·선수 데이터 통합, EDA, 통계 검정, 모델링, 군집화",
+      finalDeliverable: "경기/선수 분석 파이프라인과 시각화 결과",
+      proves: "분리된 데이터 소스를 하나의 분석 흐름으로 연결하는 역량",
+    },
     cardBrief: {
       problem:
         "승리 요인, 선수 성과, 팀 특성이 각각 분리되어 있어 경기 해석이 한 흐름으로 읽히지 않음.",
@@ -583,6 +653,20 @@ export const projects: Project[] = [
     outcome:
       "주문 감소 문제를 카테고리, 진입 흐름, 디바이스, 이탈 페이지 기준으로 분해하고, 모바일 전자기기 구매 완료율 개선 A/B 테스트로 이어지는 웹 기반 서비스 지표 대시보드로 정리했습니다.",
     supportingLine: "주문 감소 원인을 전환 흐름으로 분해하고\n실험 제안까지 연결한 커머스 대시보드",
+    review: {
+      decisionQuestion: "주문 감소에서 어떤 전환 병목을 먼저 개선해야 하는가?",
+      myRole: "데이터 설계, 전환 흐름 분석, 웹 대시보드 구현, A/B 테스트 설계",
+      evidence: "주문 1,000건 / 사용자 500명 / 세션 2,000건 / Mobile CVR 6.38%",
+      deliverable: "웹 기반 통합 대시보드와 A/B 테스트 설계안",
+      hiringSignal: "서비스 지표를 개선 실험과 KPI로 연결 가능",
+    },
+    decisionMoment: {
+      originalQuestion: "왜 주문이 줄었는가?",
+      reframedQuestion: "어떤 전환 병목을 먼저 검증하고 개선해야 하는가?",
+      keyEvidence: "주문 1,000건, 사용자 500명, 세션 2,000건, Mobile CVR 6.38%",
+      finalDeliverable: "웹 기반 통합 대시보드와 A/B 테스트 설계안",
+      proves: "서비스 지표를 진단하고 실험 설계로 연결하는 역량",
+    },
     cardBrief: {
       problem:
         "주문 감소가 유입 하락인지, 전환 흐름 약화인지, 특정 카테고리·디바이스 문제인지 한 번에 설명하기 어려웠음.",

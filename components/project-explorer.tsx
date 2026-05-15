@@ -80,7 +80,7 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
             <span className="eyebrow">Explorer</span>
             <h2 className="section-title">필터로 프로젝트 좁히기</h2>
             <p className="filter-panel__description">
-              규모는 작게, 분류는 명확하게. 채용 담당자가 보고 싶은 기준만 빠르게 고를 수 있게 정리했습니다.
+              도메인, 문제 유형, 기술 스택을 기준으로 역할 적합성 증거를 빠르게 좁혀볼 수 있습니다.
             </p>
           </div>
 
@@ -181,12 +181,12 @@ export function ProjectExplorer({ projects }: ProjectExplorerProps) {
         <>
           {renderProjectSection(
             "Featured Projects",
-            "역할 적합성과 검증 신호가 가장 빠르게 읽히는 대표 작업입니다.",
+            "채용 검토 우선순위가 높은 대표 작업입니다.",
             featuredResults,
           )}
           {renderProjectSection(
             "Supporting Projects",
-            "도메인과 산출물 범위를 넓혀 보여주는 보조 사례입니다.",
+            "도메인 확장성과 작업 범위를 보여주는 보조 사례입니다.",
             supportingResults,
           )}
         </>

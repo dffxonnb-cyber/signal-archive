@@ -23,7 +23,7 @@ export default function ProjectsPage() {
               <span className="projects-header__title-tail">전체 아카이브</span>
             </h1>
             <p className="page-intro">
-              각 프로젝트의 도메인, 문제 유형, 사용 기술을 기준으로 빠르게 비교할 수 있도록 정리했습니다.
+              각 프로젝트가 어떤 문제를 풀었고, 어떤 근거와 산출물로 역할 적합성을 증명하는지 비교할 수 있게 정리했습니다.
             </p>
           </div>
 

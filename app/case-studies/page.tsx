@@ -12,6 +12,9 @@ type DecisionFile = {
   signal: string;
   criteria: string;
   decision: string;
+  before: string;
+  after: string;
+  hiringSignal: string;
   linkedProjects: string[];
 };
 
@@ -24,6 +27,9 @@ const decisionFiles: DecisionFile[] = [
     signal: "데이터는 있지만, 사용자가 실제로 무엇을 결정해야 하는지 흐릿한 상태",
     criteria: "문제를 설명하는 질문보다, 선택·보류·우선순위로 이어지는 판단 질문을 먼저 정의",
     decision: "매입 판단, 자원 배분, 전환 개선, 캠페인 우선순위로 분석 목적을 재구성",
+    before: "상권 데이터 분석",
+    after: "매입 보류 판단 서비스",
+    hiringSignal: "요구사항이 모호한 상황에서 분석 질문을 재정의할 수 있음",
     linkedProjects: [
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",
@@ -38,6 +44,9 @@ const decisionFiles: DecisionFile[] = [
     signal: "좋아 보이는 후보 안에 숨은 거래 둔화, 과밀, 수요 취약 신호",
     criteria: "가격 부담, 유동성, 경쟁도, 수요 취약도를 함께 보고 위험 기준을 설계",
     decision: "매입 추천보다 보류 사유와 대체 후보를 먼저 제시",
+    before: "매력적인 후보를 찾는 상권 비교",
+    after: "보류 신호와 대체 후보를 먼저 읽는 검토 구조",
+    hiringSignal: "겉으로 좋은 지표보다 리스크 기준을 먼저 설계할 수 있음",
     linkedProjects: ["seoul-storefront-redveil", "lh-traffic-safety-analysis"],
   },
   {
@@ -48,6 +57,9 @@ const decisionFiles: DecisionFile[] = [
     signal: "고객군마다 다른 반응, 이탈, 구매 완료 신호",
     criteria: "고객 가치, 구매 빈도, 채널 반응, 재방문 가능성을 기준으로 세그먼트 해석",
     decision: "캠페인 목표, 우선 채널, 확인 KPI, A/B 테스트 제안으로 연결",
+    before: "고객군 분류와 반응률 요약",
+    after: "세그먼트별 액션, 채널, 확인 KPI 제안",
+    hiringSignal: "고객 데이터를 마케팅/CRM 실행 언어로 번역할 수 있음",
     linkedProjects: [
       "uk-online-retail-segment-analysis",
       "starbucks-promotion-analysis",
@@ -62,6 +74,9 @@ const decisionFiles: DecisionFile[] = [
     signal: "원천 데이터만으로는 바로 판단할 수 없는 분리된 데이터 구조",
     criteria: "조인 기준, 이벤트 정의, 분석 단위, 지표 grain을 먼저 설계",
     decision: "고객-오퍼 테이블, 주문-세션 지표, 재현 가능한 파이프라인으로 정리",
+    before: "원천 파일 중심의 데이터 확인",
+    after: "분석 단위와 지표 기준이 분리된 재현 가능한 테이블 구조",
+    hiringSignal: "흩어진 데이터를 분석 가능한 grain으로 재구성할 수 있음",
     linkedProjects: [
       "starbucks-promotion-analysis",
       "shopeasy",
@@ -77,6 +92,9 @@ const decisionFiles: DecisionFile[] = [
     criteria: "문제 정의, 접근 방식, 핵심 결과, 한계, 확인 경로를 분리",
     decision:
       "README, 방법론 문서, 재현성 가이드, 대시보드, 웹 화면, 실행 파이프라인으로 패키징",
+    before: "노트북과 결과 이미지 중심 산출물",
+    after: "README, 검증 문서, 대시보드, 웹 화면으로 이어지는 검토 패키지",
+    hiringSignal: "분석 결과를 동료와 채용 담당자가 검토 가능한 형태로 남길 수 있음",
     linkedProjects: [
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",
@@ -137,7 +155,7 @@ export default function CaseStudiesPage() {
             <span className={styles.archiveStamp}>Signal Archive: Decision Files</span>
             <h1 className={styles.heroTitle}>판단이 만들어진 기록들</h1>
             <p className={styles.heroDescription}>
-              데이터의 이상 신호를 읽고, 해석 기준을 세우고, 다음 행동으로 바꾼 과정입니다.
+              이 페이지는 프로젝트 목록이 아니라, 문제를 판단 질문으로 바꾸고 근거와 산출물로 연결하는 반복 가능한 분석 사고방식을 정리한 페이지입니다.
             </p>
 
             <div aria-label="signal to decision flow" className={styles.heroFlow}>
@@ -217,49 +235,52 @@ export default function CaseStudiesPage() {
           </div>
 
           <div className={styles.caseFileList}>
-            {decisionFiles.map((file) => (
-              <article className={styles.caseFileCard} id={file.id} key={file.id}>
-                <div className={styles.caseFileRail}>
-                  <span className={styles.caseFileLabel}>{file.label}</span>
-                  <span className={styles.caseFileMeta}>Decision Log</span>
-                </div>
+            {decisionFiles.map((file) => {
+              const caseBlocks = [
+                { label: "Signal", value: file.signal },
+                { label: "Criteria", value: file.criteria },
+                { label: "Decision", value: file.decision },
+                { label: "Before", value: file.before },
+                { label: "After", value: file.after },
+                { label: "Hiring Signal", value: file.hiringSignal },
+              ];
 
-                <div className={styles.caseFileBody}>
-                  <header className={styles.caseFileHeader}>
-                    <h2 className={styles.caseFileTitle}>{file.englishTitle}</h2>
-                    <p className={styles.caseFileSubtitle}>{file.koreanTitle}</p>
-                  </header>
-
-                  <div className={styles.caseFileBlocks}>
-                    <section className={styles.caseBlock}>
-                      <span className={styles.caseBlockLabel}>Signal</span>
-                      <p>{file.signal}</p>
-                    </section>
-
-                    <section className={styles.caseBlock}>
-                      <span className={styles.caseBlockLabel}>Criteria</span>
-                      <p>{file.criteria}</p>
-                    </section>
-
-                    <section className={styles.caseBlock}>
-                      <span className={styles.caseBlockLabel}>Decision</span>
-                      <p>{file.decision}</p>
-                    </section>
+              return (
+                <article className={styles.caseFileCard} id={file.id} key={file.id}>
+                  <div className={styles.caseFileRail}>
+                    <span className={styles.caseFileLabel}>{file.label}</span>
+                    <span className={styles.caseFileMeta}>Decision Log</span>
                   </div>
 
-                  <div className={styles.caseFileFooter}>
-                    <span className={styles.caseBlockLabel}>Linked Projects</span>
-                    <div className={styles.projectPills}>
-                      {file.linkedProjects.map((slug) => (
-                        <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
-                          {projectDisplayNames[slug] ?? projectTitleMap.get(slug) ?? slug}
-                        </Link>
+                  <div className={styles.caseFileBody}>
+                    <header className={styles.caseFileHeader}>
+                      <h2 className={styles.caseFileTitle}>{file.englishTitle}</h2>
+                      <p className={styles.caseFileSubtitle}>{file.koreanTitle}</p>
+                    </header>
+
+                    <div className={styles.caseFileBlocks}>
+                      {caseBlocks.map((block) => (
+                        <section className={styles.caseBlock} key={block.label}>
+                          <span className={styles.caseBlockLabel}>{block.label}</span>
+                          <p>{block.value}</p>
+                        </section>
                       ))}
                     </div>
+
+                    <div className={styles.caseFileFooter}>
+                      <span className={styles.caseBlockLabel}>Linked Projects</span>
+                      <div className={styles.projectPills}>
+                        {file.linkedProjects.map((slug) => (
+                          <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
+                            {projectDisplayNames[slug] ?? projectTitleMap.get(slug) ?? slug}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </article>
-            ))}
+                </article>
+              );
+            })}
           </div>
         </section>
       </div>

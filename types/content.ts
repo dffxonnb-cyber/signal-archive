@@ -30,6 +30,22 @@ export type ProjectMetric = {
   value: string;
 };
 
+export type ProjectReview = {
+  decisionQuestion: string;
+  myRole: string;
+  evidence: string;
+  deliverable: string;
+  hiringSignal: string;
+};
+
+export type ProjectDecisionMoment = {
+  originalQuestion: string;
+  reframedQuestion: string;
+  keyEvidence: string;
+  finalDeliverable: string;
+  proves: string;
+};
+
 export type ProjectDetailBrief = {
   problem: {
     what: string;
@@ -82,6 +98,8 @@ export type Project = {
   context: string;
   outcome: string;
   supportingLine: string;
+  review: ProjectReview;
+  decisionMoment: ProjectDecisionMoment;
   cardBrief: ProjectCardBrief;
   metrics: ProjectMetric[];
   evidencePoints?: ProjectEvidencePoint[];
@@ -145,4 +163,3 @@ export type Profile = {
   skillGroups: SkillGroup[];
   aiWorkflow: AiWorkflow;
 };
-

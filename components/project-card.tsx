@@ -60,12 +60,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
     project.format,
     !isPriority ? project.badges.find((badge) => badge !== "Featured") : null,
   ].filter(Boolean) as string[];
-  const keyEvidence = project.evidencePoints?.[0]
-    ? project.evidencePoints[0]
-    : {
-        label: "핵심 포인트",
-        value: project.focusPoints[0] ?? project.outcome,
-      };
+  const proofBlocks = [
+    { label: "My Role", value: project.review.myRole },
+    { label: "Evidence", value: project.review.evidence },
+    { label: "Deliverable", value: project.review.deliverable },
+    { label: "Hiring Signal", value: project.review.hiringSignal },
+  ];
   const cardLinks = [
     { type: "primary" as const, label: "상세 보기", href: `/projects/${project.slug}`, external: false },
     ...project.links.map((link) => ({
@@ -103,11 +103,9 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       </div>
 
-      <p className="project-card__summary">{project.cardBrief.method}</p>
-
       <div className="project-card__proof-stack">
-        <span className="project-card__meta-label">{keyEvidence.label}</span>
-        <p className="project-card__brief-copy">{keyEvidence.value}</p>
+        <span className="project-card__meta-label">Decision Question</span>
+        <p className="project-card__brief-copy">{project.review.decisionQuestion}</p>
       </div>
 
       {metricChips.length > 0 ? (
@@ -120,6 +118,15 @@ export function ProjectCard({ project }: ProjectCardProps) {
         </div>
       ) : null}
 
+      <div className="project-card__proof-grid" aria-label={`${project.title} hiring review fields`}>
+        {proofBlocks.map((item) => (
+          <div className="project-card__proof-item" key={item.label}>
+            <span className="project-card__meta-label">{item.label}</span>
+            <p className="project-card__brief-copy">{item.value}</p>
+          </div>
+        ))}
+      </div>
+
       <div className="project-card__tag-row" aria-label={`${project.title} focus tags`}>
         {primaryTags.map((item) => (
           <span className="chip chip--quiet" key={item}>
@@ -130,12 +137,12 @@ export function ProjectCard({ project }: ProjectCardProps) {
 
       <div className="project-card__brief-grid">
         <div className="project-card__brief-block">
-          <span className="project-card__meta-label">역할</span>
-          <p className="project-card__brief-copy">{project.role.slice(0, 2).join(" · ")}</p>
+          <span className="project-card__meta-label">Tools</span>
+          <p className="project-card__brief-copy">{project.stack.slice(0, 4).join(" · ")}</p>
         </div>
         <div className="project-card__brief-block">
-          <span className="project-card__meta-label">도구</span>
-          <p className="project-card__brief-copy">{project.stack.slice(0, 3).join(" · ")}</p>
+          <span className="project-card__meta-label">Output</span>
+          <p className="project-card__brief-copy">{project.cardBrief.output.slice(0, 2).join(" · ")}</p>
         </div>
       </div>
 

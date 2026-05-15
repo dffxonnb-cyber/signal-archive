@@ -590,6 +590,56 @@ main {
   margin-top: 2px;
 }
 
+.home-scan-card {
+  display: grid;
+  gap: 14px;
+  align-self: stretch;
+  padding: 20px;
+  border: 1px solid rgba(226, 233, 229, 0.1);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at top right, rgba(159, 185, 173, 0.1), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.028), rgba(255, 255, 255, 0.01));
+}
+
+.home-scan-card__list {
+  display: grid;
+  gap: 0;
+  margin: 0;
+}
+
+.home-scan-card__row {
+  display: grid;
+  gap: 6px;
+  padding: 12px 0;
+  border-top: 1px solid rgba(226, 233, 229, 0.08);
+}
+
+.home-scan-card__row:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.home-scan-card__row:last-child {
+  padding-bottom: 0;
+}
+
+.home-scan-card__row dt,
+.home-review-step__step {
+  color: var(--text-muted);
+  font-size: 0.69rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.home-scan-card__row dd {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
 .home-rail {
   gap: 0;
   border: 1px solid var(--border-strong);
@@ -821,9 +871,11 @@ main {
   gap: 12px;
 }
 
-.home-selected__head {
+.home-selected__head,
+.home-section-head {
   display: grid;
   gap: 6px;
+  max-width: 74ch;
 }
 
 .home-selected__grid {
@@ -986,6 +1038,62 @@ main {
   padding: 10px 0;
   border-top: 1px solid var(--border);
   transition: color 160ms ease;
+}
+
+.home-review-path,
+.home-final-cta {
+  gap: 18px;
+}
+
+.home-review-path__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.home-review-step {
+  display: grid;
+  gap: 10px;
+  min-height: 100%;
+  padding: 16px;
+  border: 1px solid rgba(226, 233, 229, 0.09);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.home-review-step h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.home-review-step p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.62;
+}
+
+.home-review-step__link {
+  width: 100%;
+  min-height: 38px;
+  margin-top: auto;
+  padding-inline: 12px;
+  font-size: 0.78rem;
+}
+
+.home-final-cta {
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+
+.home-final-cta__copy {
+  display: grid;
+  gap: 6px;
+}
+
+.home-final-cta__actions {
+  justify-content: flex-end;
 }
 
 .start-hero {
@@ -2541,6 +2649,7 @@ main {
 .detail-hero__meta-item strong {
   font-size: 0.9rem;
   line-height: 1.48;
+  word-break: keep-all;
 }
 
 .detail-hero__context {
@@ -2593,6 +2702,20 @@ main {
   background:
     radial-gradient(circle at bottom right, rgba(116, 139, 129, 0.08), transparent 34%),
     linear-gradient(180deg, rgba(18, 23, 25, 0.98), rgba(13, 17, 18, 0.98));
+}
+
+.detail-decision {
+  border-color: rgba(159, 185, 173, 0.16);
+  background:
+    radial-gradient(circle at top right, rgba(159, 185, 173, 0.1), transparent 38%),
+    linear-gradient(180deg, rgba(18, 23, 25, 0.98), rgba(13, 17, 18, 0.98));
+}
+
+.detail-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
 }
 
 .detail-overview-grid {
@@ -2729,6 +2852,7 @@ main {
 }
 
 .resume-panel--profile,
+.resume-panel--role-fit,
 .resume-panel--projects,
 .resume-panel--skills,
 .resume-panel--workflow {
@@ -2747,10 +2871,66 @@ main {
 }
 
 .resume-skill-grid,
+.resume-role-fit-grid,
 .resume-project-list,
 .resume-links-grid {
   display: grid;
   gap: 12px;
+}
+
+.resume-role-fit-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.resume-role-fit-card {
+  display: grid;
+  gap: 14px;
+  min-height: 100%;
+  padding: 18px;
+  border: 1px solid rgba(226, 233, 229, 0.09);
+  border-radius: 8px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.01)),
+    rgba(255, 255, 255, 0.012);
+}
+
+.resume-role-fit-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.38;
+}
+
+.resume-role-fit-card__list {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.resume-role-fit-card__list div {
+  display: grid;
+  gap: 5px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(226, 233, 229, 0.08);
+}
+
+.resume-role-fit-card__list div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.resume-role-fit-card__list dt {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.resume-role-fit-card__list dd {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+  line-height: 1.58;
 }
 
 .resume-skill-grid {
@@ -2792,6 +2972,14 @@ main {
 
 .resume-link-card--muted {
   background: rgba(255, 255, 255, 0.02);
+}
+
+.contact-email-actions {
+  padding-top: 4px;
+}
+
+.email-copy-button {
+  cursor: pointer;
 }
 
 /* Visual hierarchy refinement layer */
@@ -3387,9 +3575,15 @@ main {
 }
 
 @media (max-width: 1024px) {
+  .filter-grid--projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .home-hero,
   .home-proof,
   .home-proof__grid,
+  .home-review-path__grid,
+  .home-final-cta,
   .home-snapshot__grid,
   .home-routes,
   .start-hero,
@@ -3401,9 +3595,11 @@ main {
   .detail-split-grid,
   .detail-method-grid,
   .project-card__proof-grid,
+  .detail-decision-grid,
   .home-lens__matrix,
   .home-selected__grid,
   .home-routes__grid,
+  .resume-role-fit-grid,
   .project-grid--featured,
   .archive-grid,
   .archive-grid--entries,
@@ -3435,6 +3631,7 @@ main {
   }
 
   .resume-panel--profile,
+  .resume-panel--role-fit,
   .resume-panel--projects,
   .resume-panel--skills,
   .resume-panel--workflow,
@@ -3580,12 +3777,14 @@ main {
   .filter-grid--compact,
   .filter-grid--projects,
   .detail-hero__meta-grid,
+  .detail-decision-grid,
   .project-card__meta-grid,
   .project-card__brief-grid,
   .project-card__proof-grid,
   .detail-overview-grid,
   .home-project-card__facts,
   .resume-skill-grid,
+  .resume-role-fit-grid,
   .resume-profile-grid,
   .resume-strength-grid,
   .meta-list--compact {
