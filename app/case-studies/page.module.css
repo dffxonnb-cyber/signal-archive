@@ -2,17 +2,12 @@
   gap: var(--space-section-y);
 }
 
-.hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
-  gap: var(--space-card);
-  padding: var(--space-card-featured);
-  background:
-    radial-gradient(circle at top right, rgba(128, 141, 151, 0.1), transparent 34%),
-    linear-gradient(180deg, rgba(19, 24, 26, 0.98), rgba(12, 16, 17, 0.98));
-}
-
+.hero,
 .heroCopy,
+.scopePanel,
+.archiveScope,
+.reframeSample,
+.reframeEvidence,
 .archiveSection,
 .sectionHead,
 .caseFileList,
@@ -20,36 +15,49 @@
 .caseFileRail,
 .caseFileBody,
 .caseFileHeader,
+.caseFileTitleBlock,
+.proofGrid,
+.proofBlock,
+.primaryExampleBlock,
 .caseFileBlocks,
 .caseBlock,
-.caseFileFooter,
 .caseFileUtility,
-.beforeAfterGrid,
-.beforeAfterBlock,
-.hiringSignalBox,
-.frameworkGrid,
-.frameworkCard,
-.heroMetaBlock,
-.reframeSample,
-.reframeTransform,
-.reframeTransformPair,
-.reframeEvidence {
+.evidenceBlock,
+.linkedProjectsBlock,
+.ctaSection,
+.ctaHeader,
+.ctaGrid,
+.ctaCard {
   display: grid;
 }
 
+.hero {
+  grid-template-columns: minmax(0, 0.94fr) minmax(390px, 1.06fr);
+  gap: var(--space-card);
+  align-items: stretch;
+  padding: var(--space-card-featured);
+  border-color: rgba(148, 184, 170, 0.18);
+  background:
+    linear-gradient(90deg, rgba(138, 162, 180, 0.055), transparent 48%),
+    var(--surface-card);
+}
+
 .heroCopy {
+  align-content: center;
   gap: var(--space-card-gap-compact);
-  max-width: 66ch;
+  max-width: 68ch;
 }
 
 .archiveStamp,
 .panelLabel,
+.reframeLabel,
+.heroFlowLabel,
+.scopeItem,
 .caseFileLabel,
 .caseFileMeta,
+.caseFileCode,
 .caseBlockLabel,
-.heroFlowLabel,
-.heroMetaLabel,
-.reframeLabel {
+.axisChip {
   font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -66,186 +74,219 @@
   background: rgba(255, 255, 255, 0.016);
   color: var(--text-muted);
   font-size: 0.64rem;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .heroTitle {
   margin: 0;
-  font-size: clamp(2.05rem, 4.4vw, 3rem);
-  line-height: 1.04;
+  color: var(--text-primary);
+  font-size: 2.5rem;
+  line-height: 1.08;
   letter-spacing: 0;
 }
 
+.heroConcept {
+  margin: 0;
+  color: var(--accent-warm);
+  font-size: 0.9rem;
+  font-weight: 750;
+  line-height: 1.5;
+}
+
 .heroDescription,
+.flowNote,
 .panelNote,
-.caseFileSubtitle,
-.caseBlock p {
+.caseFileDescription,
+.caseBlock p,
+.proofBlock p {
   margin: 0;
   color: var(--text-secondary);
-  line-height: 1.7;
+  line-height: 1.72;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .heroDescription {
-  max-width: 46ch;
+  max-width: 58ch;
   font-size: 0.96rem;
+}
+
+.heroFlowBlock {
+  display: grid;
+  gap: var(--space-card-gap-compact);
+  margin-top: 4px;
+}
+
+.flowNote {
+  max-width: 58ch;
+  color: var(--text-muted);
+  font-size: 0.84rem;
 }
 
 .heroFlow {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-inline-gap) var(--space-grid-tight);
-  padding-top: 6px;
+  align-items: stretch;
+  width: fit-content;
+  max-width: 100%;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.014);
+  overflow: hidden;
 }
 
 .heroFlowStep {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-height: 38px;
+  padding: 0 12px;
+  border-left: 1px solid var(--border-divider);
+}
+
+.heroFlowStep:first-child {
+  border-left: 0;
 }
 
 .heroFlowLabel {
-  color: var(--accent-strong);
-  font-size: 0.74rem;
-  font-weight: 600;
+  color: var(--accent-primary-strong);
+  font-size: 0.72rem;
+  font-weight: 750;
 }
 
 .heroFlowArrow {
   color: var(--text-muted);
-  font-size: 0.86rem;
-}
-
-.heroMetaBlock {
-  gap: 8px;
-  padding-top: 2px;
-}
-
-.heroMeta,
-.reframeEvidenceList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-inline-gap);
-}
-
-.heroMetaLabel {
-  color: var(--text-muted);
-  font-size: 0.67rem;
-  font-weight: 600;
-}
-
-.heroMetaChip {
-  display: inline-flex;
-  align-items: center;
-  min-height: 28px;
-  padding: 0 10px;
-  border: 1px solid var(--border-divider);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.016);
-  color: var(--text-secondary);
-  font-size: 0.74rem;
+  font-size: 0.84rem;
   line-height: 1;
 }
 
-.panelNote {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 0.77rem;
-  line-height: 1.6;
+.scopePanel {
+  gap: var(--space-grid-tight);
+  align-content: stretch;
+}
+
+.archiveScope,
+.reframeSample {
+  gap: var(--space-card-gap-compact);
+  padding: var(--space-card-dense);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.01)),
+    rgba(255, 255, 255, 0.012);
+  box-shadow: var(--shadow-soft);
+}
+
+.archiveScope {
+  align-content: start;
+}
+
+.panelLabel {
+  color: var(--accent-steel);
+  font-size: var(--font-size-caption);
+  font-weight: 750;
+}
+
+.scopeList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-grid-tight);
+}
+
+.scopeItem {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 12px;
+  border: 1px solid var(--border-divider);
+  border-radius: var(--radius-sm);
+  background: rgba(8, 13, 16, 0.22);
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.42;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.scopeItemWide {
+  grid-column: span 2;
 }
 
 .reframeSample {
-  align-self: center;
-  justify-self: end;
-  gap: var(--space-card-compact);
-  width: min(100%, 392px);
-  min-height: 0;
-  padding: var(--space-card-dense);
-  border: 1px solid var(--border-divider);
-  border-radius: var(--radius-md);
-  background:
-    radial-gradient(circle at top right, rgba(135, 148, 160, 0.08), transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    0 12px 24px rgba(0, 0, 0, 0.12);
+  align-content: space-between;
 }
 
 .reframeTransform {
-  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.05fr);
   gap: var(--space-card-gap-compact);
   align-items: center;
 }
 
 .reframeTransformPair {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 10px;
+  display: grid;
+  gap: 7px;
   min-width: 0;
-}
-
-.reframeTransformPairTo {
-  justify-content: flex-start;
-}
-
-.reframeEvidence {
-  gap: 8px;
 }
 
 .reframeLabel {
   color: var(--text-muted);
   font-size: 0.66rem;
-  font-weight: 600;
+  font-weight: 700;
   white-space: nowrap;
 }
 
 .reframeValue {
-  font-size: 1rem;
-  line-height: 1.35;
+  color: var(--text-primary);
+  font-size: 0.96rem;
+  line-height: 1.45;
   letter-spacing: 0;
+  word-break: keep-all;
 }
 
 .reframeTransformPairTo .reframeValue {
-  color: var(--accent-strong);
-  font-size: 1.05rem;
-  font-weight: 700;
+  color: var(--accent-primary-strong);
+  font-weight: 760;
 }
 
 .reframeTransformArrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   color: var(--text-muted);
   font-size: 0.92rem;
   line-height: 1;
 }
 
-.reframeEvidenceChip {
+.reframeEvidence {
+  gap: 8px;
+  padding-top: 2px;
+}
+
+.reframeEvidenceList,
+.metricPills,
+.projectPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-inline-gap);
+}
+
+.reframeEvidenceChip,
+.metricPill,
+.projectPill,
+.axisChip {
   display: inline-flex;
   align-items: center;
-  min-height: 26px;
-  padding: 0 10px;
-  border: 1px solid rgba(226, 233, 229, 0.05);
+  min-height: 28px;
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.024);
+  background: rgba(255, 255, 255, 0.018);
   color: var(--text-secondary);
-  font-size: 0.72rem;
-  line-height: 1;
+  font-size: 0.74rem;
+  font-weight: 650;
+  line-height: 1.2;
 }
 
-.sectionHead {
-  gap: var(--space-inline-gap);
-  max-width: 58ch;
-}
-
-.panelLabel {
-  color: var(--text-muted);
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-
-.caseBlock p {
-  font-size: 0.9rem;
+.reframeEvidenceChip {
+  padding: 0 10px;
 }
 
 .archiveSection {
@@ -253,40 +294,23 @@
   padding-top: 4px;
 }
 
-.frameworkGrid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--space-grid-tight);
+.sectionHead {
+  gap: 7px;
+  max-width: 74ch;
 }
 
-.frameworkCard {
-  gap: 8px;
-  min-height: 132px;
-  padding: 14px;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  background:
-    linear-gradient(180deg, rgba(159, 185, 173, 0.045), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
-}
-
-.frameworkIndex {
-  color: var(--accent-warm);
-  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: 0.72rem;
-  font-weight: 700;
-}
-
-.frameworkCard strong {
-  font-size: 0.94rem;
-  line-height: 1.3;
-}
-
-.frameworkCard p {
+.sectionTitle {
   margin: 0;
-  color: var(--text-secondary);
-  font-size: 0.82rem;
-  line-height: 1.58;
+  color: var(--text-primary);
+  font-size: var(--font-size-section-title);
+  font-weight: 760;
+  line-height: 1.35;
+  letter-spacing: 0;
+}
+
+.panelNote {
+  color: var(--text-muted);
+  font-size: 0.88rem;
 }
 
 .caseFileList {
@@ -294,17 +318,40 @@
 }
 
 .caseFileCard {
-  grid-template-columns: 168px minmax(0, 1fr);
-  gap: 0;
+  --file-accent: var(--accent-steel);
+  --file-accent-soft: rgba(138, 162, 180, 0.07);
+  grid-template-columns: 142px minmax(0, 1fr);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   overflow: hidden;
   background:
-    radial-gradient(circle at top right, rgba(114, 128, 139, 0.08), transparent 36%),
-    linear-gradient(180deg, rgba(18, 23, 25, 0.98), rgba(13, 17, 18, 0.98));
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.03),
-    0 16px 32px rgba(0, 0, 0, 0.16);
+    linear-gradient(180deg, rgba(20, 28, 32, 0.94), rgba(12, 18, 21, 0.96));
+  box-shadow: var(--shadow-card);
+}
+
+.toneQuestion {
+  --file-accent: var(--accent-steel);
+  --file-accent-soft: rgba(138, 162, 180, 0.08);
+}
+
+.toneRisk {
+  --file-accent: var(--accent-warm);
+  --file-accent-soft: rgba(211, 179, 111, 0.085);
+}
+
+.toneSegment {
+  --file-accent: var(--accent-signal);
+  --file-accent-soft: rgba(148, 184, 170, 0.082);
+}
+
+.toneStructure {
+  --file-accent: #a5b0b8;
+  --file-accent-soft: rgba(165, 176, 184, 0.075);
+}
+
+.toneDelivery {
+  --file-accent: var(--accent-primary-strong);
+  --file-accent-soft: rgba(216, 231, 224, 0.07);
 }
 
 .caseFileRail {
@@ -313,30 +360,24 @@
   padding: var(--space-card-dense) var(--space-card-compact);
   border-right: 1px solid var(--border-divider);
   background:
-    linear-gradient(180deg, rgba(211, 179, 111, 0.07), rgba(255, 255, 255, 0.01)),
+    linear-gradient(180deg, var(--file-accent-soft), rgba(255, 255, 255, 0.01)),
     rgba(255, 255, 255, 0.012);
 }
 
-.caseFileLabel {
-  color: var(--text-muted);
-  font-size: 0.68rem;
-  font-weight: 600;
-}
-
-.caseFileNumber {
-  color: var(--accent-warm);
-  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
-  font-size: clamp(2.25rem, 5vw, 3.35rem);
-  font-weight: 800;
-  letter-spacing: 0;
-  line-height: 0.96;
-  font-variant-numeric: tabular-nums;
-}
-
+.caseFileLabel,
 .caseFileMeta {
   color: var(--text-muted);
   font-size: 0.67rem;
-  font-weight: 600;
+  font-weight: 750;
+}
+
+.caseFileNumber {
+  color: var(--file-accent);
+  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 3rem;
+  font-weight: 820;
+  line-height: 0.96;
+  font-variant-numeric: tabular-nums;
 }
 
 .caseFileBody {
@@ -345,18 +386,99 @@
 }
 
 .caseFileHeader {
-  gap: 6px;
+  gap: 10px;
+}
+
+.caseFileTopline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-inline-gap);
+}
+
+.axisChip {
+  min-height: 26px;
+  padding: 0 9px;
+  border-color: rgba(148, 184, 170, 0.16);
+  background: var(--file-accent-soft);
+  color: var(--file-accent);
+  font-size: 0.66rem;
+  font-weight: 800;
+}
+
+.caseFileCode {
+  color: var(--text-muted);
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.caseFileTitleBlock {
+  gap: 5px;
 }
 
 .caseFileTitle {
   margin: 0;
-  font-size: 1.26rem;
-  line-height: 1.3;
+  color: var(--text-primary);
+  font-size: 1.24rem;
+  line-height: 1.34;
   letter-spacing: 0;
 }
 
-.caseFileSubtitle {
+.caseFileDescription {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+}
+
+.proofGrid {
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.72fr);
+  gap: var(--space-grid-tight);
+}
+
+.proofBlock,
+.primaryExampleBlock,
+.caseBlock,
+.evidenceBlock,
+.linkedProjectsBlock {
+  gap: 9px;
+  padding: 13px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.014);
+}
+
+.proofBlock {
+  border-color: rgba(148, 184, 170, 0.2);
+  background:
+    linear-gradient(180deg, rgba(148, 184, 170, 0.065), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.012);
+}
+
+.proofBlock p {
+  color: var(--accent-primary-strong);
   font-size: 0.92rem;
+  font-weight: 690;
+}
+
+.primaryExampleBlock {
+  align-content: start;
+  border-color: rgba(211, 179, 111, 0.18);
+  background:
+    linear-gradient(180deg, rgba(211, 179, 111, 0.07), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.012);
+}
+
+.primaryExampleBlock a {
+  color: var(--accent-warm);
+  font-size: 0.96rem;
+  font-weight: 750;
+  line-height: 1.45;
+  transition: color var(--transition-fast);
+}
+
+.primaryExampleBlock a:hover,
+.primaryExampleBlock a:focus-visible {
+  color: var(--accent-primary-strong);
 }
 
 .caseFileBlocks {
@@ -364,161 +486,143 @@
   gap: var(--space-grid-tight);
 }
 
-.caseBlock {
-  gap: 9px;
-  min-height: 100%;
-  padding: 13px 14px;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.024), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-}
-
 .caseBlockLabel {
   color: var(--text-muted);
-  font-size: 0.68rem;
-  font-weight: 600;
+  font-size: 0.67rem;
+  font-weight: 750;
 }
 
-.beforeAfterGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-grid-tight);
+.caseBlock p {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
 }
 
-.beforeAfterBlock {
-  gap: 8px;
-  min-height: 94px;
-  padding: 14px;
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
+.caseBlock:nth-child(3) {
+  border-color: rgba(148, 184, 170, 0.18);
 }
 
-.beforeAfterBlock p,
-.hiringSignalBox p {
-  margin: 0;
-  line-height: 1.62;
-}
-
-.beforeAfterBlock p {
+.caseBlock:nth-child(3) p {
   color: var(--text-primary);
-  font-size: 0.95rem;
   font-weight: 650;
-}
-
-.beforeBlock {
-  background:
-    linear-gradient(180deg, rgba(138, 162, 180, 0.05), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-}
-
-.afterBlock {
-  border-color: rgba(148, 184, 170, 0.24);
-  background:
-    linear-gradient(180deg, rgba(148, 184, 170, 0.07), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-}
-
-.afterBlock p {
-  color: var(--accent-strong);
 }
 
 .caseFileUtility {
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.82fr);
-  gap: var(--space-card-gap-compact);
-  align-items: stretch;
-  padding-top: 14px;
-  border-top: 1px solid var(--border-divider);
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.78fr);
+  gap: var(--space-grid-tight);
+  padding-top: 2px;
 }
 
-.caseFileFooter {
-  gap: 10px;
-  align-content: start;
+.metricPill,
+.projectPill {
+  min-height: 30px;
+  padding: 0 10px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
-.hiringSignalBox {
-  gap: 9px;
-  padding: 14px;
-  border: 1px solid rgba(211, 179, 111, 0.2);
-  border-radius: var(--radius-md);
-  background:
-    linear-gradient(180deg, rgba(211, 179, 111, 0.072), rgba(255, 255, 255, 0.012)),
-    rgba(255, 255, 255, 0.012);
-}
-
-.hiringSignalBox p {
+.metricPill {
+  border-color: rgba(211, 179, 111, 0.2);
+  background: rgba(211, 179, 111, 0.075);
   color: var(--accent-warm);
-  font-size: 0.9rem;
-  font-weight: 650;
-}
-
-.projectPills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-inline-gap);
+  font-variant-numeric: tabular-nums;
 }
 
 .projectPill {
-  display: inline-flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 0 11px;
-  border: 1px solid var(--border-divider);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.018);
-  color: var(--text-secondary);
-  font-size: 0.76rem;
-  line-height: 1;
   transition:
-    border-color 160ms ease,
-    background 160ms ease,
-    color 160ms ease,
-    transform 160ms ease;
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background var(--transition-fast);
 }
 
 .projectPill:hover,
 .projectPill:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(165, 176, 184, 0.24);
-  background: rgba(255, 255, 255, 0.032);
-  color: var(--accent-strong);
+  border-color: rgba(148, 184, 170, 0.3);
+  background: rgba(148, 184, 170, 0.06);
+  color: var(--accent-primary-strong);
+}
+
+.ctaSection {
+  gap: var(--space-card);
+  padding: var(--space-card-featured);
+  border-color: rgba(148, 184, 170, 0.18);
+  background:
+    linear-gradient(90deg, rgba(148, 184, 170, 0.045), transparent 56%),
+    var(--surface-card);
+}
+
+.ctaHeader {
+  gap: 7px;
+  max-width: 74ch;
+}
+
+.ctaGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-grid-tight);
+}
+
+.ctaCard {
+  gap: 7px;
+  min-height: 142px;
+  padding: 15px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.014);
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.ctaCard strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.ctaCard span {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.ctaCard em {
+  align-self: end;
+  margin-top: auto;
+  color: var(--accent-steel);
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.ctaCard:hover,
+.ctaCard:focus-visible {
+  transform: translateY(-1px);
+  border-color: rgba(148, 184, 170, 0.28);
+  background: rgba(148, 184, 170, 0.045);
 }
 
 @media (max-width: 1080px) {
-  .caseFileBlocks,
+  .hero,
+  .proofGrid,
   .caseFileUtility {
     grid-template-columns: 1fr;
   }
 
-  .frameworkGrid {
-    grid-template-columns: repeat(5, minmax(150px, 1fr));
-    overflow-x: auto;
-    padding-bottom: 4px;
+  .scopePanel {
+    grid-template-columns: 1fr 1fr;
   }
 
-  .frameworkCard {
-    min-height: 118px;
-    padding: var(--space-card-gap-compact);
+  .caseFileBlocks {
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 800px) {
-  .hero {
+@media (max-width: 860px) {
+  .scopePanel,
+  .ctaGrid {
     grid-template-columns: 1fr;
-    padding: var(--space-card-mobile);
-  }
-
-  .reframeSample,
-  .caseFileBody,
-  .caseFileRail {
-    padding: var(--space-card-compact);
-  }
-
-  .reframeSample {
-    align-self: start;
-    justify-self: stretch;
-    width: 100%;
-    min-height: 0;
   }
 
   .caseFileCard {
@@ -526,53 +630,96 @@
   }
 
   .caseFileRail {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
     border-right: 0;
     border-bottom: 1px solid var(--border-divider);
   }
 
-  .beforeAfterGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .heroTitle {
-    font-size: 1.95rem;
+  .caseFileNumber {
+    font-size: 2.05rem;
   }
 }
 
-@media (max-width: 720px) {
-  .heroDescription,
-  .panelNote,
-  .caseFileSubtitle,
-  .caseBlock p {
-    font-size: 0.88rem;
+@media (max-width: 800px) {
+  .hero,
+  .ctaSection {
+    padding: var(--space-card-mobile);
+  }
+
+  .heroTitle {
+    font-size: 2rem;
+  }
+
+  .archiveScope,
+  .reframeSample,
+  .caseFileBody,
+  .caseFileRail {
+    padding: var(--space-card-compact);
   }
 
   .heroFlow {
-    gap: var(--space-inline-gap);
+    width: 100%;
   }
 
   .heroFlowStep {
-    width: 100%;
-    justify-content: flex-start;
+    flex: 1 1 100%;
+    justify-content: space-between;
+    border-left: 0;
+    border-top: 1px solid var(--border-divider);
   }
 
-  .heroMeta {
-    gap: var(--space-inline-gap);
+  .heroFlowStep:first-child {
+    border-top: 0;
+  }
+
+  .heroFlowArrow {
+    transform: rotate(90deg);
   }
 
   .reframeTransform {
     grid-template-columns: 1fr;
-    gap: var(--space-grid-tight);
   }
 
   .reframeTransformArrow {
     justify-self: start;
-    font-size: 0.88rem;
     transform: rotate(90deg);
   }
+}
 
-  .reframeTransformPair {
-    gap: var(--space-inline-gap);
-    flex-wrap: wrap;
+@media (max-width: 640px) {
+  .scopeList {
+    grid-template-columns: 1fr;
+  }
+
+  .scopeItemWide {
+    grid-column: auto;
+  }
+
+  .caseFileTopline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .caseFileRail {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .metricPills,
+  .projectPills,
+  .reframeEvidenceList {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .metricPill,
+  .projectPill,
+  .reframeEvidenceChip {
+    min-height: 34px;
+    justify-content: flex-start;
+    width: 100%;
+    padding: 8px 10px;
+    line-height: 1.4;
   }
 }
