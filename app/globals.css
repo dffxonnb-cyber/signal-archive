@@ -53,10 +53,10 @@
   --font-size-section-title: 1.3rem;
   --font-size-page-title: 2.35rem;
   --font-size-page-hero-eyebrow: 0.82rem;
-  --font-size-page-hero-title: clamp(2.5rem, 5vw, 4rem);
+  --font-size-page-hero-title: clamp(2.25rem, 4.6vw, 3.5rem);
   --font-size-page-hero-lead: clamp(1.125rem, 1.55vw, 1.25rem);
   --font-size-page-hero-meta: 0.9rem;
-  --font-size-home-hero-title: clamp(2.75rem, 5.6vw, 4.35rem);
+  --font-size-home-hero-title: clamp(2.55rem, 5.1vw, 4rem);
   --font-size-home-hero-lead: clamp(1.08rem, 1.7vw, 1.24rem);
   --font-weight-regular: 400;
   --font-weight-medium: 550;
@@ -4546,7 +4546,7 @@ main {
   .page-hero__title,
   .page-hero--home .page-hero__title {
     max-width: 100%;
-    font-size: clamp(2.125rem, 10vw, 2.75rem);
+    font-size: clamp(2rem, 9.2vw, 2.55rem);
     line-height: 1.08;
   }
 
