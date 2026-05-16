@@ -67,13 +67,17 @@
 .articleTitle,
 .sectionTitle {
   margin: 0;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
 }
 
 .articleTitle {
-  max-width: 14ch;
-  font-size: clamp(2.35rem, 4.9vw, 3.2rem);
-  line-height: 1.04;
+  max-width: 19ch;
+  font-size: var(--font-size-page-hero-title);
+  font-weight: var(--font-weight-page-hero-title);
+  line-height: var(--line-height-page-hero-title);
+  letter-spacing: var(--letter-spacing-page-hero-title);
+  text-wrap: balance;
+  word-break: keep-all;
 }
 
 .articleLead,
@@ -320,10 +324,6 @@
 
   .articleHero {
     padding: 26px 20px;
-  }
-
-  .articleTitle {
-    font-size: 2rem;
   }
 
   .articleSection {
