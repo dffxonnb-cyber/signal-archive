@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PageHero } from "@/components/page-hero";
 import { projects } from "@/content/projects";
 
 import styles from "./page.module.css";
@@ -182,28 +183,31 @@ export default function CaseStudiesPage() {
   return (
     <main className="page-shell">
       <div className={`site-container page-grid ${styles.page}`}>
-        <section className={`surface-card ${styles.hero}`} aria-labelledby="decision-files-title">
-          <div className={styles.heroCopy}>
-            <span className={styles.archiveStamp}>Signal Archive: Decision Files</span>
-            <h1 className={styles.heroTitle} id="decision-files-title">
-              판단이 만들어지는 방식
-            </h1>
-            <p className={styles.heroConcept}>5 ways I turn data into decisions.</p>
-            <p className={styles.heroDescription}>
+        <PageHero
+          eyebrow="Signal Archive: Decision Files"
+          lead={
+            <>
               프로젝트를 많이 나열하기보다, 제가 반복해서 사용하는 분석 판단 방식을 정리했습니다. 각 파일은 문제를
               좁히고, 기준을 세우고, 검토 가능한 산출물로 남기는 과정을 보여줍니다.
-            </p>
-
-            <div className={styles.heroFlowBlock}>
+            </>
+          }
+          meta={<span className="page-hero__meta-chip">5 ways I turn data into decisions.</span>}
+          panelPlacement="below"
+          title="판단이 만들어지는 방식"
+          titleId="decision-files-title"
+        >
+          <div className={styles.heroSummaryPanel} aria-label="Decision files summary">
+            <div className={styles.flowSummary}>
+              <span className={styles.panelLabel}>Decision Frame</span>
               <p className={styles.flowNote}>
                 데이터 신호를 읽고, 판단 기준을 세운 뒤, 리뷰 가능한 산출물로 남기는 구조입니다.
               </p>
-              <div aria-label="Signal to Criteria to Decision" className={styles.heroFlow}>
+              <div aria-label="Signal to Criteria to Decision" className="page-hero__flow">
                 {archiveFlow.map((step, index) => (
-                  <div className={styles.heroFlowStep} key={step}>
-                    <span className={styles.heroFlowLabel}>{step}</span>
+                  <div className="page-hero__flow-step" key={step}>
+                    <span className="page-hero__flow-label">{step}</span>
                     {index < archiveFlow.length - 1 ? (
-                      <span aria-hidden="true" className={styles.heroFlowArrow}>
+                      <span aria-hidden="true" className="page-hero__flow-arrow">
                         →
                       </span>
                     ) : null}
@@ -211,50 +215,50 @@ export default function CaseStudiesPage() {
                 ))}
               </div>
             </div>
-          </div>
 
-          <aside aria-label="Decision files archive scope" className={styles.scopePanel}>
-            <div className={styles.archiveScope}>
-              <span className={styles.panelLabel}>Archive Scope</span>
-              <div className={styles.scopeList}>
-                {archiveScope.map((item, index) => (
-                  <span
-                    className={`${styles.scopeItem} ${index > 1 ? styles.scopeItemWide : ""}`}
-                    key={item}
-                  >
-                    {item}
+            <aside aria-label="Decision files archive scope" className={styles.scopePanel}>
+              <div className={styles.archiveScope}>
+                <span className={styles.panelLabel}>Archive Scope</span>
+                <div className={styles.scopeList}>
+                  {archiveScope.map((item, index) => (
+                    <span
+                      className={`${styles.scopeItem} ${index > 1 ? styles.scopeItemWide : ""}`}
+                      key={item}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div aria-label="Reframe sample" className={styles.reframeSample}>
+                <span className={styles.panelLabel}>Reframe Sample</span>
+                <div className={styles.reframeTransform}>
+                  <div className={styles.reframeTransformPair}>
+                    <span className={styles.reframeLabel}>From</span>
+                    <strong className={styles.reframeValue}>상권 데이터 분석</strong>
+                  </div>
+                  <span aria-hidden="true" className={styles.reframeTransformArrow}>
+                    →
                   </span>
-                ))}
-              </div>
-            </div>
+                  <div className={`${styles.reframeTransformPair} ${styles.reframeTransformPairTo}`}>
+                    <span className={styles.reframeLabel}>To</span>
+                    <strong className={styles.reframeValue}>매입 보류 판단 서비스</strong>
+                  </div>
+                </div>
 
-            <div aria-label="Reframe sample" className={styles.reframeSample}>
-              <span className={styles.panelLabel}>Reframe Sample</span>
-              <div className={styles.reframeTransform}>
-                <div className={styles.reframeTransformPair}>
-                  <span className={styles.reframeLabel}>From</span>
-                  <strong className={styles.reframeValue}>상권 데이터 분석</strong>
-                </div>
-                <span aria-hidden="true" className={styles.reframeTransformArrow}>
-                  →
-                </span>
-                <div className={`${styles.reframeTransformPair} ${styles.reframeTransformPairTo}`}>
-                  <span className={styles.reframeLabel}>To</span>
-                  <strong className={styles.reframeValue}>매입 보류 판단 서비스</strong>
+                <div className={styles.reframeEvidence}>
+                  <span className={styles.reframeLabel}>Evidence</span>
+                  <div className={styles.reframeEvidenceList}>
+                    <span className={styles.reframeEvidenceChip}>리스크 점수</span>
+                    <span className={styles.reframeEvidenceChip}>보류 사유</span>
+                    <span className={styles.reframeEvidenceChip}>대체 후보</span>
+                  </div>
                 </div>
               </div>
-
-              <div className={styles.reframeEvidence}>
-                <span className={styles.reframeLabel}>Evidence</span>
-                <div className={styles.reframeEvidenceList}>
-                  <span className={styles.reframeEvidenceChip}>리스크 점수</span>
-                  <span className={styles.reframeEvidenceChip}>보류 사유</span>
-                  <span className={styles.reframeEvidenceChip}>대체 후보</span>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </section>
+            </aside>
+          </div>
+        </PageHero>
 
         <section className={styles.archiveSection} aria-labelledby="decision-file-list-title">
           <div className={styles.sectionHead}>

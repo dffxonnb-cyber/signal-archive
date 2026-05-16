@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { EmailCopyButton } from "@/components/email-copy-button";
+import { PageHero } from "@/components/page-hero";
 import { ContactDockModule } from "@/components/page-summary";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
@@ -53,21 +54,18 @@ export default function ContactPage() {
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
-        <section className="surface-card page-header">
-          <div className="page-header__lead">
-            <span className="eyebrow">Contact</span>
-            <h1 className="page-title">연락과 추가 검토 경로</h1>
-            <p className="page-intro">
-              포트폴리오 검토 후 바로 연락할 수 있도록 이메일, GitHub, Resume, 대표 프로젝트 경로를 정리했습니다.
-            </p>
-          </div>
-
+        <PageHero
+          eyebrow="Contact"
+          lead="포트폴리오 검토 후 바로 연락할 수 있도록 이메일, GitHub, Resume, 대표 프로젝트 경로를 정리했습니다."
+          title="연락과 추가 검토 경로"
+          titleId="contact-title"
+        >
           <ContactDockModule
             ariaLabel="contact dock"
             links={contactDockLinks}
             note="이력서 PDF와 프로젝트 보충 설명은 이메일 요청 시 정리된 형태로 전달할 수 있습니다."
           />
-        </section>
+        </PageHero>
 
         <div className="archive-grid">
           <article className="archive-card">

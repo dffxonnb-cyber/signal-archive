@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PageHero } from "@/components/page-hero";
 import {
   selectedSentence,
   writingEntries,
@@ -22,29 +23,31 @@ export default function WritingPage() {
   return (
     <main className="page-shell">
       <div className={`site-container page-grid ${styles.page}`}>
-        <section className={`surface-card ${styles.hero}`}>
-          <div className={styles.heroCopy}>
-            <span className={styles.archiveStamp}>Signal Archive: Writing Notes</span>
-            <h1 className={styles.heroTitle}>감각을 구조로 바꾸는 기록</h1>
-            <p className={styles.heroDescription}>
+        <PageHero
+          eyebrow="Signal Archive: Writing Notes"
+          lead={
+            <>
               Writing은 분석 밖의 취미 기록이 아니라, 관찰한 신호를 해석하고 읽히는 문장으로 바꾸는 전달력의 보조 증거입니다.
               문학적 결은 유지하되, 분석가 포트폴리오 안에서는 관찰·구조화·전달 역량을 보여주는 역할을 맡습니다.
-            </p>
-
-            <div aria-label="writing flow" className={styles.heroFlow}>
+            </>
+          }
+          meta={
+            <div aria-label="writing flow" className="page-hero__flow">
               {writingFlow.map((step, index) => (
-                <div className={styles.heroFlowStep} key={step}>
-                  <span className={styles.heroFlowLabel}>{step}</span>
+                <div className="page-hero__flow-step" key={step}>
+                  <span className="page-hero__flow-label">{step}</span>
                   {index < writingFlow.length - 1 ? (
-                    <span aria-hidden="true" className={styles.heroFlowArrow}>
+                    <span aria-hidden="true" className="page-hero__flow-arrow">
                       →
                     </span>
                   ) : null}
                 </div>
               ))}
             </div>
-          </div>
-
+          }
+          title="감각을 구조로 바꾸는 기록"
+          titleId="writing-title"
+        >
           <aside aria-label="selected sentence" className={styles.selectedSentence}>
             <span className={styles.panelLabel}>Evidence Sample</span>
             <dl className={styles.sampleStack}>
@@ -62,7 +65,7 @@ export default function WritingPage() {
               </div>
             </dl>
           </aside>
-        </section>
+        </PageHero>
 
         <section className={styles.strengthSection}>
           <div className={styles.sectionHeadCompact}>

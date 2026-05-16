@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+import { PageHero } from "@/components/page-hero";
 import { SignalArchiveLogo } from "@/components/signal-archive-logo";
 import { projects } from "@/content/projects";
 
@@ -78,31 +79,32 @@ export default function StartHerePage() {
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
-        <section className="surface-card start-hero">
-          <div className="start-hero__mark" aria-hidden="true">
-            <SignalArchiveLogo className="start-hero__logo" />
-          </div>
-
-          <div className="start-hero__copy">
-            <span className="eyebrow">Start Here</span>
-            <h1 className="page-title start-hero__title">
-              3분 안에 읽는 Signal Archive 리뷰어 가이드
-            </h1>
-            <p className="page-intro">
-              이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 문제를 어떻게 정의하고
-              데이터를 어떤 판단 구조로 바꾸는지를 보여주는 아카이브입니다. 처음 보는 사람은 아래
-              순서대로 보면 가장 빠르게 역량을 판단할 수 있습니다.
-            </p>
-            <div className="button-row">
+        <PageHero
+          actions={
+            <>
               <Link className="button-link" href="/projects">
                 프로젝트 검토하기
               </Link>
               <Link className="button-link button-link--secondary" href="/resume">
                 이력 요약 보기
               </Link>
-            </div>
+            </>
+          }
+          eyebrow="Start Here"
+          lead={
+            <>
+              이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 문제를 어떻게 정의하고
+              데이터를 어떤 판단 구조로 바꾸는지를 보여주는 아카이브입니다. 처음 보는 사람은 아래
+              순서대로 보면 가장 빠르게 역량을 판단할 수 있습니다.
+            </>
+          }
+          title="3분 안에 읽는 Signal Archive 리뷰어 가이드"
+          titleId="start-here-title"
+        >
+          <div className="start-hero__mark" aria-hidden="true">
+            <SignalArchiveLogo className="start-hero__logo" />
           </div>
-        </section>
+        </PageHero>
 
         <section className="start-section">
           <div className="section-head">

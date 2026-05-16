@@ -2,8 +2,6 @@
   gap: var(--space-section-y);
 }
 
-.hero,
-.heroCopy,
 .notesSection,
 .sectionHead,
 .strengthSection,
@@ -19,11 +17,9 @@
   display: grid;
 }
 
-.archiveStamp,
 .panelLabel,
 .sectionLabel,
 .noteLabel,
-.heroFlowLabel,
 .sampleStack dt,
 .noteMetaLine,
 .noteLensItem dt,
@@ -33,87 +29,11 @@
   text-transform: uppercase;
 }
 
-.hero {
-  position: relative;
-  overflow: hidden;
-  grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
-  gap: var(--space-card);
-  align-items: center;
-  padding: var(--space-card-featured);
-  background:
-    radial-gradient(circle at top right, rgba(116, 128, 137, 0.11), transparent 34%),
-    linear-gradient(180deg, rgba(19, 24, 26, 0.98), rgba(12, 16, 17, 0.98));
-}
-
-.heroCopy {
-  gap: var(--space-card-compact);
-  max-width: 46ch;
-}
-
-.archiveStamp {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  min-height: 26px;
-  padding: 0 9px;
-  border: 1px solid var(--border-divider);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.016);
-  color: var(--text-muted);
-  font-size: 0.64rem;
-  font-weight: 600;
-}
-
-.heroTitle {
-  margin: 0;
-  max-width: 15ch;
-  font-size: clamp(2.35rem, 4.9vw, 3.4rem);
-  line-height: 1.03;
-  letter-spacing: 0;
-  word-break: keep-all;
-  overflow-wrap: normal;
-  text-wrap: balance;
-}
-
-.heroDescription,
 .sectionDescription,
 .noteDescription,
 .strengthDescription {
   margin: 0;
   color: var(--text-secondary);
-}
-
-.heroDescription {
-  font-size: 0.97rem;
-  line-height: 1.78;
-}
-
-.heroFlow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: var(--space-grid-tight) var(--space-card-gap-compact);
-  width: fit-content;
-  padding-top: 12px;
-  border-top: 1px solid var(--border-divider);
-}
-
-.heroFlowStep {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-card-gap-compact);
-}
-
-.heroFlowLabel {
-  color: var(--accent-strong);
-  font-size: 0.75rem;
-  font-weight: 600;
-}
-
-.heroFlowArrow {
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  line-height: 1;
 }
 
 .selectedSentence {
@@ -455,12 +375,7 @@
   font-variant-numeric: tabular-nums;
 }
 
-@media (max-width: 960px) {
-  .hero {
-    grid-template-columns: 1fr;
-    align-items: start;
-  }
-
+@media (max-width: 1024px) {
   .selectedSentence {
     justify-self: stretch;
     width: 100%;
@@ -485,10 +400,6 @@
 }
 
 @media (max-width: 800px) {
-  .hero {
-    padding: var(--space-card-mobile);
-  }
-
   .noteGrid {
     grid-template-columns: 1fr;
   }
@@ -496,19 +407,9 @@
   .noteCard {
     padding: var(--space-card-mobile);
   }
-
-  .heroTitle {
-    max-width: 100%;
-    font-size: 2.12rem;
-  }
 }
 
 @media (max-width: 560px) {
-  .heroFlowStep {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
   .selectedSentence {
     padding: var(--space-card-dense);
   }

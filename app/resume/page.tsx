@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { PageHero } from "@/components/page-hero";
 import { profile } from "@/content/profile";
 import { featuredProjects, projects } from "@/content/projects";
 
@@ -42,15 +43,12 @@ export default function ResumePage() {
   return (
     <main className="page-shell">
       <div className="site-container page-grid">
-        <section className="surface-card page-header">
-          <div className="page-header__lead">
-            <span className="eyebrow">Resume</span>
-            <h1 className="page-title">채용 검토용 요약 패널</h1>
-            <p className="page-intro">
-              직무별 적합성, 기술 범위, 증거 프로젝트를 빠르게 대조할 수 있도록 정리했습니다.
-            </p>
-          </div>
-
+        <PageHero
+          eyebrow="Resume"
+          lead="직무별 적합성, 기술 범위, 증거 프로젝트를 빠르게 대조할 수 있도록 정리했습니다."
+          title="채용 검토용 요약 패널"
+          titleId="resume-title"
+        >
           <aside aria-label="resume fast scan" className="resume-fast-scan">
             <span className="eyebrow">Fast Scan</span>
             <dl className="resume-fast-scan__list">
@@ -68,7 +66,7 @@ export default function ResumePage() {
               </div>
             </dl>
           </aside>
-        </section>
+        </PageHero>
 
         <div className="resume-grid">
           <section className="surface-card detail-section resume-panel resume-panel--profile">

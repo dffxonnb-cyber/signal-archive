@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { HomeProjectCard } from "@/components/home-project-card";
+import { PageHero } from "@/components/page-hero";
 import { ProofPointGrid } from "@/components/proof-point-grid";
 import { homeProofPoints } from "@/content/proof-points";
 import { projects } from "@/content/projects";
@@ -70,31 +71,9 @@ export default function HomePage() {
   return (
     <main className="page-shell">
       <div className="site-container page-grid page-grid--home">
-        <section className="surface-card home-hero">
-          <div className="home-hero__copy">
-            <div className="home-hero__lead">
-              <span className="eyebrow">Signal Archive</span>
-              <p className="intro-name">Analytical Dossier</p>
-            </div>
-
-            <h1 className="hero-title home-hero__title">
-              문제를 다시 정의하고, 데이터를 판단 가능한 결과물로 바꾸는 데이터 분석가
-            </h1>
-
-            <p className="home-hero__summary">
-              공공·상권·사용자 데이터를 분석 가능한 단위로 정리하고, 지표 설계와 검증을 거쳐
-              웹·문서·대시보드 형태의 검토 가능한 산출물로 연결합니다.
-            </p>
-
-            <div className="home-hero__identity-chips" aria-label="core work keywords">
-              {["문제 정의", "지표 설계", "검증", "의사결정 산출물"].map((item) => (
-                <span className="chip chip--category" key={item}>
-                  {item}
-                </span>
-              ))}
-            </div>
-
-            <div className="button-row home-hero__actions">
+        <PageHero
+          actions={
+            <>
               <Link className="button-link" href="/projects">
                 대표 프로젝트 보기
               </Link>
@@ -109,9 +88,28 @@ export default function HomePage() {
               >
                 GitHub 보기
               </a>
+            </>
+          }
+          eyebrow="Signal Archive · Analytical Dossier"
+          lead={
+            <>
+              공공·상권·사용자 데이터를 분석 가능한 단위로 정리하고, 지표 설계와 검증을 거쳐
+              웹·문서·대시보드 형태의 검토 가능한 산출물로 연결합니다.
+            </>
+          }
+          meta={
+            <div className="home-hero__identity-chips" aria-label="core work keywords">
+              {["문제 정의", "지표 설계", "검증", "의사결정 산출물"].map((item) => (
+                <span className="chip chip--category" key={item}>
+                  {item}
+                </span>
+              ))}
             </div>
-          </div>
-
+          }
+          title="문제를 다시 정의하고, 데이터를 판단 가능한 결과물로 바꾸는 데이터 분석가"
+          titleId="home-title"
+          variant="home"
+        >
           <aside aria-label="30-second scan" className="home-scan-card">
             <span className="eyebrow">30-Second Scan</span>
             <dl className="home-scan-card__list">
@@ -123,7 +121,7 @@ export default function HomePage() {
               ))}
             </dl>
           </aside>
-        </section>
+        </PageHero>
 
         <section className="home-proof">
           <div className="home-proof__head">

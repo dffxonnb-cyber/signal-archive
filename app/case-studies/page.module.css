@@ -2,8 +2,8 @@
   gap: var(--space-section-y);
 }
 
-.hero,
-.heroCopy,
+.heroSummaryPanel,
+.flowSummary,
 .scopePanel,
 .archiveScope,
 .reframeSample,
@@ -31,27 +31,8 @@
   display: grid;
 }
 
-.hero {
-  grid-template-columns: minmax(0, 0.94fr) minmax(390px, 1.06fr);
-  gap: var(--space-card);
-  align-items: stretch;
-  padding: var(--space-card-featured);
-  border-color: rgba(148, 184, 170, 0.18);
-  background:
-    linear-gradient(90deg, rgba(138, 162, 180, 0.055), transparent 48%),
-    var(--surface-card);
-}
-
-.heroCopy {
-  align-content: center;
-  gap: var(--space-card-gap-compact);
-  max-width: 68ch;
-}
-
-.archiveStamp,
 .panelLabel,
 .reframeLabel,
-.heroFlowLabel,
 .scopeItem,
 .caseFileLabel,
 .caseFileMeta,
@@ -63,37 +44,6 @@
   text-transform: uppercase;
 }
 
-.archiveStamp {
-  display: inline-flex;
-  align-items: center;
-  width: fit-content;
-  min-height: 26px;
-  padding: 0 9px;
-  border: 1px solid var(--border-divider);
-  border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.016);
-  color: var(--text-muted);
-  font-size: 0.64rem;
-  font-weight: 700;
-}
-
-.heroTitle {
-  margin: 0;
-  color: var(--text-primary);
-  font-size: 2.5rem;
-  line-height: 1.08;
-  letter-spacing: 0;
-}
-
-.heroConcept {
-  margin: 0;
-  color: var(--accent-warm);
-  font-size: 0.9rem;
-  font-weight: 750;
-  line-height: 1.5;
-}
-
-.heroDescription,
 .flowNote,
 .panelNote,
 .caseFileDescription,
@@ -106,58 +56,27 @@
   overflow-wrap: anywhere;
 }
 
-.heroDescription {
-  max-width: 58ch;
-  font-size: 0.96rem;
-}
-
-.heroFlowBlock {
-  display: grid;
-  gap: var(--space-card-gap-compact);
-  margin-top: 4px;
-}
-
 .flowNote {
   max-width: 58ch;
   color: var(--text-muted);
   font-size: 0.84rem;
 }
 
-.heroFlow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  width: fit-content;
-  max-width: 100%;
+.heroSummaryPanel {
+  grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1.14fr);
+  gap: var(--space-grid-tight);
+}
+
+.flowSummary {
+  gap: var(--space-card-gap-compact);
+  align-content: start;
+  padding: var(--space-card-dense);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.014);
-  overflow: hidden;
-}
-
-.heroFlowStep {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 38px;
-  padding: 0 12px;
-  border-left: 1px solid var(--border-divider);
-}
-
-.heroFlowStep:first-child {
-  border-left: 0;
-}
-
-.heroFlowLabel {
-  color: var(--accent-primary-strong);
-  font-size: 0.72rem;
-  font-weight: 750;
-}
-
-.heroFlowArrow {
-  color: var(--text-muted);
-  font-size: 0.84rem;
-  line-height: 1;
+  background:
+    linear-gradient(180deg, rgba(148, 184, 170, 0.055), rgba(255, 255, 255, 0.01)),
+    rgba(255, 255, 255, 0.012);
+  box-shadow: var(--shadow-soft);
 }
 
 .scopePanel {
@@ -604,7 +523,7 @@
 }
 
 @media (max-width: 1080px) {
-  .hero,
+  .heroSummaryPanel,
   .proofGrid,
   .caseFileUtility {
     grid-template-columns: 1fr;
@@ -642,39 +561,16 @@
 }
 
 @media (max-width: 800px) {
-  .hero,
   .ctaSection {
     padding: var(--space-card-mobile);
   }
 
-  .heroTitle {
-    font-size: 2rem;
-  }
-
+  .flowSummary,
   .archiveScope,
   .reframeSample,
   .caseFileBody,
   .caseFileRail {
     padding: var(--space-card-compact);
-  }
-
-  .heroFlow {
-    width: 100%;
-  }
-
-  .heroFlowStep {
-    flex: 1 1 100%;
-    justify-content: space-between;
-    border-left: 0;
-    border-top: 1px solid var(--border-divider);
-  }
-
-  .heroFlowStep:first-child {
-    border-top: 0;
-  }
-
-  .heroFlowArrow {
-    transform: rotate(90deg);
   }
 
   .reframeTransform {
