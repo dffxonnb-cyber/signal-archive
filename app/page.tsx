@@ -51,6 +51,7 @@ const reviewPath = [
 
 const featuredProofSlugs = [
   "seoul-storefront-redveil",
+  "shelter-signal",
   "lh-traffic-safety-analysis",
   "starbucks-promotion-analysis",
 ];

@@ -107,7 +107,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 2,
+    sortOrder: 3,
     caseStudySlugs: ["risk-signals-before-volume"],
     sections: [
       {
@@ -270,6 +270,150 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "shelter-signal",
+    slug: "shelter-signal",
+    title: "Shelter Signal",
+    status: "featured",
+    category: "대표 프로젝트",
+    primaryDomain: "공공데이터",
+    summary:
+      "구조동물 공고의 보호 종료일과 데이터 신호를 기반으로\n우선 확인 공고를 정리하는 공공데이터 PWA입니다.",
+    period: "2026",
+    format: "개인 프로젝트",
+    domains: ["공공데이터", "구조동물", "데이터 파이프라인", "PWA"],
+    role: ["데이터 파이프라인 설계", "SQL 모델링", "PWA 구현"],
+    filterTools: ["Python", "SQL", "React"],
+    cardTools: ["Python", "PostgreSQL", "React", "TypeScript"],
+    stack: ["Python", "PostgreSQL", "SQL", "Vite", "React", "TypeScript", "Vercel"],
+    problemTypes: ["우선순위 판단", "의사결정 도구"],
+    coreTags: ["Public Data", "PostgreSQL", "SQL", "React", "TypeScript", "PWA", "Vercel"],
+    badges: ["Featured", "Public Data", "PWA", "Static JSON"],
+    context:
+      "구조동물 공고는 보호 종료일, 지역, 보호소 연락처, 사진 여부가 흩어져 있어 오늘 먼저 확인할 공고를 빠르게 고르기 어렵습니다. 단순 최신순 목록보다 보호 종료 신호를 기준으로 다시 정리하는 화면이 필요했습니다.",
+    outcome:
+      "공공 구조동물 데이터를 수집·정제하고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 Rescue Window Score를 계산해 모바일 우선 PWA로 시각화했습니다. 배포 버전은 live backend가 아니라 export된 정적 JSON 데이터를 사용합니다.",
+    supportingLine:
+      "보호 종료일까지 남은 시간과 데이터 신호를 기반으로\n먼저 확인할 구조동물 공고를 정리한 PWA",
+    review: {
+      decisionQuestion: "오늘 먼저 확인해야 할 구조동물 공고는 무엇인가?",
+      myRole: "공공 API 점검, PostgreSQL 파이프라인, SQL summary view, React PWA 구현",
+      evidence: "20개 공고 정적 JSON / Rescue Window Score / Vercel PWA",
+      deliverable: "정적 JSON export 기반 모바일 우선 PWA",
+      hiringSignal: "데이터 파이프라인을 사용자가 판단 가능한 웹 화면으로 연결 가능",
+    },
+    decisionMoment: {
+      originalQuestion: "구조동물 공고를 어떻게 조회할 것인가?",
+      reframedQuestion: "보호 종료가 가까운 공고를 어떻게 먼저 확인하게 만들 것인가?",
+      keyEvidence: "공고 종료일, 진행 상태, 사진·연락처 신호를 조합한 Rescue Window Score",
+      finalDeliverable: "static JSON export bridge와 Vite React PWA",
+      proves: "공공데이터 제약을 드러낸 상태로 데이터 제품형 MVP를 끝까지 구성할 수 있음",
+    },
+    cardBrief: {
+      problem:
+        "공고 종료일과 보호소 정보가 흩어져 있어 사용자가 우선 확인 공고를 빠르게 고르기 어려움.",
+      method:
+        "공공 구조동물 데이터를 수집·정제하고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 Rescue Window Score를 계산함.",
+      output: [
+        "Rescue Window Score",
+        "정적 JSON export bridge",
+        "모바일 우선 PWA",
+        "Vercel 배포",
+      ],
+    },
+    metrics: [
+      { label: "Data Bridge", value: "5 JSON Exports" },
+      { label: "App Scope", value: "5 PWA Views" },
+      { label: "Deployment", value: "Vercel" },
+    ],
+    evidencePoints: [
+      {
+        label: "데이터 수집",
+        value: "구조동물 공공 API smoke test와 mock 데이터 기반 파이프라인 검증",
+      },
+      {
+        label: "데이터 구조",
+        value: "PostgreSQL raw rescued animal table, SQL models, summary views 구성",
+      },
+      {
+        label: "우선순위 신호",
+        value: "보호 종료일과 데이터 품질 신호를 조합한 Rescue Window Score",
+      },
+      {
+        label: "배포 방식",
+        value: "현재 배포 버전은 live backend가 아닌 exported static JSON 데이터를 사용",
+      },
+      {
+        label: "화면 범위",
+        value: "홈, 골든타임, 공고 필터, 지역 탐색, 상세 시트, 저장 placeholder",
+      },
+    ],
+    detailBrief: {
+      problem: {
+        what:
+          "구조동물 공고는 종료일, 지역, 보호소 연락처, 사진 여부가 흩어져 있어 긴급하게 확인해야 할 공고를 한눈에 고르기 어렵습니다.",
+        why:
+          "보호 종료가 가까운 공고는 시간이 중요한데, 사용자가 매번 전체 목록을 훑는 방식으로는 우선 확인 대상을 놓치기 쉽기 때문입니다.",
+      },
+      dataMethod: {
+        dataTypes: ["구조동물 공공 API 응답", "mock rescued animal 데이터", "SQL summary view"],
+        process: [
+          "공공 API 응답을 DB 필드로 정규화하고 raw 테이블 구조를 설계",
+          "SQL model과 summary view에서 Rescue Window Score와 지역별 신호 계산",
+          "앱에서 읽을 수 있도록 정적 JSON으로 export하고 PWA 화면에 연결",
+        ],
+        metrics: ["보호 종료일까지 남은 일수", "공고 진행 상태", "사진·보호소 연락처·특이사항 신호"],
+      },
+      limitations: [
+        "현재 배포 버전은 `app/public/data/*.json`으로 export된 정적 JSON 데이터를 사용하며 production live backend가 아닙니다.",
+        "실사용자 계정, 저장 persistence, 실시간 알림, email/SMS 자동화는 아직 구현하지 않았습니다.",
+        "Rescue Window Score는 공식 위험 점수나 입양 결과 예측 모델이 아니라 내부 우선순위 탐색 신호입니다.",
+        "API key와 운영용 비밀값은 저장소와 배포 문서에 포함하지 않았습니다.",
+      ],
+      linkNote: "Live Demo에서는 정적 JSON 기반 PWA 화면을 확인할 수 있고, GitHub 저장소에서는 데이터 파이프라인과 export 흐름을 함께 확인할 수 있습니다.",
+    },
+    focusPoints: [
+      "공고 목록을 최신순이 아니라 보호 종료 신호 중심의 우선순위 문제로 재정의",
+      "PostgreSQL, SQL model, static JSON export, React PWA를 하나의 검증 가능한 흐름으로 연결",
+      "배포 한계와 데이터 제약을 문서에 명시해 production-ready 서비스처럼 과장하지 않음",
+    ],
+    links: [
+      {
+        label: "Live Demo",
+        href: "https://shelter-signal-ebon.vercel.app/",
+        type: "primary",
+      },
+      {
+        label: "GitHub 저장소",
+        href: "https://github.com/dffxonnb-cyber/shelter-signal",
+        type: "secondary",
+      },
+    ],
+    sortOrder: 2,
+    caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool"],
+    sections: [
+      {
+        title: "프로젝트 개요",
+        paragraphs: [
+          "Shelter Signal은 구조동물 공고를 단순히 나열하지 않고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 먼저 볼 공고를 정리한 공공데이터 기반 PWA입니다.",
+          "현재 공개 배포는 실시간 backend가 아니라 export된 정적 JSON 데이터를 읽는 방식으로 구성되어 있으며, 포트폴리오용 데이터 제품 MVP의 범위를 명확히 드러냅니다.",
+        ],
+      },
+      {
+        title: "접근 방식",
+        paragraphs: [
+          "공공 API smoke test와 mock 데이터를 바탕으로 PostgreSQL raw 테이블을 설계하고, SQL model과 summary view에서 Rescue Window Score와 지역별 신호를 만들었습니다.",
+          "그 결과를 static JSON export bridge로 앱에 넘기고, Vite + React + TypeScript PWA에서 홈, 골든타임, 공고 필터, 지역 탐색, 상세 시트 흐름으로 시각화했습니다.",
+        ],
+      },
+      {
+        title: "포트폴리오 관점의 의미",
+        paragraphs: [
+          "이 프로젝트는 데이터 수집, 모델링, export, 배포 화면까지 이어지는 end-to-end 흐름을 보여주면서도, live backend와 production 운영 기능이 아직 없다는 한계를 숨기지 않는 사례입니다.",
+        ],
+      },
+    ],
+  },
+  {
     id: "uk-online-retail-segment-analysis",
     slug: "uk-online-retail-segment-analysis",
     title: "UK Online Retail Segment Analysis",
@@ -379,7 +523,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 4,
+    sortOrder: 5,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -511,7 +655,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 3,
+    sortOrder: 4,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -613,7 +757,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 6,
+    sortOrder: 7,
     caseStudySlugs: [],
     sections: [
       {
@@ -746,7 +890,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 5,
+    sortOrder: 6,
     caseStudySlugs: ["turn-analysis-into-a-decision-tool"],
     sections: [
       {
