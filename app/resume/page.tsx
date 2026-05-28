@@ -21,22 +21,18 @@ export default function ResumePage() {
       evidence: ["고객 반응 분석", "세그먼트 분석", "전환 병목 분석"],
     },
     {
-      title: "Spatial Data Analyst Fit",
-      relevantWork: ["지역 단위 비교", "공간 위험도 구조화", "공공데이터 기반 우선순위 설계"],
-      coreSkills: ["Python", "GIS", "공간 데이터 전처리", "격자 기반 분석"],
-      proofProjects: ["lh-traffic-safety-analysis", "seoul-storefront-redveil"],
-      evidence: ["AUC 0.8604", "Top-10% Lift 4.39x", "서울 25개 구 비교"],
+      title: "Data Product Builder Fit",
+      relevantWork: ["웹앱 구현", "서버리스 API 연결", "정적 fallback", "검증 가능한 배포"],
+      coreSkills: ["React", "Next.js", "Vite", "TypeScript", "Vercel"],
+      proofProjects: ["shelter-signal", "seoul-storefront-redveil", "shopeasy"],
+      evidence: ["Vercel API route", "PWA", "case study archive"],
     },
     {
-      title: "Business / CRM Analyst Fit",
-      relevantWork: ["고객 세그먼트", "반응률", "채널 성과", "액션/KPI 번역"],
-      coreSkills: ["SQL", "Python", "Tableau", "CRM 분석"],
-      proofProjects: [
-        "starbucks-promotion-analysis",
-        "uk-online-retail-segment-analysis",
-        "shopeasy",
-      ],
-      evidence: ["고객-오퍼-채널 구조", "매출/재구매 인사이트"],
+      title: "Pipeline / Automation Validation Fit",
+      relevantWork: ["PostgreSQL 모델링", "SQL tests", "Docker 로컬 검증", "dry-run 자동화"],
+      coreSkills: ["PostgreSQL", "Docker", "n8n", "Mailpit", "Python smoke tests"],
+      proofProjects: ["shelter-signal"],
+      evidence: ["Mailpit smoke test PASS", "SQL validation", "email_html dry-run"],
     },
   ];
 
@@ -46,7 +42,7 @@ export default function ResumePage() {
         <PageHero
           eyebrow="Resume"
           lead="직무별 적합성, 기술 범위, 증거 프로젝트를 빠르게 대조할 수 있도록 정리했습니다."
-          title="채용 검토용 요약 패널"
+          title="데이터 분석과 데이터 제품 구현을 함께 보는 요약 패널"
           titleId="resume-title"
         >
           <aside aria-label="resume fast scan" className="resume-fast-scan">

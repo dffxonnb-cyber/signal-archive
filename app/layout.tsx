@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: "%s | Signal Archive",
   },
   description:
-    "문제 정의, 분석 설계, 검증 중심 작업을 정리한 Signal Archive 데이터 분석 포트폴리오입니다.",
+    "Python/SQL 기반 데이터 분석을 웹앱, 서버리스 API, 자동화 검증까지 연결한 Signal Archive 데이터 프로덕트 포트폴리오입니다.",
   icons: {
     icon: "/icon.svg",
   },

@@ -17,13 +17,13 @@ export default function ProjectsPage() {
     },
     {
       label: "Core Stack",
-      value: "Python · SQL · GIS",
-      note: "pandas · Tableau · Web",
+      value: "Python · SQL · React",
+      note: "PostgreSQL · Vercel · n8n",
     },
     {
       label: "Delivery Types",
-      value: "README · Dashboard",
-      note: "web service · case study",
+      value: "PWA · Dashboard",
+      note: "serverless API · case study",
     },
   ];
 
@@ -32,7 +32,7 @@ export default function ProjectsPage() {
       <div className="site-container page-grid">
         <PageHero
           eyebrow="Evidence Board"
-          lead="각 프로젝트가 어떤 문제를 풀었고, 어떤 근거와 산출물로 역할 적합성을 증명하는지 비교할 수 있게 정리했습니다."
+          lead="분석 결과를 표에서 끝내지 않고 웹앱, 서버리스 API, 자동화 검증, 문서형 case study까지 연결한 프로젝트 증거를 비교할 수 있게 정리했습니다."
           title="Projects"
           titleId="projects-title"
         >

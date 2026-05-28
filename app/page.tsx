@@ -7,14 +7,11 @@ import { homeProofPoints } from "@/content/proof-points";
 import { projects } from "@/content/projects";
 
 const scanRows = [
-  { label: "Primary Fit", value: "Data Analyst / Spatial Data Analyst" },
-  { label: "Secondary Fit", value: "Business Data Analyst / CRM & Growth Analyst" },
-  { label: "Core Stack", value: "Python, SQL, pandas, Jupyter, Tableau, GIS, HTML/CSS/JS" },
-  {
-    label: "Main Evidence",
-    value: "LH AUC 0.8604, Top-10% Lift 4.39x, Redveil 12,074 transactions, Starbucks AUC 0.8147",
-  },
-  { label: "Delivery", value: "README, dashboard, web service, case study" },
+  { label: "Positioning", value: "Data analyst building data products" },
+  { label: "Data", value: "Python · SQL · pandas · NumPy · scikit-learn · PostgreSQL" },
+  { label: "Web", value: "React · Next.js · Vite · TypeScript · Tailwind CSS · Vercel" },
+  { label: "Automation", value: "Docker · n8n · Mailpit · GitHub Actions · Python smoke tests" },
+  { label: "Documentation", value: "README · troubleshooting docs · portfolio case studies" },
 ];
 
 const reviewPath = [
@@ -91,23 +88,23 @@ export default function HomePage() {
               </a>
             </>
           }
-          eyebrow="Signal Archive · Analytical Dossier"
+          eyebrow="Signal Archive · Data Product Dossier"
           lead={
             <>
-              공공·상권·사용자 데이터를 분석 가능한 단위로 정리하고, 지표 설계와 검증을 거쳐
-              웹·문서·대시보드 형태의 검토 가능한 산출물로 연결합니다.
+              Data analysis, web interfaces, serverless APIs, and automation workflows, connected into working data
+              products. Python/SQL 기반 분석을 중심으로 웹앱 구현과 검증 가능한 자동화 흐름까지 연결합니다.
             </>
           }
           meta={
             <div className="home-hero__identity-chips" aria-label="core work keywords">
-              {["문제 정의", "지표 설계", "검증", "의사결정 산출물"].map((item) => (
+              {["Data Analysis", "Web Interface", "Serverless API", "Automation Validation"].map((item) => (
                 <span className="chip chip--category" key={item}>
                   {item}
                 </span>
               ))}
             </div>
           }
-          title="문제를 다시 정의하고, 데이터를 판단 가능한 결과물로 바꾸는 데이터 분석가"
+          title="데이터를 분석하고, 웹으로 보여주고, 자동화로 검증하는 데이터 프로덕트형 포트폴리오."
           titleId="home-title"
           variant="home"
         >

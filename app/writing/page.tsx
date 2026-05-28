@@ -28,7 +28,7 @@ export default function WritingPage() {
           lead={
             <>
               Writing은 분석 밖의 취미 기록이 아니라, 관찰한 신호를 해석하고 읽히는 문장으로 바꾸는 전달력의 보조 증거입니다.
-              문학적 결은 유지하되, 분석가 포트폴리오 안에서는 관찰·구조화·전달 역량을 보여주는 역할을 맡습니다.
+              문학적 결은 유지하되, 데이터 프로덕트형 포트폴리오 안에서는 관찰·구조화·전달 역량을 보여주는 역할을 맡습니다.
             </>
           }
           meta={
@@ -71,7 +71,7 @@ export default function WritingPage() {
           <div className={styles.sectionHeadCompact}>
             <span className={styles.sectionLabel}>Writing Strength</span>
             <p className={styles.sectionDescription}>
-              데이터 분석가 포트폴리오 안에서 Writing이 맡는 보조 증거의 역할을 세 가지 역량으로 정리했습니다.
+              데이터 프로덕트형 포트폴리오 안에서 Writing이 맡는 보조 증거의 역할을 세 가지 역량으로 정리했습니다.
             </p>
           </div>
 

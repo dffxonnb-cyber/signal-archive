@@ -18,14 +18,14 @@ const roleTracks = [
     proof: ["Python / SQL / pandas", "통계 검정과 모델 지표", "README와 웹 결과물로 전달"],
   },
   {
-    label: "Spatial Data Analyst",
-    summary: "도시, 상권, 공공데이터를 공간 단위 판단 구조로 바꾸는 프로젝트가 강점입니다.",
-    proof: ["공공 안전 우선순위", "상권 리스크 기준", "지도/지역 단위 비교"],
+    label: "Data Product Builder",
+    summary: "분석 결과를 React/Next/Vite 웹앱, 서버리스 API, 검증 스크립트까지 연결하는 프로젝트가 강점입니다.",
+    proof: ["React / TypeScript / Vercel", "serverless API route", "PWA와 case study"],
   },
   {
-    label: "CRM / Business Analyst",
-    summary: "고객·오퍼·세그먼트 데이터를 액션 우선순위 언어로 번역하는 확장 역할입니다.",
-    proof: ["RFM / 세그먼트", "오퍼 반응 구조", "전환 병목과 실험 가설"],
+    label: "Pipeline / Automation Validation",
+    summary: "PostgreSQL, Docker, n8n, Mailpit을 활용해 로컬 데이터 파이프라인과 dry-run 흐름을 검증합니다.",
+    proof: ["SQL models/tests", "Docker Compose", "Mailpit smoke test"],
   },
 ];
 
@@ -94,7 +94,7 @@ export default function StartHerePage() {
           lead={
             <>
               이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 문제를 어떻게 정의하고
-              데이터를 어떤 판단 구조로 바꾸는지를 보여주는 아카이브입니다. 처음 보는 사람은 아래
+              데이터를 분석·웹앱·API·자동화 검증 흐름으로 바꾸는지를 보여주는 아카이브입니다. 처음 보는 사람은 아래
               순서대로 보면 가장 빠르게 역량을 판단할 수 있습니다.
             </>
           }
