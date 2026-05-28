@@ -284,10 +284,10 @@ export const projects: Project[] = [
     role: ["데이터 파이프라인 설계", "서버리스 API 연결", "PWA 구현"],
     filterTools: ["Python", "SQL", "React"],
     cardTools: ["Python", "React", "TypeScript", "Vercel"],
-    stack: ["Python", "SQL", "Vite", "React", "TypeScript", "Vercel"],
+    stack: ["Python", "SQL", "PostgreSQL", "Vite", "React", "TypeScript", "Vercel", "n8n", "Mailpit"],
     problemTypes: ["우선순위 판단", "의사결정 도구"],
-    coreTags: ["Public Data", "Serverless API", "SQL", "React", "TypeScript", "PWA", "Vercel"],
-    badges: ["Featured", "Public Data", "PWA", "Live API"],
+    coreTags: ["Public Data", "Serverless API", "SQL", "React", "TypeScript", "PWA", "Vercel", "n8n", "Mailpit"],
+    badges: ["Featured", "Public Data", "PWA", "Live API", "V2 Local Pipeline"],
     context:
       "구조동물 공고는 보호 종료일, 지역, 보호소 연락처, 사진 여부가 흩어져 있어 오늘 먼저 확인할 공고를 빠르게 고르기 어렵습니다. 단순 최신순 목록보다 보호 종료 신호를 기준으로 다시 정리하는 화면이 필요했습니다.",
     outcome:
@@ -297,7 +297,7 @@ export const projects: Project[] = [
     review: {
       decisionQuestion: "오늘 먼저 확인해야 할 구조동물 공고는 무엇인가?",
       myRole: "공공 API 점검, 정적 JSON fallback, Vercel 서버리스 API route, React PWA 구현",
-      evidence: "20개 공고 정적 JSON / Rescue Window Score / /api/shelters live API",
+      evidence: "20개 공고 정적 JSON / Rescue Window Score / /api/shelters live API / V2 Mailpit smoke test PASS",
       deliverable: "정적 JSON fallback과 notice-derived 보호소 연락 맥락을 함께 제공하는 모바일 우선 PWA",
       hiringSignal: "공공데이터 제약을 안전한 서버리스 경유 구조와 사용자 판단 화면으로 연결 가능",
     },
@@ -343,6 +343,10 @@ export const projects: Project[] = [
         value: "공고 목록은 exported static JSON을 우선 사용하고, 보호소 연락 맥락은 Vercel /api/shelters route로 조회",
       },
       {
+        label: "V2 알림 실험",
+        value: "PostgreSQL alert candidates, email digest HTML, n8n dry-run bridge, Mailpit local SMTP capture를 one-command smoke test로 검증",
+      },
+      {
         label: "화면 범위",
         value: "홈, 골든타임, 공고 필터, 지역 탐색, 상세 시트, 저장 placeholder",
       },
@@ -360,14 +364,22 @@ export const projects: Project[] = [
           "공공 API 응답과 mock 데이터를 앱에서 읽을 수 있는 정적 JSON으로 export",
           "Rescue Window Score와 지역별 신호를 계산해 공고 우선순위 화면에 연결",
           "Vercel 서버리스 API route에서 `careNm`, `careTel`, `careAddr`, `orgNm` 필드를 추출하고 dedupe",
+          "V2에서는 PostgreSQL alert candidate table로 보호 종료 임박 공고를 선별하고 daily email digest HTML을 생성",
+          "n8n HTTP dry-run bridge의 `/dry-run?include_html=true` `email_html` payload와 Mailpit local SMTP capture를 smoke test로 검증",
         ],
-        metrics: ["보호 종료일까지 남은 일수", "공고 진행 상태", "사진·보호소 연락처·특이사항 신호", "notice-derived shelter/contact count"],
+        metrics: [
+          "보호 종료일까지 남은 일수",
+          "공고 진행 상태",
+          "사진·보호소 연락처·특이사항 신호",
+          "notice-derived shelter/contact count",
+          "V2 smoke test: dry-run, HTML export, SMTP send, Mailpit inbox, Shelter Signal content PASS",
+        ],
       },
       limitations: [
         "V1의 `/api/shelters`는 전체 공식 보호소 디렉터리가 아니라 구조동물 공고에 포함된 보호소명·전화번호·주소·관할기관 기반의 notice-derived contact summary입니다.",
         "공고 목록과 지역 신호는 `app/public/data/*.json` 정적 JSON fallback/demo 데이터를 우선 사용합니다.",
         "현재 V1 live API route에는 별도 database, Supabase, Postgres 연결이 필요하지 않습니다.",
-        "실사용자 계정, 저장 persistence, 실시간 알림, email/SMS 자동화는 아직 구현하지 않았습니다.",
+        "V2의 n8n/Mailpit 흐름은 로컬 알림 파이프라인 검증이며 production email sending, real external recipients, Gmail/Google Cloud integration, SMS, auth, subscriptions, cloud DB-backed app은 구현하지 않았습니다.",
         "Rescue Window Score는 공식 위험 점수나 입양 결과 예측 모델이 아니라 내부 우선순위 탐색 신호입니다.",
         "API key와 운영용 비밀값은 저장소와 배포 문서에 포함하지 않았습니다.",
       ],
@@ -405,6 +417,14 @@ export const projects: Project[] = [
         paragraphs: [
           "공공 API smoke test와 mock 데이터를 바탕으로 Rescue Window Score와 지역별 신호를 만들고, 그 결과를 static JSON export bridge로 앱에 넘겼습니다.",
           "보호소 연락 맥락은 브라우저에서 공공 API를 직접 호출하지 않고 `/api/shelters`가 서버 측 환경 변수로 data.go.kr에 요청한 뒤 `careNm`, `careTel`, `careAddr`, `orgNm`을 dedupe해 전달합니다.",
+        ],
+      },
+      {
+        title: "V2 알림 파이프라인 실험",
+        paragraphs: [
+          "V2에서는 보호 종료 임박 공고를 PostgreSQL 기반 후보 테이블로 선별하고, 이메일 다이제스트 HTML을 생성한 뒤, n8n HTTP dry-run bridge와 Mailpit 로컬 SMTP 캡처를 통해 실제 외부 발송 없이 알림 파이프라인을 검증했습니다.",
+          "검증 범위는 PostgreSQL alert candidates, near-deadline rescue notice selection, daily email digest HTML, `/dry-run?include_html=true`의 `email_html` payload, Mailpit local SMTP capture, `python scripts/run_v2_mailpit_email_capture_test.py` one-command smoke test입니다.",
+          "Smoke test는 dry-run PASS, HTML export PASS, SMTP send PASS, Mailpit inbox verification PASS, Shelter Signal content check PASS를 확인했습니다. 이 단계는 production email sending, real recipients, Gmail/Google Cloud, SMS, auth, subscriptions, cloud DB-backed app을 포함하지 않는 local automation experiment입니다.",
         ],
       },
       {
