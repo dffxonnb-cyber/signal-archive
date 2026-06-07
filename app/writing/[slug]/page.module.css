@@ -132,7 +132,6 @@
   top: 10px;
   left: 16px;
   color: rgba(220, 226, 230, 0.16);
-  font-family: Georgia, "Times New Roman", serif;
   font-size: 4.8rem;
   line-height: 1;
 }
@@ -147,9 +146,8 @@
 .heroQuoteText {
   position: relative;
   padding-top: 24px;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.18rem;
-  line-height: 1.9;
+  font-size: 1rem;
+  line-height: 1.78;
 }
 
 .lensBlock {
@@ -232,9 +230,8 @@
   max-width: 40ch;
   padding-left: 18px;
   border-left: 1px solid rgba(226, 233, 229, 0.12);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.06rem;
-  line-height: 1.84;
+  font-size: 0.96rem;
+  line-height: 1.76;
 }
 
 .prose {

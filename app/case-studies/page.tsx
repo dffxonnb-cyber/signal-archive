@@ -188,6 +188,7 @@ export default function CaseStudiesPage() {
     <main className="page-shell">
       <div className={`site-container page-grid ${styles.page}`}>
         <PageHero
+          className={styles.compactHero}
           eyebrow="Signal Archive: Decision Files"
           lead={
             <>
@@ -248,15 +249,6 @@ export default function CaseStudiesPage() {
                   <div className={`${styles.reframeTransformPair} ${styles.reframeTransformPairTo}`}>
                     <span className={styles.reframeLabel}>To</span>
                     <strong className={styles.reframeValue}>매입 전 리스크 검토 프로토타입</strong>
-                  </div>
-                </div>
-
-                <div className={styles.reframeEvidence}>
-                  <span className={styles.reframeLabel}>Evidence</span>
-                  <div className={styles.reframeEvidenceList}>
-                    <span className={styles.reframeEvidenceChip}>리스크 점수</span>
-                    <span className={styles.reframeEvidenceChip}>보류 사유</span>
-                    <span className={styles.reframeEvidenceChip}>대체 후보</span>
                   </div>
                 </div>
               </div>

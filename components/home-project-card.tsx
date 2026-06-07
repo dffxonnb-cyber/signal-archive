@@ -7,12 +7,23 @@ type HomeProjectCardProps = {
   index: number;
 };
 
+const projectAccentClasses: Record<string, string> = {
+  "lh-traffic-safety-analysis": "home-project-card--lh",
+  "seoul-storefront-redveil": "home-project-card--redveil",
+  "shelter-signal": "home-project-card--shelter",
+  "starbucks-promotion-analysis": "home-project-card--starbucks",
+};
+
+function getProjectAccentClass(project: Project) {
+  return projectAccentClasses[project.slug] ?? "home-project-card--default";
+}
+
 export function HomeProjectCard({
   project,
   index,
 }: HomeProjectCardProps) {
   return (
-    <article className="home-project-card">
+    <article className={`home-project-card ${getProjectAccentClass(project)}`}>
       <div className="home-project-card__head">
         <span className="home-project-card__index">{`0${index}`}</span>
         <span className="home-project-card__lens">{project.primaryDomain}</span>

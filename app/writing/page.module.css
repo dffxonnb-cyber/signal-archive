@@ -94,9 +94,8 @@
 
 .sampleStack div:last-child dd {
   color: var(--accent-strong);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.98rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 650;
 }
 
 .selectedQuote,
@@ -111,8 +110,7 @@
   position: relative;
   padding-top: 26px;
   color: var(--accent-strong);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.2rem;
+  font-size: 1.02rem;
   line-height: 1.92;
 }
 
@@ -268,10 +266,9 @@
   padding-left: 14px;
   border-top: 0;
   border-left: 1px solid rgba(226, 233, 229, 0.12);
-  color: var(--accent-strong);
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 0.98rem;
-  line-height: 1.76;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.72;
 }
 
 .relatedProjects {

@@ -2,6 +2,26 @@
   gap: var(--space-section-y);
 }
 
+.compactHero {
+  gap: var(--space-grid);
+  padding: 34px clamp(22px, 3.5vw, 38px) 30px;
+}
+
+.compactHero :global(.page-hero__copy) {
+  gap: 10px;
+  align-content: start;
+}
+
+.compactHero :global(.page-hero__lead) {
+  max-width: 72ch;
+  font-size: 1rem;
+  line-height: 1.62;
+}
+
+.compactHero :global(.page-hero__meta) {
+  padding-top: 0;
+}
+
 .heroSummaryPanel,
 .flowSummary,
 .scopePanel,
@@ -63,14 +83,16 @@
 }
 
 .heroSummaryPanel {
-  grid-template-columns: minmax(0, 0.86fr) minmax(360px, 1.14fr);
+  grid-template-columns: 1fr;
   gap: var(--space-grid-tight);
 }
 
 .flowSummary {
+  grid-template-columns: auto minmax(220px, 0.72fr) auto;
   gap: var(--space-card-gap-compact);
+  align-items: center;
   align-content: start;
-  padding: var(--space-card-dense);
+  padding: 14px 16px;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   background:
@@ -79,7 +101,17 @@
   box-shadow: var(--shadow-soft);
 }
 
+.flowSummary :global(.page-hero__flow) {
+  justify-self: end;
+}
+
+.flowSummary :global(.page-hero__flow-step) {
+  min-height: 34px;
+  padding: 0 10px;
+}
+
 .scopePanel {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
   gap: var(--space-grid-tight);
   align-content: stretch;
 }
@@ -87,7 +119,7 @@
 .archiveScope,
 .reframeSample {
   gap: var(--space-card-gap-compact);
-  padding: var(--space-card-dense);
+  padding: 14px;
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   background:
@@ -107,16 +139,16 @@
 }
 
 .scopeList {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-grid-tight);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-inline-gap);
 }
 
 .scopeItem {
   display: flex;
   align-items: center;
-  min-height: 52px;
-  padding: 12px;
+  min-height: 30px;
+  padding: 7px 9px;
   border: 1px solid var(--border-divider);
   border-radius: var(--radius-sm);
   background: rgba(8, 13, 16, 0.22);
@@ -129,7 +161,7 @@
 }
 
 .scopeItemWide {
-  grid-column: span 2;
+  grid-column: auto;
 }
 
 .reframeSample {
@@ -139,7 +171,7 @@
 .reframeTransform {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.05fr);
-  gap: var(--space-card-gap-compact);
+  gap: var(--space-grid-tight);
   align-items: center;
 }
 
@@ -158,7 +190,7 @@
 
 .reframeValue {
   color: var(--text-primary);
-  font-size: 0.96rem;
+  font-size: 0.9rem;
   line-height: 1.45;
   letter-spacing: 0;
   word-break: keep-all;
@@ -176,7 +208,10 @@
 }
 
 .reframeEvidence {
+  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
+  align-items: center;
   padding-top: 2px;
 }
 
@@ -239,6 +274,7 @@
 .caseFileCard {
   --file-accent: var(--accent-steel);
   --file-accent-soft: rgba(138, 162, 180, 0.07);
+  position: relative;
   grid-template-columns: 142px minmax(0, 1fr);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -246,6 +282,20 @@
   background:
     linear-gradient(180deg, rgba(20, 28, 32, 0.94), rgba(12, 18, 21, 0.96));
   box-shadow: var(--shadow-card);
+}
+
+.caseFileCard::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--file-accent), transparent 80%);
+  opacity: 0.68;
+}
+
+.caseFileCard:hover,
+.caseFileCard:focus-within {
+  border-color: rgba(218, 228, 224, 0.14);
 }
 
 .toneQuestion {
@@ -367,14 +417,14 @@
 }
 
 .proofBlock {
-  border-color: rgba(148, 184, 170, 0.2);
+  border-color: var(--file-accent);
   background:
-    linear-gradient(180deg, rgba(148, 184, 170, 0.065), rgba(255, 255, 255, 0.012)),
+    linear-gradient(180deg, var(--file-accent-soft), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.012);
 }
 
 .proofBlock p {
-  color: var(--accent-primary-strong);
+  color: var(--text-primary);
   font-size: 0.92rem;
   font-weight: 690;
 }
@@ -420,6 +470,18 @@
   border-color: rgba(148, 184, 170, 0.18);
 }
 
+.caseBlock:nth-child(1) {
+  border-color: var(--file-accent);
+  background:
+    linear-gradient(180deg, var(--file-accent-soft), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.012);
+}
+
+.caseBlock:nth-child(1) .caseBlockLabel,
+.caseBlock:nth-child(3) .caseBlockLabel {
+  color: var(--file-accent);
+}
+
 .caseBlock:nth-child(3) p {
   color: var(--text-primary);
   font-weight: 650;
@@ -444,6 +506,13 @@
   background: rgba(211, 179, 111, 0.075);
   color: var(--accent-warm);
   font-variant-numeric: tabular-nums;
+}
+
+.metricPill:first-child,
+.projectPill:first-child {
+  border-color: var(--file-accent);
+  background: var(--file-accent-soft);
+  color: var(--accent-primary-strong);
 }
 
 .projectPill {
@@ -563,6 +632,14 @@
 @media (max-width: 800px) {
   .ctaSection {
     padding: var(--space-card-mobile);
+  }
+
+  .flowSummary {
+    grid-template-columns: 1fr;
+  }
+
+  .flowSummary :global(.page-hero__flow) {
+    justify-self: start;
   }
 
   .flowSummary,

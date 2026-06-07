@@ -24,11 +24,11 @@ export default function WritingPage() {
     <main className="page-shell">
       <div className={`site-container page-grid ${styles.page}`}>
         <PageHero
-          eyebrow="Signal Archive: Writing Notes"
+          eyebrow="Signal Archive: Analysis Notes"
           lead={
             <>
-              Writing은 분석 밖의 취미 기록이 아니라, 관찰한 신호를 해석하고 읽히는 문장으로 바꾸는 전달력의 보조 증거입니다.
-              문학적 결은 유지하되, 데이터 프로덕트형 포트폴리오 안에서는 관찰·구조화·전달 역량을 보여주는 역할을 맡습니다.
+              Notes는 분석 밖의 별도 글 모음이 아니라, 관찰한 신호를 해석하고 읽히는 판단 구조로 바꾸는 전달력의 보조 증거입니다.
+              데이터 프로덕트형 포트폴리오 안에서는 관찰·구조화·전달 역량을 보여주는 짧은 사고 기록으로 읽히게 정리했습니다.
             </>
           }
           meta={
@@ -45,7 +45,7 @@ export default function WritingPage() {
               ))}
             </div>
           }
-          title="감각을 구조로 바꾸는 기록"
+          title="관찰을 판단 구조로 바꾸는 노트"
           titleId="writing-title"
         >
           <aside aria-label="selected sentence" className={styles.selectedSentence}>
@@ -69,9 +69,9 @@ export default function WritingPage() {
 
         <section className={styles.strengthSection}>
           <div className={styles.sectionHeadCompact}>
-            <span className={styles.sectionLabel}>Writing Strength</span>
+            <span className={styles.sectionLabel}>Note Strength</span>
             <p className={styles.sectionDescription}>
-              데이터 프로덕트형 포트폴리오 안에서 Writing이 맡는 보조 증거의 역할을 세 가지 역량으로 정리했습니다.
+              데이터 프로덕트형 포트폴리오 안에서 Notes가 맡는 보조 증거의 역할을 세 가지 역량으로 정리했습니다.
             </p>
           </div>
 
@@ -88,7 +88,7 @@ export default function WritingPage() {
 
         <section className={styles.notesSection}>
           <div className={styles.sectionHead}>
-            <span className={styles.sectionLabel}>Writing Notes</span>
+            <span className={styles.sectionLabel}>Analysis Notes</span>
             <p className={styles.sectionDescription}>
               관찰한 장면을 어떻게 해석 가능한 구조와 문장으로 남기는지 보여주는 세 개의 노트를 골랐습니다.
               각 글은 감정, 분석, 액션이라는 다른 장면에서 같은 질문을 다룹니다.
@@ -100,7 +100,7 @@ export default function WritingPage() {
               <article className={styles.noteCard} key={entry.slug}>
                 <div className={styles.noteHead}>
                   <span className={styles.noteLabel}>
-                    WRITING FILE {formatNoteNumber(index + 1)}
+                    NOTE FILE {formatNoteNumber(index + 1)}
                   </span>
                   <h2 className={styles.noteTitle}>{entry.title}</h2>
                   <div className={styles.noteMetaLine}>

@@ -16,6 +16,20 @@ const statusLabels: Record<Project["status"], string> = {
   archive: "Archive",
 };
 
+const projectAccentClasses: Record<string, string> = {
+  "lh-traffic-safety-analysis": "project-card--lh",
+  "seoul-storefront-redveil": "project-card--redveil",
+  "shelter-signal": "project-card--shelter",
+  "starbucks-promotion-analysis": "project-card--starbucks",
+};
+
+const projectMediaTones: Record<string, string> = {
+  "lh-traffic-safety-analysis": "steel",
+  "seoul-storefront-redveil": "rust",
+  "shelter-signal": "sage",
+  "starbucks-promotion-analysis": "coffee",
+};
+
 function getProjectMark(title: string) {
   const mark = title
     .replace(/&/g, " ")
@@ -30,8 +44,10 @@ function getProjectMark(title: string) {
 }
 
 function getProjectTone(project: Project) {
-  if (project.status === "featured") {
-    return "forest";
+  const tone = projectMediaTones[project.slug];
+
+  if (tone) {
+    return tone;
   }
 
   if (project.primaryDomain.includes("스포츠")) {
@@ -39,6 +55,10 @@ function getProjectTone(project: Project) {
   }
 
   return "graphite";
+}
+
+function getProjectAccentClass(project: Project) {
+  return projectAccentClasses[project.slug] ?? "project-card--default";
 }
 
 function getLinkLabel(label: string) {
@@ -54,7 +74,11 @@ function getLinkLabel(label: string) {
 }
 
 export function ProjectCard({ project, index, variant = "featured" }: ProjectCardProps) {
-  const visual = { mark: getProjectMark(project.title), tone: getProjectTone(project) };
+  const visual = {
+    accentClass: getProjectAccentClass(project),
+    mark: getProjectMark(project.title),
+    tone: getProjectTone(project),
+  };
   const projectIndex = String(index ?? project.sortOrder).padStart(2, "0");
   const metricChips = project.metrics;
   const isPriority = variant === "featured";
@@ -81,7 +105,10 @@ export function ProjectCard({ project, index, variant = "featured" }: ProjectCar
 
   if (variant === "supporting") {
     return (
-      <article className="project-card project-card--supporting-proof" aria-label={`${project.title} project proof card`}>
+      <article
+        className={`project-card project-card--supporting-proof ${visual.accentClass}`}
+        aria-label={`${project.title} project proof card`}
+      >
         <div className="project-card__supporting-top">
           <span className="project-card__board-index">{projectIndex}</span>
           <div className="project-card__supporting-meta">
@@ -139,7 +166,10 @@ export function ProjectCard({ project, index, variant = "featured" }: ProjectCar
   }
 
   return (
-    <article className="project-card project-card--featured-proof" aria-label={`${project.title} featured proof card`}>
+    <article
+      className={`project-card project-card--featured-proof ${visual.accentClass}`}
+      aria-label={`${project.title} featured proof card`}
+    >
       <span className="project-card__accent-line" aria-hidden="true" />
 
       <div className="project-card__board-top">

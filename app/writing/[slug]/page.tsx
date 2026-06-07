@@ -45,7 +45,7 @@ export default async function WritingDetailPage({
         <section className={`surface-card ${styles.articleHero}`}>
           <div className={styles.heroCopy}>
             <div className={styles.heroMeta}>
-              <span className={styles.noteLabel}>Writing Note</span>
+              <span className={styles.noteLabel}>Analysis Note</span>
               <span className={styles.noteIndex}>
                 {formatNoteNumber(entryIndex + 1)}
               </span>
@@ -73,7 +73,7 @@ export default async function WritingDetailPage({
 
         <section className={styles.lensBlock}>
           <div className={styles.lensHead}>
-            <span className={styles.noteLabel}>Writing Lens</span>
+            <span className={styles.noteLabel}>Note Lens</span>
             <p className={styles.lensSummary}>
               이 글이 감각을 읽고 구조를 만들고 문장으로 남기는 방식을 세 가지
               축으로 정리했습니다.
@@ -125,7 +125,7 @@ export default async function WritingDetailPage({
 
           <footer className={styles.articleFooter}>
             <Link className={styles.backLink} href="/writing">
-              Back to Writing
+              Back to Notes
             </Link>
 
             {relatedProjects.length > 0 ? (
