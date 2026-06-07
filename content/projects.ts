@@ -306,10 +306,10 @@ export const projects: Project[] = [
       "보호 종료일까지 남은 시간과 데이터 신호를 기반으로\n먼저 확인할 구조동물 공고를 정리한 PWA",
     review: {
       decisionQuestion: "오늘 먼저 확인해야 할 구조동물 공고는 무엇인가?",
-      myRole: "PostgreSQL 데이터 모델링, operational/fallback 경로 설계, Vercel 서버리스 API route, React PWA 구현",
-      evidence: "Neon operational DB read / Rescue Window Score / static·mock fallback / /api/shelters / V2 local Mailpit smoke test PASS",
-      deliverable: "operational DB read, fallback, notice-derived 보호소 연락 맥락을 함께 제공하는 모바일 우선 PWA",
-      hiringSignal: "공공데이터 제약을 안전한 서버리스 경유 구조와 사용자 판단 화면으로 연결 가능",
+      myRole: "데이터 모델, 운영 조회 API, fallback 경로, 모바일 PWA 구현",
+      evidence: "공고 API · Neon 조회 · fallback 검증",
+      deliverable: "보호 종료 우선순위 화면과 공고 기반 연락처 요약",
+      hiringSignal: "공공데이터 공고를 운영 조회와 예외 대응이 가능한 모바일 검토 흐름으로 연결 가능",
     },
     decisionMoment: {
       originalQuestion: "구조동물 공고를 어떻게 조회할 것인가?",
@@ -331,9 +331,9 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
-      { label: "Data Bridge", value: "5 JSON Exports" },
-      { label: "App Scope", value: "5 PWA Views" },
-      { label: "Deployment", value: "Vercel" },
+      { label: "Data Source", value: "구조동물 공고" },
+      { label: "API Scope", value: "공고/보호소 요약" },
+      { label: "Deployment", value: "Vercel PWA" },
     ],
     evidencePoints: [
       {
