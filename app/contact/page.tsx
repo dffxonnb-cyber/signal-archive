@@ -6,11 +6,53 @@ import { ContactDockModule } from "@/components/page-summary";
 import { profile } from "@/content/profile";
 import { projects } from "@/content/projects";
 
+import styles from "./page.module.css";
+
 export default function ContactPage() {
   const githubLink = profile.contactLinks.find((link) => link.label === "GitHub");
   const emailLink = profile.contactLinks.find((link) => link.label === "Email");
   const emailAddress = emailLink?.displayText ?? emailLink?.href.replace("mailto:", "") ?? "dffxonnb@gmail.com";
   const mainProject = projects.find((project) => project.slug === "seoul-storefront-redveil");
+  const reviewRoutes = [
+    {
+      label: "01",
+      title: "Projects",
+      detail: "대표 프로젝트와 근거 지표",
+      href: "/projects",
+      kind: "internal" as const,
+    },
+    {
+      label: "02",
+      title: "Resume",
+      detail: "역할 적합성과 기술 요약",
+      href: "/resume",
+      kind: "internal" as const,
+    },
+    {
+      label: "03",
+      title: "Case Studies",
+      detail: "문제 해결 방식과 판단 구조",
+      href: "/case-studies",
+      kind: "internal" as const,
+    },
+    ...(githubLink
+      ? [
+          {
+            label: "04",
+            title: "GitHub",
+            detail: "구현 저장소와 공개 문서",
+            href: githubLink.href,
+            kind: "external" as const,
+          },
+        ]
+      : []),
+  ];
+  const materials = [
+    "Resume PDF available on request",
+    "Project supplement available on request",
+    "GitHub public",
+    "Email contact open",
+  ];
   const contactDockLinks = [
     ...(emailLink
       ? [
@@ -55,116 +97,137 @@ export default function ContactPage() {
     <main className="page-shell">
       <div className="site-container page-grid">
         <PageHero
+          className={styles.contactHero}
           eyebrow="Contact"
-          lead="포트폴리오 검토 후 바로 연락할 수 있도록 이메일, GitHub, Resume, 대표 프로젝트 경로를 정리했습니다."
-          title="연락과 추가 검토 경로"
+          lead="대표 프로젝트, 이력 요약, 문제 해결 방식, 구현 저장소를 확인한 뒤 바로 연락할 수 있도록 최종 검토 경로를 정리했습니다."
+          meta={<span className="page-hero__meta-chip">Best next action: Email</span>}
+          title="검토를 마쳤다면, 여기서 이어갈 수 있습니다."
           titleId="contact-title"
         >
           <ContactDockModule
             ariaLabel="contact dock"
             links={contactDockLinks}
-            note="이력서 PDF와 프로젝트 보충 설명은 이메일 요청 시 정리된 형태로 전달할 수 있습니다."
+            note="이메일을 1순위 연락 수단으로 두고, GitHub와 검토 경로는 바로 이어서 열 수 있게 배치했습니다."
           />
         </PageHero>
 
-        <div className="archive-grid">
-          <article className="archive-card">
-            <div className="archive-card__meta">
-              <span className="eyebrow">Profile</span>
-              <span className="archive-card__count">open</span>
-            </div>
-            <h3>{profile.name}</h3>
-            <p>{profile.headline}</p>
-            <div className="tag-list">
-              {profile.primaryRoles.map((role) => (
-                <span className="tag tag--accent" key={role}>
-                  {role}
-                </span>
-              ))}
-            </div>
-          </article>
-          <article className="archive-card contact-direct-card">
-            <div className="archive-card__meta">
-              <span className="eyebrow">Direct Access</span>
-              <span className="archive-card__count">public</span>
-            </div>
-            <h3>바로 연락하거나 검토 이어가기</h3>
-            <p>이메일, GitHub, 대표 프로젝트, Resume 상태를 한 카드에서 확인할 수 있습니다.</p>
-            <div className="contact-direct-grid">
-              <div className="contact-direct-item contact-direct-item--primary">
-                <span className="resume-link-card__label">Email</span>
+        <section className={styles.contactBoard} aria-labelledby="contact-gateway-title">
+          <div className={styles.sectionHead}>
+            <span className="eyebrow">Final Review Gateway</span>
+            <h2 className="section-title" id="contact-gateway-title">
+              연락 전에 확인할 것과 바로 요청할 것을 한 화면에 정리했습니다.
+            </h2>
+          </div>
+
+          <div className={styles.gatewayGrid}>
+            <article className={`${styles.gatewayCard} ${styles.primaryContactCard}`}>
+              <div className={styles.cardMeta}>
+                <span className={styles.cardLabel}>Primary Contact</span>
+                <span className={`${styles.statusChip} ${styles.statusChipPrimary}`}>Primary</span>
+              </div>
+              <div className={styles.emailBlock}>
+                <span className={styles.emailCaption}>Best next step</span>
                 <strong>{emailAddress}</strong>
-                <div className="button-row contact-direct-actions">
-                  <a className="button-link" href={`mailto:${emailAddress}`}>
-                    이메일 보내기
-                  </a>
-                  <EmailCopyButton email={emailAddress} />
-                </div>
               </div>
-              {githubLink ? (
-                <a className="contact-direct-item" href={githubLink.href} rel="noreferrer" target="_blank">
-                  <span className="resume-link-card__label">GitHub</span>
-                  <strong>{githubLink.displayText ?? githubLink.href}</strong>
+              <p>
+                이력서 PDF와 프로젝트 보충 설명은 이메일 요청 시 정리된 형태로 전달할 수 있습니다.
+              </p>
+              <div className={styles.primaryActions}>
+                <a className="button-link" href={`mailto:${emailAddress}`}>
+                  Send email
                 </a>
-              ) : null}
-              <div className="contact-direct-item">
-                <span className="resume-link-card__label">Portfolio Review Route</span>
-                <strong>Projects → Resume → Case Studies → GitHub</strong>
+                <EmailCopyButton email={emailAddress} />
               </div>
-              {mainProject ? (
-                <Link className="contact-direct-item" href={`/projects/${mainProject.slug}`}>
-                  <span className="resume-link-card__label">Main Project</span>
-                  <strong>{mainProject.title}</strong>
+            </article>
+
+            <article className={`${styles.gatewayCard} ${styles.reviewRouteCard}`}>
+              <div className={styles.cardMeta}>
+                <span className={styles.cardLabel}>Review Before Contact</span>
+                <span className={styles.statusChip}>Review Route</span>
+              </div>
+              <h3>추천 검토 순서</h3>
+              <div className={styles.routeSteps} aria-label="recommended review route">
+                {reviewRoutes.map((route, index) => {
+                  const routeContent = (
+                    <>
+                      <span className={styles.routeIndex}>{route.label}</span>
+                      <span>
+                        <strong>{route.title}</strong>
+                        <em>{route.detail}</em>
+                      </span>
+                    </>
+                  );
+
+                  return (
+                    <div className={styles.routeStepGroup} key={route.href}>
+                      {route.kind === "internal" ? (
+                        <Link className={styles.routeStep} href={route.href}>
+                          {routeContent}
+                        </Link>
+                      ) : (
+                        <a className={styles.routeStep} href={route.href} rel="noreferrer" target="_blank">
+                          {routeContent}
+                        </a>
+                      )}
+                      {index < reviewRoutes.length - 1 ? (
+                        <span aria-hidden="true" className={styles.routeArrow}>
+                          →
+                        </span>
+                      ) : null}
+                    </div>
+                  );
+                })}
+              </div>
+            </article>
+
+            <article className={`${styles.gatewayCard} ${styles.profileSnapshotCard}`}>
+              <div className={styles.cardMeta}>
+                <span className={styles.cardLabel}>Profile Snapshot</span>
+                <span className={styles.statusChip}>Open</span>
+              </div>
+              <h3>{profile.name}</h3>
+              <p>{profile.headline}</p>
+              <div className={styles.chipList}>
+                {profile.primaryRoles.map((role) => (
+                  <span className={styles.softChip} key={role}>
+                    {role}
+                  </span>
+                ))}
+              </div>
+            </article>
+
+            {mainProject ? (
+              <article className={`${styles.gatewayCard} ${styles.mainProjectCard}`}>
+                <div className={styles.cardMeta}>
+                  <span className={styles.cardLabel}>Main Proof Project</span>
+                  <span className={`${styles.statusChip} ${styles.statusChipRust}`}>Redveil</span>
+                </div>
+                <h3>{mainProject.title}</h3>
+                <p>{mainProject.supportingLine}</p>
+                <div className={styles.projectProofStrip}>
+                  <span>{mainProject.review.evidence}</span>
+                  <strong>{mainProject.review.deliverable}</strong>
+                </div>
+                <Link className={styles.textLink} href={`/projects/${mainProject.slug}`}>
+                  프로젝트 상세 보기
                 </Link>
-              ) : null}
-              <div className="contact-direct-item contact-direct-item--muted">
-                <span className="resume-link-card__label">Resume PDF</span>
-                <strong>Available on Request</strong>
+              </article>
+            ) : null}
+
+            <article className={`${styles.gatewayCard} ${styles.materialsCard}`}>
+              <div className={styles.cardMeta}>
+                <span className={styles.cardLabel}>Availability / Materials</span>
+                <span className={styles.statusChip}>Available</span>
               </div>
-            </div>
-          </article>
-          <article className="archive-card">
-            <div className="archive-card__meta">
-              <span className="eyebrow">Quick Routes</span>
-              <span className="archive-card__count">preferred</span>
-            </div>
-            <h3>바로가기와 권장 검토 흐름</h3>
-            <ul className="list-stack compact-list">
-              <li>Projects → 대표 프로젝트와 근거 지표 확인</li>
-              <li>Resume → 기술 스택과 역할 적합성 확인</li>
-              <li>Case Studies → 문제 해결 방식 확인</li>
-              <li>GitHub → 구현과 문서 확인</li>
-            </ul>
-            <div className="button-row">
-              <Link className="button-link button-link--secondary" href="/projects">
-                대표 프로젝트 보기
-              </Link>
-              <Link className="button-link button-link--secondary" href="/resume">
-                Resume 보기
-              </Link>
-              <Link className="button-link button-link--secondary" href="/case-studies">
-                Case Studies 보기
-              </Link>
-            </div>
-          </article>
-          <article className="archive-card">
-            <div className="archive-card__meta">
-              <span className="eyebrow">Contact Note</span>
-              <span className="archive-card__count">open</span>
-            </div>
-            <h3>공개 범위와 응답 방식</h3>
-            <p>
-              공개 페이지에서는 핵심 검토 경로와 연락 수단을 우선합니다. 필요 시 이력서 PDF와 프로젝트 보충 설명을
-              정리된 형태로 전달할 수 있습니다.
-            </p>
-            <div className="tag-list">
-              <span className="tag">GitHub 공개</span>
-              <span className="tag">이메일 연락 가능</span>
-              <span className="tag">이력서 PDF 제공 가능</span>
-              <span className="tag">프로젝트 보충 자료 제공 가능</span>
-            </div>
-          </article>
-        </div>
+              <h3>요청 가능한 자료와 공개 범위</h3>
+              <ul className={styles.materialList}>
+                {materials.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </article>
+          </div>
+        </section>
       </div>
     </main>
   );
