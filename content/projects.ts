@@ -277,7 +277,7 @@ export const projects: Project[] = [
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
     summary:
-      "공공데이터 구조동물 공고에서 보호소 연락 맥락을 추출해\n우선 확인 공고와 함께 정리하는 PWA입니다.",
+      "공공데이터 구조동물 공고를 Neon 우선 조회와 fallback 구조로 연결해\n보호 종료 우선순위와 연락 맥락을 정리하는 PWA입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "구조동물", "데이터 파이프라인", "PWA"],
@@ -328,7 +328,7 @@ export const projects: Project[] = [
     evidencePoints: [
       {
         label: "데이터 수집",
-        value: "구조동물 공공 API smoke test와 mock 데이터 기반 파이프라인 검증",
+        value: "공공 API 응답, 로컬 PostgreSQL 모델, Neon operational read path 기준 검증",
       },
       {
         label: "데이터 구조",

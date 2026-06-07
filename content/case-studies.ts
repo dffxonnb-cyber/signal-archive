@@ -10,7 +10,7 @@ export const caseStudies: CaseStudy[] = [
     keyMoves: [
       "큰 숫자보다 먼저 해석해야 할 핵심 신호를 정의합니다.",
       "지표를 보기 전에 어떤 단위로 문제를 읽을지부터 정합니다.",
-      "선택을 서두르기 전에 확인할 포인트가 보이도록 정보 순서를 조정합니다.",
+      "보류 사유, 대체 후보, 우선 확인 공고처럼 선택 전에 볼 포인트를 앞에 둡니다.",
     ],
     linkedProjects: ["lh-traffic-safety-analysis", "seoul-storefront-redveil", "shelter-signal"],
   },
