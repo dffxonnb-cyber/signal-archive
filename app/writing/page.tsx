@@ -142,7 +142,7 @@ export default function WritingPage() {
 
                 {entry.relatedProjects.length > 0 ? (
                   <div className={styles.relatedProjects}>
-                    <span className={styles.noteLabel}>Linked Evidence</span>
+                    <span className={styles.noteLabel}>Related Work</span>
                     <div className={styles.projectPills}>
                       {entry.relatedProjects.map((slug) => (
                         <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>

@@ -32,22 +32,22 @@ export const writingEntries: WritingEntry[] = ([
     title: "문장이 되기 전의 신호들",
     platform: "Signal Archive",
     summary:
-      "완성된 문장 이전에 남는 장면, 오래 머무는 말, 설명되지 않는 반응을 붙잡는 글입니다.",
+      "설명되지 않는 반응을 바로 감정으로 단정하지 않고, 관찰 가능한 신호와 전달 가능한 문장으로 나누어 보는 글입니다.",
     lead:
       "글은 완성된 문장에서 시작되지 않았습니다. 먼저 남는 장면, 이상하게 오래 머무는 말, 설명되지 않는 반응이 있었습니다.",
     excerpt:
-      "사랑이라고 부르기엔 아직 이르다고 생각했다. 이 감각에는 이름보다 먼저 반응이 있었다.",
+      "이름을 붙이기 전의 반응을 먼저 분리해야, 문장도 판단도 서두르지 않습니다.",
     href: "/writing/signals-before-polish",
     linkKind: "internal",
     status: "published",
-    categories: ["관찰", "감각", "문장화"],
-    relatedProjects: ["lh-traffic-safety-analysis", "seoul-storefront-redveil"],
+    categories: ["관찰", "해석", "전달"],
+    relatedProjects: [],
     publishedAt: "2026.04",
     lens: {
-      observe: "평소라면 지나쳤을 장면이 오래 남는 순간",
+      observe: "설명되지 않는 반응이 오래 남는 순간",
       interpret:
-        "그 반응이 감정인지, 결핍인지, 관계의 신호인지 의심하는 과정",
-      sentence: "이 감각에는 이름보다 먼저 반응이 있었다",
+        "그 반응을 감정으로 단정하기 전에 관찰 가능한 신호로 분리하는 과정",
+      sentence: "이름을 붙이기 전의 반응을 먼저 분리했습니다",
     },
     bodySections: [
       {
