@@ -57,10 +57,10 @@ const reviewFlow = [
 ];
 
 const highlightedSlugs = [
-  "lh-traffic-safety-analysis",
   "seoul-storefront-redveil",
+  "shelter-signal",
+  "lh-traffic-safety-analysis",
   "starbucks-promotion-analysis",
-  "shopeasy",
 ];
 
 function getProject(slug: string) {
@@ -152,7 +152,8 @@ export default function StartHerePage() {
             <h2 className="section-title">대표 근거를 어디서 볼 것인가</h2>
             <p className="page-intro">
               각 프로젝트는 문제, 분석 구조, 공개 결과물, 검증 신호가 연결되어 있는지를 기준으로
-              배치했습니다.
+              배치했습니다. Redveil과 Shelter Signal은 선택을 서두르기 전에 먼저 확인해야 할 신호를
+              정리하고, 각각 보류 근거와 보호 종료 우선순위를 검토 흐름으로 바꿉니다.
             </p>
           </div>
 

@@ -54,7 +54,7 @@ export default function ResumePage() {
               </div>
               <div>
                 <dt>Proof Projects</dt>
-                <dd>Starbucks · LH Traffic Safety · Redveil · ShopEasy</dd>
+                <dd>Redveil · Shelter Signal · LH Traffic Safety · Starbucks</dd>
               </div>
               <div>
                 <dt>Resume PDF</dt>

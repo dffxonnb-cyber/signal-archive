@@ -83,7 +83,7 @@ export const writingEntries: WritingEntry[] = [
     linkKind: "internal",
     status: "published",
     categories: ["분석", "기획", "산출물"],
-    relatedProjects: ["seoul-storefront-redveil", "shopeasy"],
+    relatedProjects: ["seoul-storefront-redveil", "shelter-signal", "shopeasy"],
     publishedAt: "2026.04",
     lens: {
       observe: "분석 결과가 노트북이나 리포트 안에만 머무는 상황",

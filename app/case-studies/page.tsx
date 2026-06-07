@@ -40,6 +40,7 @@ const decisionFiles: DecisionFile[] = [
     linkedProjects: [
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",
+      "shelter-signal",
       "shopeasy",
     ],
     axis: "Question",
@@ -48,16 +49,16 @@ const decisionFiles: DecisionFile[] = [
   {
     id: "risk-signals-before-volume",
     number: "02",
-    title: "Risk-first Framing",
-    description: "추천보다 먼저 멈춰야 할 신호를 보는 방식",
-    proves: "겉으로 좋아 보이는 지표보다 리스크 기준을 먼저 설계할 수 있음",
+    title: "Signal-first Framing",
+    description: "선택을 서두르기 전에 먼저 확인할 신호를 정리하는 방식",
+    proves: "겉으로 좋아 보이는 지표보다 리스크와 시간 민감 신호를 먼저 설계할 수 있음",
     primaryExample: "Seoul Storefront Redveil",
     primaryExampleSlug: "seoul-storefront-redveil",
     signal: "좋아 보이는 후보 안에 숨은 거래 둔화, 과밀, 수요 취약 신호",
     criteria: "가격 부담, 유동성, 경쟁도, 수요 취약도",
     decisionOutput: "매입 추천보다 보류 사유와 대체 후보를 먼저 제시",
     evidence: ["서울 25개 구", "행정동 428개", "거래 12,074건", "취약 상권 1,570개"],
-    linkedProjects: ["seoul-storefront-redveil", "lh-traffic-safety-analysis"],
+    linkedProjects: ["seoul-storefront-redveil", "shelter-signal", "lh-traffic-safety-analysis"],
     axis: "Risk",
     tone: "risk",
   },
@@ -97,6 +98,7 @@ const decisionFiles: DecisionFile[] = [
       "starbucks-promotion-analysis",
       "shopeasy",
       "uk-online-retail-segment-analysis",
+      "shelter-signal",
     ],
     axis: "Grain",
     tone: "structure",
@@ -112,10 +114,11 @@ const decisionFiles: DecisionFile[] = [
     signal: "노트북만으로는 문제, 접근, 결과, 한계를 빠르게 검토하기 어려움",
     criteria: "문제 정의, 접근 방식, 핵심 결과, 한계, 확인 경로",
     decisionOutput: "README, 방법론 문서, 재현성 가이드, 대시보드, 웹 화면, 실행 파이프라인",
-    evidence: ["README", "검증 문서", "웹 기반 의사결정 화면", "공개 서비스 링크"],
+    evidence: ["README", "검증 문서", "웹 기반 검토 화면", "공개 프로토타입 링크"],
     linkedProjects: [
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",
+      "shelter-signal",
       "nba-game-player-analysis",
       "starbucks-promotion-analysis",
     ],
@@ -127,6 +130,7 @@ const decisionFiles: DecisionFile[] = [
 const projectDisplayNames: Record<string, string> = {
   "lh-traffic-safety-analysis": "LH Traffic Safety",
   "seoul-storefront-redveil": "Seoul Storefront Redveil",
+  "shelter-signal": "Shelter Signal",
   shopeasy: "ShopEasy",
   "uk-online-retail-segment-analysis": "UK Online Retail",
   "starbucks-promotion-analysis": "Starbucks Promotion",
@@ -147,17 +151,17 @@ const ctaProjects = [
   {
     slug: "seoul-storefront-redveil",
     title: "Seoul Storefront Redveil",
-    detail: "리스크 기준을 웹 의사결정 UI로 구현",
+    detail: "보류 사유와 대체 후보를 웹 검토 흐름으로 구현",
+  },
+  {
+    slug: "shelter-signal",
+    title: "Shelter Signal",
+    detail: "보호 종료 신호를 operational/fallback PWA로 구현",
   },
   {
     slug: "lh-traffic-safety-analysis",
     title: "LH Traffic Safety",
     detail: "공간 위험도를 설치 우선순위로 변환",
-  },
-  {
-    slug: "starbucks-promotion-analysis",
-    title: "Starbucks Promotion",
-    detail: "고객 반응을 CRM 액션으로 번역",
   },
 ];
 
@@ -243,7 +247,7 @@ export default function CaseStudiesPage() {
                   </span>
                   <div className={`${styles.reframeTransformPair} ${styles.reframeTransformPairTo}`}>
                     <span className={styles.reframeLabel}>To</span>
-                    <strong className={styles.reframeValue}>매입 보류 판단 서비스</strong>
+                    <strong className={styles.reframeValue}>매입 전 리스크 검토 프로토타입</strong>
                   </div>
                 </div>
 

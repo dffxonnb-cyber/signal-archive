@@ -4,7 +4,7 @@ import { HomeProjectCard } from "@/components/home-project-card";
 import { PageHero } from "@/components/page-hero";
 import { ProofPointGrid } from "@/components/proof-point-grid";
 import { homeProofPoints } from "@/content/proof-points";
-import { projects } from "@/content/projects";
+import { featuredProjects } from "@/content/projects";
 
 const scanRows = [
   { label: "Positioning", value: "Data analyst building data products" },
@@ -46,26 +46,7 @@ const reviewPath = [
   },
 ];
 
-const featuredProofSlugs = [
-  "seoul-storefront-redveil",
-  "shelter-signal",
-  "lh-traffic-safety-analysis",
-  "starbucks-promotion-analysis",
-];
-
-function getProject(slug: string) {
-  const project = projects.find((item) => item.slug === slug);
-
-  if (!project) {
-    throw new Error(`Missing project: ${slug}`);
-  }
-
-  return project;
-}
-
 export default function HomePage() {
-  const featuredProofProjects = featuredProofSlugs.map((slug) => getProject(slug));
-
   return (
     <main className="page-shell">
       <div className="site-container page-grid page-grid--home">
@@ -175,7 +156,7 @@ export default function HomePage() {
           </div>
 
           <div className="home-selected__grid">
-            {featuredProofProjects.map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <HomeProjectCard key={project.slug} index={index + 1} project={project} />
             ))}
           </div>

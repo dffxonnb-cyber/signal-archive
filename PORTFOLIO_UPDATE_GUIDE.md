@@ -24,11 +24,11 @@ Required fields:
 
 ## 2. Choose Status
 
-- `featured`: strongest 2-3 projects for recruiter review. These get stronger card treatment and appear on the Home page.
+- `featured`: strongest small set of projects for recruiter review. These get stronger card treatment and appear on the Home page.
 - `supporting`: polished portfolio projects that expand domain coverage.
 - `archive`: older or lower-priority work that should remain available without dominating the site.
 
-Keep only a small number of `featured` projects. If everything is featured, nothing feels curated.
+Keep only a small number of `featured` projects, typically 3-4. If everything is featured, nothing feels curated.
 
 ## 3. Keep Cards Scannable
 

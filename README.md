@@ -28,7 +28,7 @@ Signal Archive는 Python/SQL 기반 데이터 분석을 웹앱, 서버리스 API
 | Route | Purpose |
 | --- | --- |
 | `/start-here` | 처음 보는 리뷰어와 채용 담당자를 위한 3분 판단 가이드 |
-| `/` | 역할 적합성, 핵심 강점, 대표 프로젝트 3개 요약 |
+| `/` | 역할 적합성, 핵심 강점, 대표 프로젝트 4개 요약 |
 | `/projects` | 필터 가능한 프로젝트 아카이브와 상세 페이지 진입점 |
 | `/case-studies` | 여러 프로젝트에서 반복되는 문제 해결 방식 정리 |
 | `/writing` | 분석과 결과물 전달 방식에 대한 짧은 글 |
@@ -37,13 +37,15 @@ Signal Archive는 Python/SQL 기반 데이터 분석을 웹앱, 서버리스 API
 
 ## Featured Projects
 
-- **Seoul Storefront Redveil**: 서울 상권 매입 검토에 필요한 확인 포인트를 공개 웹 서비스로 정리한 프로젝트
+- **Seoul Storefront Redveil**: 서울 상권 매입 검토에 필요한 보류 근거와 대체 후보를 공개 웹 프로토타입으로 정리한 프로젝트
+- **Shelter Signal**: 구조동물 공고의 보호 종료 신호를 Neon operational read path, fallback, 모바일 PWA로 연결한 프로젝트
 - **LH Traffic Safety Analysis**: 공공 교통사고 데이터와 공간 정보를 바탕으로 설치 우선순위 판단 흐름을 설계한 프로젝트
 - **Starbucks Promotion Analysis**: 고객, 오퍼, 채널 데이터를 CRM 반응 구조와 Tableau 결과물로 연결한 프로젝트
 
 ## Verification Signals
 
 - `ShopEasy`: seed 고정 synthetic dataset generator와 CSV schema/row count/핵심 지표 검증을 추가했습니다.
+- `Shelter Signal`: Neon-backed `/api/notices`, static/mock fallback, notice-derived `/api/shelters`, 별도 V2 브랜치의 로컬 n8n/Mailpit 검증 범위를 구분합니다.
 - `Starbucks Promotion Analysis`: 공개 artifact checker와 public smoke tests를 GitHub Actions에 연결했습니다.
 - `UK Online Retail Segment Analysis`: 공개 artifact checker와 public smoke tests를 GitHub Actions에 연결했습니다.
 - `signal-archive`: `typecheck`, `lint`, `build`로 포트폴리오 콘텐츠와 정적 페이지 생성을 검증합니다.

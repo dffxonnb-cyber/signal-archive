@@ -139,7 +139,7 @@ export const projects: Project[] = [
     status: "featured",
     category: "대표 프로젝트",
     primaryDomain: "상권/부동산",
-    summary: "좋아 보이는 매물 추천보다, 매입 전에 확인해야 할\n근거를 한 화면에 정리한 상권 검토 서비스입니다.",
+    summary: "매입 후보를 고르기 전에 확인해야 할\n리스크 근거를 한 화면에 정리한 상권 검토 프로토타입입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["상권 분석", "공공데이터", "리스크 모델링", "웹 구현"],
@@ -151,27 +151,27 @@ export const projects: Project[] = [
     coreTags: ["리스크 사유", "대체 후보", "공개 사이트", "공공데이터"],
     badges: ["Featured", "End-to-End", "Public-facing"],
     context:
-      "상권 분석 자료는 많지만, 실제 매입 판단 단계에서 먼저 어떤 신호를 보류 사유로 읽어야 하는지까지 연결해주는 도구는 드뭅니다. 추천보다 보류 판단을 먼저 도와주는 서비스 구조가 필요했습니다.",
+      "상권 분석 자료는 많지만, 매입 전 검토 단계에서 어떤 신호를 보류 사유로 읽어야 하는지까지 연결해주는 도구는 드뭅니다. 선택을 서두르기 전에 리스크와 대체 후보를 함께 검토하는 흐름이 필요했습니다.",
     outcome:
-      "공공데이터와 상권 데이터를 묶어 매입 리스크를 설명하는 웹 기반 판단 도구를 만들고, 대체 후보 비교까지 가능한 서비스 흐름으로 정리했습니다.",
-    supportingLine: "보류 근거를 명확히 보여주는 상권 리스트 판단 서비스",
+      "공공데이터와 상권 데이터를 묶어 매입 리스크를 설명하는 웹 기반 검토 프로토타입을 만들고, 대체 후보 비교까지 가능한 흐름으로 정리했습니다.",
+    supportingLine: "보류 근거와 대체 후보를 함께 보여주는 상권 리스크 검토 프로토타입",
     review: {
       decisionQuestion: "매입 후보를 추천하기 전에 어떤 보류 신호를 먼저 확인해야 하는가?",
       myRole: "리스크 기준 설계, 거래/상권 데이터 구조화, 공개 웹 서비스 구현",
       evidence: "서울 25개 구 / 행정동 428개 / 거래 12,074건 / 취약 상권 1,570개",
-      deliverable: "공개 웹 기반 상권 리스크 검토 서비스",
-      hiringSignal: "분석 결과를 실제 의사결정 UI로 번역할 수 있음",
+      deliverable: "공개 웹 기반 상권 리스크 검토 프로토타입",
+      hiringSignal: "분석 결과를 의사결정 검토 UI 프로토타입으로 번역할 수 있음",
     },
     decisionMoment: {
       originalQuestion: "어떤 상권이 좋아 보이는가?",
       reframedQuestion: "매입 전에 먼저 보류해야 할 신호는 무엇인가?",
       keyEvidence: "서울 25개 구, 행정동 428개, 취약 상권 1,570개, 거래 12,074건",
-      finalDeliverable: "공개 웹 기반 상권 리스크 검토 서비스",
-      proves: "분석 결과를 의사결정 UI로 번역하는 역량",
+      finalDeliverable: "공개 웹 기반 상권 리스크 검토 프로토타입",
+      proves: "분석 결과를 의사결정 검토 UI로 번역하는 역량",
     },
     cardBrief: {
       problem:
-        "좋아 보이는 매물 추천보다, 매입 전에 먼저 확인해야 할 항목을 한눈에 보여줄 필요가 있었음.",
+        "후보를 선택하기 전에 보류 사유와 대체 후보를 한눈에 검토할 필요가 있었음.",
       method:
         "공공데이터와 상권 데이터를 결합해 리스크 기준을 설계하고, 비교 가능한 웹 서비스 흐름으로 구현함.",
       output: [
@@ -207,9 +207,9 @@ export const projects: Project[] = [
     detailBrief: {
       problem: {
         what:
-          "상권 분석 결과가 많아도 실제 매입 판단 단계에서는 무엇을 먼저 보류해야 하는지 명확히 보여주는 구조가 부족했습니다.",
+          "상권 분석 결과가 많아도 매입 전 검토 단계에서는 무엇을 먼저 보류해야 하는지 명확히 보여주는 구조가 부족했습니다.",
         why:
-          "의사결정 도구는 추천보다 리스크 사유와 대체 후보가 먼저 읽혀야 실제 검토 흐름에 바로 연결될 수 있기 때문입니다.",
+          "검토 도구는 리스크 사유와 대체 후보가 먼저 읽혀야 다음 확인 단계로 자연스럽게 연결될 수 있기 때문입니다.",
       },
       dataMethod: {
         dataTypes: ["공공데이터", "상권 / 부동산 데이터", "매물 비교용 후보 정보"],
@@ -223,7 +223,7 @@ export const projects: Project[] = [
       limitations: [
         "공개 가능한 데이터 범위 기준으로 구성되어 실제 거래 데이터 검증 범위는 저장소 문서와 공개 서비스 기준으로 제한됩니다.",
         "실시간 공실률, 유동 인구, 운영 매출 같은 추가 변수는 아직 결합하지 않았습니다.",
-        "실제 투자 판단 결과와의 장기 검증은 후속 작업이 필요합니다.",
+        "실제 투자 결과와 연결한 장기 검증은 포함하지 않았습니다.",
       ],
       linkNote: "서비스 페이지와 GitHub 저장소 문서에서 서비스 흐름과 설명 자료를 함께 확인할 수 있습니다.",
     },
@@ -250,8 +250,8 @@ export const projects: Project[] = [
       {
         title: "프로젝트 개요",
         paragraphs: [
-          "Redveil은 서울 상가 매입 전 검토에 필요한 확인 포인트를 빠르게 읽을 수 있게 만든 공개 서비스입니다.",
-          "좋아 보이는 매물을 추천하는 것보다 먼저 사지 말아야 할 이유를 보여주는 흐름을 중심에 두고 설계했습니다.",
+          "Redveil은 서울 상가 매입 전 검토에 필요한 확인 포인트를 빠르게 읽을 수 있게 만든 공개 웹 프로토타입입니다.",
+          "후보 선택을 서두르기 전에 보류 사유와 대체 후보를 먼저 검토하는 흐름을 중심에 두고 설계했습니다.",
         ],
       },
       {
@@ -264,7 +264,7 @@ export const projects: Project[] = [
       {
         title: "포트폴리오 관점의 의미",
         paragraphs: [
-          "이 프로젝트는 분석을 끝내는 사람이 아니라, 분석 결과를 실제 사용 가능한 도구와 경험으로 전환하는 사람이라는 점을 가장 직접적으로 보여주는 사례입니다.",
+          "이 프로젝트는 분석 결과를 검토 가능한 웹 프로토타입과 사용자 흐름으로 전환하는 역량을 직접적으로 보여주는 사례입니다.",
         ],
       },
     ],
@@ -291,22 +291,22 @@ export const projects: Project[] = [
     context:
       "구조동물 공고는 보호 종료일, 지역, 보호소 연락처, 사진 여부가 흩어져 있어 오늘 먼저 확인할 공고를 빠르게 고르기 어렵습니다. 단순 최신순 목록보다 보호 종료 신호를 기준으로 다시 정리하는 화면이 필요했습니다.",
     outcome:
-      "공공 구조동물 데이터를 수집·정제하고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 Rescue Window Score를 계산해 모바일 우선 PWA로 시각화했습니다. V1 배포는 공고 목록과 지역 신호에는 정적 JSON fallback을 유지하고, `/api/shelters` Vercel 서버리스 route로 data.go.kr 구조동물 공고 API를 호출해 보호소 연락 맥락을 제공합니다.",
+      "공공 구조동물 데이터를 수집·정제하고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 Rescue Window Score를 계산해 모바일 우선 PWA로 시각화했습니다. 현재 배포는 `/api/notices`가 Neon operational DB를 먼저 읽고 실패 시 static JSON과 mock 데이터로 fallback하며, `/api/shelters`는 data.go.kr 구조동물 공고에서 notice-derived 보호소 연락 맥락을 요약합니다.",
     supportingLine:
       "보호 종료일까지 남은 시간과 데이터 신호를 기반으로\n먼저 확인할 구조동물 공고를 정리한 PWA",
     review: {
       decisionQuestion: "오늘 먼저 확인해야 할 구조동물 공고는 무엇인가?",
-      myRole: "공공 API 점검, 정적 JSON fallback, Vercel 서버리스 API route, React PWA 구현",
-      evidence: "20개 공고 정적 JSON / Rescue Window Score / /api/shelters live API / V2 Mailpit smoke test PASS",
-      deliverable: "정적 JSON fallback과 notice-derived 보호소 연락 맥락을 함께 제공하는 모바일 우선 PWA",
+      myRole: "PostgreSQL 데이터 모델링, operational/fallback 경로 설계, Vercel 서버리스 API route, React PWA 구현",
+      evidence: "Neon operational DB read / Rescue Window Score / static·mock fallback / /api/shelters / V2 local Mailpit smoke test PASS",
+      deliverable: "operational DB read, fallback, notice-derived 보호소 연락 맥락을 함께 제공하는 모바일 우선 PWA",
       hiringSignal: "공공데이터 제약을 안전한 서버리스 경유 구조와 사용자 판단 화면으로 연결 가능",
     },
     decisionMoment: {
       originalQuestion: "구조동물 공고를 어떻게 조회할 것인가?",
       reframedQuestion: "보호 종료가 가까운 공고를 어떻게 먼저 확인하게 만들 것인가?",
       keyEvidence: "공고 종료일, 진행 상태, 사진·연락처 신호를 조합한 Rescue Window Score",
-      finalDeliverable: "static JSON fallback, Vercel /api/shelters route, Vite React PWA",
-      proves: "공공데이터 제약을 드러낸 상태로 live API와 fallback을 함께 갖춘 데이터 제품형 MVP를 구성할 수 있음",
+      finalDeliverable: "Neon-backed /api/notices, static·mock fallback, /api/shelters, Vite React PWA",
+      proves: "공공데이터 제약을 드러낸 상태로 operational read path와 fallback을 함께 갖춘 데이터 제품형 MVP를 구성할 수 있음",
     },
     cardBrief: {
       problem:
@@ -332,7 +332,7 @@ export const projects: Project[] = [
       },
       {
         label: "데이터 구조",
-        value: "정적 JSON export schema, summary records, API response normalization 구성",
+        value: "Neon operational records, 정적 JSON export, mock fallback, API response normalization 구성",
       },
       {
         label: "우선순위 신호",
@@ -340,11 +340,11 @@ export const projects: Project[] = [
       },
       {
         label: "배포 방식",
-        value: "공고 목록은 exported static JSON을 우선 사용하고, 보호소 연락 맥락은 Vercel /api/shelters route로 조회",
+        value: "공고 목록은 Neon-backed /api/notices를 우선 사용하고 실패 시 static JSON과 mock 데이터로 fallback",
       },
       {
-        label: "V2 알림 실험",
-        value: "PostgreSQL alert candidates, email digest HTML, n8n dry-run bridge, Mailpit local SMTP capture를 one-command smoke test로 검증",
+        label: "V2 로컬 자동화 검증",
+        value: "별도 V2 브랜치에서 PostgreSQL alert candidates, n8n dry-run bridge, Mailpit local SMTP capture를 one-command smoke test로 검증",
       },
       {
         label: "화면 범위",
@@ -359,35 +359,35 @@ export const projects: Project[] = [
           "보호 종료가 가까운 공고는 시간이 중요한데, 사용자가 매번 전체 목록을 훑는 방식으로는 우선 확인 대상을 놓치기 쉽기 때문입니다.",
       },
       dataMethod: {
-        dataTypes: ["data.go.kr 구조동물 공고 API 응답", "mock rescued animal 데이터", "정적 JSON fallback"],
+        dataTypes: ["data.go.kr 구조동물 공고 API 응답", "Neon PostgreSQL operational records", "정적 JSON / mock fallback"],
         process: [
-          "공공 API 응답과 mock 데이터를 앱에서 읽을 수 있는 정적 JSON으로 export",
+          "로컬 PostgreSQL 모델과 SQL tests로 공고 데이터를 검증하고 Neon operational read path로 연결",
+          "배포 앱은 `/api/notices`를 먼저 호출하고 실패하거나 빈 응답이면 static JSON과 mock 데이터로 fallback",
           "Rescue Window Score와 지역별 신호를 계산해 공고 우선순위 화면에 연결",
           "Vercel 서버리스 API route에서 `careNm`, `careTel`, `careAddr`, `orgNm` 필드를 추출하고 dedupe",
-          "V2에서는 PostgreSQL alert candidate table로 보호 종료 임박 공고를 선별하고 daily email digest HTML을 생성",
-          "n8n HTTP dry-run bridge의 `/dry-run?include_html=true` `email_html` payload와 Mailpit local SMTP capture를 smoke test로 검증",
+          "별도 V2 브랜치에서 alert candidate table과 daily email digest HTML을 생성하고 n8n/Mailpit 로컬 흐름을 검증",
         ],
         metrics: [
           "보호 종료일까지 남은 일수",
           "공고 진행 상태",
           "사진·보호소 연락처·특이사항 신호",
           "notice-derived shelter/contact count",
-          "V2 smoke test: dry-run, HTML export, SMTP send, Mailpit inbox, Shelter Signal content PASS",
+          "V2 local smoke test: dry-run, HTML export, Mailpit SMTP capture and inbox verification PASS",
         ],
       },
       limitations: [
         "V1의 `/api/shelters`는 전체 공식 보호소 디렉터리가 아니라 구조동물 공고에 포함된 보호소명·전화번호·주소·관할기관 기반의 notice-derived contact summary입니다.",
-        "공고 목록과 지역 신호는 `app/public/data/*.json` 정적 JSON fallback/demo 데이터를 우선 사용합니다.",
-        "현재 V1 live API route에는 별도 database, Supabase, Postgres 연결이 필요하지 않습니다.",
-        "V2의 n8n/Mailpit 흐름은 로컬 알림 파이프라인 검증이며 production email sending, real external recipients, Gmail/Google Cloud integration, SMS, auth, subscriptions, cloud DB-backed app은 구현하지 않았습니다.",
+        "배포된 `/api/notices`는 Neon operational DB를 우선 읽지만, 현재 hosted 데이터는 로컬 검증용 mock/export 20건을 기반으로 합니다.",
+        "`/api/notices`가 실패하거나 빈 응답을 반환하면 `app/public/data/*.json` 정적 JSON과 앱 내부 mock 데이터로 fallback합니다.",
+        "V2의 n8n/Mailpit 흐름은 별도 브랜치의 로컬 자동화 검증이며 production email sending, real external recipients, Gmail/Google Cloud integration, SMS, auth, subscriptions, production notification flow는 구현하지 않았습니다.",
         "Rescue Window Score는 공식 위험 점수나 입양 결과 예측 모델이 아니라 내부 우선순위 탐색 신호입니다.",
         "API key와 운영용 비밀값은 저장소와 배포 문서에 포함하지 않았습니다.",
       ],
-      linkNote: "Live Demo에서는 정적 JSON 기반 공고 화면과 Vercel 서버리스 route를 통한 notice-derived 보호소 연락 맥락을 확인할 수 있습니다. API key는 브라우저에 노출하지 않습니다.",
+      linkNote: "Live Demo에서는 Neon-backed `/api/notices` operational read path와 static/mock fallback, `/api/shelters`의 notice-derived 보호소 연락 맥락을 확인할 수 있습니다. DB URL과 API key는 브라우저에 노출하지 않습니다.",
     },
     focusPoints: [
       "공고 목록을 최신순이 아니라 보호 종료 신호 중심의 우선순위 문제로 재정의",
-      "정적 JSON fallback과 Vercel 서버리스 API route를 함께 사용해 배포 환경에서도 안전하게 동작하도록 구성",
+      "Neon operational read path와 static/mock fallback을 함께 사용해 배포 환경에서도 안전하게 동작하도록 구성",
       "보호소 연락 목록을 전체 공식 디렉터리가 아니라 공고 기반 연락 맥락으로 명확히 제한",
     ],
     links: [
@@ -409,22 +409,22 @@ export const projects: Project[] = [
         title: "프로젝트 개요",
         paragraphs: [
           "Shelter Signal은 구조동물 공고를 단순히 나열하지 않고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 먼저 볼 공고와 보호소 연락 맥락을 정리한 공공데이터 기반 PWA입니다.",
-          "V1 공개 배포는 공고 목록과 지역 신호에 정적 JSON fallback/demo 데이터를 유지하면서, Vercel 서버리스 API route로 data.go.kr 구조동물 공고 API를 호출해 공고에 포함된 보호소명·전화번호·주소·관할기관 정보를 요약합니다.",
+          "현재 공개 배포는 `/api/notices`가 Neon PostgreSQL의 operational records를 먼저 읽고, 실패하거나 빈 응답이면 static JSON과 mock 데이터로 fallback합니다. `/api/shelters`는 data.go.kr 구조동물 공고에서 보호소명·전화번호·주소·관할기관을 추출해 notice-derived 연락 맥락을 요약합니다.",
         ],
       },
       {
         title: "접근 방식",
         paragraphs: [
-          "공공 API smoke test와 mock 데이터를 바탕으로 Rescue Window Score와 지역별 신호를 만들고, 그 결과를 static JSON export bridge로 앱에 넘겼습니다.",
+          "로컬 PostgreSQL 모델과 SQL tests로 Rescue Window Score와 지역별 신호를 검증하고, 배포 환경에서는 Neon-backed `/api/notices` operational read path를 primary source로 연결했습니다.",
           "보호소 연락 맥락은 브라우저에서 공공 API를 직접 호출하지 않고 `/api/shelters`가 서버 측 환경 변수로 data.go.kr에 요청한 뒤 `careNm`, `careTel`, `careAddr`, `orgNm`을 dedupe해 전달합니다.",
         ],
       },
       {
-        title: "V2 알림 파이프라인 실험",
+        title: "V2 로컬 자동화 검증",
         paragraphs: [
-          "V2에서는 보호 종료 임박 공고를 PostgreSQL 기반 후보 테이블로 선별하고, 이메일 다이제스트 HTML을 생성한 뒤, n8n HTTP dry-run bridge와 Mailpit 로컬 SMTP 캡처를 통해 실제 외부 발송 없이 알림 파이프라인을 검증했습니다.",
+          "별도 V2 브랜치에서는 보호 종료 임박 공고를 PostgreSQL 기반 후보 테이블로 선별하고, 이메일 다이제스트 HTML을 생성한 뒤, n8n HTTP dry-run bridge와 Mailpit 로컬 SMTP 캡처를 통해 실제 외부 발송 없이 자동화 흐름을 검증했습니다.",
           "검증 범위는 PostgreSQL alert candidates, near-deadline rescue notice selection, daily email digest HTML, `/dry-run?include_html=true`의 `email_html` payload, Mailpit local SMTP capture, `python scripts/run_v2_mailpit_email_capture_test.py` one-command smoke test입니다.",
-          "Smoke test는 dry-run PASS, HTML export PASS, SMTP send PASS, Mailpit inbox verification PASS, Shelter Signal content check PASS를 확인했습니다. 이 단계는 production email sending, real recipients, Gmail/Google Cloud, SMS, auth, subscriptions, cloud DB-backed app을 포함하지 않는 local automation experiment입니다.",
+          "Smoke test는 dry-run PASS, HTML export PASS, Mailpit local SMTP capture PASS, inbox verification PASS, Shelter Signal content check PASS를 확인했습니다. 이 단계는 production email sending, real recipients, Gmail/Google Cloud, SMS, auth, subscriptions, production notification flow를 포함하지 않는 local automation experiment입니다.",
         ],
       },
       {
