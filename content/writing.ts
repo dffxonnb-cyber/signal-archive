@@ -1,9 +1,15 @@
 import type { WritingEntry, WritingStrength } from "@/types/content";
 
-export const writingFlow = ["Observe", "Interpret", "Sentence"] as const;
+export const writingFlow = ["Signal", "Frame", "Deliver"] as const;
 
 export const selectedSentence =
-  "사랑이라고 부르기엔 아직 이르다고 생각했다. 이 감각에는 이름보다 먼저 반응이 있었다.";
+  "결과를 보여주는 것보다, 판단 흐름을 설계하는 일이 먼저였습니다.";
+
+const writingEntryOrder: Record<string, number> = {
+  "from-analysis-to-tool": 1,
+  "segment-first-action-later": 2,
+  "signals-before-polish": 3,
+};
 
 export const writingStrengths: WritingStrength[] = [
   {
@@ -20,7 +26,7 @@ export const writingStrengths: WritingStrength[] = [
   },
 ];
 
-export const writingEntries: WritingEntry[] = [
+export const writingEntries: WritingEntry[] = ([
   {
     slug: "signals-before-polish",
     title: "문장이 되기 전의 신호들",
@@ -169,7 +175,11 @@ export const writingEntries: WritingEntry[] = [
       },
     ],
   },
-];
+] satisfies WritingEntry[]).sort(
+  (left, right) =>
+    (writingEntryOrder[left.slug] ?? Number.MAX_SAFE_INTEGER) -
+    (writingEntryOrder[right.slug] ?? Number.MAX_SAFE_INTEGER),
+);
 
 export const writingCategories = Array.from(
   new Set(writingEntries.flatMap((entry) => entry.categories)),

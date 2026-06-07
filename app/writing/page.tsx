@@ -27,8 +27,8 @@ export default function WritingPage() {
           eyebrow="Signal Archive: Analysis Notes"
           lead={
             <>
-              Notes는 분석 밖의 별도 글 모음이 아니라, 관찰한 신호를 해석하고 읽히는 판단 구조로 바꾸는 전달력의 보조 증거입니다.
-              데이터 프로덕트형 포트폴리오 안에서는 관찰·구조화·전달 역량을 보여주는 짧은 사고 기록으로 읽히게 정리했습니다.
+              Analysis Notes는 분석 결과를 숫자에서 끝내지 않고, 판단 가능한 순서와 읽히는 문장으로 바꾸는 과정을
+              정리한 기록입니다.
             </>
           }
           meta={
@@ -52,15 +52,15 @@ export default function WritingPage() {
             <span className={styles.panelLabel}>Evidence Sample</span>
             <dl className={styles.sampleStack}>
               <div>
-                <dt>Observe</dt>
-                <dd>이름 붙이기 전의 반응</dd>
+                <dt>Signal</dt>
+                <dd>결과만으로는 다음 행동이 보이지 않는 상황</dd>
               </div>
               <div>
-                <dt>Interpret</dt>
-                <dd>감정이 아니라 신호로 읽기</dd>
+                <dt>Frame</dt>
+                <dd>사용자가 판단할 수 있는 순서로 재배치하기</dd>
               </div>
               <div>
-                <dt>Sentence</dt>
+                <dt>Deliver</dt>
                 <dd>“{selectedSentence}”</dd>
               </div>
             </dl>
@@ -90,8 +90,8 @@ export default function WritingPage() {
           <div className={styles.sectionHead}>
             <span className={styles.sectionLabel}>Analysis Notes</span>
             <p className={styles.sectionDescription}>
-              관찰한 장면을 어떻게 해석 가능한 구조와 문장으로 남기는지 보여주는 세 개의 노트를 골랐습니다.
-              각 글은 감정, 분석, 액션이라는 다른 장면에서 같은 질문을 다룹니다.
+              분석 결과를 어떤 신호로 읽고, 어떤 판단 흐름과 전달 문장으로 바꾸는지 보여주는 세 개의 노트를 골랐습니다.
+              각 노트는 도구화, 액션 설계, 관찰 기록이라는 다른 장면에서 같은 질문을 다룹니다.
             </p>
           </div>
 
@@ -121,15 +121,15 @@ export default function WritingPage() {
 
                 <dl className={styles.noteLensGrid}>
                   <div className={styles.noteLensItem}>
-                    <dt>Observation</dt>
+                    <dt>Signal</dt>
                     <dd>{entry.lens.observe}</dd>
                   </div>
                   <div className={styles.noteLensItem}>
-                    <dt>Interpretation</dt>
+                    <dt>Frame</dt>
                     <dd>{entry.lens.interpret}</dd>
                   </div>
                   <div className={styles.noteLensItem}>
-                    <dt>Sentence</dt>
+                    <dt>Deliver</dt>
                     <dd>{entry.lens.sentence}</dd>
                   </div>
                 </dl>
