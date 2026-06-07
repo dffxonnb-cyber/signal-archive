@@ -93,7 +93,7 @@ export const profile: Profile = {
         "GeoJSON",
         "Spatial Grid Analysis",
         "Risk/Candidate Ranking",
-        "PostGIS Integration Research",
+        "PostGIS integration guide",
       ],
     },
     {
@@ -130,7 +130,7 @@ export const profile: Profile = {
     {
       title: "Visualization & BI",
       summary: "분석 결과의 비교, 우선순위, 설명 흐름을 시각적으로 전달합니다.",
-      items: ["Tableau", "Matplotlib", "Seaborn", "Plotly", "Streamlit Charts"],
+      items: ["Tableau", "Matplotlib", "Seaborn", "Plotly", "Streamlit/pydeck Charts"],
     },
     {
       title: "Deployment & Workflow",

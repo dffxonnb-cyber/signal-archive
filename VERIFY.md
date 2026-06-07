@@ -32,16 +32,43 @@ npm run lint
 npm run build
 ```
 
+## Verification Boundaries
+
+### Verified Public Behavior
+
+- The `signal-archive` portfolio itself is verified through typecheck, lint, and production build.
+- Public project links are presented as reviewable artifacts: GitHub Pages sites, Vercel PWA routes, README documents, Tableau workbook files, dashboard screenshots, and tracked validation docs.
+- Project-specific public checks are intentionally scoped to what each repository can verify without hidden raw datasets or production credentials.
+
+### Local Validation
+
+- Redveil, LH, Starbucks, UK Retail, NBA, and ShopEasy each keep repository-level verification scripts or CI checks for public artifacts, smoke tests, or entry-point syntax.
+- Shelter Signal additionally documents local PostgreSQL, SQL tests, static export, and separate V2 n8n/Mailpit dry-run validation.
+- Local validation should not be read as production monitoring or production notification delivery.
+
+### Mock, Sample, And Fallback Behavior
+
+- Shelter Signal currently uses Neon operational rows based on local mock/export validation data, with static JSON and mock data fallback.
+- ShopEasy uses a deterministic synthetic dataset designed for portfolio review and dashboard signal consistency.
+- Redveil can rebuild the public payload from raw inputs when available, but public review relies on a tracked public-safe snapshot.
+
+### Excluded Production Scope
+
+- Production accounts, subscriptions, notifications, payment/auth flows, monitoring, real recipients, and live business operations are not claimed unless the linked project explicitly implements them.
+- Raw competition/Kaggle/UCI datasets are excluded where redistribution is not appropriate.
+- Notebook/model reruns that require excluded data are documented as local reproduction paths, not CI-verified public behavior.
+
 ## Portfolio Reproducibility Matrix
 
 | Project | Public Verification | Full Reproduction Boundary |
 | --- | --- | --- |
-| Seoul Storefront Redveil | Unit tests, public-safe payload build, GitHub Pages deployment | Full raw-data rebuild requires public API/source snapshots excluded from the repo. |
-| Shelter Signal | Neon-backed `/api/notices`, static/mock fallback, notice-derived `/api/shelters`, deployed PWA | Hosted Neon currently contains mock/export validation rows; actual public-data ingestion and production notifications are outside the verified scope. |
-| LH Traffic Safety Analysis | Public-safe dashboard smoke tests, validation docs, review CSV/images | Original competition data is not included. |
-| Starbucks Promotion Analysis | Public artifact check, pipeline entry-point compile check, public smoke tests | Full notebook execution requires Kaggle CSV files. |
-| UK Online Retail Segment Analysis | Public artifact check, pipeline entry-point compile check, public smoke tests | Full notebook execution requires UCI Online Retail CSV. |
-| ShopEasy | Static dashboard, deterministic synthetic dataset generator, CSV schema/row count/key metric checks | Synthetic data is generated for portfolio review, not production behavior simulation. |
+| Seoul Storefront Redveil | Unit tests, public-safe payload build, local smoke tests, optional Playwright browser checks, GitHub Pages artifact | Full raw-data rebuild requires excluded source snapshots; the service is a screening prototype, not investment advice. |
+| Shelter Signal | Deployed Vite React PWA, Neon-backed `/api/notices`, static/mock fallback, notice-derived `/api/shelters` | Hosted Neon currently contains mock/export validation rows; actual hosted public-data ingestion and production notifications are outside the verified scope. |
+| LH Traffic Safety Analysis | Public-safe dashboard smoke tests, validation docs, review CSV/images, README visuals | Original competition/geospatial data is excluded; full GRF/grid pipeline rerun requires local source data. |
+| Starbucks Promotion Analysis | Public artifact checker, pipeline entry-point compile check, Tableau workbook and screenshots | Full notebook execution requires Kaggle `portfolio.csv`, `profile.csv`, and `transcript.csv`; CI does not retrain models. |
+| UK Online Retail Segment Analysis | Public artifact checker, pipeline entry-point compile check, docs/images review | Full notebook execution requires UCI `Online_Retail.csv`; segment thresholds should be revalidated for a new business context. |
+| NBA Game & Player Analysis | Public artifact check, synthetic dataframe smoke test, tracked PNG outputs and docs | Full pipeline execution requires Kaggle `games.csv`, `games_details.csv`, `players.csv`, and `teams.csv`; live data integration is not included. |
+| ShopEasy | Static dashboard, deterministic synthetic dataset generator, CSV schema/row count/key metric checks | Synthetic data is generated for portfolio review, not production behavior simulation; browser visual regression is not included. |
 
 ## Shelter Signal Verification Boundary
 

@@ -12,7 +12,7 @@ Signal Archive는 Python/SQL 기반 데이터 분석을 웹앱, 서버리스 API
 - Positioning: Data analyst building data products with Python, SQL, React, and automation workflows
 - Primary Fit: Data Analyst / Data Product Builder
 - Secondary Fit: Spatial Data Analyst / Business & CRM Analytics
-- Core Tools: Python, SQL, React, TypeScript, PostgreSQL, Vercel, Docker, n8n, Tableau, GIS
+- Core Tools: Python, pandas, SQL, React, TypeScript, PostgreSQL/Neon, Vercel, Docker, local n8n/Mailpit validation, Tableau, GIS
 
 ## Portfolio Focus
 
@@ -37,17 +37,20 @@ Signal Archive는 Python/SQL 기반 데이터 분석을 웹앱, 서버리스 API
 
 ## Featured Projects
 
-- **Seoul Storefront Redveil**: 서울 상권 매입 검토에 필요한 보류 근거와 대체 후보를 공개 웹 프로토타입으로 정리한 프로젝트
-- **Shelter Signal**: 구조동물 공고의 보호 종료 신호를 Neon operational read path, fallback, 모바일 PWA로 연결한 프로젝트
-- **LH Traffic Safety Analysis**: 공공 교통사고 데이터와 공간 정보를 바탕으로 설치 우선순위 판단 흐름을 설계한 프로젝트
-- **Starbucks Promotion Analysis**: 고객, 오퍼, 채널 데이터를 CRM 반응 구조와 Tableau 결과물로 연결한 프로젝트
+- **Seoul Storefront Redveil**: Python/pandas로 만든 public-safe 상권 payload를 Static HTML/CSS/JS, client-side review state, GitHub Pages 검토 흐름으로 연결한 storefront acquisition risk prototype
+- **Shelter Signal**: Vite React TypeScript PWA, Vercel `/api/notices`, Neon operational read path, static/mock fallback, notice-derived `/api/shelters`를 연결한 공공데이터 제품형 MVP
+- **LH Traffic Safety Analysis**: Python, GeoPandas, scikit-learn, Jupyter, Streamlit/pydeck으로 교통안전 위험 격자와 설치 우선순위 검증 흐름을 정리한 공간 분석 프로젝트
+- **Starbucks Promotion Analysis**: 4인 팀 CRM 분석에서 Python/pandas/scikit-learn 모델링과 Tableau workbook으로 고객·오퍼·채널 반응 구조를 정리한 프로젝트
 
 ## Verification Signals
 
-- `ShopEasy`: seed 고정 synthetic dataset generator와 CSV schema/row count/핵심 지표 검증을 추가했습니다.
+- `Redveil`: unit tests, public-safe payload build, local smoke tests, optional Playwright browser checks, GitHub Pages deployment path를 구분합니다.
 - `Shelter Signal`: Neon-backed `/api/notices`, static/mock fallback, notice-derived `/api/shelters`, 별도 V2 브랜치의 로컬 n8n/Mailpit 검증 범위를 구분합니다.
-- `Starbucks Promotion Analysis`: 공개 artifact checker와 public smoke tests를 GitHub Actions에 연결했습니다.
-- `UK Online Retail Segment Analysis`: 공개 artifact checker와 public smoke tests를 GitHub Actions에 연결했습니다.
+- `LH Traffic Safety Analysis`: 공개 시각화, validation docs, review CSV/images, public-safe dashboard smoke tests를 검토 범위로 둡니다.
+- `Starbucks Promotion Analysis`: 공개 artifact checker, pipeline entry-point syntax, Tableau workbook review를 GitHub Actions 검증 범위와 분리해 설명합니다.
+- `UK Online Retail Segment Analysis`: 공개 artifact checker와 pipeline entry-point syntax를 검증하며, full notebook execution은 UCI CSV가 필요합니다.
+- `NBA Game & Player Analysis`: public artifact check와 synthetic dataframe smoke test로 공개 검토 가능 범위를 확인합니다.
+- `ShopEasy`: seed 고정 synthetic dataset generator와 CSV schema/row count/핵심 지표 검증을 추가했습니다.
 - `signal-archive`: `typecheck`, `lint`, `build`로 포트폴리오 콘텐츠와 정적 페이지 생성을 검증합니다.
 
 ## Content Model
@@ -65,9 +68,10 @@ Signal Archive는 Python/SQL 기반 데이터 분석을 웹앱, 서버리스 API
 ## Tech Stack
 
 - Frontend: Next.js 15 App Router, React 19, TypeScript, Custom CSS
-- Data/Product evidence: Python, SQL, PostgreSQL, pandas, Tableau, GIS
-- Delivery: Vercel deployment, GitHub Pages links, project case studies
-- Validation: TypeScript typecheck, ESLint, production build
+- Project delivery: Vite React PWA, Static HTML/CSS/JS, Streamlit/pydeck dashboard, GitHub Pages, Vercel
+- Data/Product evidence: Python, pandas, NumPy, GeoPandas, scikit-learn, PostgreSQL/Neon, SQL models/tests, Tableau, GIS
+- Serverless/API: Vercel Functions, `/api/notices`, `/api/shelters`, server-side public API proxy, static/mock fallback
+- Validation: TypeScript typecheck, ESLint, production build, public artifact checks, smoke tests, documented raw-data boundaries
 
 ## Local Development
 

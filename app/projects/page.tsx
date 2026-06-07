@@ -18,12 +18,12 @@ export default function ProjectsPage() {
     {
       label: "Core Stack",
       value: "Python · SQL · React",
-      note: "PostgreSQL · Vercel · n8n",
+      note: "PostgreSQL · Vercel · local validation",
     },
     {
       label: "Delivery Types",
       value: "PWA · Dashboard",
-      note: "serverless API · case study",
+      note: "serverless API · static site · case study",
     },
   ];
 

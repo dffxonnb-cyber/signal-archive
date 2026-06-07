@@ -15,7 +15,7 @@ export const projects: Project[] = [
     role: ["공간 위험도 설계", "전이 검증 구조화", "우선순위 도출"],
     filterTools: ["Python", "GIS"],
     cardTools: ["Python", "GIS", "Jupyter"],
-    stack: ["Python", "GIS", "Jupyter"],
+    stack: ["Python", "pandas", "GeoPandas", "scikit-learn", "Jupyter", "Streamlit/pydeck"],
     problemTypes: ["위험도 평가"],
     coreTags: ["전이 검증", "위험 격자", "설명 가능한 추천", "공공데이터"],
     badges: ["Featured", "Spatial", "Explainable"],
@@ -65,7 +65,11 @@ export const projects: Project[] = [
       },
       {
         label: "검증 결과",
-        value: "Mean AUC 0.8604 / Top-10% Lift 4.39x",
+        value: "Mean AUC 0.8604 / Top-10% Lift 4.39x / Worst holdout AUC 0.7979",
+      },
+      {
+        label: "강건성 점검",
+        value: "Monte Carlo mean Jaccard 0.503으로 Top20 후보 안정성 확인",
       },
       {
         label: "결과물 연결",
@@ -89,7 +93,8 @@ export const projects: Project[] = [
         metrics: ["위험 격자 기준", "설치 우선순위 판단 기준", "전이 검증 관점"],
       },
       limitations: [
-        "공개 저장소는 원천 데이터 제외 상태라 재현 범위가 검증 문서와 산출물 기준으로 제한됩니다.",
+        "공개 저장소는 원본 공모전 데이터와 대용량 파생 데이터를 제외하므로 전체 GRF/grid pipeline 재학습은 로컬 원천 데이터가 필요합니다.",
+        "README의 적용 전/후 이미지는 실제 사후 효과 검증이 아니라 안전시설 개입을 가정한 시나리오 기반 예상 변화입니다.",
         "실제 정책 집행 데이터와의 후속 검증은 추가로 필요합니다.",
         "지역별 외부 변수 차이를 더 정교하게 반영하는 보완이 필요합니다.",
       ],
@@ -145,8 +150,8 @@ export const projects: Project[] = [
     domains: ["상권 분석", "공공데이터", "리스크 모델링", "웹 구현"],
     role: ["문제 정의", "리스크 기준 설계", "서비스 구현"],
     filterTools: ["Python", "SQL", "Web"],
-    cardTools: ["Python", "SQL", "Web"],
-    stack: ["Python", "SQL", "HTML/CSS/JS", "Jupyter"],
+    cardTools: ["Python", "Pandas", "Static JS", "GitHub Pages"],
+    stack: ["Python", "pandas", "requests", "SQL review queries", "Static HTML/CSS/JS", "Streamlit prototype", "GitHub Pages", "GitHub Actions", "Playwright checks"],
     problemTypes: ["의사결정 도구"],
     coreTags: ["리스크 사유", "대체 후보", "공개 사이트", "공공데이터"],
     badges: ["Featured", "End-to-End", "Public-facing"],
@@ -201,7 +206,11 @@ export const projects: Project[] = [
       },
       {
         label: "Delivery",
-        value: "리스크 점수, 보류 사유, 대체 후보를 공개 웹에서 바로 확인",
+        value: "리스크 점수, 보류 사유, 대체 후보를 GitHub Pages 정적 웹에서 바로 확인",
+      },
+      {
+        label: "Public Verification",
+        value: "unit tests, public-safe payload build, local smoke tests, optional Playwright browser checks",
       },
     ],
     detailBrief: {
@@ -221,8 +230,9 @@ export const projects: Project[] = [
         metrics: ["상권 리스크 기준", "보류 사유 분류 기준", "대체 후보 비교 기준"],
       },
       limitations: [
-        "공개 가능한 데이터 범위 기준으로 구성되어 실제 거래 데이터 검증 범위는 저장소 문서와 공개 서비스 기준으로 제한됩니다.",
-        "실시간 공실률, 유동 인구, 운영 매출 같은 추가 변수는 아직 결합하지 않았습니다.",
+        "portfolio prototype이며 금융·법률·부동산 투자 자문이나 buy/sell recommendation이 아닙니다.",
+        "공개 가능한 public-safe snapshot 기준으로 구성되어 raw data 전체 재빌드는 로컬 원천 데이터가 필요합니다.",
+        "실시간 공실률, 유동 인구, 운영 매출, 임대차 조건, 권리금, 관리비, 법적 제약 같은 추가 변수는 아직 결합하지 않았습니다.",
         "실제 투자 결과와 연결한 장기 검증은 포함하지 않았습니다.",
       ],
       linkNote: "서비스 페이지와 GitHub 저장소 문서에서 서비스 흐름과 설명 자료를 함께 확인할 수 있습니다.",
@@ -284,7 +294,7 @@ export const projects: Project[] = [
     role: ["데이터 파이프라인 설계", "서버리스 API 연결", "PWA 구현"],
     filterTools: ["Python", "SQL", "React"],
     cardTools: ["Python", "React", "TypeScript", "Vercel"],
-    stack: ["Python", "SQL", "PostgreSQL", "Vite", "React", "TypeScript", "Vercel", "n8n", "Mailpit"],
+    stack: ["Python", "SQL", "PostgreSQL/Neon", "Vite", "React", "TypeScript", "Vercel Functions", "PWA", "static JSON/mock fallback", "n8n/Mailpit local dry-run"],
     problemTypes: ["우선순위 판단", "의사결정 도구"],
     coreTags: ["Public Data", "Serverless API", "SQL", "React", "TypeScript", "PWA", "Vercel", "n8n", "Mailpit"],
     badges: ["Featured", "Public Data", "PWA", "Live API", "V2 Local Pipeline"],
@@ -447,9 +457,9 @@ export const projects: Project[] = [
     format: "팀 프로젝트 기반 정리",
     domains: ["UK Online Retail", "E-commerce Analytics", "구매 패턴 분석", "고객 세그먼트 분석"],
     role: ["RFM 해석 구조화", "통계 검정 정리", "캠페인 시나리오 번역"],
-    filterTools: ["Python", "SQL"],
-    cardTools: ["Python", "SQL"],
-    stack: ["Python", "SQL", "Jupyter"],
+    filterTools: ["Python"],
+    cardTools: ["Python", "Jupyter"],
+    stack: ["Python", "pandas", "NumPy", "SciPy", "statsmodels", "scikit-posthocs", "Jupyter", "Matplotlib/Seaborn"],
     problemTypes: ["구매 패턴 분석", "고객 세그먼트 분석", "매출/재구매 인사이트"],
     coreTags: ["UK Online Retail", "E-commerce", "RFM", "Customer Segmentation", "Revenue Analysis"],
     badges: ["Featured", "E-commerce", "Revenue Logic", "CI Verified"],
@@ -506,6 +516,10 @@ export const projects: Project[] = [
         value: "이탈위험 고객군 11월 매출이 10월 대비 84.2% 감소",
       },
       {
+        label: "통계 검정",
+        value: "ANOVA / Kruskal-Wallis로 세그먼트별 매출 차이 검토",
+      },
+      {
         label: "공개 검증",
         value: "artifact checker + public smoke tests가 GitHub Actions에서 통과",
       },
@@ -528,8 +542,9 @@ export const projects: Project[] = [
       },
       limitations: [
         "공개 데이터셋 기반이라 최근 운영 환경에 그대로 일반화하기는 어렵습니다.",
-        "실제 운영 고객 식별 정보와 연결한 캠페인 검증은 후속 보완이 필요합니다.",
-        "재구매 관점 인사이트의 후속 검증은 추가 분석이 필요합니다.",
+        "full notebook execution은 UCI Online Retail CSV를 로컬에 배치해야 하며, CI는 artifact completeness와 pipeline entry-point syntax를 검증합니다.",
+        "실제 운영 고객 식별 정보와 연결한 캠페인 집행/성과 검증은 포함하지 않았습니다.",
+        "세그먼트 경계값은 업종, 기간, 운영 목표가 달라지면 재검토가 필요합니다.",
       ],
       linkNote: "GitHub README와 저장소 문서에서 분석 흐름과 실행 가이드를 확인할 수 있습니다.",
     },
@@ -579,12 +594,12 @@ export const projects: Project[] = [
     primaryDomain: "마케팅",
     summary: "고객, 오퍼, 채널 데이터를 기반으로\n세그먼트와 오퍼 반응의 상관관계를 분석한\nCRM / 마케팅 분석 프로젝트입니다.",
     period: "2026",
-    format: "개인 프로젝트",
+    format: "4인 팀 프로젝트",
     domains: ["CRM", "Marketing Analytics", "고객 반응 분석", "오퍼/채널 성과 분석"],
     role: ["이벤트 구조 재설계", "추천 후보 해석", "Tableau 결과 정리"],
-    filterTools: ["Python", "SQL"],
-    cardTools: ["Python", "SQL", "Tableau"],
-    stack: ["Python", "SQL", "Tableau"],
+    filterTools: ["Python"],
+    cardTools: ["Python", "Tableau"],
+    stack: ["Python", "pandas", "NumPy", "scikit-learn", "Jupyter", "Tableau"],
     problemTypes: ["고객 반응 분석", "오퍼/채널 성과 분석", "마케팅 액션 인사이트"],
     coreTags: ["CRM", "Offer Response", "Customer Segmentation", "Marketing Analytics", "Tableau"],
     badges: ["CRM", "Marketing Analytics", "Model Metrics", "CI Verified"],
@@ -595,7 +610,7 @@ export const projects: Project[] = [
     supportingLine: "고객군별 오퍼 반응과 채널 성과를\n함께 도출한 CRM 분석",
     review: {
       decisionQuestion: "어떤 고객군이 어떤 오퍼와 채널에 반응하는가?",
-      myRole: "이벤트 구조 재설계, 추천 후보 해석, Tableau 결과 정리",
+      myRole: "팀 리더, 이벤트 구조 재설계, 추천 후보 해석, Tableau 결과 정리",
       evidence: "AUC 0.8147 / Recall 0.8712 / Precision 0.6830 / F1 0.7657",
       deliverable: "CRM 반응 분석과 Tableau 결과물",
       hiringSignal: "고객·오퍼·채널 데이터를 액션 언어로 번역 가능",
@@ -641,6 +656,10 @@ export const projects: Project[] = [
         label: "공개 검증",
         value: "artifact checker + public smoke tests가 GitHub Actions에서 통과",
       },
+      {
+        label: "공개 산출물",
+        value: "Tableau workbook과 README 스크린샷으로 대시보드 스토리라인 검토 가능",
+      },
     ],
     detailBrief: {
       problem: {
@@ -659,7 +678,8 @@ export const projects: Project[] = [
         metrics: ["고객 반응 비교 기준", "오퍼 / 채널 성과 기준", "마케팅 인사이트 정리 기준"],
       },
       limitations: [
-        "공개 저장소 기준으로는 데이터 커버리지보다 분석 구조와 대시보드 흐름 중심으로 확인할 수 있습니다.",
+        "원본 Kaggle CSV는 저장소에 포함하지 않아 full notebook execution은 `portfolio.csv`, `profile.csv`, `transcript.csv`를 로컬에 배치해야 합니다.",
+        "CI는 public artifact checker와 pipeline entry-point syntax를 확인하며, 데이터가 필요한 notebook retraining은 실행하지 않습니다.",
         "실제 운영 캠페인 성과와 연결한 후속 검증은 포함되지 않았습니다.",
         "오퍼별 장기 유지 효과 비교는 추가 분석이 필요합니다.",
       ],
@@ -708,7 +728,7 @@ export const projects: Project[] = [
     role: ["데이터 통합", "모델링", "결과 해석"],
     filterTools: ["Python"],
     cardTools: ["Python"],
-    stack: ["Python", "Jupyter"],
+    stack: ["Python", "pandas", "NumPy", "SciPy", "scikit-learn", "Matplotlib/Seaborn"],
     problemTypes: ["예측 모델링"],
     coreTags: ["EDA", "통계 검정", "회귀 예측", "군집화"],
     badges: ["Sports", "Pipeline"],
@@ -720,14 +740,14 @@ export const projects: Project[] = [
     review: {
       decisionQuestion: "승리 요인과 선수 성과를 한 흐름에서 어떻게 해석할 것인가?",
       myRole: "경기·선수 데이터 통합, 모델링, 결과 해석",
-      evidence: "EDA, 통계 검정, 모델링, 군집화를 하나의 파이프라인으로 구성",
+      evidence: "EDA, 통계 검정, 모델링, 군집화 / 예측-실측 상관 0.68~0.72",
       deliverable: "경기/선수 분석 파이프라인과 시각화 결과",
       hiringSignal: "분리된 데이터를 재현 가능한 분석 흐름으로 통합 가능",
     },
     decisionMoment: {
       originalQuestion: "승리 팀은 어떤 특징이 있는가?",
       reframedQuestion: "승리 요인과 선수 성과를 한 분석 흐름에서 어떻게 설명할 것인가?",
-      keyEvidence: "경기·선수 데이터 통합, EDA, 통계 검정, 모델링, 군집화",
+      keyEvidence: "경기·선수 데이터 통합, EDA, 통계 검정, 모델링, 군집화, 예측-실측 상관 0.68~0.72",
       finalDeliverable: "경기/선수 분석 파이프라인과 시각화 결과",
       proves: "분리된 데이터 소스를 하나의 분석 흐름으로 연결하는 역량",
     },
@@ -743,7 +763,24 @@ export const projects: Project[] = [
         "시각화 결과",
       ],
     },
-    metrics: [],
+    metrics: [
+      { label: "Prediction Corr", value: "0.68-0.72" },
+      { label: "Player Model", value: "R2 > 0.6" },
+    ],
+    evidencePoints: [
+      {
+        label: "분석 흐름",
+        value: "전처리, EDA, 통계 검정, ML, 군집화, 시각화를 Python 모듈로 분리",
+      },
+      {
+        label: "예측 검증",
+        value: "문서 기준 R2 > 0.6, 예측-실측 상관 0.68~0.72, PLUS_MINUS 평균 오차 ±2.5",
+      },
+      {
+        label: "공개 검증",
+        value: "public artifact check와 synthetic dataframe 기반 smoke test가 GitHub Actions에서 실행",
+      },
+    ],
     detailBrief: {
       problem: {
         what:
@@ -761,7 +798,8 @@ export const projects: Project[] = [
         metrics: ["승리 요인 비교 지표", "선수 / 팀 특성 비교 기준", "모델 성능 비교 기준"],
       },
       limitations: [
-        "공개 저장소 기준으로는 시즌 범위 표기보다 분석 파이프라인과 모델 비교 구조 중심으로 확인할 수 있습니다.",
+        "full pipeline rerun은 Kaggle 원본 CSV 4개를 로컬 `data/` 폴더에 배치해야 합니다.",
+        "공개 저장소 기준으로는 코드, 문서, PNG 산출물, smoke test를 통해 분석 구조를 검토합니다.",
         "실시간 경기 데이터와 연결한 검증은 포함되지 않았습니다.",
         "모델 일반화 성능은 후속 비교 실험이 더 필요합니다.",
       ],
@@ -810,7 +848,7 @@ export const projects: Project[] = [
     role: ["데이터 설계", "전환 흐름 분석", "웹 대시보드 구현", "A/B 테스트 설계"],
     filterTools: ["Python", "Web"],
     cardTools: ["Python", "Web"],
-    stack: ["Python", "Pandas", "HTML/CSS/JS"],
+    stack: ["Python", "pandas", "Static HTML/CSS/JS", "GitHub Pages", "GitHub Actions"],
     problemTypes: ["전환율 분석", "서비스 진단", "실험 설계"],
     coreTags: ["주문 감소", "모바일 전환", "전자기기 완료율", "A/B Test"],
     badges: ["Commerce", "Dashboard", "Experiment", "Reproducible Data"],
@@ -880,7 +918,7 @@ export const projects: Project[] = [
           "커머스 문제는 감소 사실보다 어느 흐름을 먼저 개선해야 하는지까지 연결되어야 실제 액션과 실험으로 이어지기 때문입니다.",
       },
       dataMethod: {
-        dataTypes: ["주문 데이터", "사용자 데이터", "세션 데이터"],
+        dataTypes: ["seed 고정 synthetic 주문 데이터", "사용자 데이터", "세션 데이터"],
         process: [
           "월별 주문 수와 완료 주문 수 흐름 정리",
           "카테고리·진입 페이지·디바이스·이탈 페이지 기준으로 전환 병목 분해",
@@ -889,9 +927,10 @@ export const projects: Project[] = [
         metrics: ["주문 완료율", "진입 페이지별 구매 전환율", "디바이스별 구매 전환율", "연령대별 이탈률"],
       },
       limitations: [
-        "더미 데이터 기반이라 실제 서비스 로그를 완전히 대체하지는 못합니다.",
+        "seed 고정 synthetic dataset 기반이라 실제 서비스 로그나 production behavior simulation을 대체하지는 못합니다.",
         "세션 단위 데이터라 퍼널 전체를 이벤트 수준으로 추적하는 데 한계가 있습니다.",
         "A/B 테스트는 제안 단계이며 실제 유의성 검정은 포함되지 않았습니다.",
+        "CI는 static dashboard artifact와 CSV schema/key metric consistency를 확인하며 browser visual regression은 포함하지 않습니다.",
       ],
       linkNote: "GitHub README와 배포 대시보드에서 주문 감소 진단 흐름과 실험 제안을 함께 확인할 수 있습니다.",
     },
