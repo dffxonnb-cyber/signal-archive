@@ -696,3 +696,71 @@
     line-height: 1.4;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .scopePanel,
+  .proofGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .caseFileBlocks {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .flowSummary {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .flowSummary :global(.page-hero__flow) {
+    grid-column: 1 / -1;
+    justify-self: stretch;
+    width: 100%;
+  }
+}
+
+@media (max-width: 480.98px) {
+  .compactHero {
+    padding: 20px 16px;
+  }
+
+  .compactHero :global(.page-hero__lead) {
+    font-size: 0.9rem;
+    line-height: 1.62;
+  }
+
+  .flowSummary,
+  .archiveScope,
+  .reframeSample,
+  .caseFileBody,
+  .caseFileRail,
+  .ctaSection {
+    padding: 14px;
+  }
+
+  .caseFileRail {
+    grid-template-columns: auto auto minmax(0, 1fr);
+    align-items: center;
+    justify-items: start;
+    gap: 10px;
+  }
+
+  .caseFileNumber {
+    font-size: 1.7rem;
+  }
+
+  .caseFileMeta {
+    justify-self: end;
+  }
+
+  .caseFileTitle {
+    font-size: 1.12rem;
+  }
+
+  .caseBlock,
+  .proofBlock,
+  .primaryExampleBlock,
+  .evidenceBlock,
+  .linkedProjectsBlock {
+    padding: 11px;
+  }
+}

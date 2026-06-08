@@ -449,3 +449,48 @@
     font-size: 1.24rem;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .contactHero :global(.page-side-module__dock) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contactHero :global(.page-side-module__link-card--primary) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 480.98px) {
+  .contactHero {
+    gap: 16px;
+    padding: 20px 16px;
+  }
+
+  .contactHero :global(.page-side-module--contactDock) {
+    padding: 12px;
+  }
+
+  .contactHero :global(.page-side-module__dock) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contactHero :global(.page-side-module__link-card--primary) {
+    grid-column: 1 / -1;
+  }
+
+  .gatewayCard {
+    padding: 14px;
+  }
+
+  .cardMeta {
+    align-items: start;
+  }
+
+  .emailBlock {
+    padding: 13px;
+  }
+
+  .emailBlock strong {
+    font-size: 1.08rem;
+  }
+}

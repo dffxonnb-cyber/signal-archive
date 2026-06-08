@@ -415,3 +415,45 @@
     font-size: 1.04rem;
   }
 }
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  .strengthGrid,
+  .noteLensGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .strengthItem {
+    min-height: 132px;
+  }
+
+  .strengthItem + .strengthItem {
+    border-top: 0;
+    border-left: 1px solid var(--border-divider);
+  }
+}
+
+@media (max-width: 480.98px) {
+  .selectedSentence,
+  .noteCard {
+    padding: 14px;
+  }
+
+  .sampleStack div,
+  .noteLensItem {
+    padding: 11px;
+  }
+
+  .noteTitle {
+    font-size: 1.08rem;
+  }
+
+  .noteDescription,
+  .strengthDescription {
+    font-size: 0.86rem;
+    line-height: 1.66;
+  }
+
+  .noteExcerpt {
+    padding-left: 11px;
+  }
+}
