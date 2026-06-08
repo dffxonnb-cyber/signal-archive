@@ -12,7 +12,7 @@ export default function ResumePage() {
     {
       title: "Data Analyst Fit",
       relevantWork: ["데이터 정리", "EDA", "지표 설계", "결과 해석", "문서화"],
-      coreSkills: ["SQL", "Python", "pandas", "Jupyter", "Tableau"],
+      coreSkills: ["SQL", "Python", "pandas", "Jupyter", "Tableau", "Looker Studio"],
       proofProjects: [
         "starbucks-promotion-analysis",
         "uk-online-retail-segment-analysis",
@@ -23,7 +23,7 @@ export default function ResumePage() {
     {
       title: "Data Product Builder Fit",
       relevantWork: ["웹앱 구현", "서버리스 API 연결", "정적 fallback", "검증 가능한 배포"],
-      coreSkills: ["React", "Next.js", "Vite", "TypeScript", "Vercel"],
+      coreSkills: ["React", "Next.js", "TypeScript", "Vercel", "Neon"],
       proofProjects: ["shelter-signal", "seoul-storefront-redveil", "shopeasy"],
       evidence: ["Vercel API route", "PWA", "case study archive"],
     },

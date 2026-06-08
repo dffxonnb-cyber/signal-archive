@@ -46,7 +46,7 @@ export const profile: Profile = {
     {
       title: "Core Stack",
       summary: "분석과 구현을 함께 묶는 기본 작업 도구입니다.",
-      items: ["Python", "SQL", "TypeScript", "React", "Next.js", "Vite", "PostgreSQL", "Docker", "Vercel", "GitHub"],
+      items: ["Python", "SQL", "TypeScript", "React", "Next.js", "Vite", "PostgreSQL", "Neon", "Docker", "Vercel", "GitHub"],
     },
     {
       title: "Data Analysis & Statistics",
@@ -72,6 +72,7 @@ export const profile: Profile = {
       summary: "분석 가능한 테이블 구조, 검증 가능한 SQL layer, 앱으로 넘기는 데이터 산출물을 구성합니다.",
       items: [
         "PostgreSQL",
+        "Neon PostgreSQL",
         "SQLAlchemy",
         "psycopg",
         "SQL Migrations",
@@ -107,6 +108,7 @@ export const profile: Profile = {
       items: [
         "Vercel",
         "Vercel Serverless API Routes",
+        "Neon-backed PostgreSQL",
         "data.go.kr API",
         "Public Data API Integration",
         "API Response Normalization",
@@ -130,7 +132,7 @@ export const profile: Profile = {
     {
       title: "Visualization & BI",
       summary: "분석 결과의 비교, 우선순위, 설명 흐름을 시각적으로 전달합니다.",
-      items: ["Tableau", "Matplotlib", "Seaborn", "Plotly", "Streamlit/pydeck Charts"],
+      items: ["Tableau", "Looker Studio", "Matplotlib", "Seaborn", "Plotly", "Streamlit/pydeck Charts"],
     },
     {
       title: "Deployment & Workflow",
