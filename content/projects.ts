@@ -287,7 +287,7 @@ export const projects: Project[] = [
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
     summary:
-      "공공데이터 구조동물 공고를 Neon 우선 조회와 fallback 구조로 연결해\n보호 종료 우선순위와 연락 맥락을 정리하는 PWA입니다.",
+      "공공 구조동물 공고를 최신순 목록이 아니라 보호 종료일·공고 상태·사진·연락처·지역 신호에 따른\n우선 검토 흐름으로 재구성한 모바일 우선 PWA입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "구조동물", "데이터 파이프라인", "PWA"],
@@ -299,33 +299,33 @@ export const projects: Project[] = [
     coreTags: ["Public Data", "Serverless API", "SQL", "React", "TypeScript", "PWA", "Vercel", "n8n", "Mailpit"],
     badges: ["Featured", "Public Data", "PWA", "Live API", "V2 Local Pipeline"],
     context:
-      "구조동물 공고는 보호 종료일, 지역, 보호소 연락처, 사진 여부가 흩어져 있어 오늘 먼저 확인할 공고를 빠르게 고르기 어렵습니다. 단순 최신순 목록보다 보호 종료 신호를 기준으로 다시 정리하는 화면이 필요했습니다.",
+      "구조동물 공고는 보호 종료일, 공고 상태, 사진·연락처 여부, 지역 정보가 흩어져 있어 보호 종료가 가까운 공고를 먼저 확인하기 어렵습니다. 이 프로젝트는 공고 조회가 아니라 오늘의 검토 순서를 정하는 문제에 초점을 맞췄습니다.",
     outcome:
-      "공공 구조동물 데이터를 수집·정제하고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 Rescue Window Score를 계산해 모바일 우선 PWA로 시각화했습니다. 현재 배포는 `/api/notices`가 Neon operational DB를 먼저 읽고 실패 시 static JSON과 mock 데이터로 fallback하며, `/api/shelters`는 data.go.kr 구조동물 공고에서 notice-derived 보호소 연락 맥락을 요약합니다.",
+      "공공 구조동물 공고에서 우선순위 신호를 추출해 Rescue Window Score와 검토 라벨로 정리하고, Golden Time·Notice Filters·Region Explorer·Detail Sheet에 연결했습니다. 배포 앱은 Neon-backed `/api/notices`를 우선 사용하고 static JSON과 mock 데이터로 fallback하며, `/api/shelters`는 공고에서 확인 가능한 보호소 연락 맥락을 요약합니다.",
     supportingLine:
-      "보호 종료일까지 남은 시간과 데이터 신호를 기반으로\n먼저 확인할 구조동물 공고를 정리한 PWA",
+      "공공 구조동물 공고를 보호 종료 신호에 따라\n오늘의 우선 검토 순서로 바꾸는 데이터 제품형 PWA",
     review: {
-      decisionQuestion: "오늘 먼저 확인해야 할 구조동물 공고는 무엇인가?",
-      myRole: "데이터 모델, 운영 조회 API, fallback 경로, 모바일 PWA 구현",
-      evidence: "공고 API · Neon 조회 · fallback 검증",
-      deliverable: "보호 종료 우선순위 화면과 공고 기반 연락처 요약",
-      hiringSignal: "공공데이터 공고를 운영 조회와 예외 대응이 가능한 모바일 검토 흐름으로 연결 가능",
+      decisionQuestion: "보호 종료가 가까운 구조동물 공고를 어떻게 먼저 확인하게 할 것인가?",
+      myRole: "우선순위 신호 설계, 운영 조회 API, fallback 경로, 모바일 PWA 구현",
+      evidence: "Rescue Window Score · 우선순위 라벨 · Neon 조회와 fallback 검증",
+      deliverable: "Golden Time부터 Detail Sheet까지 이어지는 우선 검토 흐름",
+      hiringSignal: "원시 공공데이터를 해석 가능한 판단 신호와 사용자 검토 순서로 연결 가능",
     },
     decisionMoment: {
-      originalQuestion: "구조동물 공고를 어떻게 조회할 것인가?",
-      reframedQuestion: "보호 종료가 가까운 공고를 어떻게 먼저 확인하게 만들 것인가?",
-      keyEvidence: "공고 종료일, 진행 상태, 사진·연락처 신호를 조합한 Rescue Window Score",
+      originalQuestion: "사용자가 구조동물 공고를 어떻게 조회하게 할 것인가?",
+      reframedQuestion: "보호 종료가 가까운 구조동물 공고를 어떻게 먼저 확인하게 할 것인가?",
+      keyEvidence: "보호 종료일, 공고 상태, 사진·연락처 여부, 지역 신호를 조합한 Rescue Window Score",
       finalDeliverable: "Neon-backed /api/notices, static·mock fallback, /api/shelters, Vite React PWA",
-      proves: "공공데이터 제약을 드러낸 상태로 operational read path와 fallback을 함께 갖춘 데이터 제품형 MVP를 구성할 수 있음",
+      proves: "공공데이터 조회 문제를 우선순위 판단 문제로 재정의하고, 해석 가능한 신호를 모바일 검토 흐름으로 연결할 수 있음",
     },
     cardBrief: {
       problem:
-        "공고 종료일과 보호소 정보가 흩어져 있어 사용자가 우선 확인 공고를 빠르게 고르기 어려움.",
+        "최신순 공고 목록만으로는 보호 종료가 가까운 공고를 먼저 고르기 어려움.",
       method:
-        "공공 구조동물 데이터를 수집·정제하고, Vercel 서버리스 route에서 data.go.kr 공고 API의 보호소 관련 필드를 안전하게 요약함.",
+        "보호 종료일, 공고 상태, 사진·연락처 여부, 지역 신호를 Rescue Window Score와 검토 라벨로 변환함.",
       output: [
         "Rescue Window Score",
-        "정적 JSON export bridge",
+        "우선순위 검토 라벨",
         "notice-derived 보호소 연락 요약",
         "모바일 우선 PWA",
       ],
@@ -346,7 +346,7 @@ export const projects: Project[] = [
       },
       {
         label: "우선순위 신호",
-        value: "보호 종료일과 데이터 품질 신호를 조합한 Rescue Window Score",
+        value: "보호 종료일, 공고 상태, 사진·연락처 여부, 지역 신호를 조합한 Rescue Window Score와 검토 라벨",
       },
       {
         label: "배포 방식",
@@ -358,24 +358,24 @@ export const projects: Project[] = [
       },
       {
         label: "화면 범위",
-        value: "홈, 골든타임, 공고 필터, 지역 탐색, 상세 시트, 저장 placeholder",
+        value: "우선순위 신호를 Golden Time, Notice Filters, Region Explorer, Detail Sheet에 연결",
       },
     ],
     detailBrief: {
       problem: {
         what:
-          "구조동물 공고는 종료일, 지역, 보호소 연락처, 사진 여부가 흩어져 있어 긴급하게 확인해야 할 공고를 한눈에 고르기 어렵습니다.",
+          "구조동물 공고를 최신순으로 나열하면 보호 종료가 가까운 공고와 추가 확인이 필요한 공고를 한눈에 구분하기 어렵습니다.",
         why:
-          "보호 종료가 가까운 공고는 시간이 중요한데, 사용자가 매번 전체 목록을 훑는 방식으로는 우선 확인 대상을 놓치기 쉽기 때문입니다.",
+          "사용자는 전체 공고를 반복해서 조회하기보다 오늘 먼저 확인할 공고와 그 판단 근거를 빠르게 파악할 필요가 있기 때문입니다.",
       },
       dataMethod: {
         dataTypes: ["data.go.kr 구조동물 공고 API 응답", "Neon PostgreSQL operational records", "정적 JSON / mock fallback"],
         process: [
-          "로컬 PostgreSQL 모델과 SQL tests로 공고 데이터를 검증하고 Neon operational read path로 연결",
-          "배포 앱은 `/api/notices`를 먼저 호출하고 실패하거나 빈 응답이면 static JSON과 mock 데이터로 fallback",
-          "Rescue Window Score와 지역별 신호를 계산해 공고 우선순위 화면에 연결",
-          "Vercel 서버리스 API route에서 `careNm`, `careTel`, `careAddr`, `orgNm` 필드를 추출하고 dedupe",
-          "별도 V2 브랜치에서 alert candidate table과 daily email digest HTML을 생성하고 n8n/Mailpit 로컬 흐름을 검증",
+          "공고에서 보호 종료일, 공고 상태, 사진·연락처 여부, 지역 신호를 추출·정규화",
+          "신호를 조합해 Rescue Window Score를 계산하고 긴급 확인·종료 임박·검토 필요 라벨로 분류",
+          "결과를 Neon-backed `/api/notices`와 Golden Time·Notice Filters·Region Explorer·Detail Sheet에 연결",
+          "`/api/notices` 장애 또는 빈 응답 시 static JSON과 mock 데이터로 fallback",
+          "`/api/shelters`에서 공고 기반 보호소·연락처 맥락을 추출하고 dedupe",
         ],
         metrics: [
           "보호 종료일까지 남은 일수",
@@ -386,19 +386,22 @@ export const projects: Project[] = [
         ],
       },
       limitations: [
-        "V1의 `/api/shelters`는 전체 공식 보호소 디렉터리가 아니라 구조동물 공고에 포함된 보호소명·전화번호·주소·관할기관 기반의 notice-derived contact summary입니다.",
+        "현재 배포 범위는 포트폴리오용 PWA 프로토타입이며 실제 운영 보호소 서비스가 아닙니다.",
+        "사용자 계정과 인증은 구현 범위에 포함하지 않았습니다.",
+        "저장 공고의 영구 보관은 구현하지 않았으며 화면에는 placeholder만 있습니다.",
+        "배포 앱에는 push·email·SMS 알림이 포함되지 않습니다. V2 n8n/Mailpit 흐름은 별도 브랜치의 로컬 자동화 검증입니다.",
+        "`/api/shelters`는 전체 공식 보호소 디렉터리가 아니라 구조동물 공고에 포함된 보호소·연락처 정보의 notice-derived summary입니다.",
+        "Rescue Window Score는 공식 위험 점수나 입양 결과 예측 모델이 아니라 내부 우선순위 탐색 신호입니다.",
         "배포된 `/api/notices`는 Neon operational DB를 우선 읽지만, 현재 hosted 데이터는 로컬 검증용 mock/export 20건을 기반으로 합니다.",
         "`/api/notices`가 실패하거나 빈 응답을 반환하면 `app/public/data/*.json` 정적 JSON과 앱 내부 mock 데이터로 fallback합니다.",
-        "V2의 n8n/Mailpit 흐름은 별도 브랜치의 로컬 자동화 검증이며 production email sending, real external recipients, Gmail/Google Cloud integration, SMS, auth, subscriptions, production notification flow는 구현하지 않았습니다.",
-        "Rescue Window Score는 공식 위험 점수나 입양 결과 예측 모델이 아니라 내부 우선순위 탐색 신호입니다.",
         "API key와 운영용 비밀값은 저장소와 배포 문서에 포함하지 않았습니다.",
       ],
       linkNote: "Live Demo에서는 Neon-backed `/api/notices` operational read path와 static/mock fallback, `/api/shelters`의 notice-derived 보호소 연락 맥락을 확인할 수 있습니다. DB URL과 API key는 브라우저에 노출하지 않습니다.",
     },
     focusPoints: [
-      "공고 목록을 최신순이 아니라 보호 종료 신호 중심의 우선순위 문제로 재정의",
-      "Neon operational read path와 static/mock fallback을 함께 사용해 배포 환경에서도 안전하게 동작하도록 구성",
-      "보호소 연락 목록을 전체 공식 디렉터리가 아니라 공고 기반 연락 맥락으로 명확히 제한",
+      "공공데이터 조회를 보호 종료가 가까운 공고부터 확인하는 우선순위 판단 문제로 재정의",
+      "공고 수준 데이터를 해석 가능한 Rescue Window Score와 검토 라벨로 변환",
+      "우선순위 신호를 검토 화면, API read path, fallback 구조, 모바일 PWA 전달까지 연결",
     ],
     links: [
       {
@@ -418,29 +421,32 @@ export const projects: Project[] = [
       {
         title: "프로젝트 개요",
         paragraphs: [
-          "Shelter Signal은 구조동물 공고를 단순히 나열하지 않고, 보호 종료일까지 남은 시간과 데이터 신호를 바탕으로 먼저 볼 공고와 보호소 연락 맥락을 정리한 공공데이터 기반 PWA입니다.",
-          "현재 공개 배포는 `/api/notices`가 Neon PostgreSQL의 operational records를 먼저 읽고, 실패하거나 빈 응답이면 static JSON과 mock 데이터로 fallback합니다. `/api/shelters`는 data.go.kr 구조동물 공고에서 보호소명·전화번호·주소·관할기관을 추출해 notice-derived 연락 맥락을 요약합니다.",
+          "Shelter Signal은 구조동물 공고를 최신순으로 나열하는 대신 보호 종료일, 공고 상태, 사진·연락처 여부, 지역 신호를 바탕으로 오늘 먼저 확인할 공고를 정리하는 공공데이터 기반 PWA입니다.",
+          "핵심 질문은 '구조동물 공고를 어떻게 조회할 것인가'가 아니라 '보호 종료가 가까운 공고를 어떻게 먼저 확인하게 할 것인가'입니다.",
         ],
       },
       {
-        title: "접근 방식",
+        title: "Data to Decision Flow",
         paragraphs: [
-          "로컬 PostgreSQL 모델과 SQL tests로 Rescue Window Score와 지역별 신호를 검증하고, 배포 환경에서는 Neon-backed `/api/notices` operational read path를 primary source로 연결했습니다.",
-          "보호소 연락 맥락은 브라우저에서 공공 API를 직접 호출하지 않고 `/api/shelters`가 서버 측 환경 변수로 data.go.kr에 요청한 뒤 `careNm`, `careTel`, `careAddr`, `orgNm`을 dedupe해 전달합니다.",
+          "공공 구조동물 공고에서 보호 종료일, 공고 상태, 사진·연락처 여부, 지역 신호를 추출하고 Rescue Window Score를 계산해 긴급 확인·종료 임박·검토 필요 라벨로 분류합니다.",
+          "분류 결과는 Neon-backed `/api/notices`를 통해 Golden Time, Notice Filters, Region Explorer, Detail Sheet에 연결됩니다. 운영 API가 불안정할 때는 static JSON과 mock 데이터로 fallback합니다.",
+          "`/api/shelters`는 공고에서 확인 가능한 보호소·연락처 정보를 추출해 notice-derived 맥락으로 제공합니다.",
         ],
       },
       {
-        title: "V2 로컬 자동화 검증",
+        title: "What This Proves",
         paragraphs: [
-          "별도 V2 브랜치에서는 보호 종료 임박 공고를 PostgreSQL 기반 후보 테이블로 선별하고, 이메일 다이제스트 HTML을 생성한 뒤, n8n HTTP dry-run bridge와 Mailpit 로컬 SMTP 캡처를 통해 실제 외부 발송 없이 자동화 흐름을 검증했습니다.",
-          "검증 범위는 PostgreSQL alert candidates, near-deadline rescue notice selection, daily email digest HTML, `/dry-run?include_html=true`의 `email_html` payload, Mailpit local SMTP capture, `python scripts/run_v2_mailpit_email_capture_test.py` one-command smoke test입니다.",
-          "Smoke test는 dry-run PASS, HTML export PASS, Mailpit local SMTP capture PASS, inbox verification PASS, Shelter Signal content check PASS를 확인했습니다. 이 단계는 production email sending, real recipients, Gmail/Google Cloud, SMS, auth, subscriptions, production notification flow를 포함하지 않는 local automation experiment입니다.",
+          "공공데이터 조회 문제를 우선순위 판단 문제로 재정의하고, 공고 수준 데이터에서 해석 가능한 우선순위 신호를 설계했습니다.",
+          "우선순위 신호를 Golden Time, Notice Filters, Region Explorer, Detail Sheet의 사용자 검토 흐름에 연결했습니다.",
+          "API read path, fallback 구조, 모바일 PWA 전달을 갖춘 데이터 제품 MVP를 구현하고, 배포 범위와 향후 운영 기능을 명확히 구분했습니다.",
         ],
       },
       {
-        title: "포트폴리오 관점의 의미",
+        title: "Scope and Limitations",
         paragraphs: [
-          "이 프로젝트는 데이터 수집, fallback, 서버리스 API, 배포 화면까지 이어지는 end-to-end 흐름을 보여주면서도, notice-derived shelter/contact context가 전체 공식 보호소 디렉터리가 아니라는 한계를 숨기지 않는 사례입니다.",
+          "현재 결과물은 포트폴리오용 PWA 프로토타입이며 실제 운영 보호소 서비스가 아닙니다. 사용자 계정·인증, 저장 공고 영구 보관, push·email·SMS 알림은 배포 앱에 포함하지 않았습니다.",
+          "`/api/shelters`는 전체 공식 보호소 디렉터리가 아니라 공고에서 파생한 보호소·연락처 요약입니다. Rescue Window Score는 공식 위험 점수나 입양 결과 예측 모델이 아니라 내부 우선순위 탐색 신호입니다.",
+          "별도 V2 브랜치의 n8n/Mailpit 자동화는 로컬 검증 범위이며 배포된 production 기능으로 설명하지 않습니다.",
         ],
       },
     ],
