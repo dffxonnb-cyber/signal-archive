@@ -175,21 +175,26 @@ export default function CaseStudiesPage() {
     projects.map((project) => [project.slug, project.title] as const),
   );
   const linkedProjectCount = new Set(decisionFiles.flatMap((item) => item.linkedProjects)).size;
-  const reviewerSignals = [
+  const archiveScope = [
     {
-      label: "판단 기록",
+      label: "판단 파일",
       value: formatCount(decisionFiles.length),
-      note: "질문 재정의부터 검토 가능한 산출물 설계까지 이어지는 판단 파일",
-    },
-    {
-      label: "반복 프레임",
-      value: formatCount(caseStudies.length),
-      note: "리스크 신호, 의사결정 흐름, 판단 언어로 반복되는 분석 패턴",
+      note: "질문 재정의부터 산출물 설계까지",
     },
     {
       label: "연결 프로젝트",
       value: formatCount(linkedProjectCount),
-      note: "도메인이 달라도 같은 문제 해결 방식을 확인할 수 있는 프로젝트",
+      note: "반복되는 판단 방식을 확인하는 근거",
+    },
+    {
+      label: "분석 도메인",
+      value: "Public · CRM",
+      note: "상권·공공·커머스·스포츠 분석",
+    },
+    {
+      label: "산출물",
+      value: "Web · Docs",
+      note: "대시보드·웹 서비스·검증 문서",
     },
   ];
 
@@ -208,9 +213,9 @@ export default function CaseStudiesPage() {
               데이터를 리스크·우선순위 신호로 해석하며, 분석을 검토 가능한 의사결정 도구로 연결하는 과정입니다.
             </>
           }
-          meta={<span className="page-hero__meta-chip">프로젝트보다 반복 가능한 판단 방식을 먼저 봅니다.</span>}
+          meta={<span className="page-hero__meta-chip">데이터를 판단으로 바꾸는 5가지 방식.</span>}
           panelPlacement="below"
-          title="프로젝트 뒤에 반복되는 판단 프레임"
+          title="판단이 만들어지는 방식"
           titleId="decision-files-title"
         >
           <div className={styles.heroSummaryPanel} aria-label="Decision files summary">
@@ -233,9 +238,9 @@ export default function CaseStudiesPage() {
               </div>
             </div>
 
-            <div aria-label="Case studies reviewer signals" className={styles.reviewerSignalGrid}>
-              {reviewerSignals.map((item) => (
-                <article className={styles.reviewerSignalCard} key={item.label}>
+            <div aria-label="Case studies archive scope" className={styles.archiveScopeGrid}>
+              {archiveScope.map((item) => (
+                <article className={styles.archiveScopeCard} key={item.label}>
                   <span className={styles.panelLabel}>{item.label}</span>
                   <strong>{item.value}</strong>
                   <p>{item.note}</p>
@@ -258,56 +263,16 @@ export default function CaseStudiesPage() {
                   <strong className={styles.reframeValue}>매입 전 리스크 검토 프로토타입</strong>
                 </div>
               </div>
+              <p className={styles.reframeNote}>
+                단순 분석 결과를 검토자가 보류·비교·대체 후보를 판단할 수 있는 흐름으로 재구성합니다.
+              </p>
             </div>
           </div>
         </PageHero>
 
-        <section className={styles.patternSection} aria-labelledby="repeated-patterns-title">
-          <div className={styles.sectionHead}>
-            <span className={styles.panelLabel}>03 Repeated Frames</span>
-            <h2 className={styles.sectionTitle} id="repeated-patterns-title">
-              프로젝트를 가로질러 반복되는 3가지 분석 패턴
-            </h2>
-            <p className={styles.panelNote}>
-              도메인이 달라도 질문을 좁히고, 판단 신호를 설계하고, 결과를 검토 가능한 언어와 화면으로 전달하는 방식은
-              반복됩니다.
-            </p>
-          </div>
-
-          <div className={styles.patternGrid}>
-            {caseStudies.map((pattern, index) => (
-              <article className={styles.patternCard} key={pattern.slug}>
-                <div className={styles.patternTopline}>
-                  <strong>{formatCount(index + 1)}</strong>
-                  <span>{pattern.category}</span>
-                </div>
-                <div className={styles.patternTitleBlock}>
-                  <h3>{pattern.title}</h3>
-                  <p>{pattern.summary}</p>
-                </div>
-                <ul className={styles.patternMoves}>
-                  {pattern.keyMoves.map((move) => (
-                    <li key={move}>{move}</li>
-                  ))}
-                </ul>
-                <div className={styles.patternProjects}>
-                  <span className={styles.caseBlockLabel}>Connected Proof</span>
-                  <div className={styles.projectPills}>
-                    {pattern.linkedProjects.map((slug) => (
-                      <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
-                        {getProjectName(slug)}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-
         <section className={styles.archiveSection} aria-labelledby="decision-file-list-title">
           <div className={styles.sectionHead}>
-            <span className={styles.panelLabel}>05 Decision Files</span>
+            <span className={styles.panelLabel}>05 판단 파일</span>
             <h2 className={styles.sectionTitle} id="decision-file-list-title">
               판단 가능한 산출물로 이어지는 5가지 파일
             </h2>
@@ -399,6 +364,49 @@ export default function CaseStudiesPage() {
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        <section className={styles.patternSection} aria-labelledby="repeated-patterns-title">
+          <div className={styles.sectionHead}>
+            <span className={styles.panelLabel}>03 Repeated Frames</span>
+            <h2 className={styles.sectionTitle} id="repeated-patterns-title">
+              프로젝트를 가로질러 반복되는 3가지 분석 패턴
+            </h2>
+            <p className={styles.panelNote}>
+              도메인이 달라도 질문을 좁히고, 판단 신호를 설계하고, 결과를 검토 가능한 언어와 화면으로 전달하는 방식은
+              반복됩니다.
+            </p>
+          </div>
+
+          <div className={styles.patternGrid}>
+            {caseStudies.map((pattern, index) => (
+              <article className={styles.patternCard} key={pattern.slug}>
+                <div className={styles.patternTopline}>
+                  <strong>{formatCount(index + 1)}</strong>
+                  <span>{pattern.category}</span>
+                </div>
+                <div className={styles.patternTitleBlock}>
+                  <h3>{pattern.title}</h3>
+                  <p>{pattern.summary}</p>
+                </div>
+                <ul className={styles.patternMoves}>
+                  {pattern.keyMoves.map((move) => (
+                    <li key={move}>{move}</li>
+                  ))}
+                </ul>
+                <div className={styles.patternProjects}>
+                  <span className={styles.caseBlockLabel}>Connected Proof</span>
+                  <div className={styles.projectPills}>
+                    {pattern.linkedProjects.map((slug) => (
+                      <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
+                        {getProjectName(slug)}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
