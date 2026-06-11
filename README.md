@@ -46,7 +46,7 @@
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="50%" valign="top">
       <h3>Seoul Storefront Redveil</h3>
       <p>
         서울 소형 상가 매입 전, 추천보다 <strong>매입 보류 사유와 리스크 신호</strong>를 먼저 확인할 수 있도록 설계한 상권 리스크 진단 프로젝트입니다.
@@ -63,7 +63,7 @@
         <a href="https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil"><strong>Repository</strong></a>
       </p>
     </td>
-    <td width="50%">
+    <td width="50%" valign="top">
       <h3>LH Traffic Safety Analysis</h3>
       <p>
         사고 이력만으로는 드러나지 않는 위험 구간을 찾기 위해, <strong>100m 격자 단위 사고 위험도와 안전시설 설치 우선순위</strong>를 분석한 프로젝트입니다.
@@ -75,12 +75,12 @@
         <li><strong>Contribution</strong>: 공간 리스크 구조 설계, 전이 검증, 우선순위 프레임워크 구성</li>
       </ul>
       <p>
-        <a href="#"><strong>Repository</strong></a>
+        <a href="https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis"><strong>Repository</strong></a>
       </p>
     </td>
   </tr>
   <tr>
-    <td width="50%">
+    <td width="50%" valign="top">
       <h3>Starbucks Promotion Analysis</h3>
       <p>
         고객, 오퍼, 채널, 이벤트 로그를 재구성해 <strong>어떤 고객군이 어떤 프로모션에 반응하는지</strong> 분석한 CRM 프로젝트입니다.
@@ -92,10 +92,10 @@
         <li><strong>Contribution</strong>: 팀 리더, 이벤트 구조 재설계, 추천 후보 해석, 발표 흐름 정리</li>
       </ul>
       <p>
-        <a href="#"><strong>Repository</strong></a>
+        <a href="https://github.com/dffxonnb-cyber/starbucks-promotion-analysis"><strong>Repository</strong></a>
       </p>
     </td>
-    <td width="50%">
+    <td width="50%" valign="top">
       <h3>Shelter Signal</h3>
       <p>
         공공 유기동물 공고를 단순 최신순이 아니라, <strong>보호 종료일과 공고 상태를 기준으로 우선 검토</strong>할 수 있도록 설계한 프로젝트입니다.
@@ -107,9 +107,9 @@
         <li><strong>Contribution</strong>: 우선순위 신호 설계, 데이터 파이프라인, API 경로, PWA 구현</li>
       </ul>
       <p>
-        <a href="#"><strong>Live Demo</strong></a>
+        <a href="https://shelter-signal-ebon.vercel.app/"><strong>Live Demo</strong></a>
         ·
-        <a href="#"><strong>Repository</strong></a>
+        <a href="https://github.com/dffxonnb-cyber/shelter-signal"><strong>Repository</strong></a>
       </p>
     </td>
   </tr>
