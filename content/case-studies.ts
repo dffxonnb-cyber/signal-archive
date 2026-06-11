@@ -3,41 +3,41 @@ import type { CaseStudy } from "@/types/content";
 export const caseStudies: CaseStudy[] = [
   {
     slug: "risk-signals-before-volume",
-    title: "선택보다 먼저 핵심 신호를 읽는 방식",
-    category: "문제 정의 / 핵심 징후 포착",
+    title: "Risk Signal Design",
+    category: "리스크·우선순위 신호 설계",
     summary:
-      "크기나 최신순보다 먼저, 실제 판단 순서를 바꾸는 리스크와 시간 민감 신호를 읽는 접근입니다.",
+      "무엇을 추천할지보다 먼저, 무엇을 보류·검토·비교·우선 처리해야 하는지 설명하는 신호를 설계합니다.",
     keyMoves: [
-      "큰 숫자보다 먼저 해석해야 할 핵심 신호를 정의합니다.",
-      "지표를 보기 전에 어떤 단위로 문제를 읽을지부터 정합니다.",
-      "보류 사유, 대체 후보, 우선 확인 공고처럼 선택 전에 볼 포인트를 앞에 둡니다.",
+      "Redveil의 매입 보류 사유와 대체 후보처럼 선택 전 확인 기준을 앞에 둡니다.",
+      "LH 교통안전의 위험 격자와 설치 우선순위처럼 공간 신호를 자원 배분 기준으로 바꿉니다.",
+      "Shelter Signal의 보호 종료 신호처럼 시간 민감도를 우선 검토 순서로 번역합니다.",
     ],
-    linkedProjects: ["lh-traffic-safety-analysis", "seoul-storefront-redveil", "shelter-signal"],
+    linkedProjects: ["seoul-storefront-redveil", "lh-traffic-safety-analysis", "shelter-signal"],
   },
   {
     slug: "turn-analysis-into-a-decision-tool",
-    title: "분석 결과를 검토 도구까지 연결하는 방식",
-    category: "설계 / 결과물 구현",
+    title: "Decision Flow Design",
+    category: "분석 결과·검토 흐름 설계",
     summary:
-      "분석 결과를 보고서에서 멈추지 않고, 사용자가 눌러보고 비교해볼 수 있는 검토 도구까지 이어 붙이는 방식입니다.",
+      "분석 결과를 차트나 점수에서 멈추지 않고, 사용자가 다음 판단을 이어갈 수 있는 검토 흐름과 산출물로 연결합니다.",
     keyMoves: [
-      "분석 결과가 사용자의 다음 행동으로 이어지게 정보 흐름을 잡습니다.",
-      "무엇을 먼저 봐야 하는지부터 인터페이스와 카피에 반영합니다.",
-      "문서, 페이지, 링크를 하나의 포트폴리오 흐름으로 묶습니다.",
+      "Redveil의 리스크 점수·보류 사유·대체 후보를 하나의 웹 검토 순서로 연결합니다.",
+      "Shelter Signal의 우선순위 라벨을 모바일 PWA와 공고 상세 확인 흐름으로 전달합니다.",
+      "Starbucks 분석의 고객·오퍼·채널 비교를 Tableau 대시보드와 액션 인사이트로 정리합니다.",
     ],
-    linkedProjects: ["seoul-storefront-redveil", "shelter-signal", "shopeasy"],
+    linkedProjects: ["seoul-storefront-redveil", "shelter-signal", "starbucks-promotion-analysis"],
   },
   {
     slug: "segmenting-for-business-meaning",
-    title: "세그먼트를 액션 언어로 바꾸는 방식",
-    category: "인사이트 도출 / 스토리텔링",
+    title: "Business / Public Interpretation",
+    category: "지표·모델 결과의 판단 언어화",
     summary:
-      "세그먼트 이름을 붙이는 것보다, 그 구분이 실제 액션과 우선순위로 이어지는지가 더 중요하다는 관점입니다.",
+      "분석 지표와 모델 결과를 리뷰어가 실제 행동, 우선순위, 한계와 함께 이해할 수 있는 판단 언어로 번역합니다.",
     keyMoves: [
-      "세그먼트 이름보다 운영 우선순위를 먼저 둡니다.",
-      "요약값이 아니라 비즈니스 질문에 답하는 흐름으로 내용을 정리합니다.",
-      "읽는 사람이 바로 액션을 떠올릴 수 있게 설명 순서를 조정합니다.",
+      "Starbucks의 반응 지표를 어떤 고객군·오퍼·채널을 검토할지에 대한 CRM 언어로 바꿉니다.",
+      "LH 교통안전의 모델 성능을 어떤 구간을 먼저 검토할지 설명하는 공간 근거와 함께 제시합니다.",
+      "공공데이터 기반 우선순위 신호의 의미와 한계를 문서와 화면에서 함께 설명합니다.",
     ],
-    linkedProjects: ["uk-online-retail-segment-analysis", "starbucks-promotion-analysis"],
+    linkedProjects: ["starbucks-promotion-analysis", "lh-traffic-safety-analysis", "shelter-signal"],
   },
 ];

@@ -24,10 +24,15 @@
 
 .heroSummaryPanel,
 .flowSummary,
-.scopePanel,
-.archiveScope,
+.reviewerSignalGrid,
+.reviewerSignalCard,
 .reframeSample,
 .reframeEvidence,
+.patternSection,
+.patternGrid,
+.patternCard,
+.patternTitleBlock,
+.patternProjects,
 .archiveSection,
 .sectionHead,
 .caseFileList,
@@ -53,7 +58,6 @@
 
 .panelLabel,
 .reframeLabel,
-.scopeItem,
 .caseFileLabel,
 .caseFileMeta,
 .caseFileCode,
@@ -66,6 +70,8 @@
 
 .flowNote,
 .panelNote,
+.reviewerSignalCard p,
+.patternTitleBlock p,
 .caseFileDescription,
 .caseBlock p,
 .proofBlock p {
@@ -84,7 +90,7 @@
 
 .heroSummaryPanel {
   grid-template-columns: 1fr;
-  gap: var(--space-grid-tight);
+  gap: var(--space-grid);
 }
 
 .flowSummary {
@@ -110,13 +116,37 @@
   padding: 0 10px;
 }
 
-.scopePanel {
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+.reviewerSignalGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-grid-tight);
-  align-content: stretch;
 }
 
-.archiveScope,
+.reviewerSignalCard {
+  gap: 8px;
+  min-height: 142px;
+  padding: 15px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(148, 184, 170, 0.055), rgba(255, 255, 255, 0.01)),
+    rgba(255, 255, 255, 0.012);
+  box-shadow: var(--shadow-soft);
+}
+
+.reviewerSignalCard strong {
+  color: var(--accent-primary-strong);
+  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 2.15rem;
+  font-weight: 820;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.reviewerSignalCard p {
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+}
+
 .reframeSample {
   gap: var(--space-card-gap-compact);
   padding: 14px;
@@ -128,40 +158,10 @@
   box-shadow: var(--shadow-soft);
 }
 
-.archiveScope {
-  align-content: start;
-}
-
 .panelLabel {
   color: var(--accent-steel);
   font-size: var(--font-size-caption);
   font-weight: 750;
-}
-
-.scopeList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-inline-gap);
-}
-
-.scopeItem {
-  display: flex;
-  align-items: center;
-  min-height: 30px;
-  padding: 7px 9px;
-  border: 1px solid var(--border-divider);
-  border-radius: var(--radius-sm);
-  background: rgba(8, 13, 16, 0.22);
-  color: var(--text-secondary);
-  font-size: 0.7rem;
-  font-weight: 700;
-  line-height: 1.42;
-  text-transform: none;
-  letter-spacing: 0;
-}
-
-.scopeItemWide {
-  grid-column: auto;
 }
 
 .reframeSample {
@@ -265,6 +265,107 @@
 .panelNote {
   color: var(--text-muted);
   font-size: 0.88rem;
+}
+
+.patternSection {
+  gap: var(--space-grid);
+  padding-top: 4px;
+}
+
+.patternGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-grid-tight);
+}
+
+.patternCard {
+  gap: var(--space-card-gap-compact);
+  min-height: 100%;
+  padding: var(--space-card-dense);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(148, 184, 170, 0.045), transparent 52%),
+    var(--surface-card-muted);
+  box-shadow: var(--shadow-card);
+}
+
+.patternTopline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-inline-gap);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-divider);
+}
+
+.patternTopline strong,
+.patternTopline span {
+  font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", Menlo, monospace;
+}
+
+.patternTopline strong {
+  color: var(--accent-warm);
+  font-size: 1.05rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.patternTopline span {
+  color: var(--text-muted);
+  font-size: 0.68rem;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.patternTitleBlock {
+  gap: 7px;
+}
+
+.patternTitleBlock h3 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.patternTitleBlock p {
+  color: var(--text-secondary);
+  font-size: 0.86rem;
+}
+
+.patternMoves {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.patternMoves li {
+  position: relative;
+  padding-left: 14px;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.62;
+  word-break: keep-all;
+}
+
+.patternMoves li::before {
+  content: "";
+  position: absolute;
+  top: 0.7em;
+  left: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent-steel);
+}
+
+.patternProjects {
+  gap: 9px;
+  align-content: end;
+  margin-top: auto;
+  padding-top: 4px;
 }
 
 .caseFileList {
@@ -593,13 +694,10 @@
 
 @media (max-width: 1080px) {
   .heroSummaryPanel,
+  .patternGrid,
   .proofGrid,
   .caseFileUtility {
     grid-template-columns: 1fr;
-  }
-
-  .scopePanel {
-    grid-template-columns: 1fr 1fr;
   }
 
   .caseFileBlocks {
@@ -608,7 +706,7 @@
 }
 
 @media (max-width: 860px) {
-  .scopePanel,
+  .reviewerSignalGrid,
   .ctaGrid {
     grid-template-columns: 1fr;
   }
@@ -643,8 +741,9 @@
   }
 
   .flowSummary,
-  .archiveScope,
+  .reviewerSignalCard,
   .reframeSample,
+  .patternCard,
   .caseFileBody,
   .caseFileRail {
     padding: var(--space-card-compact);
@@ -661,14 +760,6 @@
 }
 
 @media (max-width: 640px) {
-  .scopeList {
-    grid-template-columns: 1fr;
-  }
-
-  .scopeItemWide {
-    grid-column: auto;
-  }
-
   .caseFileTopline {
     align-items: flex-start;
     flex-direction: column;
@@ -698,7 +789,6 @@
 }
 
 @media (min-width: 768px) and (max-width: 1023.98px) {
-  .scopePanel,
   .proofGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -729,8 +819,9 @@
   }
 
   .flowSummary,
-  .archiveScope,
+  .reviewerSignalCard,
   .reframeSample,
+  .patternCard,
   .caseFileBody,
   .caseFileRail,
   .ctaSection {

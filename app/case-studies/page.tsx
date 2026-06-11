@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { PageHero } from "@/components/page-hero";
+import { caseStudies } from "@/content/case-studies";
 import { projects } from "@/content/projects";
 
 import styles from "./page.module.css";
@@ -174,11 +175,22 @@ export default function CaseStudiesPage() {
     projects.map((project) => [project.slug, project.title] as const),
   );
   const linkedProjectCount = new Set(decisionFiles.flatMap((item) => item.linkedProjects)).size;
-  const archiveScope = [
-    `${formatCount(decisionFiles.length)} Decision Files`,
-    `${formatCount(linkedProjectCount)} Linked Projects`,
-    "Domains: Public · Commerce · CRM · Sports",
-    "Outputs: README · Dashboard · Web Service · Validation Notes",
+  const reviewerSignals = [
+    {
+      label: "판단 기록",
+      value: formatCount(decisionFiles.length),
+      note: "질문 재정의부터 검토 가능한 산출물 설계까지 이어지는 판단 파일",
+    },
+    {
+      label: "반복 프레임",
+      value: formatCount(caseStudies.length),
+      note: "리스크 신호, 의사결정 흐름, 판단 언어로 반복되는 분석 패턴",
+    },
+    {
+      label: "연결 프로젝트",
+      value: formatCount(linkedProjectCount),
+      note: "도메인이 달라도 같은 문제 해결 방식을 확인할 수 있는 프로젝트",
+    },
   ];
 
   const getProjectName = (slug: string) =>
@@ -192,20 +204,20 @@ export default function CaseStudiesPage() {
           eyebrow="Signal Archive: Decision Files"
           lead={
             <>
-              프로젝트를 많이 나열하기보다, 제가 반복해서 사용하는 분석 판단 방식을 정리했습니다. 각 파일은 문제를
-              좁히고, 기준을 세우고, 검토 가능한 산출물로 남기는 과정을 보여줍니다.
+              Case Studies는 프로젝트 뒤에 반복되는 문제 해결 방식을 보여줍니다. 모호한 질문을 판단 기준으로 바꾸고,
+              데이터를 리스크·우선순위 신호로 해석하며, 분석을 검토 가능한 의사결정 도구로 연결하는 과정입니다.
             </>
           }
-          meta={<span className="page-hero__meta-chip">5 ways I turn data into decisions.</span>}
+          meta={<span className="page-hero__meta-chip">프로젝트보다 반복 가능한 판단 방식을 먼저 봅니다.</span>}
           panelPlacement="below"
-          title="판단이 만들어지는 방식"
+          title="프로젝트 뒤에 반복되는 판단 프레임"
           titleId="decision-files-title"
         >
           <div className={styles.heroSummaryPanel} aria-label="Decision files summary">
             <div className={styles.flowSummary}>
-              <span className={styles.panelLabel}>Decision Frame</span>
+              <span className={styles.panelLabel}>검토 기준</span>
               <p className={styles.flowNote}>
-                데이터 신호를 읽고, 판단 기준을 세운 뒤, 리뷰 가능한 산출물로 남기는 구조입니다.
+                신호를 읽고 기준을 세운 뒤, 리뷰어가 판단 근거와 결과물을 함께 확인할 수 있게 남깁니다.
               </p>
               <div aria-label="Signal to Criteria to Decision" className="page-hero__flow">
                 {archiveFlow.map((step, index) => (
@@ -221,40 +233,77 @@ export default function CaseStudiesPage() {
               </div>
             </div>
 
-            <aside aria-label="Decision files archive scope" className={styles.scopePanel}>
-              <div className={styles.archiveScope}>
-                <span className={styles.panelLabel}>Archive Scope</span>
-                <div className={styles.scopeList}>
-                  {archiveScope.map((item, index) => (
-                    <span
-                      className={`${styles.scopeItem} ${index > 1 ? styles.scopeItemWide : ""}`}
-                      key={item}
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
+            <div aria-label="Case studies reviewer signals" className={styles.reviewerSignalGrid}>
+              {reviewerSignals.map((item) => (
+                <article className={styles.reviewerSignalCard} key={item.label}>
+                  <span className={styles.panelLabel}>{item.label}</span>
+                  <strong>{item.value}</strong>
+                  <p>{item.note}</p>
+                </article>
+              ))}
+            </div>
 
-              <div aria-label="Reframe sample" className={styles.reframeSample}>
-                <span className={styles.panelLabel}>Reframe Sample</span>
-                <div className={styles.reframeTransform}>
-                  <div className={styles.reframeTransformPair}>
-                    <span className={styles.reframeLabel}>From</span>
-                    <strong className={styles.reframeValue}>상권 데이터 분석</strong>
-                  </div>
-                  <span aria-hidden="true" className={styles.reframeTransformArrow}>
-                    →
-                  </span>
-                  <div className={`${styles.reframeTransformPair} ${styles.reframeTransformPairTo}`}>
-                    <span className={styles.reframeLabel}>To</span>
-                    <strong className={styles.reframeValue}>매입 전 리스크 검토 프로토타입</strong>
-                  </div>
+            <div aria-label="Reframe sample" className={styles.reframeSample}>
+              <span className={styles.panelLabel}>질문 재정의 예시</span>
+              <div className={styles.reframeTransform}>
+                <div className={styles.reframeTransformPair}>
+                  <span className={styles.reframeLabel}>From</span>
+                  <strong className={styles.reframeValue}>상권 데이터 분석</strong>
+                </div>
+                <span aria-hidden="true" className={styles.reframeTransformArrow}>
+                  →
+                </span>
+                <div className={`${styles.reframeTransformPair} ${styles.reframeTransformPairTo}`}>
+                  <span className={styles.reframeLabel}>To</span>
+                  <strong className={styles.reframeValue}>매입 전 리스크 검토 프로토타입</strong>
                 </div>
               </div>
-            </aside>
+            </div>
           </div>
         </PageHero>
+
+        <section className={styles.patternSection} aria-labelledby="repeated-patterns-title">
+          <div className={styles.sectionHead}>
+            <span className={styles.panelLabel}>03 Repeated Frames</span>
+            <h2 className={styles.sectionTitle} id="repeated-patterns-title">
+              프로젝트를 가로질러 반복되는 3가지 분석 패턴
+            </h2>
+            <p className={styles.panelNote}>
+              도메인이 달라도 질문을 좁히고, 판단 신호를 설계하고, 결과를 검토 가능한 언어와 화면으로 전달하는 방식은
+              반복됩니다.
+            </p>
+          </div>
+
+          <div className={styles.patternGrid}>
+            {caseStudies.map((pattern, index) => (
+              <article className={styles.patternCard} key={pattern.slug}>
+                <div className={styles.patternTopline}>
+                  <strong>{formatCount(index + 1)}</strong>
+                  <span>{pattern.category}</span>
+                </div>
+                <div className={styles.patternTitleBlock}>
+                  <h3>{pattern.title}</h3>
+                  <p>{pattern.summary}</p>
+                </div>
+                <ul className={styles.patternMoves}>
+                  {pattern.keyMoves.map((move) => (
+                    <li key={move}>{move}</li>
+                  ))}
+                </ul>
+                <div className={styles.patternProjects}>
+                  <span className={styles.caseBlockLabel}>Connected Proof</span>
+                  <div className={styles.projectPills}>
+                    {pattern.linkedProjects.map((slug) => (
+                      <Link className={styles.projectPill} href={`/projects/${slug}`} key={slug}>
+                        {getProjectName(slug)}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
 
         <section className={styles.archiveSection} aria-labelledby="decision-file-list-title">
           <div className={styles.sectionHead}>
