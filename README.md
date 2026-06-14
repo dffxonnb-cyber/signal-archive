@@ -58,7 +58,7 @@
         <li><strong>Contribution</strong>: 문제 정의, 기준 설계, 데이터 구조화, 웹 서비스 구현</li>
       </ul>
       <p>
-        <a href="https://redveil.vercel.app/districts.html"><strong>Live Service</strong></a>
+        <a href="https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/"><strong>Primary Live Demo</strong></a>
         ·
         <a href="https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil"><strong>Repository</strong></a>
       </p>

@@ -286,14 +286,14 @@ export const projects: Project[] = [
     review: {
       decisionQuestion: "매입 후보를 추천하기 전에 어떤 보류 신호를 먼저 확인해야 하는가?",
       myRole: "리스크 기준 설계, 거래/상권 데이터 구조화, 공개 웹 서비스 구현",
-      evidence: "서울 25개 구 / 행정동 428개 / 거래 12,074건 / 취약 상권 1,570개",
+      evidence: "서울 25개 구 / 행정동 427개 / 거래 12,074건 / 취약 상권 1,520개",
       deliverable: "공개 웹 기반 상권 리스크 검토 프로토타입",
       hiringSignal: "분석 결과를 의사결정 검토 UI 프로토타입으로 번역할 수 있음",
     },
     decisionMoment: {
       originalQuestion: "어떤 상권이 좋아 보이는가?",
       reframedQuestion: "매입 전에 먼저 보류해야 할 신호는 무엇인가?",
-      keyEvidence: "서울 25개 구, 행정동 428개, 취약 상권 1,570개, 거래 12,074건",
+      keyEvidence: "서울 25개 구, 행정동 427개, 취약 상권 1,520개, 거래 12,074건",
       finalDeliverable: "공개 웹 기반 상권 리스크 검토 프로토타입",
       proves: "분석 결과를 의사결정 검토 UI로 번역하는 역량",
     },
@@ -312,12 +312,12 @@ export const projects: Project[] = [
     metrics: [
       { label: "Scope", value: "25 Seoul Districts" },
       { label: "Transactions", value: "12,074 Transactions" },
-      { label: "Admin Units", value: "428 Dongs" },
+      { label: "Admin Units", value: "427 Dongs" },
     ],
     evidencePoints: [
       {
         label: "Coverage",
-        value: "서울 25개 구, 행정동 428개, 취약 상권 1,570개 비교",
+        value: "서울 25개 구, 행정동 427개, 취약 상권 1,520개 비교",
       },
       {
         label: "Transaction Data",
@@ -333,9 +333,60 @@ export const projects: Project[] = [
       },
       {
         label: "Public Verification",
-        value: "unit tests, public-safe payload build, local smoke tests, optional Playwright browser checks",
+        value: "GitHub Pages 배포, public-safe payload, tests, smoke checks, Production evidence 확인",
       },
     ],
+    signalCaseStudy: {
+      signalType: "매입 전 보류 신호",
+      title: "추천보다 먼저 멈춰야 할 이유를 보여주는 구조",
+      thesis:
+        "서울 상가 후보를 추천하는 대신 가격 부담, 거래 둔화, 변동성, 상권 과밀을 같은 기준으로 비교해 추가 확인이 필요한 이유를 먼저 보여주는 리스크 스크리닝 프로토타입입니다.",
+      chips: ["Pause-first", "25 Districts", "12,074 Transactions", "Low-sample Warning", "Public Payload", "GitHub Pages"],
+      flow: ["Public data", "Risk signals", "Pause reasons", "District comparison", "Alternative candidates", "Review memo"],
+      evidenceTitle: "Production 검토 화면",
+      evidenceDescription: "Primary GitHub Pages의 홈 decision surface와 구별 리포트로 현재 공개 검토 흐름을 확인했습니다.",
+      evidence: [
+        {
+          src: "/evidence/redveil-production-home.png",
+          alt: "Redveil Production 홈에서 좋아 보이는 이유보다 멈춰야 할 신호를 먼저 보여주는 보류 우선 메시지와 서초구 예시 리스크 축을 보여주는 화면",
+          caption: "Production 홈 · 보류 우선 decision surface",
+          note: "투자 추천이 아니라 추가 확인이 필요한 리스크 신호라는 제품 경계를 첫 화면에서 보여줍니다.",
+          width: 1264,
+          height: 900,
+        },
+        {
+          src: "/evidence/redveil-production-districts.png",
+          alt: "Redveil Production 구별 리포트에서 서울 25개 구 리스크 지도, 서초구 점수, 보류 사유, 대체 후보, 데이터 신뢰도를 보여주는 화면",
+          caption: "구별 리포트 · 리스크 축과 대체 후보 비교",
+          note: "구 단위 스크리닝, 기반 표본, 저표본 주의, 후속 비교 흐름을 공개 화면에서 확인합니다.",
+          width: 1264,
+          height: 900,
+        },
+      ],
+      sections: [
+        {
+          label: "01 Problem",
+          title: "좋아 보이는 후보보다 반대 근거를 먼저 검토",
+          description:
+            "상권 자료가 많아도 실제 매입 전 검토에서는 무엇을 먼저 보류 사유로 읽어야 하는지 연결하기 어렵습니다.",
+          points: ["buy/sell recommendation을 제공하지 않음", "보류 사유와 후속 확인 질문을 앞에 배치"],
+        },
+        {
+          label: "02 Signal Logic",
+          title: "리스크 축을 같은 판단 언어로 정리",
+          description:
+            "가격 부담, 거래 둔화, 변동성, 상권 과밀을 구 단위 비교와 매물 검토 흐름으로 연결합니다.",
+          points: ["낮은 점수도 자동 추천으로 표현하지 않음", "저표본 구는 데이터 신뢰도 경고와 함께 해석"],
+        },
+        {
+          label: "03 Evidence Boundary",
+          title: "데이터 시점과 한계를 함께 공개",
+          description:
+            "현재 public payload의 기간, coverage, Deploy Pages 검증을 공개하되 실제 투자 성과나 인과적 결과는 주장하지 않습니다.",
+          points: ["거래 2025.04~2026.03", "GitHub Pages를 primary live demo로 사용"],
+        },
+      ],
+    },
     detailBrief: {
       problem: {
         what:
