@@ -287,7 +287,7 @@ export const projects: Project[] = [
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
     summary:
-      "공공데이터의 구조동물 공고를 단순 목록으로 보여주는 대신, 공고 종료일과 데이터 출처를 기준으로\n현재 공고·종료 임박 공고·보호/기록 상태를 분리한 public-data service입니다.",
+      "공공 구조동물 공고를 KST 마감일과 데이터 출처 기준으로 정규화해\n현재·종료 임박 공고를 지역별로 탐색하는 public-data service입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "구조동물 공고", "데이터 신뢰성", "PWA"],
@@ -299,17 +299,17 @@ export const projects: Project[] = [
     coreTags: ["Live API", "KST 30일", "D-Day~D-3", "Region Filter", "Pagination", "TTL Cache", "Fallback 분리", "Observability"],
     badges: ["Featured", "Public Data", "Live API", "Signal Service"],
     context:
-      "공공데이터의 구조동물 공고는 날짜, 상태, 지역 정보가 섞여 있어 지난 공고가 현재 공고처럼 보이거나 긴급 공고가 전체 목록 속에 묻힐 수 있습니다. Shelter Signal은 이를 공고 생명주기와 데이터 신뢰성의 문제로 보고, 현재 유효한 공고와 종료 임박 공고를 지역 단위로 탐색할 수 있게 설계했습니다.",
+      "구조동물 원천 공고에는 지난 공고와 현재 공고가 섞이고 종료 임박 공고가 전체 목록에 묻힐 수 있습니다. Shelter Signal은 이를 공고 생명주기와 데이터 신뢰 상태의 문제로 보고 지역별 탐색 흐름을 설계했습니다.",
     outcome:
-      "KST 기준 최근 30일 live 공고를 수집해 current·urgent·protected·archive로 분리하고, D-Day~D-3 공고를 days_left 오름차순의 urgent signal로 재정렬했습니다. 서버 측 지역 필터와 page/limit 페이지네이션, 5분 TTL 캐시, 상태 metadata를 결합해 대량 공공데이터를 탐색 가능하고 신뢰 상태를 확인할 수 있는 서비스로 구현했습니다.",
+      "KST 최근 30일 live 공고를 current·urgent·protected·archive로 분리하고 D-Day~D-3를 우선 정렬했습니다. 서버 지역 필터, page/limit 페이지네이션, 5분 TTL 캐시, 상태 metadata를 결합해 대량 공고를 신뢰 상태와 함께 탐색하도록 구현했습니다.",
     supportingLine:
       "공공데이터 기반 보호 종료 임박 신호 탐색 서비스",
     review: {
       decisionQuestion: "현재 유효하고 보호 종료가 가까운 구조동물 공고를 어떻게 신뢰 가능한 신호로 보여줄 것인가?",
-      myRole: "live-first API, KST 마감 분류, region/page API, cache·fallback·observability, PWA 구현",
-      evidence: "D-Day~D-3 urgent signal · 5분 TTL cache · source/fallback/cache metadata",
-      deliverable: "지역별 current/urgent 공고를 신뢰 상태와 함께 탐색하는 public-data service",
-      hiringSignal: "공공 API를 신뢰 가능한 상태·우선순위 신호·운영 가능한 사용자 흐름으로 연결 가능",
+      myRole: "live-first API·KST 마감 분류·region/page API·cache/fallback 운영·PWA 구현",
+      evidence: "noticeEdt freshness · D-Day~D-3 · source/cache/fallback metadata",
+      deliverable: "현재·종료 임박 공고를 지역별로 탐색하는 live public-data service",
+      hiringSignal: "공공 API를 우선순위 신호와 신뢰 상태가 보이는 서비스로 구현",
     },
     decisionMoment: {
       originalQuestion: "구조동물 공고를 어떻게 조회하게 할 것인가?",
@@ -364,7 +364,7 @@ export const projects: Project[] = [
     signalCaseStudy: {
       signalType: "보호 종료 임박 신호",
       thesis:
-        "Shelter Signal은 구조동물 공고를 단순 목록으로 보여주는 대신, 공고 종료일과 데이터 출처를 기준으로 현재 공고·종료 임박 공고·보호/기록 상태를 분리한 public-data service입니다.",
+        "공고 마감일과 데이터 신뢰 상태를 함께 읽어 현재 유효한 구조동물 공고와 종료 임박 공고를 구분하는 공공데이터 서비스입니다.",
       chips: ["Live API", "KST 30일", "D-Day~D-3", "Region Filter", "Pagination", "TTL Cache", "Fallback 분리", "Observability"],
       flow: ["Live API", "KST 30-day range", "Deadline filter", "Urgent signal", "Region filter", "Pagination", "Cache", "Metadata", "UI state"],
       evidence: [
@@ -372,7 +372,7 @@ export const projects: Project[] = [
           src: "/evidence/shelter-signal-production-ui.webp",
           alt: "Shelter Signal Production UI에서 Live API 상태, 서울 지역 선택, 20/185건 결과, cache hit, 현재 공고 카드를 보여주는 화면",
           caption: "Production UI · Live API와 서울 지역 공고 탐색",
-          note: "상태 패널, 서버 지역 필터, 페이지 단위 결과, 현재 공고 카드가 한 흐름에서 연결됩니다.",
+          note: "Live 상태, 서버 지역 필터, 페이지 단위 결과를 한 화면에서 확인합니다.",
           width: 1440,
           height: 1000,
         },
@@ -380,7 +380,7 @@ export const projects: Project[] = [
           src: "/evidence/shelter-signal-api-metadata.webp",
           alt: "Shelter Signal Production API의 source api, cacheStatus hit, dateRange, 결과 수, upstream 진단 값, fallbackReason null을 보여주는 안전한 metadata 화면",
           caption: "Safe API metadata · live/cache/fallback 상태 검증",
-          note: "서비스 키와 upstream URL 없이 운영 판단에 필요한 응답 필드만 시각화했습니다.",
+          note: "서비스 키와 upstream URL 없이 운영 판단 필드만 시각화했습니다.",
           width: 1200,
           height: 780,
         },

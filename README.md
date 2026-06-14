@@ -98,14 +98,14 @@
     <td width="50%" valign="top">
       <h3>Shelter Signal</h3>
       <p>
-        공공 구조동물 공고를 단순 목록이 아니라, <strong>보호 종료일과 데이터 출처를 기준으로 현재·종료 임박·보호/기록 상태</strong>로 분리한 public-data service입니다.
+        구조동물 공고를 KST 기준으로 정규화하고, <strong>noticeEdt 마감일과 데이터 신뢰 상태</strong>를 함께 보여주는 공공데이터 탐색 서비스입니다.
       </p>
       <ul>
-        <li><strong>Problem</strong>: 지난 공고와 종료 임박 공고가 섞이고 live/fallback 상태를 구분하기 어려움</li>
-        <li><strong>Data / Method</strong>: KST 30일 live API, noticeEdt 필터, D-Day~D-3 urgent signal</li>
-        <li><strong>Decision Output</strong>: current/urgent views, 지역 필터, pagination, 데이터 상태 패널</li>
-        <li><strong>Contribution</strong>: live-first API, TTL cache, fallback 분리, observability, PWA 구현</li>
-        <li><strong>Evidence</strong>: Production UI와 secret-free API metadata snapshot을 상세 페이지에 기록</li>
+        <li><strong>Pipeline</strong>: KST 최근 30일 live API 수집·정규화, noticeEdt 기반 current/urgent/protected/archive 분리</li>
+        <li><strong>Signal / UX</strong>: D-Day~D-3 urgent signal, 서버 지역 필터, page/limit 페이지네이션</li>
+        <li><strong>Reliability</strong>: 5분 TTL cache, in-flight request sharing, live/cache/fallback/empty 상태 분리</li>
+        <li><strong>Observability</strong>: 응답 metadata와 안전 로그로 cache 및 upstream 수집 상태 확인</li>
+        <li><strong>Evidence</strong>: Production UI와 secret-free API metadata snapshot</li>
       </ul>
       <p>
         <a href="https://shelter-signal-ebon.vercel.app/"><strong>Live Demo</strong></a>
