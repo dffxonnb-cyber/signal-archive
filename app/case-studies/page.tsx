@@ -37,7 +37,7 @@ const decisionFiles: DecisionFile[] = [
     signal: "사고 이력이 부족한 하남교산에서도 현장 점검 우선 격자를 정해야 하는 상황",
     criteria: "100m 격자, 공간 좌표 포함 RF, LORO, 위험 신호, Top-k 기준",
     decisionOutput: "안전시설 현장 검토 우선 후보",
-    evidence: ["99,323 → 770 grids", "Mean AUC 0.8604", "Top-10% Lift 4.39x"],
+    evidence: ["99,323 → 770 grids", "Mean AUC 0.8604", "Top-10% Lift 4.39x", "공개 요약 · fold 원본 needs confirmation"],
     linkedProjects: [
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",

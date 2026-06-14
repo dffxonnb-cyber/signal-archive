@@ -73,6 +73,7 @@
         <li><strong>Data / Method</strong>: 4개 시·구 99,323개 학습 격자, 공간 좌표 포함 Random Forest, LORO 검증</li>
         <li><strong>Decision Output</strong>: 하남교산 770개 격자의 고위험 순위와 현장 검토 우선 후보</li>
         <li><strong>Evidence</strong>: Mean AUC 0.8604, Top-10% Lift 4.39x, 공개 Top-20 표, 100m 위험 지도</li>
+        <li><strong>Public Scope</strong>: fold별 LORO 원본·시설 패키지·공개 Dashboard URL은 needs confirmation, 현장 검증 결과 없음</li>
       </ul>
       <p>
         <a href="https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis"><strong>Repository</strong></a>

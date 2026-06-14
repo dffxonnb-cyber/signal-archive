@@ -71,7 +71,7 @@ export const projects: Project[] = [
       },
       {
         label: "전이 검증",
-        value: "Mean LORO AUC 0.8604 · Top-10% Lift 4.39x · Worst holdout AUC 0.7979",
+        value: "Mean LORO AUC 0.8604 · Top-10% Lift 4.39x · fold별 공개 원본은 needs confirmation",
       },
       {
         label: "후보 안정성",
@@ -79,7 +79,7 @@ export const projects: Project[] = [
       },
       {
         label: "공개 경계",
-        value: "공개 Top-20은 순위·정규화 위험도만 제공하며 시설 패키지·추천 사유 원본은 needs confirmation",
+        value: "시설 패키지·추천 사유와 공개 Dashboard URL은 needs confirmation · 현장 검증 결과 없음",
       },
     ],
     signalCaseStudy: {
@@ -105,7 +105,15 @@ export const projects: Project[] = [
           src: "/evidence/lh-validation-summary.svg",
           alt: "Leave-One-Region-Out 검증 흐름과 AUC, Lift, Jaccard 지표의 의미를 설명하는 LH 교통안전 검증 요약",
           caption: "Validation summary · 지역 전이 검증",
-          note: "AUC와 Lift를 실제 사고 감소가 아닌 위험 신호 품질로 해석합니다.",
+          note: "공개 요약 지표를 위험 신호 품질로 해석하며 fold별 원본은 공개되지 않았습니다.",
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: "/evidence/lh-score-comparison-note.svg",
+          alt: "Legacy GWRF 정규화 위험도와 09번 시설 입지 선정 정규화 점수의 R² 0.006 비교 결과와 해석 원칙",
+          caption: "Score comparison · R²=0.006 진단",
+          note: "모델 실패가 아니라 서로 다른 위험 개념을 측정할 가능성을 보여주는 진단 자료입니다.",
           width: 1440,
           height: 900,
         },
@@ -173,8 +181,8 @@ export const projects: Project[] = [
           label: "07 Limitations",
           title: "시나리오와 인과효과를 구분",
           description:
-            "적용 전후 시각화는 가정에 따른 예상 변화이며 실제 사고 감소 효과를 증명하지 않습니다.",
-          points: ["지역 차이에 따른 전이 한계", "R²=0.006은 점수 체계 차이 진단 자료"],
+            "Top-k는 현장 점검 우선순위 제안이며 실제 현장 검증이나 사고 감소 효과를 증명하지 않습니다.",
+          points: ["fold별 LORO 원본·Dashboard URL은 needs confirmation", "R²=0.006은 점수 체계 차이 진단 자료"],
         },
         {
           label: "08 Evidence",
@@ -208,8 +216,10 @@ export const projects: Project[] = [
         "모델 출력은 시설 설치 결정이 아니라 현장 점검 우선순위를 위한 위험 신호입니다.",
         "실제 시설 결정에는 현장 조사, 예산, 법규, 주민 수요, 행정 절차가 필요합니다.",
         "원본 공모전 데이터와 시설 패키지·추천 사유 최종 결과는 공개되지 않아 일부 재현이 제한됩니다.",
+        "LORO 공개 근거는 요약 지표이며 fold별 원본 결과와 검증 가능한 공개 Dashboard URL은 needs confirmation입니다.",
+        "실제 현장 점검 결과와 사고 감소 사후 검증 결과는 없습니다.",
         "공간 전이는 지역별 도로 구조와 생활권 차이의 영향을 받을 수 있습니다.",
-        "R²=0.006 상관 결과는 두 점수 체계가 거의 같은 순위를 만들지 않았음을 보여주는 진단 자료이며 성능 증거로 사용하지 않습니다.",
+        "R²=0.006은 legacy GWRF 정규화 위험도와 09번 시설 입지 선정 정규화 점수가 거의 같은 순위를 만들지 않았음을 보여주는 진단 자료이며 성능 증거로 사용하지 않습니다.",
       ],
       linkNote: "GitHub README와 portfolio case study 문서에서 공개 증거 생성 방식, 검증 요약, Top-20 공개 경계를 확인할 수 있습니다.",
     },
