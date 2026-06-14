@@ -2750,7 +2750,7 @@ main {
 
 .detail-signal-flow {
   display: grid;
-  grid-template-columns: repeat(9, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(92px, 1fr));
   gap: 5px;
   padding: 10px;
   border: 1px solid rgba(159, 185, 173, 0.16);

@@ -4,106 +4,219 @@ export const projects: Project[] = [
   {
     id: "lh-traffic-safety-analysis",
     slug: "lh-traffic-safety-analysis",
-    title: "LH Traffic Safety Analysis",
+    title: "LH Traffic Safety · 고위험 격자 신호 분석",
     status: "featured",
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
-    summary: "신도시에 적용 가능한 설치 우선 순위 기준을\n명확히 도출한 교통안전 분석 프로젝트입니다.",
+    summary:
+      "99,323개 학습 격자에서 검증한 위험 신호를 하남교산 770개 격자에 적용해\n안전시설 현장 검토 우선순위를 도출했습니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "도시", "교통", "공간 데이터 분석"],
-    role: ["공간 위험도 설계", "전이 검증 구조화", "우선순위 도출"],
+    role: ["100m 공간 위험 신호 설계", "LORO 전이 검증", "현장 검토 우선순위 도출"],
     filterTools: ["Python", "GIS"],
-    cardTools: ["Python", "GIS", "Jupyter"],
+    cardTools: ["Python", "GeoPandas", "scikit-learn", "GIS"],
     stack: ["Python", "pandas", "GeoPandas", "scikit-learn", "Jupyter", "Streamlit/pydeck"],
-    problemTypes: ["위험도 평가"],
-    coreTags: ["전이 검증", "위험 격자", "설명 가능한 추천", "공공데이터"],
-    badges: ["Featured", "Spatial", "Explainable"],
+    problemTypes: ["공간 위험 신호"],
+    coreTags: ["100m Grid", "Spatial RF", "LORO", "Priority Ranking", "Decision Support"],
+    badges: ["Featured", "Spatial Signal", "Decision Support"],
     context:
-      "신도시나 사고 이력이 충분하지 않은 지역에서는 단순 사고 건수 집계만으로 설치 우선순위를 설명하기 어렵습니다. 공공데이터만으로도 납득 가능한 우선순위를 도출하는 구조가 필요했습니다.",
+      "사고 이력이 부족한 신도시에서는 과거 사고 건수만으로 안전시설 우선순위를 정하기 어렵고, 행정구역 평균은 같은 지역 내부의 도로 구조와 통행 환경 차이를 가릴 수 있습니다.",
     outcome:
-      "교통안전 시설 설치를 사고 빈도 정리에서 벗어나, 위험 격자와 우선순위 논리로 설명할 수 있는 공간 분석 구조로 재정리했습니다.",
-    supportingLine: "신도시에서도 설치 우선순위를 설명 가능하게 만든 교통안전 분석",
+      "4개 기존 시·구의 사고·교통·공간 패턴을 100m 격자로 학습·검증하고, 하남교산 770개 격자를 현장 검토 우선 후보로 정렬하는 공간 위험 신호 흐름을 구성했습니다.",
+    supportingLine: "100m 격자 위험 예측을 안전시설 현장 검토 우선순위로 전환한 공간 분석",
     review: {
       decisionQuestion: "사고 이력이 부족한 신도시에서도 어떤 구간을 먼저 검토해야 하는가?",
-      myRole: "공간 위험도 구조화, 전이 검증 설계, 설치 우선순위 도출",
-      evidence: "Mean AUC 0.8604 / Top-10% Lift 4.39x",
-      deliverable: "격자 기반 위험도 분석과 우선순위 검토 구조",
-      hiringSignal: "공간 데이터 기반 우선순위 설계와 검증 가능",
+      myRole: "100m 격자 위험 신호 설계, 공간 좌표 포함 Random Forest, LORO 검증, 우선순위 도출",
+      evidence: "99,323 → 770 grids · LORO AUC 0.8604 · Top-10% Lift 4.39x",
+      deliverable: "고위험 격자 순위와 현장 점검 후보를 연결한 공간 의사결정 자료",
+      hiringSignal: "공간 모델 결과를 검증 가능한 자원 배분 우선순위로 번역",
     },
     decisionMoment: {
       originalQuestion: "사고가 많은 곳은 어디인가?",
-      reframedQuestion: "사고 이력이 부족한 신도시에서도 먼저 설치를 검토할 구간은 어디인가?",
-      keyEvidence: "Mean AUC 0.8604, Top-10% Lift 4.39x",
-      finalDeliverable: "격자 기반 위험도 분석과 우선순위 검토 구조",
-      proves: "공간 데이터 기반 우선순위 설계와 검증 역량",
+      reframedQuestion: "사고 이력이 부족한 하남교산에서 먼저 현장 점검할 100m 격자는 어디인가?",
+      keyEvidence: "100m grid · 99,323 training · 770 target · LORO AUC 0.8604 · Lift 4.39x",
+      finalDeliverable: "고위험 격자 순위, 공개 증거 지도, 현장 검토 우선 후보",
+      proves: "공간 위험 신호를 검증하고 실제 검토 단위로 전환하는 역량",
     },
     cardBrief: {
       problem:
-        "사고 건수 집계만으로는 신도시와 같은 저이력 지역의 교통 취약 구역 우선순위를 설명하기 어려움.",
+        "사고 이력과 행정구역 평균만으로는 저이력 신도시 내부의 세부 위험 구간을 먼저 검토하기 어려움.",
       method:
-        "공공데이터와 공간 정보를 격자 단위로 재구성하고, 위험 구간 해석과 설치 후보 비교 로직을 함께 설계함.",
+        "사고·교통·공간 데이터를 100m 격자로 통합하고 공간 좌표 포함 Random Forest를 LORO로 검증함.",
       output: [
-        "교통 취약 구역 우선순위",
-        "위험 격자 / 위험 구간 분석",
-        "공공시설 설치 후보 검토 로직",
-        "지도 기반 시각화",
+        "하남교산 고위험 격자 순위",
+        "안전시설 현장 검토 우선 후보",
+        "공개 Top-20 표",
+        "100m 위험 지도와 검증 요약",
       ],
     },
     metrics: [
-      { label: "Model Quality", value: "AUC 0.8604" },
-      { label: "Priority Signal", value: "Top-10% Lift 4.39x" },
+      { label: "Spatial Unit", value: "100m Grid" },
+      { label: "Training Scope", value: "99,323 Grids" },
+      { label: "LORO Validation", value: "AUC 0.8604" },
     ],
     evidencePoints: [
       {
-        label: "적용 범위",
-        value: "4개 신도시 권역 비교와 교산 적용 시나리오까지 포함",
+        label: "데이터 범위",
+        value: "4개 기존 시·구 99,323개 학습 격자 → 하남교산 770개 대상 격자",
       },
       {
-        label: "분석 단위",
-        value: "격자 기반 위험 구간과 설치 후보 위치 단위로 재구성",
+        label: "공간 단위",
+        value: "행정구역 평균 대신 100m × 100m 격자를 위험도·후보 비교 단위로 사용",
       },
       {
-        label: "검증 결과",
-        value: "Mean AUC 0.8604 / Top-10% Lift 4.39x / Worst holdout AUC 0.7979",
+        label: "모델",
+        value: "공간 좌표를 포함한 Random Forest 기반 위험 모델",
       },
       {
-        label: "강건성 점검",
-        value: "Monte Carlo mean Jaccard 0.503으로 Top20 후보 안정성 확인",
+        label: "전이 검증",
+        value: "Mean LORO AUC 0.8604 · Top-10% Lift 4.39x · Worst holdout AUC 0.7979",
       },
       {
-        label: "결과물 연결",
-        value: "설치 후보와 우선순위 사유를 함께 설명하는 결과물로 연결",
+        label: "후보 안정성",
+        value: "Monte Carlo mean Jaccard 0.503을 Top-20 후보군 중첩의 참고값으로 사용",
+      },
+      {
+        label: "공개 경계",
+        value: "공개 Top-20은 순위·정규화 위험도만 제공하며 시설 패키지·추천 사유 원본은 needs confirmation",
       },
     ],
+    signalCaseStudy: {
+      signalType: "공간 위험 신호",
+      title: "100m 격자 위험 신호를 현장 검토 우선순위로 바꾸기",
+      thesis:
+        "행정구역 평균에 묻히는 세부 위험 차이를 100m 격자로 읽고, 지역 전이 검증을 거쳐 하남교산 안전시설 현장 검토 후보로 정렬한 공간 의사결정 사례입니다.",
+      chips: ["100m Grid", "99,323 Training Grids", "770 Target Grids", "Spatial RF", "LORO", "AUC 0.8604", "Lift 4.39x", "Priority Ranking"],
+      flow: ["4개 기존 시·구", "100m grid", "사고·교통·공간 변수", "Spatial RF", "LORO validation", "risk score", "Top-k ranking", "inspection candidate"],
+      evidenceTitle: "공개 가능한 공간·검증 근거",
+      evidenceDescription:
+        "비공개 원천 데이터 없이 확인 가능한 범위·검증 요약, 100m 위험 지도, 공개 Top-20 표를 함께 제시합니다.",
+      evidence: [
+        {
+          src: "/evidence/lh-performance-summary.svg",
+          alt: "LH 교통안전 프로젝트의 100m 격자, 99,323개 학습 격자, 770개 대상 격자, LORO AUC 0.8604, Top-10% Lift 4.39배를 요약한 공개 성능 카드",
+          caption: "Performance summary · 범위와 검증 지표",
+          note: "프로젝트의 공간 단위, 데이터 범위, 핵심 성능을 한 화면에서 확인합니다.",
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: "/evidence/lh-validation-summary.svg",
+          alt: "Leave-One-Region-Out 검증 흐름과 AUC, Lift, Jaccard 지표의 의미를 설명하는 LH 교통안전 검증 요약",
+          caption: "Validation summary · 지역 전이 검증",
+          note: "AUC와 Lift를 실제 사고 감소가 아닌 위험 신호 품질로 해석합니다.",
+          width: 1440,
+          height: 900,
+        },
+        {
+          src: "/evidence/lh-four-city-risk-overview.png",
+          alt: "판교, 동탄, 송파, 미사의 100m 격자별 정규화 위험도를 동일한 위험 구간 기준으로 비교한 지도",
+          caption: "100m risk map · 4개 기존 지역 비교",
+          note: "행정구역 평균이 아닌 격자 수준에서 지역 내부 위험 차이를 보여줍니다.",
+          width: 2705,
+          height: 2559,
+        },
+        {
+          src: "/evidence/lh-public-top20-preview.svg",
+          alt: "공개 시나리오 CSV에서 확인 가능한 하남교산 상위 20개 격자 순위와 정규화 위험도 표",
+          caption: "Public Top-20 · 현장 검토 우선 후보",
+          note: "시설 패키지와 추천 사유 원본은 공개되지 않아 needs confirmation으로 유지합니다.",
+          width: 1440,
+          height: 1280,
+        },
+      ],
+      sections: [
+        {
+          label: "01 Problem",
+          title: "저이력 신도시의 우선순위 문제",
+          description:
+            "사고 기록이 적다는 사실만으로 안전하다고 판단할 수 없고, 시·구 평균은 내부의 세부 위험 차이를 가립니다.",
+          points: ["사고 건수 중심 판단의 한계", "결과는 설치 결정이 아닌 현장 검토 신호"],
+        },
+        {
+          label: "02 Spatial Unit",
+          title: "100m 격자를 공통 의사결정 단위로 사용",
+          description:
+            "위험 산정, 후보 비교, 지도 표현, 시나리오 검토를 같은 100m × 100m 격자 단위로 연결했습니다.",
+          points: ["99,323개 학습 격자", "하남교산 770개 대상 격자"],
+        },
+        {
+          label: "03 Modeling Logic",
+          title: "공간 좌표 포함 Random Forest",
+          description:
+            "사고·교통·공간 변수와 격자 중심 좌표를 결합해 위치별 위험 패턴을 학습했습니다.",
+          points: ["전용 GWRF로 과장하지 않음", "legacy GRF/GWRF 파일명과 실제 구현을 분리"],
+        },
+        {
+          label: "04 Validation",
+          title: "지역을 바꿔도 유지되는지 검증",
+          description:
+            "한 지역씩 제외하는 LORO로 특정 지역에만 맞춘 위험 신호인지 점검했습니다.",
+          points: ["Mean AUC 0.8604 · Worst 0.7979", "Top-10% Lift 4.39x"],
+        },
+        {
+          label: "05 Risk Ranking",
+          title: "위험 점수를 Top-k 검토 후보로 변환",
+          description:
+            "하남교산 격자를 위험도 순으로 정렬하고 공개 가능한 Top-20 표를 별도 증거로 제공합니다.",
+          points: ["공개 표는 순위·정규화 위험도만 포함", "비공개 결과는 needs confirmation"],
+        },
+        {
+          label: "06 Decision Use",
+          title: "모델 결과를 현장 검토 언어로 번역",
+          description:
+            "위험 신호를 제한된 조사·예산 자원을 어디부터 투입할지 검토하는 우선순위로 해석합니다.",
+          points: ["시설 패키지·추천 사유 생성 로직", "실제 결정에는 현장 검증 필요"],
+        },
+        {
+          label: "07 Limitations",
+          title: "시나리오와 인과효과를 구분",
+          description:
+            "적용 전후 시각화는 가정에 따른 예상 변화이며 실제 사고 감소 효과를 증명하지 않습니다.",
+          points: ["지역 차이에 따른 전이 한계", "R²=0.006은 점수 체계 차이 진단 자료"],
+        },
+        {
+          label: "08 Evidence",
+          title: "공개 가능한 증거만 분리",
+          description:
+            "비공개 원천 데이터 대신 성능 카드, 검증 요약, 위험 지도, 공개 Top-20 표로 검토 경로를 제공합니다.",
+          points: ["민감 좌표·원천 데이터 미노출", "공개 저장소 기준 재생성 스크립트 제공"],
+        },
+      ],
+    },
     detailBrief: {
       problem: {
         what:
-          "사고 빈도 합계만으로는 데이터가 적은 지역까지 포함한 교통 취약 구역 우선순위를 설명하기 어려웠습니다.",
+          "사고 빈도와 행정구역 평균만으로는 사고 이력이 부족한 신도시 내부의 세부 위험 구간을 먼저 검토하기 어렵습니다.",
         why:
-          "공공시설 설치 판단은 단순 집계보다 어디를 먼저 검토해야 하는지 설명 가능한 기준이 필요하기 때문입니다.",
+          "안전시설 검토는 실제 현장 단위에 가까운 공간 신호와 지역이 바뀌어도 유지되는지에 대한 검증 근거가 필요하기 때문입니다.",
       },
       dataMethod: {
-        dataTypes: ["교통사고 공공데이터", "도로 / 공간 정보", "설치 후보 위치 정보"],
+        dataTypes: ["4개 기존 시·구 사고·교통·공간 데이터", "100m 격자와 중심 좌표", "하남교산 대상 격자"],
         process: [
-          "공간 데이터를 격자 단위로 재구성",
-          "위험 구간과 설치 후보를 함께 비교하는 구조 설계",
-          "설명 가능한 우선순위 흐름으로 지도 시각화 정리",
+          "사고·교통·공간 변수를 100m 격자 단위로 통합",
+          "공간 좌표 포함 Random Forest로 사고 발생 위험 신호 학습",
+          "LORO로 지역 전이 구분력과 상위 위험 후보 집중도 검증",
+          "하남교산 770개 격자를 위험도 순으로 정렬해 현장 검토 후보 도출",
+          "공개 성능 카드·검증 요약·위험 지도·Top-20 표로 증거 경로 구성",
         ],
-        metrics: ["위험 격자 기준", "설치 우선순위 판단 기준", "전이 검증 관점"],
+        metrics: ["Mean LORO AUC 0.8604", "Top-10% Lift 4.39x", "Worst holdout AUC 0.7979", "Monte Carlo mean Jaccard 0.503"],
       },
       limitations: [
-        "공개 저장소는 원본 공모전 데이터와 대용량 파생 데이터를 제외하므로 전체 GRF/grid pipeline 재학습은 로컬 원천 데이터가 필요합니다.",
-        "README의 적용 전/후 이미지는 실제 사후 효과 검증이 아니라 안전시설 개입을 가정한 시나리오 기반 예상 변화입니다.",
-        "실제 정책 집행 데이터와의 후속 검증은 추가로 필요합니다.",
-        "지역별 외부 변수 차이를 더 정교하게 반영하는 보완이 필요합니다.",
+        "적용 전후 시나리오는 실제 사고 감소 효과나 인과효과를 증명하지 않습니다.",
+        "모델 출력은 시설 설치 결정이 아니라 현장 점검 우선순위를 위한 위험 신호입니다.",
+        "실제 시설 결정에는 현장 조사, 예산, 법규, 주민 수요, 행정 절차가 필요합니다.",
+        "원본 공모전 데이터와 시설 패키지·추천 사유 최종 결과는 공개되지 않아 일부 재현이 제한됩니다.",
+        "공간 전이는 지역별 도로 구조와 생활권 차이의 영향을 받을 수 있습니다.",
+        "R²=0.006 상관 결과는 두 점수 체계가 거의 같은 순위를 만들지 않았음을 보여주는 진단 자료이며 성능 증거로 사용하지 않습니다.",
       ],
-      linkNote: "GitHub README와 검증 문서, 시각화 산출물 기준으로 전체 흐름을 확인할 수 있습니다.",
+      linkNote: "GitHub README와 portfolio case study 문서에서 공개 증거 생성 방식, 검증 요약, Top-20 공개 경계를 확인할 수 있습니다.",
     },
     focusPoints: [
-      "공간 위험도를 단순 사고 건수 대신 격자 기반 우선순위 구조로 재설계",
-      "공공데이터만으로도 설명 가능한 추천 구조를 만들기 위해 전이 검증 관점을 적용",
-      "정책 판단에 바로 연결될 수 있도록 취약 구간과 설치 우선순위를 함께 제시",
+      "행정구역 평균 대신 100m 격자를 실제 검토 단위로 설계",
+      "공간 좌표 포함 Random Forest를 LORO로 검증해 지역 전이 가능성을 점검",
+      "모델 점수를 사고 예방 주장 없이 현장 점검 우선순위 신호로 번역",
     ],
     links: [
       {
@@ -113,26 +226,26 @@ export const projects: Project[] = [
       },
     ],
     sortOrder: 3,
-    caseStudySlugs: ["risk-signals-before-volume"],
+    caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool", "segmenting-for-business-meaning"],
     sections: [
       {
         title: "프로젝트 개요",
         paragraphs: [
-          "이 프로젝트는 교통안전 문제를 단순 사고 건수로 정리하는 대신, 신도시처럼 데이터가 부족한 환경에서도 설치 우선순위를 설명할 수 있는 구조를 만드는 데 초점을 맞췄습니다.",
-          "공간 정보를 이용해 위험도를 격자 단위로 읽고, 어떤 위치에 무엇을 먼저 설치해야 하는지 설명 가능한 형태로 연결했습니다.",
+          "이 프로젝트는 사고 이력이 부족한 하남교산에서 어떤 100m 격자를 먼저 현장 점검해야 하는지 설명하는 공간 위험 신호 분석입니다.",
+          "4개 기존 시·구의 99,323개 학습 격자에서 검증한 위험 패턴을 770개 대상 격자에 적용했습니다.",
         ],
       },
       {
         title: "접근 방식",
         paragraphs: [
-          "공공데이터를 공간 단위로 정리한 뒤 위험 격자를 구성하고, 다른 지역에서도 사용할 수 있도록 전이 검증 관점으로 모델 구조를 점검했습니다.",
-          "단순히 고위험 지역을 시각화하는 데서 끝내지 않고, 왜 그 위치가 우선순위인지 설명할 수 있게 추천 사유와 검증 문서를 함께 정리했습니다.",
+          "사고·교통·공간 변수와 격자 중심 좌표를 Random Forest에 포함하고, 한 지역씩 제외하는 LORO로 전이 가능성을 점검했습니다.",
+          "위험 점수를 Top-k 현장 검토 후보로 바꾸고 공개 가능한 범위·검증·지도·순위 표를 증거로 연결했습니다.",
         ],
       },
       {
         title: "포트폴리오 관점의 의미",
         paragraphs: [
-          "도메인은 공공 안전이지만, 실질적으로는 데이터가 충분하지 않은 환경에서 자원 배분 우선순위를 설계하고 설명하는 문제를 다뤘습니다.",
+          "도메인은 공공 안전이지만, 실질적으로는 데이터가 부족한 환경에서 검증 가능한 위험 신호를 만들고 제한된 현장 조사 자원의 우선순위를 설계하는 문제를 다뤘습니다.",
         ],
       },
     ],
@@ -363,10 +476,13 @@ export const projects: Project[] = [
     ],
     signalCaseStudy: {
       signalType: "보호 종료 임박 신호",
+      title: "데이터 상태와 마감일을 함께 읽는 구조",
       thesis:
         "공고 마감일과 데이터 신뢰 상태를 함께 읽어 현재 유효한 구조동물 공고와 종료 임박 공고를 구분하는 공공데이터 서비스입니다.",
       chips: ["Live API", "KST 30일", "D-Day~D-3", "Region Filter", "Pagination", "TTL Cache", "Fallback 분리", "Observability"],
       flow: ["Live API", "KST 30-day range", "Deadline filter", "Urgent signal", "Region filter", "Pagination", "Cache", "Metadata", "UI state"],
+      evidenceTitle: "검증 화면",
+      evidenceDescription: "Production UI와 비밀정보를 제외한 API metadata로 live-first 동작을 확인했습니다.",
       evidence: [
         {
           src: "/evidence/shelter-signal-production-ui.webp",

@@ -32,12 +32,12 @@ const decisionFiles: DecisionFile[] = [
     title: "Decision Question Design",
     description: "분석 주제를 판단 질문으로 바꾸는 방식",
     proves: "요구사항이 모호한 상황에서 분석 질문을 재정의할 수 있음",
-    primaryExample: "LH Traffic Safety Analysis",
+    primaryExample: "LH Traffic Safety · 고위험 격자 신호 분석",
     primaryExampleSlug: "lh-traffic-safety-analysis",
-    signal: "사고 이력이 부족한 신도시에서도 우선 검토 구간을 정해야 하는 상황",
-    criteria: "사고 패턴, 공간 단위, 위험 신호, 우선순위 기준",
-    decisionOutput: "안전시설 설치 우선순위 검토 구조",
-    evidence: ["Mean AUC 0.8604", "Top-10% Lift 4.39x"],
+    signal: "사고 이력이 부족한 하남교산에서도 현장 점검 우선 격자를 정해야 하는 상황",
+    criteria: "100m 격자, 공간 좌표 포함 RF, LORO, 위험 신호, Top-k 기준",
+    decisionOutput: "안전시설 현장 검토 우선 후보",
+    evidence: ["99,323 → 770 grids", "Mean AUC 0.8604", "Top-10% Lift 4.39x"],
     linkedProjects: [
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",
@@ -162,7 +162,7 @@ const ctaProjects = [
   {
     slug: "lh-traffic-safety-analysis",
     title: "LH Traffic Safety",
-    detail: "공간 위험도를 설치 우선순위로 변환",
+    detail: "100m 격자 위험 신호를 현장 검토 우선순위로 변환",
   },
 ];
 

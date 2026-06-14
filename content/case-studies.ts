@@ -9,7 +9,7 @@ export const caseStudies: CaseStudy[] = [
       "무엇을 추천할지보다 먼저, 무엇을 보류·검토·비교·우선 처리해야 하는지 설명하는 신호를 설계합니다.",
     keyMoves: [
       "Redveil의 매입 보류 사유와 대체 후보처럼 선택 전 확인 기준을 앞에 둡니다.",
-      "LH 교통안전의 위험 격자와 설치 우선순위처럼 공간 신호를 자원 배분 기준으로 바꿉니다.",
+      "LH 교통안전의 100m 위험 격자처럼 검증된 공간 신호를 현장 점검 자원 배분 기준으로 바꿉니다.",
       "Shelter Signal의 noticeEdt와 D-Day~D-3 분류처럼 공고 생명주기를 보호 종료 임박 신호로 번역합니다.",
     ],
     linkedProjects: ["seoul-storefront-redveil", "lh-traffic-safety-analysis", "shelter-signal"],
@@ -35,7 +35,7 @@ export const caseStudies: CaseStudy[] = [
       "분석 지표와 모델 결과를 리뷰어가 실제 행동, 우선순위, 한계와 함께 이해할 수 있는 판단 언어로 번역합니다.",
     keyMoves: [
       "Starbucks의 반응 지표를 어떤 고객군·오퍼·채널을 검토할지에 대한 CRM 언어로 바꿉니다.",
-      "LH 교통안전의 모델 성능을 어떤 구간을 먼저 검토할지 설명하는 공간 근거와 함께 제시합니다.",
+      "LH 교통안전의 LORO AUC와 Lift를 어떤 100m 격자를 먼저 검토할지 설명하는 공간 근거와 함께 제시합니다.",
       "Shelter Signal의 source·cacheStatus·fallbackReason처럼 공공데이터 상태와 한계를 응답과 화면에서 함께 설명합니다.",
     ],
     linkedProjects: ["starbucks-promotion-analysis", "lh-traffic-safety-analysis", "shelter-signal"],

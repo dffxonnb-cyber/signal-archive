@@ -198,19 +198,19 @@ export default async function ProjectDetailPage({
                   <span className="eyebrow">Signal Case Study</span>
                   <span className="detail-signal-case__type">{signalCaseStudy.signalType}</span>
                   <h2 className="section-title" id="signal-case-study-title">
-                    데이터 상태와 마감일을 함께 읽는 구조
+                    {signalCaseStudy.title}
                   </h2>
                 </div>
                 <p>{signalCaseStudy.thesis}</p>
               </div>
 
-              <div className="detail-signal-case__chips" aria-label="Shelter Signal technical capabilities">
+              <div className="detail-signal-case__chips" aria-label={`${project.title} technical capabilities`}>
                 {signalCaseStudy.chips.map((chip) => (
                   <span key={chip}>{chip}</span>
                 ))}
               </div>
 
-              <div className="detail-signal-flow" aria-label="Shelter Signal data flow">
+              <div className="detail-signal-flow" aria-label={`${project.title} signal flow`}>
                 {signalCaseStudy.flow.map((step, index) => (
                   <div className="detail-signal-flow__step" key={step}>
                     <span>{String(index + 1).padStart(2, "0")}</span>
@@ -224,8 +224,8 @@ export default async function ProjectDetailPage({
                 <div className="detail-signal-evidence" aria-labelledby="signal-evidence-title">
                   <div className="detail-signal-evidence__head">
                     <span>Evidence Snapshot</span>
-                    <h3 id="signal-evidence-title">검증 화면</h3>
-                    <p>Production UI와 비밀정보를 제외한 API metadata로 live-first 동작을 확인했습니다.</p>
+                    <h3 id="signal-evidence-title">{signalCaseStudy.evidenceTitle ?? "검증 화면"}</h3>
+                    <p>{signalCaseStudy.evidenceDescription ?? "공개 가능한 근거 화면으로 핵심 동작과 결과를 확인했습니다."}</p>
                   </div>
                   <div className="detail-signal-evidence__grid">
                     {signalCaseStudy.evidence.map((evidence) => (

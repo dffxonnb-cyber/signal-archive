@@ -64,15 +64,15 @@
       </p>
     </td>
     <td width="50%" valign="top">
-      <h3>LH Traffic Safety Analysis</h3>
+      <h3>LH Traffic Safety · 고위험 격자 신호 분석</h3>
       <p>
-        사고 이력만으로는 드러나지 않는 위험 구간을 찾기 위해, <strong>100m 격자 단위 사고 위험도와 안전시설 설치 우선순위</strong>를 분석한 프로젝트입니다.
+        4개 기존 시·구의 위험 패턴을 검증하고, <strong>하남교산 100m 격자를 안전시설 현장 검토 우선 후보</strong>로 정렬한 공간 위험 신호 분석입니다.
       </p>
       <ul>
-        <li><strong>Problem</strong>: 사고 건수만으로는 교통안전시설 우선 검토 지역을 판단하기 어려움</li>
-        <li><strong>Data / Method</strong>: 사고, 도로, 공간 데이터를 격자 단위로 재구성</li>
-        <li><strong>Decision Output</strong>: 위험 격자, 취약 구역 우선순위, 설치 후보 검토 기준</li>
-        <li><strong>Contribution</strong>: 공간 리스크 구조 설계, 전이 검증, 우선순위 프레임워크 구성</li>
+        <li><strong>Problem</strong>: 사고 이력이 부족한 신도시에서는 과거 사고 건수와 행정구역 평균만으로 세부 위험 구간을 판단하기 어려움</li>
+        <li><strong>Data / Method</strong>: 4개 시·구 99,323개 학습 격자, 공간 좌표 포함 Random Forest, LORO 검증</li>
+        <li><strong>Decision Output</strong>: 하남교산 770개 격자의 고위험 순위와 현장 검토 우선 후보</li>
+        <li><strong>Evidence</strong>: Mean AUC 0.8604, Top-10% Lift 4.39x, 공개 Top-20 표, 100m 위험 지도</li>
       </ul>
       <p>
         <a href="https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis"><strong>Repository</strong></a>

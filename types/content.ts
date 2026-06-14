@@ -78,9 +78,12 @@ export type ProjectSignalCaseStudyEvidence = {
 
 export type ProjectSignalCaseStudy = {
   signalType: string;
+  title: string;
   thesis: string;
   chips: string[];
   flow: string[];
+  evidenceTitle?: string;
+  evidenceDescription?: string;
   evidence?: ProjectSignalCaseStudyEvidence[];
   sections: ProjectSignalCaseStudySection[];
 };
