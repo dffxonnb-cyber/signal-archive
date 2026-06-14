@@ -98,13 +98,14 @@
     <td width="50%" valign="top">
       <h3>Shelter Signal</h3>
       <p>
-        공공 유기동물 공고를 단순 최신순이 아니라, <strong>보호 종료일과 공고 상태를 기준으로 우선 검토</strong>할 수 있도록 설계한 프로젝트입니다.
+        공공 구조동물 공고를 단순 목록이 아니라, <strong>보호 종료일과 데이터 출처를 기준으로 현재·종료 임박·보호/기록 상태</strong>로 분리한 public-data service입니다.
       </p>
       <ul>
-        <li><strong>Problem</strong>: 최신순 목록만으로는 시간 민감도가 높은 공고를 빠르게 파악하기 어려움</li>
-        <li><strong>Data / Method</strong>: 종료일, 상태, 사진, 연락처, 지역 신호를 조합해 Rescue Window Score 설계</li>
-        <li><strong>Decision Output</strong>: 우선 검토 흐름, 보호소 요약, 공고 라벨, 모바일 중심 PWA</li>
-        <li><strong>Contribution</strong>: 우선순위 신호 설계, 데이터 파이프라인, API 경로, PWA 구현</li>
+        <li><strong>Problem</strong>: 지난 공고와 종료 임박 공고가 섞이고 live/fallback 상태를 구분하기 어려움</li>
+        <li><strong>Data / Method</strong>: KST 30일 live API, noticeEdt 필터, D-Day~D-3 urgent signal</li>
+        <li><strong>Decision Output</strong>: current/urgent views, 지역 필터, pagination, 데이터 상태 패널</li>
+        <li><strong>Contribution</strong>: live-first API, TTL cache, fallback 분리, observability, PWA 구현</li>
+        <li><strong>Evidence</strong>: Production UI와 secret-free API metadata snapshot을 상세 페이지에 기록</li>
       </ul>
       <p>
         <a href="https://shelter-signal-ebon.vercel.app/"><strong>Live Demo</strong></a>

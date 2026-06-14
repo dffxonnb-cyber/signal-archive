@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -66,6 +67,7 @@ export default async function ProjectDetailPage({
   const currentProjectIndex = sortedProjects.findIndex((item) => item.slug === project.slug);
   const nextProject = sortedProjects[(currentProjectIndex + 1) % sortedProjects.length];
   const isRedveil = project.slug === "seoul-storefront-redveil";
+  const signalCaseStudy = project.signalCaseStudy;
   const detailHeroFacts = [
     { label: "주요 도메인", value: project.primaryDomain },
     { label: "역할", value: project.role.join(" / ") },
@@ -188,6 +190,81 @@ export default async function ProjectDetailPage({
               ))}
             </div>
           </section>
+
+          {signalCaseStudy ? (
+            <section className="surface-card detail-section detail-signal-case" aria-labelledby="signal-case-study-title">
+              <div className="detail-signal-case__intro">
+                <div className="detail-signal-case__identity">
+                  <span className="eyebrow">Signal Case Study</span>
+                  <span className="detail-signal-case__type">{signalCaseStudy.signalType}</span>
+                  <h2 className="section-title" id="signal-case-study-title">
+                    데이터 상태와 마감일을 함께 읽는 구조
+                  </h2>
+                </div>
+                <p>{signalCaseStudy.thesis}</p>
+              </div>
+
+              <div className="detail-signal-case__chips" aria-label="Shelter Signal technical capabilities">
+                {signalCaseStudy.chips.map((chip) => (
+                  <span key={chip}>{chip}</span>
+                ))}
+              </div>
+
+              <div className="detail-signal-flow" aria-label="Shelter Signal data flow">
+                {signalCaseStudy.flow.map((step, index) => (
+                  <div className="detail-signal-flow__step" key={step}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{step}</strong>
+                    {index < signalCaseStudy.flow.length - 1 ? <em aria-hidden="true">→</em> : null}
+                  </div>
+                ))}
+              </div>
+
+              {signalCaseStudy.evidence?.length ? (
+                <div className="detail-signal-evidence" aria-labelledby="signal-evidence-title">
+                  <div className="detail-signal-evidence__head">
+                    <span>Evidence Snapshot</span>
+                    <h3 id="signal-evidence-title">검증 화면</h3>
+                    <p>Production UI와 비밀정보를 제외한 API metadata로 live-first 동작을 확인했습니다.</p>
+                  </div>
+                  <div className="detail-signal-evidence__grid">
+                    {signalCaseStudy.evidence.map((evidence) => (
+                      <figure className="detail-signal-evidence__item" key={evidence.src}>
+                        <div className="detail-signal-evidence__image">
+                          <Image
+                            alt={evidence.alt}
+                            height={evidence.height}
+                            sizes="(max-width: 1024px) 100vw, 50vw"
+                            src={evidence.src}
+                            width={evidence.width}
+                          />
+                        </div>
+                        <figcaption>
+                          <strong>{evidence.caption}</strong>
+                          <span>{evidence.note}</span>
+                        </figcaption>
+                      </figure>
+                    ))}
+                  </div>
+                </div>
+              ) : null}
+
+              <div className="detail-signal-case__grid">
+                {signalCaseStudy.sections.map((section) => (
+                  <article className="detail-signal-case__section" key={section.label}>
+                    <span>{section.label}</span>
+                    <h3>{section.title}</h3>
+                    <p>{section.description}</p>
+                    <ul>
+                      {section.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </section>
+          ) : null}
 
           <section className="surface-card detail-section detail-section--context">
             <div className="detail-section__head">

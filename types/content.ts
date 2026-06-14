@@ -60,6 +60,31 @@ export type ProjectDetailBrief = {
   linkNote?: string;
 };
 
+export type ProjectSignalCaseStudySection = {
+  label: string;
+  title: string;
+  description: string;
+  points: string[];
+};
+
+export type ProjectSignalCaseStudyEvidence = {
+  src: string;
+  alt: string;
+  caption: string;
+  note: string;
+  width: number;
+  height: number;
+};
+
+export type ProjectSignalCaseStudy = {
+  signalType: string;
+  thesis: string;
+  chips: string[];
+  flow: string[];
+  evidence?: ProjectSignalCaseStudyEvidence[];
+  sections: ProjectSignalCaseStudySection[];
+};
+
 export type WritingSection = {
   title: string;
   paragraphs: string[];
@@ -103,6 +128,7 @@ export type Project = {
   cardBrief: ProjectCardBrief;
   metrics: ProjectMetric[];
   evidencePoints?: ProjectEvidencePoint[];
+  signalCaseStudy?: ProjectSignalCaseStudy;
   detailBrief: ProjectDetailBrief;
   focusPoints: string[];
   links: ExternalLink[];
