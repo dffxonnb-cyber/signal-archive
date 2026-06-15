@@ -69,23 +69,23 @@ export default function HomePage() {
               </a>
             </>
           }
-          eyebrow="Signal Archive · Data Product Dossier"
+          eyebrow="Signal Archive · Decision Archive"
           lead={
             <>
-              Data analysis, web interfaces, serverless APIs, and automation workflows, connected into working data
-              products. Python/SQL 기반 분석을 중심으로 웹앱 구현과 검증 가능한 자동화 흐름까지 연결합니다.
+              Python/SQL 기반 분석 결과를 단순 시각화에서 멈추지 않고, 검토자가 실제로 판단할 수 있는
+              기준·보류 사유·리스크 신호·검증 가능한 산출물로 연결합니다.
             </>
           }
           meta={
             <div className="home-hero__identity-chips" aria-label="core work keywords">
-              {["Data Analysis", "Web Interface", "Serverless API", "Automation Validation"].map((item) => (
+              {["Decision Criteria", "Risk Signals", "Review Flow", "Evidence Output"].map((item) => (
                 <span className="chip chip--category" key={item}>
                   {item}
                 </span>
               ))}
             </div>
           }
-          title="데이터를 분석하고, 웹으로 보여주고, 자동화로 검증하는 데이터 프로덕트형 포트폴리오."
+          title="분석 결과를 차트에서 끝내지 않고, 판단 기준과 리스크 신호로 연결하는 데이터 의사결정 아카이브."
           titleId="home-title"
           variant="home"
         >
