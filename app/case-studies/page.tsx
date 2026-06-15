@@ -293,7 +293,7 @@ export default function CaseStudiesPage() {
               return (
                 <article
                   className={`${styles.caseFileCard} ${toneClassMap[file.tone]}`}
-                  id={file.id}
+                  id={`decision-file-${file.id}`}
                   key={file.id}
                 >
                   <div className={styles.caseFileRail}>
@@ -381,7 +381,7 @@ export default function CaseStudiesPage() {
 
           <div className={styles.patternGrid}>
             {caseStudies.map((pattern, index) => (
-              <article className={styles.patternCard} key={pattern.slug}>
+              <article className={styles.patternCard} id={pattern.slug} key={pattern.slug}>
                 <div className={styles.patternTopline}>
                   <strong>{formatCount(index + 1)}</strong>
                   <span>{pattern.category}</span>

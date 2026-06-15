@@ -305,6 +305,7 @@
 .patternCard {
   gap: var(--space-card-gap-compact);
   min-height: 100%;
+  scroll-margin-top: 96px;
   padding: var(--space-card-dense);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
@@ -312,6 +313,13 @@
     linear-gradient(180deg, rgba(148, 184, 170, 0.045), transparent 52%),
     var(--surface-card-muted);
   box-shadow: var(--shadow-card);
+}
+
+.patternCard:target {
+  border-color: rgba(148, 184, 170, 0.34);
+  box-shadow:
+    var(--shadow-card),
+    0 0 0 1px rgba(148, 184, 170, 0.1);
 }
 
 .patternTopline {
