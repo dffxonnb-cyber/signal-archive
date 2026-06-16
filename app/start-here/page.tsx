@@ -44,12 +44,18 @@ const reviewFlow = [
   },
   {
     step: "03",
+    title: "사고방식 확인",
+    href: "/case-studies",
+    detail: "프로젝트를 가로질러 반복되는 판단 기준, 리스크 신호, 검토 흐름을 확인합니다.",
+  },
+  {
+    step: "04",
     title: "이력 압축",
     href: "/resume",
     detail: "역할, 스택, 강점, 연락 경로를 채용 검토 관점으로 빠르게 확인합니다.",
   },
   {
-    step: "04",
+    step: "05",
     title: "연락",
     href: "/contact",
     detail: "포트폴리오와 GitHub를 본 뒤 다음 대화로 이어질 공개 경로를 확인합니다.",
