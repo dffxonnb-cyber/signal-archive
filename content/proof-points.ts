@@ -10,4 +10,5 @@ export const homeProofPoints: ProofPoint[] = [
   { label: "Redveil", value: "12,074 Transactions", note: "상업용 부동산 거래 검토" },
   { label: "Seoul Scope", value: "25 Districts", note: "구 단위 상권 비교" },
   { label: "CRM Model", value: "AUC 0.8147", note: "프로모션 반응 모델" },
+  { label: "Pipeline QA", value: "SQL Tests PASS", note: "mock/local 검증" },
 ];

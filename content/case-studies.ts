@@ -40,4 +40,17 @@ export const caseStudies: CaseStudy[] = [
     ],
     linkedProjects: ["starbucks-promotion-analysis", "lh-traffic-safety-analysis", "shelter-signal"],
   },
+  {
+    slug: "pipeline-validation-design",
+    title: "Pipeline Validation Design",
+    category: "mock/local 경계·SQL 검증 설계",
+    summary:
+      "live 운영 주장을 앞세우기보다, 어떤 데이터 경로가 실제로 검증됐는지 SQL tests와 dashboard로 확인 가능한 구조를 설계합니다.",
+    keyMoves: [
+      "Job Signal Pipeline은 Saramin mock ingestion에서 raw.job_postings 적재, analytics views, SQL tests, Streamlit dashboard까지 한 경로로 검증합니다.",
+      "raw와 analytics schema를 분리해 원천 응답 보존과 리뷰 가능한 business logic을 나눕니다.",
+      "Saramin live API, production ingestion, notification 운영은 검증 범위 밖이라고 문서와 한계 섹션에서 분리합니다.",
+    ],
+    linkedProjects: ["job-signal-pipeline"],
+  },
 ];

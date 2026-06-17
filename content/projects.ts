@@ -806,7 +806,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 5,
+    sortOrder: 6,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -1063,7 +1063,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 7,
+    sortOrder: 8,
     caseStudySlugs: [],
     sections: [
       {
@@ -1076,6 +1076,150 @@ export const projects: Project[] = [
         title: "접근 방식",
         paragraphs: [
           "전처리, EDA, 통계 검정, 머신러닝, 군집화, 시각화를 순서대로 연결하고 각 단계가 다음 판단으로 이어지도록 문서와 코드를 함께 정리했습니다.",
+        ],
+      },
+    ],
+  },
+  {
+    id: "job-signal-pipeline",
+    slug: "job-signal-pipeline",
+    title: "Job Signal Pipeline",
+    status: "supporting",
+    category: "서브 프로젝트",
+    primaryDomain: "데이터 파이프라인",
+    summary:
+      "채용 공고 mock 응답을 PostgreSQL raw 적재, analytics views, SQL tests, Streamlit dashboard로 검증한\nlocal validation pipeline v1입니다.",
+    period: "2026",
+    format: "개인 프로젝트",
+    domains: ["채용 데이터", "데이터 파이프라인", "PostgreSQL", "검증 자동화"],
+    role: ["mock ingestion 설계", "raw/analytics schema 분리", "SQL data quality tests", "Streamlit dashboard 검증"],
+    filterTools: ["Python", "SQL", "Web"],
+    cardTools: ["Python", "PostgreSQL", "SQL", "Streamlit"],
+    stack: ["Python", "PostgreSQL", "SQLAlchemy", "psycopg", "Docker Compose", "n8n", "Streamlit", "Plotly"],
+    problemTypes: ["데이터 품질 검증", "로컬 파이프라인 검증", "분석 뷰 설계"],
+    coreTags: ["Mock Ingestion", "Raw Loading", "Analytics Views", "SQL Tests", "Streamlit Dashboard", "Boundary Docs"],
+    badges: ["Pipeline Validation", "SQL QA", "Local v1"],
+    context:
+      "외부 채용 API 승인과 운영 환경이 준비되지 않은 상태에서 live 서비스처럼 보이게 만드는 대신, 채용 공고 데이터가 어떤 경로로 적재·모델링·검증되는지 로컬에서 재현 가능한 파이프라인으로 분리했습니다.",
+    outcome:
+      "Saramin mock 응답을 `raw.job_postings`에 적재하고, `analytics` schema의 views와 7개 SQL data quality tests를 `scripts/validate_sql_models.py`로 검증했습니다. Streamlit dashboard는 검증된 analytics views를 조회하는 local portfolio review용 화면으로 연결했습니다.",
+    supportingLine:
+      "mock ingestion부터 SQL tests와 Streamlit dashboard까지 검증한 검증형 데이터 파이프라인",
+    review: {
+      decisionQuestion: "live API나 production 운영을 주장하지 않고 채용 데이터 파이프라인 구조를 어떻게 검증할 것인가?",
+      myRole: "mock ingestion, PostgreSQL raw/analytics schema, SQL tests, Streamlit dashboard, 검증 문서 정리",
+      evidence: "Saramin mock → raw.job_postings → 5 analytics views → 7 SQL tests PASS → Streamlit localhost:8501",
+      deliverable: "local validation pipeline v1과 VERIFY/architecture/runbook 문서",
+      hiringSignal: "외부 API 제약과 검증 범위를 분리하고, 데이터 파이프라인을 SQL 테스트와 대시보드로 확인 가능하게 만듦",
+    },
+    decisionMoment: {
+      originalQuestion: "채용 공고 서비스를 만들 수 있는가?",
+      reframedQuestion: "운영 서비스 주장을 하지 않고 검증 가능한 채용 데이터 파이프라인 v1을 어떻게 증명할 것인가?",
+      keyEvidence: "mock ingestion, PostgreSQL raw loading, analytics SQL views, zero-failing SQL tests, Streamlit dashboard",
+      finalDeliverable: "Docker-backed PostgreSQL, SQL models/tests, Streamlit dashboard, verification docs",
+      proves: "구현 범위와 미검증 범위를 구분하면서 데이터 품질 검증 흐름을 끝까지 연결하는 역량",
+    },
+    cardBrief: {
+      problem:
+        "live 채용 API 접근과 production 운영이 검증되지 않은 상태에서 파이프라인 구현 범위를 과장하지 않고 보여줄 필요가 있었음.",
+      method:
+        "Saramin mock 응답을 정규화해 PostgreSQL raw table에 적재하고, analytics views와 SQL tests를 한 번에 실행하는 검증 스크립트와 Streamlit dashboard를 연결함.",
+      output: [
+        "Mock ingestion",
+        "PostgreSQL raw loading",
+        "Analytics SQL views",
+        "SQL tests + Streamlit dashboard",
+      ],
+    },
+    metrics: [
+      { label: "Analytics Views", value: "5 SQL views" },
+      { label: "Quality Checks", value: "7 SQL tests" },
+      { label: "Validation", value: "PASS" },
+    ],
+    evidencePoints: [
+      {
+        label: "검증 경로",
+        value: "Saramin mock ingestion → PostgreSQL raw loading → analytics views → SQL tests → Streamlit dashboard",
+      },
+      {
+        label: "Raw/Analytics 분리",
+        value: "`raw.job_postings`와 `analytics.job_postings_clean`, market summary, skill demand, source quality, weekly trend views를 분리",
+      },
+      {
+        label: "SQL 품질 검증",
+        value: "required fields, salary bounds, source/source_job_id, unique key 등 7개 SQL tests가 zero failing rows로 통과",
+      },
+      {
+        label: "Dashboard 검증",
+        value: "Streamlit dashboard는 live API를 호출하지 않고 검증된 PostgreSQL analytics views를 조회",
+      },
+      {
+        label: "범위 경계",
+        value: "Saramin live API, production ingestion schedule, monitoring, notification delivery는 구현/검증 범위 밖으로 명시",
+      },
+    ],
+    detailBrief: {
+      problem: {
+        what:
+          "채용 공고 API 승인과 production 운영이 없는 상태에서도 데이터 파이프라인의 구조와 품질 검증 흐름을 리뷰어가 확인할 수 있어야 했습니다.",
+        why:
+          "외부 API 제약을 구현 실패처럼 숨기거나 live 서비스처럼 과장하면, 실제로 검증된 범위와 앞으로 필요한 작업이 흐려지기 때문입니다.",
+      },
+      dataMethod: {
+        dataTypes: ["Saramin mock response", "PostgreSQL raw.job_postings", "analytics SQL views", "SQL data quality test queries", "Streamlit dashboard"],
+        process: [
+          "Saramin mock 응답을 정규화하고 `--load-db` 옵션으로 PostgreSQL raw table에 upsert",
+          "raw schema와 analytics schema를 분리해 원천 보존과 분석 로직을 나눔",
+          "정렬된 SQL migrations/models/tests를 `scripts/validate_sql_models.py`에서 순서대로 실행",
+          "analytics previews와 SQL tests가 통과한 뒤 Streamlit dashboard에서 views를 조회",
+          "VERIFY 문서와 evidence 문서에 mock/local boundary와 미구현 범위를 명시",
+        ],
+        metrics: ["5 analytics views", "7 SQL tests", "PASS: Validation passed", "localhost:8501 dashboard connection"],
+      },
+      limitations: [
+        "Saramin live API 호출 성공이나 production ingestion 운영을 주장하지 않습니다.",
+        "실제 live API 검증에는 승인된 `SARAMIN_API_KEY`와 quota/rate limit 확인이 필요합니다.",
+        "Work24는 보조 reference/enrichment 성격으로 분리했으며 main job posting source로 적재하지 않았습니다.",
+        "n8n production workflow, monitoring, notification delivery는 현재 구현 범위가 아닙니다.",
+        "Streamlit dashboard는 local portfolio review용이며 운영 채용 서비스가 아닙니다.",
+        "mock 데이터 검증은 파이프라인 구조 검증이지 실제 채용 시장 커버리지 검증이 아닙니다.",
+      ],
+      linkNote: "GitHub README, VERIFY.md, docs/architecture.md, local validation evidence에서 검증 경로와 미검증 범위를 함께 확인할 수 있습니다.",
+    },
+    focusPoints: [
+      "live 서비스 주장이 아니라 mock/local boundary 안에서 검증 가능한 데이터 흐름으로 범위 재정의",
+      "raw loading, analytics views, SQL tests, dashboard를 한 검증 루프로 연결",
+      "Saramin live API, production ingestion, notification 운영 미구현 범위를 문서에 명확히 분리",
+    ],
+    links: [
+      {
+        label: "GitHub 저장소",
+        href: "https://github.com/dffxonnb-cyber/job-signal-pipeline",
+        type: "secondary",
+      },
+    ],
+    sortOrder: 5,
+    caseStudySlugs: ["pipeline-validation-design", "turn-analysis-into-a-decision-tool"],
+    sections: [
+      {
+        title: "프로젝트 개요",
+        paragraphs: [
+          "Job Signal Pipeline은 채용 공고 데이터를 live 서비스처럼 운영했다고 주장하는 프로젝트가 아니라, mock 응답 기반으로 수집·적재·모델링·검증·대시보드 조회 경로를 확인한 local validation pipeline v1입니다.",
+          "핵심 검증 경로는 Saramin mock ingestion → PostgreSQL raw loading → analytics SQL views → SQL tests → Streamlit dashboard입니다.",
+        ],
+      },
+      {
+        title: "검증 흐름",
+        paragraphs: [
+          "`scripts/validate_sql_models.py`는 SQL migrations, analytics models, mock ingestion loading, analytics previews, SQL tests를 한 번에 실행해 데이터 품질과 분석 뷰 연결을 확인합니다.",
+          "Streamlit dashboard는 live API를 직접 호출하지 않고 PostgreSQL analytics views를 읽기 때문에, 수집과 분석/시각화 경계를 분리해 검토할 수 있습니다.",
+        ],
+      },
+      {
+        title: "Scope and Limitations",
+        paragraphs: [
+          "Saramin live API 호출, production ingestion schedule, monitoring, notification delivery는 현재 검증 범위에 포함하지 않았습니다.",
+          "이 프로젝트의 의미는 live 채용 서비스 운영이 아니라, 외부 API 제약을 분리하고 검증 가능한 SQL 중심 데이터 파이프라인 구조를 끝까지 연결한 데 있습니다.",
         ],
       },
     ],
@@ -1197,7 +1341,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 6,
+    sortOrder: 7,
     caseStudySlugs: ["turn-analysis-into-a-decision-tool"],
     sections: [
       {
