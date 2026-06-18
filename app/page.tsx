@@ -7,11 +7,11 @@ import { homeProofPoints } from "@/content/proof-points";
 import { featuredProjects } from "@/content/projects";
 
 const scanRows = [
-  { label: "Positioning", value: "Data analyst building data products" },
+  { label: "Positioning", value: "Data analyst translating data into decision signals" },
+  { label: "Core Lens", value: "판단 기준 · 보류 사유 · 리스크 신호 · 검증 가능한 산출물" },
   { label: "Data", value: "Python · SQL · pandas · NumPy · scikit-learn · PostgreSQL" },
   { label: "Web", value: "React · Next.js · Vite · TypeScript · Tailwind CSS · Vercel" },
   { label: "Automation", value: "Docker · n8n · Mailpit · GitHub Actions · Python smoke tests" },
-  { label: "Documentation", value: "README · troubleshooting docs · portfolio case studies" },
 ];
 
 const reviewPath = [
@@ -46,6 +46,37 @@ const reviewPath = [
   },
 ];
 
+const projectRoleMap = [
+  {
+    step: "01",
+    title: "Redveil",
+    detail: "상권 후보를 추천하기보다 매입 전 보류 신호와 대체 후보를 먼저 검토하는 리스크 UI",
+    href: "/projects/seoul-storefront-redveil",
+    label: "Redveil 보기",
+  },
+  {
+    step: "02",
+    title: "Shelter Signal",
+    detail: "공공 API의 live/cache/fallback 상태와 보호 종료 임박 신호를 함께 보여주는 public-data service",
+    href: "/projects/shelter-signal",
+    label: "Shelter 보기",
+  },
+  {
+    step: "03",
+    title: "LH Traffic Safety",
+    detail: "100m 격자 위험 신호를 LORO 검증과 현장 검토 우선순위로 연결한 공간 분석",
+    href: "/projects/lh-traffic-safety-analysis",
+    label: "LH 보기",
+  },
+  {
+    step: "04",
+    title: "Starbucks",
+    detail: "고객·오퍼·채널 데이터를 CRM 액션과 마케팅 판단 언어로 번역한 반응 분석",
+    href: "/projects/starbucks-promotion-analysis",
+    label: "Starbucks 보기",
+  },
+];
+
 export default function HomePage() {
   return (
     <main className="page-shell">
@@ -72,8 +103,8 @@ export default function HomePage() {
           eyebrow="Signal Archive · Decision Archive"
           lead={
             <>
-              Python/SQL 기반 분석 결과를 단순 시각화에서 멈추지 않고, 검토자가 실제로 판단할 수 있는
-              기준·보류 사유·리스크 신호·검증 가능한 산출물로 연결합니다.
+              Python/SQL 기반 분석 결과를 차트에서 끝내지 않고, 검토자가 실제로 판단할 수 있는 기준·보류
+              사유·리스크 신호·검증 가능한 산출물로 번역합니다.
             </>
           }
           meta={
@@ -85,7 +116,7 @@ export default function HomePage() {
               ))}
             </div>
           }
-          title="분석 결과를 차트에서 끝내지 않고, 판단 기준과 리스크 신호로 연결하는 데이터 의사결정 아카이브."
+          title="데이터를 판단 근거와 의사결정 신호로 번역하는 포트폴리오 허브."
           titleId="home-title"
           variant="home"
         >
@@ -145,12 +176,35 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="surface-card home-review-path">
+          <div className="home-section-head">
+            <span className="eyebrow">Project Role Map</span>
+            <h2 className="section-title">대표 프로젝트의 역할 차이</h2>
+            <p className="page-intro">
+              같은 분석 프로젝트처럼 보이지 않도록, 각 프로젝트가 증명하는 역량을 서로 다른 판단 역할로 분리했습니다.
+            </p>
+          </div>
+
+          <div className="home-review-path__grid">
+            {projectRoleMap.map((item) => (
+              <article className="home-review-step" key={item.title}>
+                <span className="home-review-step__step">{item.step}</span>
+                <h3>{item.title}</h3>
+                <p>{item.detail}</p>
+                <Link className="button-link button-link--secondary home-review-step__link" href={item.href}>
+                  {item.label}
+                </Link>
+              </article>
+            ))}
+          </div>
+        </section>
+
         <section className="page-grid home-selected">
           <div className="home-selected__head">
             <span className="eyebrow">Featured Proof Cards</span>
             <h2 className="section-title">대표 프로젝트가 증명하는 것</h2>
             <p className="page-intro">
-              프로젝트 소개보다 먼저, 어떤 판단 질문을 세웠고 어떤 근거와 산출물로 역할 적합성을 보여주는지 읽히게
+              프로젝트 소개보다 먼저, 무엇을 주장하고 무엇은 주장하지 않는지까지 함께 읽히도록 검토 경계를
               정리했습니다.
             </p>
           </div>
