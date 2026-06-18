@@ -534,6 +534,10 @@ export const projects: Project[] = [
         label: "Observability",
         value: "cache hit/miss, upstream fetch duration/count, normalized/filtered/returned count 확인",
       },
+      {
+        label: "V2 dry-run evidence",
+        value: "alert_candidates → JSON/HTML digest preview는 local dry-run evidence로 분리했으며 실제 알림 발송 운영은 주장하지 않음",
+      },
     ],
     signalCaseStudy: {
       signalType: "보호 종료 임박 신호",
@@ -637,6 +641,7 @@ export const projects: Project[] = [
         "5분 캐시는 Vercel function instance memory 기반이므로 cold start와 다른 instance 사이에서 hit를 보장하지 않습니다.",
         "stale-live와 fallback은 연속성을 위한 상태이며 실시간성을 보장하지 않습니다.",
         "사용자 계정, 영구 저장, push·email·SMS 알림은 현재 production 범위에 포함하지 않았습니다.",
+        "Shelter Signal V2의 alert_candidates와 digest preview는 local dry-run evidence이며 실제 email/SMS/push 알림 운영이나 구독 관리를 의미하지 않습니다.",
         "서비스 키와 운영 비밀값은 server-side 환경 변수로만 사용하며 브라우저와 로그에 노출하지 않습니다.",
       ],
       linkNote: "Live Demo의 상태 패널에서 Live API, 조회 기간, 수집 페이지, 현재·긴급 공고 수, cache 상태를 확인할 수 있습니다. fallback 경고는 source가 fallback일 때만 표시되며 서비스 키는 브라우저에 노출하지 않습니다.",
@@ -657,6 +662,11 @@ export const projects: Project[] = [
         href: "https://github.com/dffxonnb-cyber/shelter-signal",
         type: "secondary",
       },
+      {
+        label: "V2 dry-run evidence",
+        href: "https://github.com/dffxonnb-cyber/shelter-signal/blob/main/docs/evidence/v2-dry-run-2026-06-19.md",
+        type: "secondary",
+      },
     ],
     sortOrder: 2,
     caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool"],
@@ -673,6 +683,13 @@ export const projects: Project[] = [
         paragraphs: [
           "Live API → KST 30일 범위 → noticeEdt 마감 필터 → urgent signal → region filter → pagination → cache → metadata → UI state 순서로 공고를 처리합니다.",
           "Live API 응답, fallback, stale-live, empty state를 구분하기 위해 source, fallbackReason, cacheStatus, fetchedAt, dateRange, totalFilteredCount, upstreamFetchDurationMs 등의 metadata를 응답에 포함했습니다.",
+        ],
+      },
+      {
+        title: "V2 dry-run evidence",
+        paragraphs: [
+          "Production은 live-first `/api/notices`와 current/urgent/protected/archive 탐색 흐름을 유지합니다.",
+          "V2는 alert_candidates → JSON/HTML digest preview를 로컬에서 확인하는 dry-run preview이며, 실제 알림 발송·구독 관리·Production 스케줄 운영을 주장하지 않습니다.",
         ],
       },
       {
