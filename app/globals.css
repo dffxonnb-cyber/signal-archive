@@ -4494,6 +4494,30 @@ main {
   gap: var(--space-card-gap-compact);
 }
 
+.project-card__evidence-label {
+  display: grid;
+  gap: 3px;
+  padding: 9px 10px;
+  border: 1px solid rgba(211, 179, 111, 0.22);
+  border-radius: var(--radius-sm);
+  background: rgba(211, 179, 111, 0.045);
+}
+
+.project-card__evidence-label span {
+  color: var(--accent-warm);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card__evidence-label strong {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
 .project-card__board-top .project-card__meta-row {
   justify-content: flex-end;
   min-height: 0;

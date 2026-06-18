@@ -30,6 +30,19 @@ const projectMediaTones: Record<string, string> = {
   "starbucks-promotion-analysis": "coffee",
 };
 
+const projectEvidenceLabels: Record<
+  string,
+  {
+    label: string;
+    detail: string;
+  }
+> = {
+  "job-signal-pipeline": {
+    label: "Engineering Evidence",
+    detail: "mock/local · SQL QA · dashboard validation",
+  },
+};
+
 function getProjectMark(title: string) {
   const mark = title
     .replace(/&/g, " ")
@@ -80,6 +93,7 @@ export function ProjectCard({ project, index, variant = "featured" }: ProjectCar
     tone: getProjectTone(project),
   };
   const projectIndex = String(index ?? project.sortOrder).padStart(2, "0");
+  const evidenceLabel = projectEvidenceLabels[project.slug];
   const metricChips = project.metrics;
   const isPriority = variant === "featured";
   const projectType = project.problemTypes[0] ?? project.format;
@@ -109,12 +123,17 @@ export function ProjectCard({ project, index, variant = "featured" }: ProjectCar
         className={`project-card project-card--supporting-proof ${visual.accentClass}`}
         aria-label={`${project.title} project proof card`}
       >
-        <div className="project-card__supporting-top">
-          <span className="project-card__board-index">{projectIndex}</span>
-          <div className="project-card__supporting-meta">
-            <span className="chip chip--category">{project.primaryDomain}</span>
-            <span className="chip chip--status">{projectType}</span>
-          </div>
+        <div className="project-card__supporting-head">
+          <h2 className="project-card__title">
+            <Link href={`/projects/${project.slug}`}>{project.title}</Link>
+          </h2>
+          <span className="project-card__eyebrow">{project.period}</span>
+          {evidenceLabel ? (
+            <div className="project-card__evidence-label">
+              <span>{evidenceLabel.label}</span>
+              <strong>{evidenceLabel.detail}</strong>
+            </div>
+          ) : null}
         </div>
 
         <div className="project-card__supporting-head">
