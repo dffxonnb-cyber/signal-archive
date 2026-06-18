@@ -461,7 +461,7 @@ export const projects: Project[] = [
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
     summary:
-      "공공 구조동물 공고를 KST 마감일과 데이터 출처 기준으로 정규화해\n현재·종료 임박 공고를 지역별로 탐색하는 public-data service입니다.",
+      "공공 구조동물 공고를 KST 마감일·지역·데이터 상태 기준으로 정리해\n현재 공고와 보호 종료 임박 신호를 구분하는\nlive-first public-data service입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "구조동물 공고", "데이터 신뢰성", "PWA"],
@@ -473,35 +473,35 @@ export const projects: Project[] = [
     coreTags: ["Live API", "KST 30일", "D-Day~D-3", "Region Filter", "Pagination", "TTL Cache", "Fallback 분리", "Observability"],
     badges: ["Featured", "Public Data", "Live API", "Signal Service"],
     context:
-      "구조동물 원천 공고에는 지난 공고와 현재 공고가 섞이고 종료 임박 공고가 전체 목록에 묻힐 수 있습니다. Shelter Signal은 이를 공고 생명주기와 데이터 신뢰 상태의 문제로 보고 지역별 탐색 흐름을 설계했습니다.",
+      "구조동물 원천 공고는 지난 공고와 현재 공고가 섞이고, 보호 종료 임박 공고가 전체 목록에 묻히기 쉽습니다. Shelter Signal은 단순 목록이 아니라 공고 생명주기, 지역 필터, live/cache/fallback 상태를 함께 읽는 탐색 흐름으로 설계했습니다.",
     outcome:
-      "KST 최근 30일 live 공고를 current·urgent·protected·archive로 분리하고 D-Day~D-3를 우선 정렬했습니다. 서버 지역 필터, page/limit 페이지네이션, 5분 TTL 캐시, 상태 metadata를 결합해 대량 공고를 신뢰 상태와 함께 탐색하도록 구현했습니다.",
+      "KST 최근 30일 live 공고를 current·urgent·protected·archive로 분리하고, D-Day~D-3를 보호 종료 임박 신호로 우선 정렬했습니다. 서버 지역 필터, page/limit 페이지네이션, 5분 TTL 캐시, source/cache/fallback metadata를 결합해 공고의 유효성과 데이터 상태를 함께 확인할 수 있게 구현했습니다.",
     supportingLine:
-      "공공데이터 기반 보호 종료 임박 신호 탐색 서비스",
+      "공공 API 상태와 보호 종료 임박 신호를 함께 읽는 live-first 탐색 서비스",
     review: {
-      decisionQuestion: "현재 유효하고 보호 종료가 가까운 구조동물 공고를 어떻게 신뢰 가능한 신호로 보여줄 것인가?",
-      myRole: "live-first API·KST 마감 분류·region/page API·cache/fallback 운영·PWA 구현",
-      evidence: "noticeEdt freshness · D-Day~D-3 · source/cache/fallback metadata",
-      deliverable: "현재·종료 임박 공고를 지역별로 탐색하는 live public-data service",
-      hiringSignal: "공공 API를 우선순위 신호와 신뢰 상태가 보이는 서비스로 구현",
+      decisionQuestion: "현재 유효한 공고와 보호 종료 임박 공고를 어떻게 신뢰 가능한 상태로 구분할 것인가?",
+      myRole: "live-first API 설계, KST 마감 분류, region/page API, TTL cache, fallback 상태 분리, PWA 구현",
+      evidence: "KST 30일 live window · D-Day~D-3 urgent signal · source/cache/fallback metadata · Production UI/API evidence",
+      deliverable: "현재 공고, 보호 종료 임박 신호, 데이터 상태를 함께 보여주는 live-first public-data service",
+      hiringSignal: "공공 API의 불안정성을 숨기지 않고 신호 로직, cache/fallback, UI 상태로 분리해 구현할 수 있음",
     },
     decisionMoment: {
       originalQuestion: "구조동물 공고를 어떻게 조회하게 할 것인가?",
-      reframedQuestion: "공고 생명주기와 데이터 출처를 어떻게 보호 종료 임박 신호로 해석할 것인가?",
-      keyEvidence: "noticeEdt 기반 freshness filter, D-Day~D-3 urgent 분류, source/cache/fallback metadata",
+      reframedQuestion: "공고의 유효성, 보호 종료 임박도, 데이터 상태를 어떻게 함께 보여줄 것인가?",
+      keyEvidence: "KST 30일 live window, noticeEdt freshness filter, D-Day~D-3 urgent 분류, source/cache/fallback metadata",
       finalDeliverable: "live-first `/api/notices`, region/page API, TTL cache, 상태 패널을 갖춘 React PWA",
-      proves: "공공데이터 목록을 마감 신호와 데이터 신뢰 상태를 함께 읽는 운영형 서비스로 재구성할 수 있음",
+      proves: "공공데이터 목록을 마감 신호와 데이터 신뢰 상태가 보이는 서비스 흐름으로 재구성하는 역량",
     },
     cardBrief: {
       problem:
-        "지난 공고와 긴급 공고가 섞인 전체 목록만으로는 현재 유효한 보호 종료 임박 공고를 판단하기 어려움.",
+        "지난 공고, 현재 공고, 보호 종료 임박 공고가 한 목록에 섞이면 어떤 공고를 지금 봐야 하는지 판단하기 어려움.",
       method:
-        "KST 30일 live 공고를 noticeEdt 기준으로 분리하고, D-Day~D-3를 urgent signal로 정렬하며 API·cache·fallback 상태를 metadata로 명시함.",
+        "KST 30일 live 공고를 noticeEdt 기준으로 current/urgent/protected/archive로 분리하고, D-Day~D-3와 source/cache/fallback metadata를 UI 상태로 노출함.",
       output: [
         "Current / Urgent / Protected / Archive",
         "서버 측 Region Filter",
         "Page / Limit Pagination",
-        "Cache / Fallback 상태 패널",
+        "Live / Cache / Fallback 상태 패널",
       ],
     },
     metrics: [
@@ -642,9 +642,9 @@ export const projects: Project[] = [
       linkNote: "Live Demo의 상태 패널에서 Live API, 조회 기간, 수집 페이지, 현재·긴급 공고 수, cache 상태를 확인할 수 있습니다. fallback 경고는 source가 fallback일 때만 표시되며 서비스 키는 브라우저에 노출하지 않습니다.",
     },
     focusPoints: [
-      "공공데이터 조회를 현재 유효한 보호 종료 임박 신호를 찾는 문제로 재정의",
-      "noticeEdt와 KST 날짜를 current/urgent/protected/archive 및 D-Day~D-3 신호로 변환",
-      "신호 로직을 region/page API, cache·fallback 상태, observability, compact UI까지 연결",
+      "공공데이터 목록을 현재 유효성, 보호 종료 임박도, 데이터 상태를 함께 읽는 문제로 재정의",
+      "noticeEdt와 KST 날짜를 current/urgent/protected/archive 및 D-Day~D-3 urgent signal로 변환",
+      "신호 로직을 region/page API, TTL cache, fallback metadata, observability, compact UI까지 연결",
     ],
     links: [
       {
