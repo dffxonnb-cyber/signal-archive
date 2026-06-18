@@ -838,7 +838,8 @@ export const projects: Project[] = [
     status: "featured",
     category: "대표 프로젝트",
     primaryDomain: "마케팅",
-    summary: "고객, 오퍼, 채널 데이터를 기반으로\n세그먼트와 오퍼 반응의 상관관계를 분석한\nCRM / 마케팅 분석 프로젝트입니다.",
+    summary:
+      "고객·오퍼·채널 데이터를 재구성해\n어떤 고객군이 어떤 제안과 채널에 반응하는지 읽고\nCRM 액션 판단으로 번역한 마케팅 분석입니다.",
     period: "2026",
     format: "4인 팀 프로젝트",
     domains: ["CRM", "Marketing Analytics", "고객 반응 분석", "오퍼/채널 성과 분석"],
@@ -850,34 +851,34 @@ export const projects: Project[] = [
     coreTags: ["CRM", "Offer Response", "Customer Segmentation", "Marketing Analytics", "Tableau"],
     badges: ["CRM", "Marketing Analytics", "Model Metrics", "CI Verified"],
     context:
-      "고객, 오퍼, 채널 데이터가 분리된 상태에서는 어떤 고객군이 어떤 제안에 반응하는지와 오퍼/채널 성과 차이를 함께 읽기 어렵습니다.",
+      "고객, 오퍼, 채널 데이터가 분리된 상태에서는 어떤 고객군이 어떤 제안에 반응하고 어떤 채널 조합이 성과로 이어지는지 함께 읽기 어렵습니다. 이 프로젝트는 분리된 로그를 CRM 판단 단위로 다시 묶는 데 초점을 뒀습니다.",
     outcome:
-      "고객, 오퍼, 채널 데이터를 재구성해 고객 반응과 오퍼/채널 성과를 함께 해석할 수 있는 CRM / 마케팅 분석 결과로 정리했습니다.",
-    supportingLine: "고객군별 오퍼 반응과 채널 성과를\n함께 도출한 CRM 분석",
+      "고객·오퍼·채널 데이터를 조인 가능한 분석 구조로 재구성하고, 반응 예측 지표와 오퍼/채널 성과 비교를 Tableau 결과물과 마케팅 액션 인사이트로 정리했습니다.",
+    supportingLine: "고객군별 오퍼 반응과 채널 성과를 CRM 액션으로 번역한 마케팅 분석",
     review: {
-      decisionQuestion: "어떤 고객군이 어떤 오퍼와 채널에 반응하는가?",
-      myRole: "팀 리더, 이벤트 구조 재설계, 추천 후보 해석, Tableau 결과 정리",
-      evidence: "AUC 0.8147 / Recall 0.8712 / Precision 0.6830 / F1 0.7657",
-      deliverable: "CRM 반응 분석과 Tableau 결과물",
-      hiringSignal: "고객·오퍼·채널 데이터를 액션 언어로 번역 가능",
+      decisionQuestion: "어떤 고객군이 어떤 오퍼와 채널에 반응하며, 이를 어떤 CRM 액션으로 해석할 것인가?",
+      myRole: "팀 리더, 이벤트 로그 구조 재설계, 고객·오퍼·채널 반응 해석, 추천 후보 정리, Tableau 결과물 구성",
+      evidence: "AUC 0.8147 / Recall 0.8712 / Precision 0.6830 / F1 0.7657 / NDCG@5 1.0000",
+      deliverable: "고객군별 오퍼 반응, 채널 성과, CRM 액션 인사이트를 연결한 분석 결과물",
+      hiringSignal: "분리된 고객·오퍼·채널 데이터를 마케팅 판단과 실행 후보 언어로 번역할 수 있음",
     },
     decisionMoment: {
       originalQuestion: "어떤 오퍼가 성과가 좋은가?",
-      reframedQuestion: "어떤 고객군이 어떤 오퍼와 채널에 반응하는가?",
-      keyEvidence: "AUC 0.8147, Recall 0.8712, Precision 0.6830, F1 0.7657",
-      finalDeliverable: "CRM 반응 분석과 Tableau 결과물",
-      proves: "고객·오퍼·채널 구조를 액션 가능한 분석으로 바꾸는 역량",
+      reframedQuestion: "어떤 고객군이 어떤 오퍼와 채널에 반응하며, 어떤 액션 후보로 볼 수 있는가?",
+      keyEvidence: "AUC 0.8147, Recall 0.8712, Precision 0.6830, F1 0.7657, NDCG@5 1.0000",
+      finalDeliverable: "고객군별 오퍼 반응 분석, 채널 성과 비교, Tableau 결과물, CRM 액션 인사이트",
+      proves: "고객·오퍼·채널 데이터를 마케팅 실행 판단으로 번역하는 역량",
     },
     cardBrief: {
       problem:
-        "고객, 오퍼, 채널 데이터가 분리되어 있어 어떤 고객군이 어떤 제안에 반응하는지 바로 파악하기 어려움.",
+        "고객, 오퍼, 채널 데이터가 분리되어 있어 어떤 고객군에게 어떤 제안과 채널이 유효한지 판단하기 어려움.",
       method:
-        "고객-오퍼-채널 구조로 데이터를 재편하고, 반응 패턴과 성과 차이를 Tableau까지 연결해 해석함.",
+        "이벤트 로그를 고객-오퍼-채널 기준으로 재구성하고, 반응 예측 지표와 성과 비교를 Tableau 스토리라인으로 연결함.",
       output: [
         "고객·오퍼·채널 데이터 통합",
         "고객 반응 / 오퍼 성과 분석",
-        "Tableau 대시보드",
-        "마케팅 액션 인사이트",
+        "Tableau 결과물",
+        "CRM 액션 인사이트",
       ],
     },
     metrics: [
@@ -932,9 +933,9 @@ export const projects: Project[] = [
       linkNote: "GitHub README와 대시보드 산출물 기준으로 전체 분석 흐름을 확인할 수 있습니다.",
     },
     focusPoints: [
-      "반정형 이벤트 로그를 분석 가능한 구조로 재정리",
-      "고객 반응과 오퍼 / 채널 성과를 함께 해석",
-      "Tableau 대시보드와 README 스토리로 마케팅 의사결정 흐름을 강조",
+      "반정형 이벤트 로그를 고객·오퍼·채널 기준의 분석 구조로 재정리",
+      "고객 반응, 오퍼 성과, 채널 차이를 CRM 액션 후보로 함께 해석",
+      "모델 성능 지표와 Tableau 결과물을 마케팅 의사결정 흐름으로 연결",
     ],
     links: [
       {
