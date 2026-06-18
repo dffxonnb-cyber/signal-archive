@@ -335,6 +335,10 @@ export const projects: Project[] = [
         label: "Public Verification",
         value: "GitHub Pages 배포, public-safe payload, tests, smoke checks, Production evidence 확인",
       },
+      {
+        label: "QA Boundary",
+        value: "v1은 stable public website, v2는 app/site/v2/ isolated experiment로 분리하고 투자 추천·수익률 검증은 주장하지 않음",
+      },
     ],
     signalCaseStudy: {
       signalType: "매입 전 보류 신호",
@@ -408,6 +412,7 @@ export const projects: Project[] = [
         "공개 가능한 public-safe snapshot 기준으로 구성되어 raw data 전체 재빌드는 로컬 원천 데이터가 필요합니다.",
         "실시간 공실률, 유동 인구, 운영 매출, 임대차 조건, 권리금, 관리비, 법적 제약 같은 추가 변수는 아직 결합하지 않았습니다.",
         "실제 투자 결과와 연결한 장기 검증은 포함하지 않았습니다.",
+        "Redveil v2는 app/site/v2/ 아래의 isolated experiment이며 현재 기본 public review flow는 v1으로 유지합니다.",
       ],
       linkNote: "서비스 페이지와 GitHub 저장소 문서에서 서비스 흐름과 설명 자료를 함께 확인할 수 있습니다.",
     },
@@ -420,6 +425,11 @@ export const projects: Project[] = [
       {
         label: "서비스 보기",
         href: "https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/",
+        type: "secondary",
+      },
+      {
+        label: "Redveil QA Note",
+        href: "https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil/blob/main/docs/REDVEIL_QA_2026-06-19.md",
         type: "secondary",
       },
       {
@@ -443,6 +453,13 @@ export const projects: Project[] = [
         paragraphs: [
           "공공데이터와 거래 데이터를 묶어 구 단위 비교, 매물 단건 검토, 대체 후보 비교, 사례/방법론 문서까지 하나의 서비스 흐름으로 연결했습니다.",
           "분석 결과를 읽는 사람의 판단 순서를 고려해 점수, 사유, 비교, 후속 문서를 한 화면 안에서 이어지게 만들었습니다.",
+        ],
+      },
+      {
+        title: "v1 / v2 QA boundary",
+        paragraphs: [
+          "현재 public review flow는 v1을 기준으로 유지하고, v2는 app/site/v2/ 아래의 map-first dashboard experiment로 분리했습니다.",
+          "v2는 아직 기본 홈으로 승격하지 않았으며, Redveil 전체는 투자 추천이 아니라 매입 전 보류 신호와 대체 후보를 검토하는 portfolio prototype으로 해석해야 합니다.",
         ],
       },
       {
