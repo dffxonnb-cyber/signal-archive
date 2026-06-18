@@ -9,7 +9,7 @@ export const projects: Project[] = [
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
     summary:
-      "99,323개 학습 격자에서 검증한 위험 신호를 하남교산 770개 격자에 적용해\n안전시설 현장 검토 우선순위를 도출했습니다.",
+      "100m 격자 단위로 사고·교통·공간 위험 신호를 학습하고\nLORO 검증을 거쳐 하남교산 현장 검토 우선순위로 번역한\n공간 데이터 분석입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "도시", "교통", "공간 데이터 분석"],
@@ -21,31 +21,31 @@ export const projects: Project[] = [
     coreTags: ["100m Grid", "Spatial RF", "LORO", "Priority Ranking", "Decision Support"],
     badges: ["Featured", "Spatial Signal", "Decision Support"],
     context:
-      "사고 이력이 부족한 신도시에서는 과거 사고 건수만으로 안전시설 우선순위를 정하기 어렵고, 행정구역 평균은 같은 지역 내부의 도로 구조와 통행 환경 차이를 가릴 수 있습니다.",
+      "사고 이력이 부족한 신도시에서는 과거 사고 건수만으로 안전시설 우선순위를 정하기 어렵습니다. 행정구역 평균도 같은 지역 내부의 도로 구조와 통행 환경 차이를 가리기 때문에, 더 작은 공간 단위의 위험 신호와 검증 기준이 필요했습니다.",
     outcome:
-      "4개 기존 시·구의 사고·교통·공간 패턴을 100m 격자로 학습·검증하고, 하남교산 770개 격자를 현장 검토 우선 후보로 정렬하는 공간 위험 신호 흐름을 구성했습니다.",
-    supportingLine: "100m 격자 위험 예측을 안전시설 현장 검토 우선순위로 전환한 공간 분석",
+      "4개 기존 시·구의 사고·교통·공간 데이터를 100m 격자로 통합하고, 공간 좌표 포함 Random Forest를 LORO로 검증했습니다. 검증된 위험 신호를 하남교산 770개 격자에 적용해 현장 검토 우선 후보로 정렬했습니다.",
+    supportingLine: "100m 격자 위험 신호를 검증 가능한 현장 검토 우선순위로 바꾼 공간 분석",
     review: {
-      decisionQuestion: "사고 이력이 부족한 신도시에서도 어떤 구간을 먼저 검토해야 하는가?",
-      myRole: "100m 격자 위험 신호 설계, 공간 좌표 포함 Random Forest, LORO 검증, 우선순위 도출",
-      evidence: "99,323 → 770 grids · LORO AUC 0.8604 · Top-10% Lift 4.39x",
-      deliverable: "고위험 격자 순위와 현장 점검 후보를 연결한 공간 의사결정 자료",
-      hiringSignal: "공간 모델 결과를 검증 가능한 자원 배분 우선순위로 번역",
+      decisionQuestion: "사고 이력이 부족한 신도시에서 어떤 100m 격자를 먼저 현장 검토해야 하는가?",
+      myRole: "100m 격자 설계, 사고·교통·공간 변수 통합, 공간 좌표 포함 Random Forest, LORO 검증, Top-k 우선순위 도출",
+      evidence: "99,323 training grids → 770 target grids · LORO AUC 0.8604 · Top-10% Lift 4.39x",
+      deliverable: "고위험 100m 격자 순위와 공개 검증 근거를 연결한 현장 검토 우선순위 자료",
+      hiringSignal: "공간 모델 결과를 성능 지표, 공개 증거, 현장 검토 단위로 번역할 수 있음",
     },
     decisionMoment: {
       originalQuestion: "사고가 많은 곳은 어디인가?",
-      reframedQuestion: "사고 이력이 부족한 하남교산에서 먼저 현장 점검할 100m 격자는 어디인가?",
-      keyEvidence: "100m grid · 99,323 training · 770 target · LORO AUC 0.8604 · Lift 4.39x",
-      finalDeliverable: "고위험 격자 순위, 공개 증거 지도, 현장 검토 우선 후보",
-      proves: "공간 위험 신호를 검증하고 실제 검토 단위로 전환하는 역량",
+      reframedQuestion: "사고 이력이 부족한 하남교산에서 먼저 검토할 100m 위험 격자는 어디인가?",
+      keyEvidence: "100m grid · 99,323 training grids · 770 target grids · LORO AUC 0.8604 · Top-10% Lift 4.39x",
+      finalDeliverable: "고위험 격자 순위, 100m 위험 지도, 공개 Top-20 표, 현장 검토 우선 후보",
+      proves: "공간 위험 신호를 검증 지표와 현장 검토 단위로 전환하는 역량",
     },
     cardBrief: {
       problem:
-        "사고 이력과 행정구역 평균만으로는 저이력 신도시 내부의 세부 위험 구간을 먼저 검토하기 어려움.",
+        "사고 이력이 적은 신도시는 과거 사고 건수와 행정구역 평균만으로 내부의 세부 위험 구간을 먼저 고르기 어려움.",
       method:
-        "사고·교통·공간 데이터를 100m 격자로 통합하고 공간 좌표 포함 Random Forest를 LORO로 검증함.",
+        "사고·교통·공간 변수를 100m 격자로 통합하고, 공간 좌표 포함 Random Forest를 LORO로 검증해 지역 전이 가능성을 점검함.",
       output: [
-        "하남교산 고위험 격자 순위",
+        "하남교산 고위험 100m 격자 순위",
         "안전시설 현장 검토 우선 후보",
         "공개 Top-20 표",
         "100m 위험 지도와 검증 요약",
@@ -224,9 +224,9 @@ export const projects: Project[] = [
       linkNote: "GitHub README와 portfolio case study 문서에서 공개 증거 생성 방식, 검증 요약, Top-20 공개 경계를 확인할 수 있습니다.",
     },
     focusPoints: [
-      "행정구역 평균 대신 100m 격자를 실제 검토 단위로 설계",
+      "행정구역 평균 대신 100m 격자를 위험 산정과 현장 검토의 공통 단위로 설계",
       "공간 좌표 포함 Random Forest를 LORO로 검증해 지역 전이 가능성을 점검",
-      "모델 점수를 사고 예방 주장 없이 현장 점검 우선순위 신호로 번역",
+      "모델 점수를 사고 감소 효과가 아니라 현장 검토 우선순위 신호로 번역",
     ],
     links: [
       {
