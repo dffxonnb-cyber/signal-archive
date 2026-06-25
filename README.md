@@ -26,6 +26,12 @@
   <img alt="Data Portfolio" src="https://img.shields.io/badge/Data-Decision%20Archive-6b7280?style=flat-square" />
 </p>
 
+<p align="center">
+  <a href="https://signal-archive.vercel.app/start-here">
+    <img alt="Signal Archive reviewer path preview" src="docs/screenshots/signal-archive-reviewer-path-2026-06-25.svg" width="100%" />
+  </a>
+</p>
+
 ---
 
 ## Overview
@@ -118,29 +124,3 @@ Problem → Data → Criteria → Judgment → Output
 콘텐츠 업데이트 흐름은 `PORTFOLIO_UPDATE_GUIDE.md`, 검증 범위는 `VERIFY.md`에서 확인할 수 있습니다.
 
 ---
-
-## Local Development
-
-```bash
-npm install
-npm run dev
-```
-
----
-
-## Quality Checks
-
-```bash
-npm run typecheck
-npm run lint
-npm run build
-```
-
-GitHub Actions는 `main` 브랜치에 대한 push와 pull request에서 저장소 검증을 실행합니다.
-
----
-
-<p align="center">
-  <strong>Signal Archive</strong><br/>
-  Data projects translated into criteria, risk signals, and reviewable decision tools.
-</p>
