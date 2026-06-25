@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="760" viewBox="0 0 1440 760" role="img" aria-labelledby="title desc">
+  <title id="title">Signal Archive reviewer path preview</title>
+  <desc id="desc">A dark portfolio preview showing the Signal Archive reviewer path: Redveil, Shelter Signal, LH Traffic Safety, and supporting CRM dashboard evidence.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#071013"/>
+      <stop offset="58%" stop-color="#0d1618"/>
+      <stop offset="100%" stop-color="#101719"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#172226" stop-opacity="0.96"/>
+      <stop offset="100%" stop-color="#0b1113" stop-opacity="0.96"/>
+    </linearGradient>
+    <linearGradient id="warm" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#d3b36f" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#94b8aa" stop-opacity="0.10"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="22" stdDeviation="22" flood-color="#000000" flood-opacity="0.42"/>
+    </filter>
+    <style>
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; letter-spacing: .12em; }
+      .sans { font-family: Inter, Pretendard, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .title { font-size: 58px; font-weight: 850; fill: #f4f7f2; letter-spacing: -0.05em; }
+      .lead { font-size: 22px; font-weight: 500; fill: #cfe4dc; line-height: 1.55; }
+      .small { font-size: 14px; fill: #94b8aa; font-weight: 800; }
+      .label { font-size: 13px; fill: #8fb5c8; font-weight: 800; }
+      .card-title { font-size: 21px; fill: #f6f6ed; font-weight: 850; }
+      .card-sub { font-size: 15px; fill: #bbd4cc; font-weight: 500; }
+      .num { font-size: 15px; fill: #e1c378; font-weight: 850; }
+      .metric { font-size: 28px; fill: #e4c36f; font-weight: 850; }
+      .muted { fill: #8da7a0; }
+    </style>
+  </defs>
+
+  <rect width="1440" height="760" fill="url(#bg)"/>
+  <rect x="70" y="54" width="1300" height="650" rx="28" fill="#070c0e" opacity="0.56"/>
+  <rect x="100" y="78" width="1240" height="604" rx="18" fill="url(#panel)" stroke="#26393d" filter="url(#shadow)"/>
+
+  <g transform="translate(144 126)">
+    <text class="mono label" x="0" y="0">SIGNAL ARCHIVE · REVIEWER PATH</text>
+    <text class="sans title" x="0" y="72">데이터를 판단 근거와</text>
+    <text class="sans title" x="0" y="138">의사결정 신호로 번역하는 포트폴리오</text>
+    <text class="sans lead" x="0" y="194">README에서 끝나는 포트폴리오가 아니라, 리뷰어가 실제로</text>
+    <text class="sans lead" x="0" y="228">먼저 열어볼 순서와 검증 가능한 산출물을 함께 보여줍니다.</text>
+
+    <rect x="0" y="270" width="690" height="48" rx="10" fill="url(#warm)" stroke="#564b32"/>
+    <text class="mono num" x="18" y="301">OPEN FIRST</text>
+    <text class="sans card-sub" x="138" y="301" fill="#f6f6ed">01 Redveil → 02 Shelter Signal → 03 LH Traffic Safety</text>
+
+    <g transform="translate(0 356)">
+      <rect x="0" y="0" width="238" height="106" rx="14" fill="#10191b" stroke="#2b4246"/>
+      <text class="mono label" x="20" y="32">MAIN PROOF</text>
+      <text class="sans card-title" x="20" y="64">Redveil</text>
+      <text class="sans card-sub" x="20" y="88">보류 사유 · 대체 후보</text>
+    </g>
+    <g transform="translate(258 356)">
+      <rect x="0" y="0" width="238" height="106" rx="14" fill="#10191b" stroke="#2b4246"/>
+      <text class="mono label" x="20" y="32">PUBLIC DATA</text>
+      <text class="sans card-title" x="20" y="64">Shelter Signal</text>
+      <text class="sans card-sub" x="20" y="88">API · PWA · reliability</text>
+    </g>
+    <g transform="translate(516 356)">
+      <rect x="0" y="0" width="238" height="106" rx="14" fill="#10191b" stroke="#2b4246"/>
+      <text class="mono label" x="20" y="32">SPATIAL</text>
+      <text class="sans card-title" x="20" y="64">LH Traffic Safety</text>
+      <text class="sans card-sub" x="20" y="88">100m grid · LORO</text>
+    </g>
+  </g>
+
+  <g transform="translate(850 120)">
+    <rect x="0" y="0" width="444" height="502" rx="18" fill="#0c1416" stroke="#2b4246"/>
+    <text class="mono label" x="34" y="46">30-SECOND SCAN</text>
+    <line x1="34" y1="78" x2="410" y2="78" stroke="#26393d"/>
+
+    <text class="mono small" x="34" y="124">FOR</text>
+    <text class="sans card-sub" x="34" y="154">채용 리뷰어가 빠르게 검토하는 Korean-first data portfolio</text>
+    <line x1="34" y1="188" x2="410" y2="188" stroke="#26393d"/>
+
+    <text class="mono small" x="34" y="232">CORE LENS</text>
+    <text class="sans card-title" x="34" y="266">Signal → Criteria → Decision</text>
+    <text class="sans card-sub" x="34" y="294">판단 기준 · 리스크 신호 · 검증 가능한 산출물</text>
+    <line x1="34" y1="328" x2="410" y2="328" stroke="#26393d"/>
+
+    <text class="mono small" x="34" y="372">SUPPORTING EVIDENCE</text>
+    <text class="sans metric" x="34" y="410">AUC 0.8604</text>
+    <text class="sans card-sub" x="34" y="438">LH spatial validation</text>
+    <text class="sans metric" x="238" y="410">AUC 0.8147</text>
+    <text class="sans card-sub" x="238" y="438">CRM model</text>
+  </g>
+</svg>
