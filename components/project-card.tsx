@@ -136,13 +136,6 @@ export function ProjectCard({ project, index, variant = "featured" }: ProjectCar
           ) : null}
         </div>
 
-        <div className="project-card__supporting-head">
-          <h2 className="project-card__title">
-            <Link href={`/projects/${project.slug}`}>{project.title}</Link>
-          </h2>
-          <span className="project-card__eyebrow">{project.period}</span>
-        </div>
-
         <div className="project-card__supporting-proof">
           <span className="project-card__meta-label">Decision Question</span>
           <p>{project.review.decisionQuestion}</p>

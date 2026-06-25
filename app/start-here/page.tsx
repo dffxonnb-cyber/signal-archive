@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 import { PageHero } from "@/components/page-hero";
-import { SignalArchiveLogo } from "@/components/signal-archive-logo";
 import { projects } from "@/content/projects";
 
 export const metadata: Metadata = {
@@ -11,21 +10,98 @@ export const metadata: Metadata = {
     "Signal Archive를 처음 보는 리뷰어와 채용 담당자를 위한 빠른 판단 가이드입니다.",
 };
 
-const roleTracks = [
+const primarySequence = [
   {
-    label: "Data Analyst",
-    summary: "문제 정의, 지표 설계, 검증 가능한 분석 결과물 정리에 가장 직접적으로 맞습니다.",
-    proof: ["Python / SQL / pandas", "통계 검정과 모델 지표", "README와 웹 결과물로 전달"],
+    step: "01",
+    title: "Redveil",
+    href: "/projects/seoul-storefront-redveil",
+    note: "보류 기준과 대체 후보",
   },
   {
-    label: "Data Product Builder",
-    summary: "분석 결과를 React/Next/Vite 웹앱, 서버리스 API, 검증 스크립트까지 연결하는 프로젝트가 강점입니다.",
-    proof: ["React / TypeScript / Vercel", "serverless API route", "PWA와 case study"],
+    step: "02",
+    title: "Shelter Signal",
+    href: "/projects/shelter-signal",
+    note: "공공 API와 신뢰 상태",
   },
   {
-    label: "Pipeline / Automation Validation",
-    summary: "PostgreSQL, Docker, n8n, Mailpit을 활용해 로컬 데이터 파이프라인과 dry-run 흐름을 검증합니다.",
-    proof: ["SQL models/tests", "Docker Compose", "Mailpit smoke test"],
+    step: "03",
+    title: "LH Traffic Safety",
+    href: "/projects/lh-traffic-safety-analysis",
+    note: "공간 검증과 우선순위",
+  },
+];
+
+const reviewerPaths = [
+  {
+    label: "3-minute profile scan",
+    title: "전체 적합성 빠르게 보기",
+    summary: "전체 적합성을 빠르게 보려면 세 프로젝트를 이 순서로 열어 판단 기준과 산출물 경계를 확인합니다.",
+    openFirst: [
+      {
+        title: "Redveil",
+        href: "/projects/seoul-storefront-redveil",
+        reason: "대표 proof. 상권 데이터를 추천이 아니라 보류·비교 흐름으로 바꾼 증거",
+      },
+      {
+        title: "Shelter Signal",
+        href: "/projects/shelter-signal",
+        reason: "public-data API, PWA, cache/fallback 상태를 한 화면에서 확인",
+      },
+      {
+        title: "LH Traffic Safety",
+        href: "/projects/lh-traffic-safety-analysis",
+        reason: "100m 격자와 LORO 검증으로 공간 분석 깊이를 확인",
+      },
+    ],
+  },
+  {
+    label: "Spatial / Public Data role",
+    title: "공간·공공데이터 역할 검토",
+    summary: "공공데이터, 공간 신호, API 신뢰성, 검증 기준을 보는 역할이라면 이 경로가 가장 직접적입니다.",
+    openFirst: [
+      {
+        title: "Shelter Signal",
+        href: "/projects/shelter-signal",
+        reason: "data.go.kr 기반 current·urgent 분리와 fallback boundary",
+      },
+      {
+        title: "LH Traffic Safety",
+        href: "/projects/lh-traffic-safety-analysis",
+        reason: "공간 좌표, 100m grid, LORO AUC/Lift 검증",
+      },
+      {
+        title: "Redveil",
+        href: "/projects/seoul-storefront-redveil",
+        reason: "공공·상권 데이터를 reviewer-facing UI로 정리한 산출물",
+      },
+    ],
+  },
+  {
+    label: "Business / CRM role",
+    title: "비즈니스·CRM 역할 검토",
+    summary: "고객·상권·커머스 데이터를 액션과 KPI 언어로 바꾸는 능력을 볼 때의 경로입니다.",
+    openFirst: [
+      {
+        title: "Redveil",
+        href: "/projects/seoul-storefront-redveil",
+        reason: "비즈니스 의사결정 전 보류 기준을 설계한 대표 사례",
+      },
+      {
+        title: "Starbucks",
+        href: "/projects/starbucks-promotion-analysis",
+        reason: "고객·오퍼·채널 반응을 CRM 판단으로 번역",
+      },
+      {
+        title: "UK Retail",
+        href: "/projects/uk-online-retail-segment-analysis",
+        reason: "RFM 세그먼트와 구매 패턴 해석",
+      },
+      {
+        title: "ShopEasy",
+        href: "/projects/shopeasy",
+        reason: "전환 병목과 dashboard evidence로 보강",
+      },
+    ],
   },
 ];
 
@@ -67,6 +143,8 @@ const highlightedSlugs = [
   "shelter-signal",
   "lh-traffic-safety-analysis",
   "starbucks-promotion-analysis",
+  "uk-online-retail-segment-analysis",
+  "shopeasy",
 ];
 
 function getProject(slug: string) {
@@ -99,37 +177,51 @@ export default function StartHerePage() {
           eyebrow="Start Here"
           lead={
             <>
-              이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 문제를 어떻게 정의하고
-              데이터를 분석·웹앱·API·자동화 검증 흐름으로 바꾸는지를 보여주는 아카이브입니다. 처음 보는 사람은 아래
-              순서대로 보면 가장 빠르게 역량을 판단할 수 있습니다.
+              이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 모호한 문제를 판단 기준·리스크 신호·검토 가능한
+              산출물로 바꾸는 과정을 보여주는 아카이브입니다. 처음 보는 리뷰어는 목적에 맞는 경로로 열면 가장 빠르게
+              역량을 판단할 수 있습니다.
             </>
           }
           title="3분 안에 읽는 Signal Archive 리뷰어 가이드"
           titleId="start-here-title"
         >
-          <div className="start-hero__mark" aria-hidden="true">
-            <SignalArchiveLogo className="start-hero__logo" />
+          <div className="start-sequence-panel" aria-label="primary review sequence">
+            <span className="eyebrow">Open First</span>
+            <div className="start-sequence-panel__flow">
+              {primarySequence.map((item, index) => (
+                <Link className="start-sequence-panel__item" href={item.href} key={item.href}>
+                  <span>{item.step}</span>
+                  <strong>{item.title}</strong>
+                  <em>{item.note}</em>
+                  {index < primarySequence.length - 1 ? <b aria-hidden="true">→</b> : null}
+                </Link>
+              ))}
+            </div>
           </div>
         </PageHero>
 
         <section className="start-section">
           <div className="section-head">
-            <span className="eyebrow">Role Fit</span>
-            <h2 className="section-title">어떤 역할에 맞는가</h2>
+            <span className="eyebrow">Reviewer Paths</span>
+            <h2 className="section-title">검토 목적별로 먼저 열 프로젝트</h2>
           </div>
 
           <div className="start-card-grid start-card-grid--three">
-            {roleTracks.map((track) => (
-              <article className="start-card" key={track.label}>
-                <h3>{track.label}</h3>
-                <p>{track.summary}</p>
-                <div className="start-card__chips">
-                  {track.proof.map((item) => (
-                    <span className="start-chip" key={item}>
-                      {item}
-                    </span>
-                  ))}
+            {reviewerPaths.map((track) => (
+              <article className="start-card start-card--review-path" key={track.label}>
+                <div>
+                  <span className="eyebrow">{track.label}</span>
+                  <h3>{track.title}</h3>
                 </div>
+                <p>{track.summary}</p>
+                <ol className="start-open-list">
+                  {track.openFirst.map((item) => (
+                    <li key={`${track.label}-${item.title}`}>
+                      <Link href={item.href}>{item.title}</Link>
+                      <span>{item.reason}</span>
+                    </li>
+                  ))}
+                </ol>
               </article>
             ))}
           </div>
@@ -158,8 +250,8 @@ export default function StartHerePage() {
             <h2 className="section-title">대표 근거를 어디서 볼 것인가</h2>
             <p className="page-intro">
               각 프로젝트는 문제, 분석 구조, 공개 결과물, 검증 신호가 연결되어 있는지를 기준으로
-              배치했습니다. Redveil과 Shelter Signal은 선택을 서두르기 전에 먼저 확인해야 할 신호를
-              정리하고, 각각 보류 근거와 보호 종료 우선순위를 검토 흐름으로 바꿉니다.
+              배치했습니다. 대표 순서는 Redveil → Shelter Signal → LH Traffic Safety → Starbucks → UK Retail →
+              ShopEasy입니다. Job Signal Pipeline과 NBA 분석은 별도 확장 evidence로 읽으면 됩니다.
             </p>
           </div>
 

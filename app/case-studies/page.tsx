@@ -213,7 +213,7 @@ export default function CaseStudiesPage() {
               데이터를 리스크·우선순위 신호로 해석하며, 분석을 검토 가능한 의사결정 도구로 연결하는 과정입니다.
             </>
           }
-          meta={<span className="page-hero__meta-chip">데이터를 판단으로 바꾸는 5가지 방식.</span>}
+          meta={<span className="page-hero__meta-chip">Redveil · Shelter · LH를 관통하는 Signal → Criteria → Decision.</span>}
           panelPlacement="below"
           title="판단이 만들어지는 방식"
           titleId="decision-files-title"
@@ -222,7 +222,7 @@ export default function CaseStudiesPage() {
             <div className={styles.flowSummary}>
               <span className={styles.panelLabel}>검토 기준</span>
               <p className={styles.flowNote}>
-                신호를 읽고 기준을 세운 뒤, 리뷰어가 판단 근거와 결과물을 함께 확인할 수 있게 남깁니다.
+                Redveil, Shelter Signal, LH Traffic Safety에서 반복되는 신호를 읽고 기준을 세운 뒤, 리뷰어가 판단 근거와 결과물을 함께 확인할 수 있게 남깁니다.
               </p>
               <div aria-label="Signal to Criteria to Decision" className="page-hero__flow">
                 {archiveFlow.map((step, index) => (

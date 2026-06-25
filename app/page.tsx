@@ -7,32 +7,47 @@ import { homeProofPoints } from "@/content/proof-points";
 import { featuredProjects } from "@/content/projects";
 
 const scanRows = [
-  { label: "Positioning", value: "Data analyst translating data into decision signals" },
+  { label: "For", value: "채용 리뷰어가 빠르게 검토하는 Korean-first data portfolio" },
   { label: "Core Lens", value: "판단 기준 · 보류 사유 · 리스크 신호 · 검증 가능한 산출물" },
   { label: "Data", value: "Python · SQL · pandas · NumPy · scikit-learn · PostgreSQL" },
   { label: "Web", value: "React · Next.js · Vite · TypeScript · Tailwind CSS · Vercel" },
   { label: "Automation", value: "Docker · n8n · Mailpit · GitHub Actions · Python smoke tests" },
 ];
 
+const homePriorityLinks = [
+  {
+    label: "01 Redveil",
+    href: "/projects/seoul-storefront-redveil",
+  },
+  {
+    label: "02 Shelter Signal",
+    href: "/projects/shelter-signal",
+  },
+  {
+    label: "03 LH Traffic Safety",
+    href: "/projects/lh-traffic-safety-analysis",
+  },
+];
+
 const reviewPath = [
   {
     step: "01",
+    title: "Start Here",
+    detail: "3분 안에 목적별 검토 경로 확인",
+    href: "/start-here",
+    label: "Start Here 보기",
+  },
+  {
+    step: "02",
     title: "Projects",
-    detail: "대표 프로젝트와 근거 지표 확인",
+    detail: "Redveil·Shelter·LH 근거 우선 확인",
     href: "/projects",
     label: "Projects 보기",
   },
   {
-    step: "02",
-    title: "Resume",
-    detail: "기술 스택과 역할 적합성 확인",
-    href: "/resume",
-    label: "Resume 보기",
-  },
-  {
     step: "03",
     title: "Case Studies",
-    detail: "문제 해결 방식 확인",
+    detail: "Signal → Criteria → Decision 방식 확인",
     href: "/case-studies",
     label: "Case Studies 보기",
   },
@@ -75,6 +90,20 @@ const projectRoleMap = [
     href: "/projects/starbucks-promotion-analysis",
     label: "Starbucks 보기",
   },
+  {
+    step: "05",
+    title: "UK Retail",
+    detail: "RFM과 구매 패턴을 고객 유지·재활성화 판단으로 정리한 세그먼트 분석",
+    href: "/projects/uk-online-retail-segment-analysis",
+    label: "UK Retail 보기",
+  },
+  {
+    step: "06",
+    title: "ShopEasy",
+    detail: "주문 감소를 전환 병목과 A/B 테스트 가설로 연결한 커머스 대시보드",
+    href: "/projects/shopeasy",
+    label: "ShopEasy 보기",
+  },
 ];
 
 export default function HomePage() {
@@ -84,20 +113,15 @@ export default function HomePage() {
         <PageHero
           actions={
             <>
-              <Link className="button-link" href="/projects">
-                대표 프로젝트 보기
+              <Link className="button-link" href="/start-here">
+                3분 검토 경로
               </Link>
-              <Link className="button-link button-link--secondary" href="/resume">
-                Resume 보기
+              <Link className="button-link button-link--secondary" href="/projects">
+                대표 프로젝트
               </Link>
-              <a
-                className="button-link button-link--secondary"
-                href="https://github.com/dffxonnb-cyber"
-                rel="noreferrer"
-                target="_blank"
-              >
-                GitHub 보기
-              </a>
+              <Link className="button-link button-link--secondary" href="/case-studies">
+                Case Studies
+              </Link>
             </>
           }
           eyebrow="Signal Archive · Decision Archive"
@@ -108,13 +132,24 @@ export default function HomePage() {
             </>
           }
           meta={
-            <div className="home-hero__identity-chips" aria-label="core work keywords">
-              {["Decision Criteria", "Risk Signals", "Review Flow", "Evidence Output"].map((item) => (
-                <span className="chip chip--category" key={item}>
-                  {item}
-                </span>
-              ))}
-            </div>
+            <>
+              <div className="home-hero__identity-chips" aria-label="core work keywords">
+                {["Decision Criteria", "Risk Signals", "Review Flow", "Evidence Output"].map((item) => (
+                  <span className="chip chip--category" key={item}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <div className="home-hero__priority-strip" aria-label="recommended first projects">
+                <span>Open first</span>
+                {homePriorityLinks.map((item, index) => (
+                  <Link href={item.href} key={item.href}>
+                    {item.label}
+                    {index < homePriorityLinks.length - 1 ? <em aria-hidden="true">→</em> : null}
+                  </Link>
+                ))}
+              </div>
+            </>
           }
           title="데이터를 판단 근거와 의사결정 신호로 번역하는 포트폴리오 허브."
           titleId="home-title"

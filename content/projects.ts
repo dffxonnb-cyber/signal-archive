@@ -840,7 +840,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 6,
+    sortOrder: 5,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -1233,7 +1233,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 5,
+    sortOrder: 7,
     caseStudySlugs: ["pipeline-validation-design", "turn-analysis-into-a-decision-tool"],
     sections: [
       {
@@ -1376,7 +1376,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 7,
+    sortOrder: 6,
     caseStudySlugs: ["turn-analysis-into-a-decision-tool"],
     sections: [
       {
