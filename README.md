@@ -26,12 +26,6 @@
   <img alt="Data Portfolio" src="https://img.shields.io/badge/Data-Decision%20Archive-6b7280?style=flat-square" />
 </p>
 
-<p align="center">
-  <a href="https://signal-archive.vercel.app/start-here">
-    <img alt="Signal Archive reviewer path preview" src="docs/screenshots/signal-archive-reviewer-path-2026-06-25.svg" width="100%" />
-  </a>
-</p>
-
 ---
 
 ## Overview
