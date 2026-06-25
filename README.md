@@ -40,6 +40,18 @@ Problem → Data → Criteria → Judgment → Output
 
 ---
 
+## Live Preview
+
+| Home | Start Here |
+| --- | --- |
+| ![Signal Archive home page](docs/screenshots/reviewer-path-2026-06-25/home.png) | ![Signal Archive start here page](docs/screenshots/reviewer-path-2026-06-25/start-here.png) |
+
+| Projects | Case Studies |
+| --- | --- |
+| ![Signal Archive projects page](docs/screenshots/reviewer-path-2026-06-25/projects.png) | ![Signal Archive case studies page](docs/screenshots/reviewer-path-2026-06-25/case-studies.png) |
+
+---
+
 ## Reviewer Paths
 
 | Review Goal | Suggested Path | What it shows |
