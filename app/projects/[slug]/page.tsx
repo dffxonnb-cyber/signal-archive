@@ -91,7 +91,7 @@ export default async function ProjectDetailPage({
           { label: "What this proves", value: project.decisionMoment.proves },
         ];
 
-        const operationMeta = project.operationMeta;
+  const operationMeta = project.operationMeta;
 
   return (
     <main className="page-shell">

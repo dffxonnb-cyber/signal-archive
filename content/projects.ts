@@ -502,7 +502,7 @@ export const projects: Project[] = [
       deliverable: "현재 공고, 보호 종료 임박 신호, 데이터 상태를 함께 보여주는 live-first public-data service",
       hiringSignal: "공공 API의 불안정성을 숨기지 않고 신호 로직, cache/fallback, UI 상태로 분리해 구현할 수 있음",
     },
-        operationMeta: {
+    operationMeta: {
       lastVerifiedAt: "2026-06-12 09:30 KST",
       source: "production api",
       whyItMatters:
@@ -567,10 +567,26 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
-      { label: "Live Window",  value: "KST 30일", caption: "KST 기준 최근 30일 공고 수집", },
-      { label: "Urgent Signal", value: "D-Day~D-3", caption: "보호 종료 임박 공고 우선 분류", },
-      { label: "Server Cache", value: "5분 TTL", caption: "보호종료 임박 공고 우선 분류", },
-      { label: "View Modes", value: "4 views", caption: "current / urgent / protected / archive", },
+      {
+        label: "Live Window",
+        value: "KST 30일",
+        caption: "KST 기준 최근 30일 공고 수집",
+      },
+      {
+        label: "Urgent Signal",
+        value: "D-Day~D-3",
+        caption: "보호 종료 임박 공고 우선 분류",
+      },
+      {
+        label: "Server Cache",
+        value: "5분 TTL",
+        caption: "반복 호출 비용과 응답 지연 완화",
+      },
+      {
+        label: "View Modes",
+        value: "4 views",
+        caption: "current / urgent / protected / archive",
+      },
     ],
     evidencePoints: [
       {
