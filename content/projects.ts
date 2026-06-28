@@ -502,6 +502,51 @@ export const projects: Project[] = [
       deliverable: "현재 공고, 보호 종료 임박 신호, 데이터 상태를 함께 보여주는 live-first public-data service",
       hiringSignal: "공공 API의 불안정성을 숨기지 않고 신호 로직, cache/fallback, UI 상태로 분리해 구현할 수 있음",
     },
+        operationMeta: {
+      lastVerifiedAt: "2026-06-12 09:30 KST",
+      source: "production api",
+      whyItMatters:
+        "공공데이터 API의 지연, 누락, 만료 상태를 서비스 운영 흐름 안에서 처리하고, 마감 임박 공고를 분리해 실제 확인 가능한 archive로 구성했습니다.",
+      verified: [
+        "Live API 응답 기반 production source 확인",
+        "KST 최근 30일 dateRange 수집 구조 확인",
+        "region filter / page / limit 응답 구조 확인",
+        "deadline_status 기반 current / urgent / protected / archive 분리 확인",
+        "cache hit / miss 및 stale-live fallback 흐름 확인",
+      ],
+      designing: [
+        "장기 추세 대시보드",
+        "지역별 위험도 비교",
+        "보호소 단위 capacity signal",
+        "입양 가능성 기반 scoring",
+      ],
+      reviewChecklist: [
+        "최근 30일 live API 응답이 production source로 들어오는지",
+        "D-Day / D-1~3 / active / expired 상태가 분리되는지",
+        "current / urgent / protected / archive view가 목적별로 나뉘는지",
+        "API 실패 시 fallback path가 분리되어 있는지",
+      ],
+      risksHandled: [
+        {
+          risk: "공공데이터 API 응답 지연",
+          handling: "5분 TTL cache와 stale-live fallback으로 사용자 흐름을 유지",
+        },
+        {
+          risk: "마감일 기준 혼선",
+          handling: "D-Day, D-1~3, active, expired로 deadline_status를 분리",
+        },
+        {
+          risk: "지역명 검색 오인",
+          handling: "region alias와 filter normalization으로 보정",
+        },
+        {
+          risk: "live API 실패",
+          handling: "PostgreSQL, static, mock fallback 순서로 degraded state 구성",
+        },
+      ],
+    },
+    reviewerPriority: 1,
+    showInReviewerPath: true,
     decisionMoment: {
       originalQuestion: "구조동물 공고를 어떻게 조회하게 할 것인가?",
       reframedQuestion: "공고의 유효성, 보호 종료 임박도, 데이터 상태를 어떻게 함께 보여줄 것인가?",
@@ -522,9 +567,10 @@ export const projects: Project[] = [
       ],
     },
     metrics: [
-      { label: "Live Window", value: "KST 30일" },
-      { label: "Urgent Signal", value: "D-Day~D-3" },
-      { label: "Server Cache", value: "5분 TTL" },
+      { label: "Live Window",  value: "KST 30일", caption: "KST 기준 최근 30일 공고 수집", },
+      { label: "Urgent Signal", value: "D-Day~D-3", caption: "보호 종료 임박 공고 우선 분류", },
+      { label: "Server Cache", value: "5분 TTL", caption: "보호종료 임박 공고 우선 분류", },
+      { label: "View Modes", value: "4 views", caption: "current / urgent / protected / archive", },
     ],
     evidencePoints: [
       {

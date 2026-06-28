@@ -28,6 +28,22 @@ export type ProjectEvidencePoint = {
 export type ProjectMetric = {
   label: string;
   value: string;
+  caption?: string;
+};
+
+export type ProjectRiskHandled = {
+  risk: string;
+  handling: string;
+};
+
+export type ProjectOperationMeta = {
+  lastVerifiedAt: string;
+  source: string;
+  whyItMatters: string;
+  verified: string[];
+  designing: string[];
+  reviewChecklist: string[];
+  risksHandled: ProjectRiskHandled[];
 };
 
 export type ProjectReview = {
@@ -127,6 +143,9 @@ export type Project = {
   outcome: string;
   supportingLine: string;
   review: ProjectReview;
+  operationMeta?: ProjectOperationMeta;
+  reviewerPriority?: number;
+  showInReviewerPath?: boolean;
   decisionMoment: ProjectDecisionMoment;
   cardBrief: ProjectCardBrief;
   metrics: ProjectMetric[];
