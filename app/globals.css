@@ -6293,3 +6293,52 @@ detial-operation__risk:first-child {
     margin-top: var(--space-3);
   }
 }
+
+.detail-signal-evidence__grid {
+  align-items: stretch;
+}
+
+.detail-signal-evidence__item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+}
+
+.detail-signal-evidence__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012)),
+    rgba(255, 255, 255, 0.025);
+}
+
+.detail-signal-evidence__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.detail-signal-evidence__item figcaption {
+  flex: 1;
+  display: grid;
+  align-content: start;
+  gap: var(--space-2);
+}
+
+.detail-signal-evidence__item figcaption strong,
+.detail-signal-evidence__item figcaption span {
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .detail-signal-evidence__image {
+    aspect-ratio: 4 / 3;
+  }
+}
