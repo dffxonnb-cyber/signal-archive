@@ -5,20 +5,20 @@ import { ProjectExplorer } from "@/components/project-explorer";
 import { featuredProjects, projects } from "@/content/projects";
 
 const reviewerProjectPaths = [
-  {
+    {
     label: "3-minute scan",
-    title: "Redveil → Shelter → LH",
-    detail: "대표 proof, 공공 API/PWA, 공간 검증 깊이를 빠르게 이어서 확인합니다.",
+    title: "Shelter → Redveil → LH",
+    detail: "운영형 public-data service를 먼저 보고, 상권 리스크 UI와 공간 검증 깊이로 확장해 확인합니다.",
     projects: [
+      {
+        title: "Shelter Signal",
+        href: "/projects/shelter-signal",
+        reason: "live API · cache/fallback · urgent/archive 분리",
+      },
       {
         title: "Redveil",
         href: "/projects/seoul-storefront-redveil",
         reason: "보류 사유·대체 후보·검토 UI",
-      },
-      {
-        title: "Shelter Signal",
-        href: "/projects/shelter-signal",
-        reason: "public-data API와 cache/fallback boundary",
       },
       {
         title: "LH Traffic Safety",
@@ -103,7 +103,7 @@ export default function ProjectsPage() {
       <div className="site-container page-grid">
         <PageHero
           eyebrow="Evidence Board"
-          lead="Redveil을 대표 proof로 먼저 보고, Shelter Signal과 LH Traffic Safety에서 공공데이터·공간 검증 깊이를 확인한 뒤 CRM/dashboard evidence로 확장해 읽는 프로젝트 보드입니다."
+          lead="Shelter Signal에서 운영형 public-data service를 먼저 확인하고, Redveil의 상권 리스크 UI와 LH Traffic Safety의 공간 검증으로 확장해 읽는 프로젝트 보드입니다."
           title="Projects"
           titleId="projects-title"
         >
@@ -127,7 +127,7 @@ export default function ProjectsPage() {
               </h2>
             </div>
             <p className="page-intro">
-              평평한 gallery가 아니라, 질문별 evidence board로 읽도록 대표 proof와 supporting proof를 나눴습니다.
+              평평한 gallery가 아니라, 운영형 서비스·상권 판단·공간 검증을 질문별 evidence board로 읽도록 나눴습니다.
             </p>
           </div>
 
