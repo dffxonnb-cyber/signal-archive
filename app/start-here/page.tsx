@@ -13,15 +13,15 @@ export const metadata: Metadata = {
 const primarySequence = [
   {
     step: "01",
-    title: "Redveil",
-    href: "/projects/seoul-storefront-redveil",
-    note: "보류 기준과 대체 후보",
+    title: "Shelter Signal",
+    href: "/projects/shelter-signal",
+    note: "운영형 public-data service",
   },
   {
     step: "02",
-    title: "Shelter Signal",
-    href: "/projects/shelter-signal",
-    note: "공공 API와 신뢰 상태",
+    title: "Redveil",
+    href: "/projects/seoul-storefront-redveil",
+    note: "보류 기준과 대체 후보",
   },
   {
     step: "03",
@@ -35,17 +35,17 @@ const reviewerPaths = [
   {
     label: "3-minute profile scan",
     title: "전체 적합성 빠르게 보기",
-    summary: "전체 적합성을 빠르게 보려면 세 프로젝트를 이 순서로 열어 판단 기준과 산출물 경계를 확인합니다.",
+    summary: "전체 적합성을 빠르게 보려면 운영형 public-data service를 먼저 확인한 뒤, 상권 리스크 UI와 공간 검증으로 확장해 봅니다.",
     openFirst: [
-      {
-        title: "Redveil",
-        href: "/projects/seoul-storefront-redveil",
-        reason: "대표 proof. 상권 데이터를 추천이 아니라 보류·비교 흐름으로 바꾼 증거",
-      },
       {
         title: "Shelter Signal",
         href: "/projects/shelter-signal",
-        reason: "public-data API, PWA, cache/fallback 상태를 한 화면에서 확인",
+        reason: "live API, PWA, cache/fallback, current·urgent·archive 분리까지 한 화면에서 확인",
+      },
+      {
+        title: "Redveil",
+        href: "/projects/seoul-storefront-redveil",
+        reason: "상권 데이터를 추천이 아니라 보류·비교 흐름으로 바꾼 증거",
       },
       {
         title: "LH Traffic Safety",
@@ -139,8 +139,8 @@ const reviewFlow = [
 ];
 
 const highlightedSlugs = [
-  "seoul-storefront-redveil",
   "shelter-signal",
+  "seoul-storefront-redveil",
   "lh-traffic-safety-analysis",
   "starbucks-promotion-analysis",
   "uk-online-retail-segment-analysis",
@@ -177,14 +177,14 @@ export default function StartHerePage() {
           eyebrow="Start Here"
           lead={
             <>
-              이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 모호한 문제를 판단 기준·리스크 신호·검토 가능한
-              산출물로 바꾸는 과정을 보여주는 아카이브입니다. 처음 보는 리뷰어는 목적에 맞는 경로로 열면 가장 빠르게
-              역량을 판단할 수 있습니다.
+              이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 불완전한 데이터를 판단 기준·리스크 신호·검토 가능한
+              산출물로 바꾸는 과정을 보여주는 아카이브입니다. 처음 보는 리뷰어는 Shelter Signal에서 운영형 public-data
+              처리 방식을 먼저 확인한 뒤, 목적에 맞는 경로로 확장해 보면 가장 빠르게 역량을 판단할 수 있습니다.
             </>
           }
           title="3분 안에 읽는 Signal Archive 리뷰어 가이드"
           titleId="start-here-title"
-        >
+          >
           <div className="start-sequence-panel" aria-label="primary review sequence">
             <span className="eyebrow">Open First</span>
             <div className="start-sequence-panel__flow">
@@ -250,7 +250,7 @@ export default function StartHerePage() {
             <h2 className="section-title">대표 근거를 어디서 볼 것인가</h2>
             <p className="page-intro">
               각 프로젝트는 문제, 분석 구조, 공개 결과물, 검증 신호가 연결되어 있는지를 기준으로
-              배치했습니다. 대표 순서는 Redveil → Shelter Signal → LH Traffic Safety → Starbucks → UK Retail →
+              배치했습니다. 대표 순서는 Shelter Signal → Redveil → LH Traffic Safety → Starbucks → UK Retail →
               ShopEasy입니다. Job Signal Pipeline과 NBA 분석은 별도 확장 evidence로 읽으면 됩니다.
             </p>
           </div>
