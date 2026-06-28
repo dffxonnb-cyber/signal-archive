@@ -6216,3 +6216,38 @@ detial-operation__risk:first-child {
   }
 }
 
+.project-card__operation-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-grid-tight);
+  margin-top: var(--space-3);
+}
+
+.project-card__operation-pill {
+  display: grid;
+  gap: var(--space-1);
+  border: 1px solid rgba(148, 184, 170, 0.18);
+  border-radius: var(--radius-md);
+  background: rgba(148, 184, 170, 0.055);
+  padding: var(--space-2) var(--space-3);
+}
+
+.project-card__operation-pill span {
+  color: var(--text-muted);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-card__operation-pill strong {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .project-card__operation-strip {
+    grid-template-columns: 1fr;
+  }
+}
