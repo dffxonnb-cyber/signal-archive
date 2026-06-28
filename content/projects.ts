@@ -438,7 +438,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 1,
+    sortOrder: 2,
     caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool"],
     sections: [
       {
@@ -731,7 +731,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 2,
+    sortOrder: 1,
     caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool"],
     sections: [
       {
