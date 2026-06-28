@@ -6251,3 +6251,45 @@ detial-operation__risk:first-child {
     grid-template-columns: 1fr;
   }
 }
+
+.detail-evidence-grid {
+  align-items: stretch;
+}
+
+.detail-evidence-item {
+  min-width: 0;
+  min-height: clamp(128px, 12vw, 168px);
+  padding: clamp(16px, 2vw, 22px);
+}
+
+.detail-evidence-item span {
+  display: block;
+  line-height: 1.35;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.detail-evidence-item strong {
+  display: block;
+  margin-top: var(--space-4);
+  line-height: 1.42;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+
+.detail-evidence-item--lead strong {
+  max-width: 42rem;
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.45;
+}
+
+@media (max-width: 768px) {
+  .detail-evidence-item {
+    min-height: auto;
+  }
+
+  .detail-evidence-item strong {
+    margin-top: var(--space-3);
+  }
+}
