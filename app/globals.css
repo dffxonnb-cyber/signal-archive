@@ -6145,3 +6145,109 @@ main {
     font-size: 0.78rem;
   }
 }
+
+.detial-operation {
+  border-color: rgba(144, 184, 170, 0.18);
+  background:
+    liner-gradient(180degm rgba(148, 184, 170, 0.055)),
+    var(--surface-card);
+}
+
+.detail-operation__meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-grid);
+  margin: 0 0 var(--space-6)
+}
+
+.detial-operation__meta div,
+.detial-operation__panel {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.025);
+  padding: var(--space-card-compact);
+}
+
+.detial-operation__meta dt {
+  color: var(--text-muted);
+  font-size: var(--font-size-meta);
+  font-weight: ver(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.detial-operation__meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-grid);
+  margin-top: var(--space-3);
+}
+
+.detial-operation__pannel h3 {
+  margin: var(--space-2) 0 var(--space-3);
+  font-size: 1rem;
+}
+
+.detial-operation__pannel--muted {
+  opacity: 0.78;
+}
+
+.detial-operation__risk-list {
+  display: grid;
+  gap: var(--space-3);
+}
+
+detial-operation__risk:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.detial-operation__risk strong {
+  display: block;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  line-height: var(--line-height-body);
+}
+
+@media (max-width: 768px) {
+  .detial-operation__meta,
+  .detial-operation__split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card__operation-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-grid-tight);
+  margin-top: var(--space-3);
+}
+
+.project-card__operation-pill {
+  display: grid;
+  gap: var(--space-1);
+  border: 1px solid rgba(148, 184, 170, 0.18);
+  border-radius: var(--radius-md);
+  background: rgba(148, 184, 170, 0.055);
+  padding: var(--space-2) var(--space-3);
+}
+
+.project-card__operation-pill span {
+  color: var(--text-muted);
+  font-size: var(--font-size-caption);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.project-card__operation-pill strong {
+  color: var(--text-primary);
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+@media (max-width: 640px) {
+  .project-card__operation-strip {
+    grid-template-columns: 1fr;
+  }
+}

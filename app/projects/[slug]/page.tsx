@@ -91,6 +91,8 @@ export default async function ProjectDetailPage({
           { label: "What this proves", value: project.decisionMoment.proves },
         ];
 
+        const operationMeta = project.operationMeta;
+
   return (
     <main className="page-shell">
       <div className="site-container page-grid project-detail">
@@ -190,6 +192,74 @@ export default async function ProjectDetailPage({
               ))}
             </div>
           </section>
+
+          {operationMeta ? (
+            <section className="surface-card detail-section detail-operation">
+              <div className="detail-section__head">
+                <span className="eyebrow">Operation Evidence</span>
+                <h2 className="section-title">검증된 운영 구조</h2>
+                <p className="page-intro">{operationMeta.whyItMatters}</p>
+              </div>
+
+              <dl className="detail-operation__meta" aria-label="operation verification metadata">
+                <div>
+                  <dt>Last verified</dt>
+                  <dd>{operationMeta.lastVerifiedAt}</dd>
+                </div>
+                <div>
+                  <dt>Source</dt>
+                  <dd>{operationMeta.source}</dd>
+                </div>
+              </dl>
+
+              <div className="detail-operation__split">
+                <article className="detail-operation__panel">
+                  <span className="project-card__meta-label">Verified</span>
+                  <h3>검증된 것</h3>
+                  <ul className="list-stack list-stack--compact">
+                    {operationMeta.verified.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+
+                <article className="detail-operation__panel detail-operation__panel--muted">
+                  <span className="project-card__meta-label">Designing</span>
+                  <h3>설계 중인 것</h3>
+                  <ul className="list-stack list-stack--compact">
+                    {operationMeta.designing.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+              </div>
+
+              <div className="detail-operation__split">
+                <article className="detail-operation__panel">
+                  <span className="project-card__meta-label">Reviewer Checklist</span>
+                  <h3>리뷰어가 확인할 것</h3>
+                  <ul className="list-stack list-stack--compact">
+                    {operationMeta.reviewChecklist.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                </article>
+
+                <article className="detail-operation__panel">
+                  <span className="project-card__meta-label">Risks Handled</span>
+                  <h3>운영 리스크 처리</h3>
+                  <div className="detail-operation__risk-list">
+                    {operationMeta.risksHandled.map((item) => (
+                      <div className="detail-operation__risk" key={item.risk}>
+                        <strong>{item.risk}</strong>
+                        <p>{item.handling}</p>
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              </div>
+            </section>
+          ) : null}
 
           {signalCaseStudy ? (
             <section className="surface-card detail-section detail-signal-case" aria-labelledby="signal-case-study-title">

@@ -95,6 +95,13 @@ export function ProjectCard({ project, index, variant = "featured" }: ProjectCar
   const projectIndex = String(index ?? project.sortOrder).padStart(2, "0");
   const evidenceLabel = projectEvidenceLabels[project.slug];
   const metricChips = project.metrics;
+  const operationChips = project.operationMeta
+    ? [
+      { label: "Verified", value: project.operationMeta.lastVerifiedAt },
+      { label: "Source", value: project.operationMeta.source },
+      ]
+      :[];
+  
   const isPriority = variant === "featured";
   const projectType = project.problemTypes[0] ?? project.format;
   const tools = (project.cardTools.length > 0 ? project.cardTools : project.stack).slice(0, 4);
@@ -228,7 +235,18 @@ export function ProjectCard({ project, index, variant = "featured" }: ProjectCar
             ))}
           </div>
         ) : null}
-      </div>
+
+                {operationChips.length > 0 ? (
+          <div className="project-card__operation-strip" aria-label={`${project.title} operation metadata`}>
+            {operationChips.map((item) => (
+              <span className="project-card__operation-pill" key={`${item.label}-${item.value}`}>
+                <span>{item.label}</span>
+                <strong>{item.value}</strong>
+              </span>
+            ))}
+          </div>
+        ) : null}
+        </div>
 
       <div className="project-card__proof-grid" aria-label={`${project.title} hiring review fields`}>
         {proofBlocks.map((item) => (
