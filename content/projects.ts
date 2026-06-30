@@ -9,7 +9,7 @@ export const projects: Project[] = [
     category: "대표 프로젝트",
     primaryDomain: "공공데이터",
     summary:
-      "100m 격자 단위로 사고·교통·공간 위험 신호를 학습하고\nLORO 검증을 거쳐 하남교산 현장 검토 우선순위로 번역한\n공간 데이터 분석입니다.",
+      "100m 격자 단위로 사고·교통·공간 위험 신호를 학습하고\nLORO 검증과 public-safe evidence 경계를 거쳐 하남교산 현장 검토 우선순위로 번역한\n공간 데이터 분석입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["공공데이터", "도시", "교통", "공간 데이터 분석"],
@@ -28,15 +28,15 @@ export const projects: Project[] = [
     review: {
       decisionQuestion: "사고 이력이 부족한 신도시에서 어떤 100m 격자를 먼저 현장 검토해야 하는가?",
       myRole: "100m 격자 설계, 사고·교통·공간 변수 통합, 공간 좌표 포함 Random Forest, LORO 검증, Top-k 우선순위 도출",
-      evidence: "99,323 training grids → 770 target grids · LORO AUC 0.8604 · Top-10% Lift 4.39x",
+      evidence: "99,323 training grids → 770 target grids · LORO AUC 0.8604 · Top-10% Lift 4.39x · public-safe Top-20 review notes",
       deliverable: "고위험 100m 격자 순위와 공개 검증 근거를 연결한 현장 검토 우선순위 자료",
-      hiringSignal: "공간 모델 결과를 성능 지표, 공개 증거, 현장 검토 단위로 번역할 수 있음",
+      hiringSignal: "공간 모델 결과를 성능 지표, public-safe evidence boundary, 현장 검토 우선순위 언어로 번역할 수 있음",
     },
     decisionMoment: {
       originalQuestion: "사고가 많은 곳은 어디인가?",
       reframedQuestion: "사고 이력이 부족한 하남교산에서 먼저 검토할 100m 위험 격자는 어디인가?",
       keyEvidence: "100m grid · 99,323 training grids · 770 target grids · LORO AUC 0.8604 · Top-10% Lift 4.39x",
-      finalDeliverable: "고위험 격자 순위, 100m 위험 지도, 공개 Top-20 표, 현장 검토 우선 후보",
+      finalDeliverable: "고위험 격자 순위, 100m 위험 지도, public-safe Top-20 검토표, evidence audit",
       proves: "공간 위험 신호를 검증 지표와 현장 검토 단위로 전환하는 역량",
     },
     cardBrief: {
@@ -47,8 +47,8 @@ export const projects: Project[] = [
       output: [
         "하남교산 고위험 100m 격자 순위",
         "안전시설 현장 검토 우선 후보",
-        "공개 Top-20 표",
-        "100m 위험 지도와 검증 요약",
+        "public-safe Top-20 review notes",
+        "100m 위험 지도와 evidence audit",
       ],
     },
     metrics: [
@@ -63,23 +63,23 @@ export const projects: Project[] = [
       },
       {
         label: "공간 단위",
-        value: "행정구역 평균 대신 100m × 100m 격자를 위험도·후보 비교 단위로 사용",
-      },
-      {
-        label: "모델",
-        value: "공간 좌표를 포함한 Random Forest 기반 위험 모델",
+        value: "행정구역 평균 대신 100m × 100m 격자를 위험도·후보 비교·현장 검토의 공통 단위로 사용",
       },
       {
         label: "전이 검증",
-        value: "Mean LORO AUC 0.8604 · Top-10% Lift 4.39x · fold별 공개 원본은 needs confirmation",
+        value: "Mean LORO AUC 0.8604 · Worst holdout AUC 0.7979 · Top-10% Lift 4.39x",
       },
       {
         label: "후보 안정성",
         value: "Monte Carlo mean Jaccard 0.503을 Top-20 후보군 중첩의 참고값으로 사용",
       },
       {
+        label: "공개 검토표",
+        value: "public_top20_priority.csv에 public_review_note와 claim_boundary를 추가해 공개 가능한 검토 언어로 정리",
+      },
+      {
         label: "공개 경계",
-        value: "시설 패키지·추천 사유와 공개 Dashboard URL은 needs confirmation · 현장 검증 결과 없음",
+        value: "시설 패키지·추천 사유·Dashboard URL·현장 검증은 evidence audit에서 별도 경계로 관리",
       },
     ],
     signalCaseStudy: {
@@ -91,7 +91,7 @@ export const projects: Project[] = [
       flow: ["4개 기존 시·구", "100m grid", "사고·교통·공간 변수", "Spatial RF", "LORO validation", "risk score", "Top-k ranking", "inspection candidate"],
       evidenceTitle: "공개 가능한 공간·검증 근거",
       evidenceDescription:
-        "비공개 원천 데이터 없이 확인 가능한 범위·검증 요약, 100m 위험 지도, 공개 Top-20 표를 함께 제시합니다.",
+        "비공개 원천 데이터 없이 확인 가능한 범위·검증 요약, 100m 위험 지도, public-safe Top-20 검토표와 evidence audit을 함께 제시합니다.",
       evidence: [
         {
           src: "/evidence/lh-performance-summary.svg",
@@ -129,7 +129,7 @@ export const projects: Project[] = [
           src: "/evidence/lh-public-top20-preview.svg",
           alt: "공개 시나리오 CSV에서 확인 가능한 하남교산 상위 20개 격자 순위와 정규화 위험도 표",
           caption: "Public Top-20 · 현장 검토 우선 후보",
-          note: "시설 패키지와 추천 사유 원본은 공개되지 않아 needs confirmation으로 유지합니다.",
+          note: "공개 Top-20에는 review note와 claim boundary를 추가했고, 시설 패키지·추천 사유 원본은 needs confirmation으로 유지합니다.",
           width: 1440,
           height: 1280,
         },
@@ -167,8 +167,8 @@ export const projects: Project[] = [
           label: "05 Risk Ranking",
           title: "위험 점수를 Top-k 검토 후보로 변환",
           description:
-            "하남교산 격자를 위험도 순으로 정렬하고 공개 가능한 Top-20 표를 별도 증거로 제공합니다.",
-          points: ["공개 표는 순위·정규화 위험도만 포함", "비공개 결과는 needs confirmation"],
+            "하남교산 격자를 위험도 순으로 정렬하고 공개 가능한 Top-20 검토표를 별도 증거로 제공합니다.",
+          points: ["공개 표는 순위·정규화 위험도·review note·claim boundary 포함", "비공개 결과는 needs confirmation"],
         },
         {
           label: "06 Decision Use",
@@ -207,7 +207,7 @@ export const projects: Project[] = [
           "공간 좌표 포함 Random Forest로 사고 발생 위험 신호 학습",
           "LORO로 지역 전이 구분력과 상위 위험 후보 집중도 검증",
           "하남교산 770개 격자를 위험도 순으로 정렬해 현장 검토 후보 도출",
-          "공개 성능 카드·검증 요약·위험 지도·Top-20 표로 증거 경로 구성",
+          "공개 성능 카드·검증 요약·위험 지도·Top-20 검토표·evidence audit로 증거 경로 구성",
         ],
         metrics: ["Mean LORO AUC 0.8604", "Top-10% Lift 4.39x", "Worst holdout AUC 0.7979", "Monte Carlo mean Jaccard 0.503"],
       },
@@ -215,7 +215,7 @@ export const projects: Project[] = [
         "적용 전후 시나리오는 실제 사고 감소 효과나 인과효과를 증명하지 않습니다.",
         "모델 출력은 시설 설치 결정이 아니라 현장 점검 우선순위를 위한 위험 신호입니다.",
         "실제 시설 결정에는 현장 조사, 예산, 법규, 주민 수요, 행정 절차가 필요합니다.",
-        "원본 공모전 데이터와 시설 패키지·추천 사유 최종 결과는 공개되지 않아 일부 재현이 제한됩니다.",
+        "원본 공모전 데이터와 시설 패키지·추천 사유 최종 결과는 공개되지 않으며, 공개 Top-20은 review note와 claim boundary 중심의 검토표로 제한됩니다.",
         "LORO 공개 근거는 요약 지표이며 fold별 원본 결과와 검증 가능한 공개 Dashboard URL은 needs confirmation입니다.",
         "실제 현장 점검 결과와 사고 감소 사후 검증 결과는 없습니다.",
         "공간 전이는 지역별 도로 구조와 생활권 차이의 영향을 받을 수 있습니다.",
