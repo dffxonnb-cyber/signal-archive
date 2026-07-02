@@ -21,7 +21,7 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "분석 결과를 차트나 점수에서 멈추지 않고, 사용자가 다음 판단을 이어갈 수 있는 검토 흐름과 산출물로 연결합니다.",
     keyMoves: [
-      "Redveil의 리스크 점수·보류 사유·대체 후보를 하나의 웹 검토 순서로 연결합니다.",
+      "Redveil의 리스크 점수에서 보류 사유, 대체 후보 비교, Hold Memo, Comparison Memo, Professional Review Checklist까지 이어지는 reviewable decision artifact 흐름을 연결합니다.",
       "Shelter Signal의 region/page API와 current·urgent view를 대량 공공데이터 탐색 흐름으로 연결합니다.",
       "Starbucks 분석의 고객·오퍼·채널 비교를 Tableau 대시보드와 액션 인사이트로 정리합니다.",
     ],

@@ -267,7 +267,7 @@ export const projects: Project[] = [
     status: "featured",
     category: "대표 프로젝트",
     primaryDomain: "상권/부동산",
-    summary: "상가 후보를 고르기 전에 먼저 멈춰야 할\n가격 부담·거래 둔화·과밀 신호를 검토하는\n상권 리스크 UI입니다.",
+    summary: "상가 후보를 고르기 전에 먼저 멈춰야 할\n가격 부담·거래 둔화·과밀 신호와 재확인 항목을\nreview memo로 정리하는 상권 리스크 UI입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["상권 분석", "공공데이터", "리스크 모델링", "웹 구현"],
@@ -276,37 +276,37 @@ export const projects: Project[] = [
     cardTools: ["Python", "Pandas", "Static JS", "GitHub Pages"],
     stack: ["Python", "pandas", "requests", "SQL review queries", "Static HTML/CSS/JS", "Streamlit prototype", "GitHub Pages", "GitHub Actions", "Playwright checks"],
     problemTypes: ["의사결정 도구"],
-    coreTags: ["리스크 사유", "대체 후보", "공개 사이트", "공공데이터"],
-    badges: ["Featured", "End-to-End", "Public-facing"],
+    coreTags: ["리스크 사유", "대체 후보", "Decision Artifact", "공공데이터"],
+    badges: ["Featured", "End-to-End", "Public-facing", "Decision Artifact"],
     context:
-      "상권 데이터는 많지만, 매입 전 검토 단계에서 어떤 신호를 보류 사유로 읽어야 하는지는 바로 보이지 않습니다. Redveil은 후보를 고르기 전에 가격 부담, 거래 둔화, 과밀 신호와 대체 후보를 먼저 확인하는 흐름으로 설계했습니다.",
+      "상권 데이터는 많지만, 매입 전 검토 단계에서 어떤 신호를 보류 사유와 재확인 항목으로 읽어야 하는지는 바로 보이지 않습니다. Redveil은 후보를 고르기 전에 가격 부담, 거래 둔화, 과밀 신호, 대체 후보 비교, professional review handoff를 먼저 확인하는 pause-first review 흐름으로 설계했습니다.",
     outcome:
-      "서울 25개 구 상권·거래 데이터를 정리해 리스크 점수, 보류 사유, 대체 후보 비교를 한 화면에서 검토할 수 있는 공개 웹 UI로 구현했습니다.",  
-    supportingLine: "보류 근거와 대체 후보를 함께 보여주는 상권 리스크 검토 프로토타입",
+      "서울 25개 구 상권·거래 데이터를 정리해 리스크 점수, 보류 사유, 대체 후보 비교, Hold Memo, Comparison Memo, Professional Review Checklist를 검토할 수 있는 공개 웹 UI로 구현했습니다.",
+    supportingLine: "보류 근거, 대체 후보, review memo를 함께 보여주는 상권 리스크 검토 프로토타입",
     review: {
       decisionQuestion: "상가 후보를 고르기 전에 어떤 보류 신호를 먼저 확인해야 하는가?",
       myRole: "리스크 기준 설계, 거래/상권 데이터 구조화, public-safe payload 정리, 정적 웹 UI 구현",
-      evidence: "서울 25개 구 / 행정동 427개 / 거래 12,074건 / 취약 상권 1,520개 / GitHub Pages production evidence",
-      deliverable: "보류 사유와 대체 후보를 함께 보여주는 공개 상권 리스크 검토 UI",
-      hiringSignal: "분석 결과를 추천이 아니라 보류 기준, 대체 후보, 검토 UI로 번역할 수 있음",
+      evidence: "서울 25개 구 / 행정동 427개 / 거래 12,074건 / 취약 상권 1,520개 / GitHub Pages production evidence / V2 decision artifact evidence",
+      deliverable: "보류 사유, 대체 후보 비교, Hold Memo, Comparison Memo, Professional Review Checklist를 연결한 공개 상권 리스크 검토 UI",
+      hiringSignal: "분석 결과를 추천이 아니라 보류 기준, comparison baseline, re-check items, professional review handoff로 번역할 수 있음",
 },
     decisionMoment: {
       originalQuestion: "어떤 상권이 좋아 보이는가?",
       reframedQuestion: "상가 후보를 고르기 전에 먼저 멈춰야 할 리스크 신호는 무엇인가?",
       keyEvidence: "서울 25개 구, 행정동 427개, 취약 상권 1,520개, 거래 12,074건",
-      finalDeliverable: "보류 사유, 리스크 축, 대체 후보 비교를 연결한 공개 웹 UI",
-      proves: "상권 데이터를 추천 결과가 아니라 검토 기준과 보류 신호로 번역하는 역량",
+      finalDeliverable: "보류 사유, 리스크 축, 대체 후보 비교, copy/export 가능한 decision artifact를 연결한 공개 웹 UI",
+      proves: "상권 데이터를 추천 결과가 아니라 검토 기준, 보류 신호, professional review handoff로 번역하는 역량",
 },
     cardBrief: {
       problem:
-        "상가 후보를 고르기 전에 가격 부담, 거래 둔화, 과밀 신호를 보류 사유로 먼저 검토할 필요가 있었음.",
+        "상가 후보를 고르기 전에 가격 부담, 거래 둔화, 과밀 신호를 보류 사유와 re-check item으로 먼저 검토할 필요가 있었음.",
       method:
-        "서울 구·행정동·거래 데이터를 정리해 리스크 축을 만들고, 보류 사유와 대체 후보를 함께 읽는 정적 웹 UI로 구현함.",
+        "서울 구·행정동·거래 데이터를 정리해 리스크 축을 만들고, 보류 사유·대체 후보·Hold Memo·Comparison Memo·Professional Review Checklist를 함께 읽는 정적 웹 UI로 구현함.",
       output: [
         "상권 리스크 점수",
         "보류 사유 요약",
-        "대체 후보 비교",
-        "GitHub Pages 공개 검토 UI",
+        "대체 후보 비교와 comparison baseline",
+        "Hold Memo / Comparison Memo / Professional Review Checklist",
   ],
 },
     metrics: [
@@ -329,7 +329,11 @@ export const projects: Project[] = [
       },
       {
         label: "Delivery",
-        value: "리스크 점수, 보류 사유, 대체 후보를 GitHub Pages 정적 웹에서 바로 확인",
+        value: "리스크 점수, 보류 사유, 대체 후보, Hold Memo, Comparison Memo를 GitHub Pages 정적 웹에서 바로 확인",
+      },
+      {
+        label: "V2 Decision Artifact",
+        value: "Hold Memo copy/export, Comparison Memo copy/export, Professional Review Checklist UI와 memo text 포함까지 검증",
       },
       {
         label: "Public Verification",
@@ -337,7 +341,7 @@ export const projects: Project[] = [
       },
       {
         label: "QA Boundary",
-        value: "v1은 stable public website, v2는 app/site/v2/ isolated experiment로 분리하고 투자 추천·수익률 검증은 주장하지 않음",
+        value: "portfolio prototype이며 투자 추천, buy/sell recommendation, 수익률 예측, 법률·세무·금융·중개·현장 전문 검토 대체를 주장하지 않음",
       },
     ],
     signalCaseStudy: {
@@ -345,8 +349,8 @@ export const projects: Project[] = [
       title: "추천보다 먼저 멈춰야 할 이유를 보여주는 구조",
       thesis:
         "서울 상가 후보를 추천하는 대신 가격 부담, 거래 둔화, 변동성, 상권 과밀을 같은 기준으로 비교해 추가 확인이 필요한 이유를 먼저 보여주는 리스크 스크리닝 프로토타입입니다.",
-      chips: ["Pause-first", "25 Districts", "12,074 Transactions", "Low-sample Warning", "Public Payload", "GitHub Pages"],
-      flow: ["Public data", "Risk signals", "Pause reasons", "District comparison", "Alternative candidates", "Review memo"],
+      chips: ["Pause-first", "25 Districts", "12,074 Transactions", "Decision Artifact", "Professional Handoff", "GitHub Pages"],
+      flow: ["Public data", "Risk score", "Pause reasons", "Alternative comparison", "Hold Memo", "Comparison Memo", "Professional Review Checklist"],
       evidenceTitle: "Production 검토 화면",
       evidenceDescription: "Primary GitHub Pages의 홈 decision surface와 구별 리포트로 현재 공개 검토 흐름을 확인했습니다.",
       evidence: [
@@ -403,22 +407,24 @@ export const projects: Project[] = [
         process: [
           "리스크 사유 중심으로 데이터 구조 재정리",
           "점수, 보류 이유, 대체 후보 비교 흐름 설계",
+          "Hold Memo, Comparison Memo, Professional Review Checklist를 decision artifact로 연결",
           "웹 페이지에서 바로 검토 가능한 형태로 구현",
         ],
-        metrics: ["상권 리스크 기준", "보류 사유 분류 기준", "대체 후보 비교 기준"],
+        metrics: ["상권 리스크 기준", "보류 사유 분류 기준", "대체 후보 비교 기준", "professional review handoff checklist"],
       },
       limitations: [
         "portfolio prototype이며 금융·법률·부동산 투자 자문이나 buy/sell recommendation이 아닙니다.",
         "공개 가능한 public-safe snapshot 기준으로 구성되어 raw data 전체 재빌드는 로컬 원천 데이터가 필요합니다.",
         "실시간 공실률, 유동 인구, 운영 매출, 임대차 조건, 권리금, 관리비, 법적 제약 같은 추가 변수는 아직 결합하지 않았습니다.",
         "실제 투자 결과와 연결한 장기 검증은 포함하지 않았습니다.",
-        "Redveil v2는 app/site/v2/ 아래의 isolated experiment이며 현재 기본 public review flow는 v1으로 유지합니다.",
+        "V2 decision artifact layer는 Hold Memo, Comparison Memo, Professional Review Checklist를 추가했지만 기존 public V1 review flow를 대체하지 않습니다.",
       ],
       linkNote: "서비스 페이지와 GitHub 저장소 문서에서 서비스 흐름과 설명 자료를 함께 확인할 수 있습니다.",
     },
     focusPoints: [
-      "상권 분석 결과를 추천 리스트가 아니라 보류 신호 검토 UI로 구현",
-      "리스크 점수보다 보류 사유와 대체 후보가 먼저 읽히는 정보 구조 설계",
+      "상권 분석 결과를 추천 리스트가 아니라 보류 신호와 decision artifact 검토 UI로 구현",
+      "리스크 점수보다 보류 사유, 대체 후보, 재확인 항목이 먼저 읽히는 정보 구조 설계",
+      "Hold Memo, Comparison Memo, Professional Review Checklist를 professional review handoff로 연결",
       "데이터 수집, 가공, 점수 계산, public-safe payload, GitHub Pages 배포까지 end-to-end로 연결",
     ],
     links: [
@@ -430,6 +436,11 @@ export const projects: Project[] = [
       {
         label: "Redveil QA Note",
         href: "https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil/blob/main/docs/REDVEIL_QA_2026-06-19.md",
+        type: "secondary",
+      },
+      {
+        label: "V2 Decision Artifact Evidence",
+        href: "https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil/blob/featrue/v2-decision-artifact/docs/evidence/v2-decision-artifact.md",
         type: "secondary",
       },
       {
@@ -445,21 +456,21 @@ export const projects: Project[] = [
         title: "프로젝트 개요",
         paragraphs: [
           "Redveil은 서울 상가 매입 전 검토에 필요한 확인 포인트를 빠르게 읽을 수 있게 만든 공개 웹 프로토타입입니다.",
-          "후보 선택을 서두르기 전에 보류 사유와 대체 후보를 먼저 검토하는 흐름을 중심에 두고 설계했습니다.",
+          "후보 선택을 서두르기 전에 보류 사유, 대체 후보, 재확인 항목을 먼저 검토하고 professional review handoff로 넘길 수 있게 설계했습니다.",
         ],
       },
       {
         title: "접근 방식",
         paragraphs: [
-          "공공데이터와 거래 데이터를 묶어 구 단위 비교, 매물 단건 검토, 대체 후보 비교, 사례/방법론 문서까지 하나의 서비스 흐름으로 연결했습니다.",
-          "분석 결과를 읽는 사람의 판단 순서를 고려해 점수, 사유, 비교, 후속 문서를 한 화면 안에서 이어지게 만들었습니다.",
+          "공공데이터와 거래 데이터를 묶어 구 단위 비교, 매물 단건 검토, 대체 후보 비교, Hold Memo/Comparison Memo export, 사례/방법론 문서까지 하나의 서비스 흐름으로 연결했습니다.",
+          "분석 결과를 읽는 사람의 판단 순서를 고려해 risk score, pause reasons, comparison baseline, re-check items, 후속 문서를 한 화면 안에서 이어지게 만들었습니다.",
         ],
       },
       {
-        title: "v1 / v2 QA boundary",
+        title: "v1 / v2 decision artifact boundary",
         paragraphs: [
-          "현재 public review flow는 v1을 기준으로 유지하고, v2는 app/site/v2/ 아래의 map-first dashboard experiment로 분리했습니다.",
-          "v2는 아직 기본 홈으로 승격하지 않았으며, Redveil 전체는 투자 추천이 아니라 매입 전 보류 신호와 대체 후보를 검토하는 portfolio prototype으로 해석해야 합니다.",
+          "기존 public V1 review flow는 유지하면서, V2는 review/compare 결과에 copy/export 가능한 Hold Memo, Comparison Memo, Professional Review Checklist를 decision artifact layer로 추가했습니다.",
+          "Redveil 전체는 투자 추천이 아니라 매입 전 보류 신호, 대체 후보 비교, 재확인 항목, professional review handoff를 검토하는 portfolio prototype으로 해석해야 합니다.",
         ],
       },
       {
