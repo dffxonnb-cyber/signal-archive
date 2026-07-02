@@ -8,6 +8,8 @@ Signal Archive를 검토할 때는 프로젝트 전체를 처음부터 끝까지
 2. Seoul Storefront Redveil
 3. Shelter Signal
 
+Redveil now demonstrates a pause-first decision artifact flow: risk signal → pause reason → alternative comparison → memo/checklist handoff.
+
 포지셔닝, 대표 프로젝트, live product evidence를 가장 빠르게 확인하는 경로입니다.
 
 ## Spatial / Public Data role
