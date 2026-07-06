@@ -16,16 +16,16 @@ const scanRows = [
 
 const homePriorityLinks = [
   {
-    label: "01 Redveil",
-    href: "/projects/seoul-storefront-redveil",
-  },
-  {
-    label: "02 Shelter Signal",
+    label: "01 Shelter Signal",
     href: "/projects/shelter-signal",
   },
   {
-    label: "03 LH Traffic Safety",
-    href: "/projects/lh-traffic-safety-analysis",
+    label: "02 Redveil",
+    href: "/projects/seoul-storefront-redveil",
+  },
+  {
+    label: "03 DecisionOps Lab",
+    href: "/projects/decisionops-lab",
   },
 ];
 
@@ -40,7 +40,7 @@ const reviewPath = [
   {
     step: "02",
     title: "Projects",
-    detail: "Redveil·Shelter·LH 근거 우선 확인",
+    detail: "Shelter·Redveil·DecisionOps 근거 우선 확인",
     href: "/projects",
     label: "Projects 보기",
   },
@@ -64,41 +64,48 @@ const reviewPath = [
 const projectRoleMap = [
   {
     step: "01",
-    title: "Redveil",
-    detail: "상권 후보를 추천하기보다 매입 전 보류 신호와 대체 후보를 먼저 검토하는 리스크 UI",
-    href: "/projects/seoul-storefront-redveil",
-    label: "Redveil 보기",
-  },
-  {
-    step: "02",
     title: "Shelter Signal",
     detail: "공공 API의 live/cache/fallback 상태와 보호 종료 임박 신호를 함께 보여주는 public-data service",
     href: "/projects/shelter-signal",
     label: "Shelter 보기",
   },
   {
+    step: "02",
+    title: "Redveil",
+    detail: "상권 후보를 추천하기보다 매입 전 보류 신호와 대체 후보를 먼저 검토하는 리스크 UI",
+    href: "/projects/seoul-storefront-redveil",
+    label: "Redveil 보기",
+  },
+  {
     step: "03",
+    title: "DecisionOps Lab",
+    detail: "raw event를 SQL mart, quality check, A/B evidence, multi-guardrail decision memo로 연결한 분석 의사결정 workflow",
+    href: "/projects/decisionops-lab",
+    label: "DecisionOps 보기",
+  },
+  {
+    step: "04",
     title: "LH Traffic Safety",
     detail: "100m 격자 위험 신호를 LORO 검증과 현장 검토 우선순위로 연결한 공간 분석",
     href: "/projects/lh-traffic-safety-analysis",
     label: "LH 보기",
   },
   {
-    step: "04",
+    step: "05",
     title: "Starbucks",
     detail: "고객·오퍼·채널 데이터를 CRM 액션과 마케팅 판단 언어로 번역한 반응 분석",
     href: "/projects/starbucks-promotion-analysis",
     label: "Starbucks 보기",
   },
   {
-    step: "05",
+    step: "06",
     title: "UK Retail",
     detail: "RFM과 구매 패턴을 고객 유지·재활성화 판단으로 정리한 세그먼트 분석",
     href: "/projects/uk-online-retail-segment-analysis",
     label: "UK Retail 보기",
   },
   {
-    step: "06",
+    step: "07",
     title: "ShopEasy",
     detail: "주문 감소를 전환 병목과 A/B 테스트 가설로 연결한 커머스 대시보드",
     href: "/projects/shopeasy",

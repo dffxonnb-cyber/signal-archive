@@ -5,10 +5,10 @@ import { ProjectExplorer } from "@/components/project-explorer";
 import { featuredProjects, projects } from "@/content/projects";
 
 const reviewerProjectPaths = [
-    {
+  {
     label: "3-minute scan",
-    title: "Shelter → Redveil → LH",
-    detail: "운영형 public-data service를 먼저 보고, 상권 리스크 UI와 공간 검증 깊이로 확장해 확인합니다.",
+    title: "Shelter → Redveil → DecisionOps",
+    detail: "운영형 public-data service를 먼저 보고, 상권 리스크 UI와 분석 의사결정 workflow로 확장해 확인합니다.",
     projects: [
       {
         title: "Shelter Signal",
@@ -21,9 +21,31 @@ const reviewerProjectPaths = [
         reason: "보류 사유·대체 후보·검토 UI",
       },
       {
-        title: "LH Traffic Safety",
-        href: "/projects/lh-traffic-safety-analysis",
-        reason: "100m grid와 LORO 검증",
+        title: "DecisionOps Lab",
+        href: "/projects/decisionops-lab",
+        reason: "SQL mart · A/B evidence · multi-guardrail decision memo",
+      },
+    ],
+  },
+  {
+    label: "Analytics / DecisionOps",
+    title: "분석 결과를 의사결정으로 번역",
+    detail: "차트나 모델 점수 이후의 품질 검증, guardrail, decision memo를 확인하는 경로입니다.",
+    projects: [
+      {
+        title: "DecisionOps Lab",
+        href: "/projects/decisionops-lab",
+        reason: "Ship / Retest / Hold / Investigate 판단 workflow",
+      },
+      {
+        title: "Starbucks",
+        href: "/projects/starbucks-promotion-analysis",
+        reason: "고객·오퍼·채널 반응",
+      },
+      {
+        title: "ShopEasy",
+        href: "/projects/shopeasy",
+        reason: "전환 병목과 A/B test 가설",
       },
     ],
   },
@@ -93,7 +115,7 @@ export default function ProjectsPage() {
     },
     {
       label: "Delivery Types",
-      value: "PWA · Dashboard",
+      value: "PWA · Decision Report",
       note: "serverless API · static site · case study",
     },
   ];
@@ -103,7 +125,7 @@ export default function ProjectsPage() {
       <div className="site-container page-grid">
         <PageHero
           eyebrow="Evidence Board"
-          lead="Shelter Signal에서 운영형 public-data service를 먼저 확인하고, Redveil의 상권 리스크 UI와 LH Traffic Safety의 공간 검증으로 확장해 읽는 프로젝트 보드입니다."
+          lead="Shelter Signal에서 운영형 public-data service를 먼저 확인하고, Redveil의 상권 리스크 UI와 DecisionOps Lab의 분석 의사결정 workflow로 확장해 읽는 프로젝트 보드입니다."
           title="Projects"
           titleId="projects-title"
         >
@@ -127,7 +149,7 @@ export default function ProjectsPage() {
               </h2>
             </div>
             <p className="page-intro">
-              평평한 gallery가 아니라, 운영형 서비스·상권 판단·공간 검증을 질문별 evidence board로 읽도록 나눴습니다.
+              평평한 gallery가 아니라, 운영형 서비스·상권 판단·분석 의사결정·공간 검증을 질문별 evidence board로 읽도록 나눴습니다.
             </p>
           </div>
 
