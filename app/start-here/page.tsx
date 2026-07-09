@@ -13,18 +13,24 @@ export const metadata: Metadata = {
 const primarySequence = [
   {
     step: "01",
+    title: "Redveil",
+    href: "/projects/seoul-storefront-redveil",
+    note: "single flagship decision artifact",
+  },
+  {
+    step: "02",
     title: "Shelter Signal",
     href: "/projects/shelter-signal",
     note: "운영형 public-data service",
   },
   {
-    step: "02",
-    title: "Redveil",
-    href: "/projects/seoul-storefront-redveil",
-    note: "보류 기준과 대체 후보",
+    step: "03",
+    title: "DecisionOps Lab",
+    href: "/projects/decisionops-lab",
+    note: "SQL·품질 gate·실험 판단",
   },
   {
-    step: "03",
+    step: "04",
     title: "LH Traffic Safety",
     href: "/projects/lh-traffic-safety-analysis",
     note: "공간 검증과 우선순위",
@@ -35,17 +41,22 @@ const reviewerPaths = [
   {
     label: "3-minute profile scan",
     title: "전체 적합성 빠르게 보기",
-    summary: "전체 적합성을 빠르게 보려면 운영형 public-data service를 먼저 확인한 뒤, 상권 리스크 UI와 공간 검증으로 확장해 봅니다.",
+    summary: "전체 적합성을 빠르게 보려면 Redveil의 decision artifact를 먼저 확인한 뒤, public-data service와 SQL/D7 guardrail workflow로 확장해 봅니다.",
     openFirst: [
+      {
+        title: "Redveil",
+        href: "/projects/seoul-storefront-redveil",
+        reason: "분석 결과를 보류 사유, 대체 후보, memo/checklist로 바꾼 단일 flagship",
+      },
       {
         title: "Shelter Signal",
         href: "/projects/shelter-signal",
         reason: "live API, PWA, cache/fallback, current·urgent·archive 분리까지 한 화면에서 확인",
       },
       {
-        title: "Redveil",
-        href: "/projects/seoul-storefront-redveil",
-        reason: "상권 데이터를 추천이 아니라 보류·비교 흐름으로 바꾼 증거",
+        title: "DecisionOps Lab",
+        href: "/projects/decisionops-lab",
+        reason: "SQL mart, 23 quality checks, A/B evidence, D7 guardrail decision memo 확인",
       },
       {
         title: "LH Traffic Safety",
@@ -60,6 +71,11 @@ const reviewerPaths = [
     summary: "공공데이터, 공간 신호, API 신뢰성, 검증 기준을 보는 역할이라면 이 경로가 가장 직접적입니다.",
     openFirst: [
       {
+        title: "Redveil",
+        href: "/projects/seoul-storefront-redveil",
+        reason: "대표 flagship으로 판단 기준과 claim boundary를 먼저 확인",
+      },
+      {
         title: "Shelter Signal",
         href: "/projects/shelter-signal",
         reason: "data.go.kr 기반 current·urgent 분리와 fallback boundary",
@@ -70,9 +86,9 @@ const reviewerPaths = [
         reason: "공간 좌표, 100m grid, LORO AUC/Lift 검증",
       },
       {
-        title: "Redveil",
-        href: "/projects/seoul-storefront-redveil",
-        reason: "공공·상권 데이터를 reviewer-facing UI로 정리한 산출물",
+        title: "DecisionOps Lab",
+        href: "/projects/decisionops-lab",
+        reason: "공공/공간 분석과 별도로 SQL 품질 gate와 실험 판단 구조를 보강",
       },
     ],
   },
@@ -87,19 +103,24 @@ const reviewerPaths = [
         reason: "비즈니스 의사결정 전 보류 기준을 설계한 대표 사례",
       },
       {
+        title: "DecisionOps Lab",
+        href: "/projects/decisionops-lab",
+        reason: "제품 지표와 A/B evidence를 D7 guardrail decision memo로 정리",
+      },
+      {
         title: "Starbucks",
         href: "/projects/starbucks-promotion-analysis",
-        reason: "고객·오퍼·채널 반응을 CRM 판단으로 번역",
+        reason: "supporting evidence: 고객·오퍼·채널 반응을 CRM 판단으로 번역",
       },
       {
         title: "UK Retail",
         href: "/projects/uk-online-retail-segment-analysis",
-        reason: "RFM 세그먼트와 구매 패턴 해석",
+        reason: "supporting evidence: RFM 세그먼트와 구매 패턴 해석",
       },
       {
         title: "ShopEasy",
         href: "/projects/shopeasy",
-        reason: "전환 병목과 dashboard evidence로 보강",
+        reason: "supporting evidence: 전환 병목과 dashboard evidence로 보강",
       },
     ],
   },
@@ -139,12 +160,15 @@ const reviewFlow = [
 ];
 
 const highlightedSlugs = [
-  "shelter-signal",
   "seoul-storefront-redveil",
+  "shelter-signal",
+  "decisionops-lab",
   "lh-traffic-safety-analysis",
   "starbucks-promotion-analysis",
   "uk-online-retail-segment-analysis",
   "shopeasy",
+  "job-signal-pipeline",
+  "nba-game-player-analysis",
 ];
 
 function getProject(slug: string) {
@@ -178,8 +202,8 @@ export default function StartHerePage() {
           lead={
             <>
               이 사이트는 프로젝트를 많이 나열하는 포트폴리오가 아니라, 불완전한 데이터를 판단 기준·리스크 신호·검토 가능한
-              산출물로 바꾸는 과정을 보여주는 아카이브입니다. 처음 보는 리뷰어는 Shelter Signal에서 운영형 public-data
-              처리 방식을 먼저 확인한 뒤, 목적에 맞는 경로로 확장해 보면 가장 빠르게 역량을 판단할 수 있습니다.
+              산출물로 바꾸는 과정을 보여주는 아카이브입니다. 처음 보는 리뷰어는 Redveil에서 flagship decision artifact를
+              먼저 확인한 뒤, Shelter Signal, DecisionOps Lab, LH Traffic Safety 순서로 확장해 보면 가장 빠르게 역량을 판단할 수 있습니다.
             </>
           }
           title="3분 안에 읽는 Signal Archive 리뷰어 가이드"
@@ -250,8 +274,8 @@ export default function StartHerePage() {
             <h2 className="section-title">대표 근거를 어디서 볼 것인가</h2>
             <p className="page-intro">
               각 프로젝트는 문제, 분석 구조, 공개 결과물, 검증 신호가 연결되어 있는지를 기준으로
-              배치했습니다. 대표 순서는 Shelter Signal → Redveil → LH Traffic Safety → Starbucks → UK Retail →
-              ShopEasy입니다. Job Signal Pipeline과 NBA 분석은 별도 확장 evidence로 읽으면 됩니다.
+              배치했습니다. 대표 순서는 Redveil → Shelter Signal → DecisionOps Lab → LH Traffic Safety입니다.
+              Starbucks, UK Retail, ShopEasy, Job Signal Pipeline, NBA 분석은 supporting evidence로 읽으면 됩니다.
             </p>
           </div>
 

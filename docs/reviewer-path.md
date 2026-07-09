@@ -1,16 +1,24 @@
 # Reviewer Path
 
-Signal Archive를 검토할 때는 프로젝트 전체를 처음부터 끝까지 보지 않아도 됩니다. 역할과 검토 목적에 따라 아래 순서로 보면 됩니다.
+Signal Archive를 검토할 때는 프로젝트 전체를 처음부터 끝까지 보지 않아도 됩니다. 기본 위계는 하나로 고정합니다.
+
+## Representative order
+
+1. Seoul Storefront Redveil
+2. Shelter Signal
+3. DecisionOps Lab
+4. LH Traffic Safety Analysis
+
+Redveil은 단일 flagship입니다. 가장 큰 프로젝트라서가 아니라, 분석 결과가 보류 사유, 대체 후보, memo/checklist handoff 같은 reviewable decision artifact로 바뀌는 방식을 가장 잘 보여주기 때문입니다.
 
 ## 3-minute profile scan
 
 1. Start Here
 2. Seoul Storefront Redveil
 3. Shelter Signal
+4. DecisionOps Lab
 
-Redveil now demonstrates a pause-first decision artifact flow: risk signal → pause reason → alternative comparison → memo/checklist handoff.
-
-포지셔닝, 대표 프로젝트, live product evidence를 가장 빠르게 확인하는 경로입니다.
+포지셔닝, 단일 flagship, live public-data service, SQL/D7 guardrail decision workflow를 가장 빠르게 확인하는 경로입니다.
 
 ## Analytics Engineering / Product Analyst role
 
@@ -18,20 +26,31 @@ Redveil now demonstrates a pause-first decision artifact flow: risk signal → p
 2. [Public Reviewer Report](https://dffxonnb-cyber.github.io/DecisionOps-lab/)
 3. Seoul Storefront Redveil
 
-SQL 모델링, 품질검증, 실험 해석, 가드레일 기반 의사결정 흐름을 확인하는 경로입니다.
+SQL 모델링, 23개 품질검증, activation lift, p-value, D7 revisit guardrail, scenario matrix 기반 의사결정 흐름을 확인하는 경로입니다.
 
 ## Spatial / Public Data role
 
-1. LH Traffic Safety Analysis
+1. Seoul Storefront Redveil
 2. Shelter Signal
-3. Seoul Storefront Redveil
+3. LH Traffic Safety Analysis
+4. DecisionOps Lab
 
-격자 기반 위험 신호, 공공데이터 API, 공간·도시 의사결정 구조를 확인하는 경로입니다.
+Redveil로 판단 산출물의 기준을 먼저 확인한 뒤, Shelter Signal의 API/cache/fallback 경계와 LH의 100m grid/LORO 검증을 봅니다. DecisionOps는 SQL 품질 gate와 D7 guardrail 실험 판단 workflow 보강 근거로 읽습니다.
 
 ## Business / CRM role
 
 1. Seoul Storefront Redveil
-2. Starbucks Promotion Analysis
-3. UK Online Retail Segment Analysis
+2. DecisionOps Lab
+3. Starbucks Promotion Analysis
+4. UK Online Retail Segment Analysis
+5. ShopEasy
 
-리스크 판단, 고객 반응 예측, 세그먼트 액션 설계를 함께 확인하는 경로입니다.
+Redveil과 DecisionOps를 대표 근거로 먼저 보고, Starbucks/UK Retail/ShopEasy는 CRM, segmentation, commerce dashboard, experiment proposal을 보강하는 supporting evidence로 확인합니다.
+
+## Supporting projects
+
+- Starbucks Promotion Analysis: CRM / marketing analytics supporting evidence
+- UK Online Retail Segment Analysis: RFM / segmentation supporting evidence
+- ShopEasy: commerce dashboard / experiment proposal supporting evidence
+- Job Signal Pipeline: mock/local SQL pipeline validation supporting evidence
+- NBA Game & Player Analysis: archive-level sports analytics evidence
