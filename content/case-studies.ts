@@ -23,9 +23,9 @@ export const caseStudies: CaseStudy[] = [
     keyMoves: [
       "Redveil의 리스크 점수에서 보류 사유, 대체 후보 비교, Hold Memo, Comparison Memo, Professional Review Checklist까지 이어지는 reviewable decision artifact 흐름을 연결합니다.",
       "Shelter Signal의 region/page API와 current·urgent view를 대량 공공데이터 탐색 흐름으로 연결합니다.",
-      "Starbucks 분석의 고객·오퍼·채널 비교를 Tableau 대시보드와 액션 인사이트로 정리합니다.",
+      "DecisionOps Lab의 SQL mart, 품질 gate, A/B evidence, guardrail review를 decision memo와 reviewer report로 연결합니다.",
     ],
-    linkedProjects: ["seoul-storefront-redveil", "shelter-signal", "starbucks-promotion-analysis"],
+    linkedProjects: ["seoul-storefront-redveil", "shelter-signal", "decisionops-lab"],
   },
   {
     slug: "segmenting-for-business-meaning",
@@ -35,10 +35,11 @@ export const caseStudies: CaseStudy[] = [
       "분석 지표와 모델 결과를 리뷰어가 실제 행동, 우선순위, 한계와 함께 이해할 수 있는 판단 언어로 번역합니다.",
     keyMoves: [
       "Starbucks의 반응 지표를 어떤 고객군·오퍼·채널을 검토할지에 대한 CRM 언어로 바꿉니다.",
+      "DecisionOps Lab의 Ship/Retest/Hold/Investigate 결과처럼 지표를 바로 결론으로 쓰지 않고 품질·guardrail 경계와 함께 해석합니다.",
       "LH 교통안전의 LORO AUC와 Lift를 어떤 100m 격자를 먼저 검토할지 설명하는 공간 근거와 함께 제시합니다.",
       "Shelter Signal의 source·cacheStatus·fallbackReason처럼 공공데이터 상태와 한계를 응답과 화면에서 함께 설명합니다.",
     ],
-    linkedProjects: ["starbucks-promotion-analysis", "lh-traffic-safety-analysis", "shelter-signal"],
+    linkedProjects: ["decisionops-lab", "starbucks-promotion-analysis", "lh-traffic-safety-analysis", "shelter-signal"],
   },
   {
     slug: "pipeline-validation-design",
@@ -47,10 +48,11 @@ export const caseStudies: CaseStudy[] = [
     summary:
       "live 운영 주장을 앞세우기보다, 어떤 데이터 경로가 실제로 검증됐는지 SQL tests와 dashboard로 확인 가능한 구조를 설계합니다.",
     keyMoves: [
-      "Job Signal Pipeline은 Saramin mock ingestion에서 raw.job_postings 적재, analytics views, SQL tests, Streamlit dashboard까지 한 경로로 검증합니다.",
+      "DecisionOps Lab은 synthetic product events를 SQL mart, data quality checks, A/B evidence, guardrail decision memo까지 한 경로로 검증합니다.",
+      "Job Signal Pipeline은 Saramin mock ingestion에서 raw.job_postings 적재, analytics views, SQL tests, local review dashboard까지 한 경로로 검증합니다.",
       "raw와 analytics schema를 분리해 원천 응답 보존과 리뷰 가능한 business logic을 나눕니다.",
-      "Saramin live API, production ingestion, notification 운영은 검증 범위 밖이라고 문서와 한계 섹션에서 분리합니다.",
+      "synthetic data, mock/local pipeline, notification dry-run 같은 claim boundary를 문서와 한계 섹션에서 분리합니다.",
     ],
-    linkedProjects: ["job-signal-pipeline"],
+    linkedProjects: ["decisionops-lab", "job-signal-pipeline"],
   },
 ];

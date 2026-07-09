@@ -20,6 +20,7 @@ const projectAccentClasses: Record<string, string> = {
   "lh-traffic-safety-analysis": "project-card--lh",
   "seoul-storefront-redveil": "project-card--redveil",
   "shelter-signal": "project-card--shelter",
+  "decisionops-lab": "project-card--default",
   "starbucks-promotion-analysis": "project-card--starbucks",
 };
 
@@ -27,6 +28,7 @@ const projectMediaTones: Record<string, string> = {
   "lh-traffic-safety-analysis": "steel",
   "seoul-storefront-redveil": "rust",
   "shelter-signal": "sage",
+  "decisionops-lab": "graphite",
   "starbucks-promotion-analysis": "coffee",
 };
 

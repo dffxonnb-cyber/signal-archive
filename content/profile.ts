@@ -10,7 +10,7 @@ export const profile: Profile = {
   "분석 결과를 차트에서 끝내지 않고, 판단 기준·리스크 신호·검토 가능한 산출물로 연결하는 데이터 의사결정 아카이브를 구축합니다.",
 summary: [
   "공공데이터, 상권 데이터, CRM 데이터처럼 성격이 다른 데이터를 목적에 맞는 분석 단위와 지표로 다시 정리하고, 검토자가 실제로 판단할 수 있는 기준·리스크 신호·웹 결과물로 연결하는 작업을 강점으로 삼고 있습니다.",
-  "React/Next/Vite 기반 웹앱, Vercel 서버리스 API route, PostgreSQL 데이터 파이프라인, Docker/n8n 로컬 자동화 검증을 프로젝트 범위에 맞게 조합해 왔습니다.",
+  "React/Next/Vite 기반 웹앱, Vercel 서버리스 API route, SQL 모델링, PostgreSQL local/fallback 검증, Docker/n8n/Mailpit dry-run evidence를 프로젝트 범위에 맞게 조합해 왔습니다.",
   "프로덕션 엔지니어링 범위를 과장하기보다, 분석 결과가 실제로 확인 가능한 화면·문서·검증 스크립트로 끝까지 이어지는 흐름을 중요하게 생각합니다.",
 ],
   strengths: [
@@ -46,7 +46,7 @@ summary: [
     {
       title: "Core Stack",
       summary: "분석과 구현을 함께 묶는 기본 작업 도구입니다.",
-      items: ["Python", "SQL", "TypeScript", "React", "Next.js", "Vite", "PostgreSQL", "Neon", "Docker", "Vercel", "GitHub"],
+      items: ["Python", "SQL", "TypeScript", "React", "Next.js", "Vite", "Vercel", "GitHub Pages", "GitHub Actions"],
     },
     {
       title: "Data Analysis & Statistics",
@@ -69,10 +69,10 @@ summary: [
     },
     {
       title: "Database & Pipeline",
-      summary: "분석 가능한 테이블 구조, 검증 가능한 SQL layer, 앱으로 넘기는 데이터 산출물을 구성합니다.",
+      summary: "분석 가능한 테이블 구조, 검증 가능한 SQL layer, local/fallback 범위의 데이터 산출물을 구성합니다.",
       items: [
         "PostgreSQL",
-        "Neon PostgreSQL",
+        "Neon fallback/historical evidence",
         "SQLAlchemy",
         "psycopg",
         "SQL Migrations",
@@ -100,7 +100,7 @@ summary: [
     {
       title: "Web & App",
       summary: "분석 결과를 사용자가 탐색할 수 있는 웹앱과 대시보드 형태로 구현합니다.",
-      items: ["React", "Next.js", "Vite", "TypeScript", "Tailwind CSS", "PWA", "Streamlit", "Static HTML/CSS/JS"],
+      items: ["React", "Next.js", "Vite", "TypeScript", "PWA", "Static HTML/CSS/JS"],
     },
     {
       title: "Serverless & API",
@@ -108,7 +108,7 @@ summary: [
       items: [
         "Vercel",
         "Vercel Serverless API Routes",
-        "Neon-backed PostgreSQL",
+        "PostgreSQL fallback path",
         "data.go.kr API",
         "Public Data API Integration",
         "API Response Normalization",
@@ -119,11 +119,10 @@ summary: [
       title: "Automation & Local Infra",
       summary: "운영 자동화가 아니라 로컬 검증과 dry-run 흐름을 재현 가능하게 만드는 데 사용합니다.",
       items: [
-        "Docker",
-        "Docker Compose",
-        "n8n",
-        "Mailpit",
-        "SMTP Local Capture",
+        "Docker Compose local validation",
+        "n8n dry-run outline",
+        "Mailpit local capture",
+        "SMTP local test",
         "Python smtplib",
         "Dry-run Bridge",
         "One-command Smoke Test",
@@ -132,7 +131,7 @@ summary: [
     {
       title: "Visualization & BI",
       summary: "분석 결과의 비교, 우선순위, 설명 흐름을 시각적으로 전달합니다.",
-      items: ["Tableau", "Looker Studio", "Matplotlib", "Seaborn", "Plotly", "Streamlit/pydeck Charts"],
+      items: ["Tableau", "Matplotlib", "Seaborn", "Plotly", "Streamlit/pydeck prototypes"],
     },
     {
       title: "Deployment & Workflow",
@@ -144,7 +143,6 @@ summary: [
         "GitHub",
         "GitHub Actions",
         "npm",
-        "pnpm",
         "ESLint",
         "TypeScript tsc",
         "Next Build",

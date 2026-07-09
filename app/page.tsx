@@ -9,9 +9,9 @@ import { featuredProjects } from "@/content/projects";
 const scanRows = [
   { label: "For", value: "채용 리뷰어가 빠르게 검토하는 Korean-first data portfolio" },
   { label: "Core Lens", value: "판단 기준 · 보류 사유 · 리스크 신호 · 검증 가능한 산출물" },
-  { label: "Data", value: "Python · SQL · pandas · NumPy · scikit-learn · PostgreSQL" },
-  { label: "Web", value: "React · Next.js · Vite · TypeScript · Tailwind CSS · Vercel" },
-  { label: "Automation", value: "Docker · n8n · Mailpit · GitHub Actions · Python smoke tests" },
+  { label: "Data", value: "Python · SQL · pandas · NumPy · scikit-learn · public-safe evidence" },
+  { label: "Web", value: "React · Next.js · Vite · TypeScript · Vercel · GitHub Pages" },
+  { label: "Validation", value: "GitHub Actions · SQL tests · local dry-run · Python smoke tests" },
 ];
 
 const homePriorityLinks = [
@@ -24,7 +24,11 @@ const homePriorityLinks = [
     href: "/projects/shelter-signal",
   },
   {
-    label: "03 LH Traffic Safety",
+    label: "03 DecisionOps",
+    href: "/projects/decisionops-lab",
+  },
+  {
+    label: "04 LH Traffic Safety",
     href: "/projects/lh-traffic-safety-analysis",
   },
 ];
@@ -40,7 +44,7 @@ const reviewPath = [
   {
     step: "02",
     title: "Projects",
-    detail: "Redveil·Shelter·LH 근거 우선 확인",
+    detail: "Redveil·Shelter·DecisionOps·LH 근거 우선 확인",
     href: "/projects",
     label: "Projects 보기",
   },
@@ -78,31 +82,17 @@ const projectRoleMap = [
   },
   {
     step: "03",
+    title: "DecisionOps Lab",
+    detail: "raw product event를 SQL mart, 품질 gate, A/B evidence, guardrail decision memo로 연결한 workflow",
+    href: "/projects/decisionops-lab",
+    label: "DecisionOps 보기",
+  },
+  {
+    step: "04",
     title: "LH Traffic Safety",
     detail: "100m 격자 위험 신호를 LORO 검증과 현장 검토 우선순위로 연결한 공간 분석",
     href: "/projects/lh-traffic-safety-analysis",
     label: "LH 보기",
-  },
-  {
-    step: "04",
-    title: "Starbucks",
-    detail: "고객·오퍼·채널 데이터를 CRM 액션과 마케팅 판단 언어로 번역한 반응 분석",
-    href: "/projects/starbucks-promotion-analysis",
-    label: "Starbucks 보기",
-  },
-  {
-    step: "05",
-    title: "UK Retail",
-    detail: "RFM과 구매 패턴을 고객 유지·재활성화 판단으로 정리한 세그먼트 분석",
-    href: "/projects/uk-online-retail-segment-analysis",
-    label: "UK Retail 보기",
-  },
-  {
-    step: "06",
-    title: "ShopEasy",
-    detail: "주문 감소를 전환 병목과 A/B 테스트 가설로 연결한 커머스 대시보드",
-    href: "/projects/shopeasy",
-    label: "ShopEasy 보기",
   },
 ];
 
@@ -214,9 +204,9 @@ export default function HomePage() {
         <section className="surface-card home-review-path">
           <div className="home-section-head">
             <span className="eyebrow">Project Role Map</span>
-            <h2 className="section-title">대표 프로젝트의 역할 차이</h2>
+            <h2 className="section-title">대표 라인업의 역할 차이</h2>
             <p className="page-intro">
-              같은 분석 프로젝트처럼 보이지 않도록, 각 프로젝트가 증명하는 역량을 서로 다른 판단 역할로 분리했습니다.
+              Redveil을 단일 flagship으로 두고, Shelter Signal, DecisionOps Lab, LH Traffic Safety가 서로 다른 검증 근거를 보강하도록 분리했습니다.
             </p>
           </div>
 

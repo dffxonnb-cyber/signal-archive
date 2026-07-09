@@ -6,7 +6,7 @@
 
 <p align="center">
   분석 프로젝트를 단순히 모아두는 공간이 아니라,<br/>
-  질문이 어떻게 문제로 구조화되고, 데이터가 어떻게 판단 기준과 리스크 신호가 되는지 기록하는 아카이브입니다.
+  질문이 어떻게 판단 기준, 리스크 신호, 검증 가능한 산출물로 바뀌는지 기록하는 아카이브입니다.
 </p>
 
 <p align="center">
@@ -21,7 +21,7 @@
 
 <p align="center">
   <img alt="Next.js" src="https://img.shields.io/badge/Next.js-Portfolio-black?style=flat-square&logo=next.js" />
-  <img alt="Vercel" src="https://img.shields.io/badge/Vercel-Live-black?style=flat-square&logo=vercel" />
+  <img alt="Vercel" src="https://img.shields.io/badge/Vercel-Portfolio-black?style=flat-square&logo=vercel" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Content-blue?style=flat-square&logo=typescript" />
   <img alt="Data Portfolio" src="https://img.shields.io/badge/Data-Decision%20Archive-6b7280?style=flat-square" />
 </p>
@@ -30,25 +30,13 @@
 
 ## Overview
 
-**Signal Archive**는 데이터 분석 프로젝트를 단순히 나열하는 포트폴리오가 아니라, 각 프로젝트가 어떤 질문에서 출발해 어떤 판단 기준, 리스크 신호, 대시보드, 웹 기반 검토 흐름으로 발전했는지 기록하는 공간입니다.
+**Signal Archive**는 데이터 분석 결과를 차트 나열에서 끝내지 않고, 리뷰어가 실제로 판단할 수 있는 기준, 보류 사유, 리스크 신호, 검증 가능한 산출물로 연결하는 포트폴리오입니다.
 
 ```text
 Problem → Data → Criteria → Judgment → Output
 ```
 
-분석 결과를 차트 몇 개로 보여주는 데서 멈추지 않고, 리뷰어가 실제로 판단할 수 있는 기준, 우선순위, 비교 구조, 의사결정 화면으로 연결하는 것을 목표로 합니다.
-
----
-
-## Live Preview
-
-| Home | Start Here |
-| --- | --- |
-| ![Signal Archive home page](docs/screenshots/reviewer-path-2026-06-25/home.png) | ![Signal Archive start here page](docs/screenshots/reviewer-path-2026-06-25/start-here.png) |
-
-| Projects | Case Studies |
-| --- | --- |
-| ![Signal Archive projects page](docs/screenshots/reviewer-path-2026-06-25/projects.png) | ![Signal Archive case studies page](docs/screenshots/reviewer-path-2026-06-25/case-studies.png) |
+단일 flagship은 **Seoul Storefront Redveil**입니다. 가장 큰 프로젝트라서가 아니라, 분석 결과가 reviewable decision artifact로 바뀌는 방식을 가장 잘 보여주기 때문입니다.
 
 ---
 
@@ -56,24 +44,41 @@ Problem → Data → Criteria → Judgment → Output
 
 | Review Goal | Suggested Path | What it shows |
 | --- | --- | --- |
-| **3-minute profile scan** | [Start Here](https://signal-archive.vercel.app/start-here) → [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) | 포지셔닝, 대표 프로젝트, live product evidence |
-| **Spatial / Public Data role** | [LH Traffic Safety](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) → [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) | 격자 기반 위험 신호, 공공데이터 API, 공간·도시 의사결정 구조 |
-| **Business / CRM role** | [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Starbucks Promotion](https://signal-archive.vercel.app/projects/starbucks-promotion-analysis) → [UK Online Retail](https://signal-archive.vercel.app/projects/uk-online-retail-segment-analysis) | 리스크 판단, 고객 반응 예측, 세그먼트 액션 설계 |
+| **3-minute profile scan** | [Start Here](https://signal-archive.vercel.app/start-here) → [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) → [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) | 단일 flagship, public-data service, SQL/guardrail decision workflow |
+| **Spatial / Public Data role** | [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) → [LH Traffic Safety](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) → [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) | 판단 산출물, API/cache/fallback 경계, 100m grid/LORO 검증 |
+| **Business / CRM role** | [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) → [Starbucks](https://signal-archive.vercel.app/projects/starbucks-promotion-analysis) → [UK Retail](https://signal-archive.vercel.app/projects/uk-online-retail-segment-analysis) | decision artifact, product metrics, CRM/segmentation supporting evidence |
 
 더 자세한 검토 순서는 [docs/reviewer-path.md](docs/reviewer-path.md)에 정리했습니다.
 
 ---
 
-## Featured Projects
+## Representative Projects
 
-| Project | Decision Question | Main Evidence | Review |
-| --- | --- | --- | --- |
-| **Seoul Storefront Redveil** | 매입 전에 먼저 보류해야 할 신호는 무엇인가? | pause-first review → Hold Memo, Comparison Memo, Professional Review Checklist decision artifact | [Detail](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) · [Live](https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/) · [Repo](https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil) |
-| **Shelter Signal** | 보호 종료가 가까운 공공데이터 공고를 어떻게 먼저 확인하게 만들 것인가? | Vercel `/api/notices`, KST freshness normalization, current/urgent/archive views, cache/fallback boundary, PWA UI | [Detail](https://signal-archive.vercel.app/projects/shelter-signal) · [Live](https://shelter-signal-ebon.vercel.app/) · [Repo](https://github.com/dffxonnb-cyber/shelter-signal) |
-| **LH Traffic Safety Analysis** | 사고 이력이 부족한 신도시에서 어디를 먼저 검토할 것인가? | 100m grid risk signal, LORO validation, Mean AUC 0.8604, Top-10% Lift 4.39x | [Detail](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) · [Repo](https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis) |
-| **Starbucks Promotion Analysis** | 어떤 고객군에 어떤 오퍼를 어떤 채널로 제안할 것인가? | 고객-오퍼 이벤트 재구성, AUC 0.8147, Recall 0.8712, CRM decision dashboard | [Detail](https://signal-archive.vercel.app/projects/starbucks-promotion-analysis) · [Repo](https://github.com/dffxonnb-cyber/starbucks-promotion-analysis) |
-| **UK Online Retail Segment Analysis** | 누구를 유지·재활성화 우선순위로 볼 것인가? | RFM, Pareto, statistical tests, campaign action design | [Detail](https://signal-archive.vercel.app/projects/uk-online-retail-segment-analysis) · [Repo](https://github.com/dffxonnb-cyber/UK-OnlineRetail-Segment-analysis) |
-| **ShopEasy** | 주문·전환·이탈 병목을 어떤 실험으로 개선할 것인가? | deterministic synthetic dataset, conversion dashboard, A/B test proposal | [Detail](https://signal-archive.vercel.app/projects/shopeasy) · [Live](https://dffxonnb-cyber.github.io/ShopEasy/) · [Repo](https://github.com/dffxonnb-cyber/ShopEasy) |
+| Order | Project | Positioning | Main Evidence | Review |
+| ---: | --- | --- | --- | --- |
+| 1 | **Seoul Storefront Redveil** | 상권 분석을 보류 사유, 대체 후보, memo/checklist handoff로 바꾼 single flagship | GitHub Pages public UI, 25 Seoul districts, 12,074 transactions, decision artifact evidence | [Detail](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) · [Live](https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/) · [Repo](https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil) |
+| 2 | **Shelter Signal** | 구조동물 공고를 current/urgent와 live/cache/fallback 상태로 분리한 public-data PWA | Vercel `/api/notices`, KST freshness, D-Day~D-3, cache/fallback metadata | [Detail](https://signal-archive.vercel.app/projects/shelter-signal) · [Live](https://shelter-signal-ebon.vercel.app/) · [Repo](https://github.com/dffxonnb-cyber/shelter-signal) |
+| 3 | **DecisionOps Lab** | synthetic product events를 SQL mart, quality gate, A/B evidence, guardrail memo로 연결한 workflow | raw/staging/intermediate/mart SQL, quality PASS, scenario matrix, decision memo/report | [Detail](https://signal-archive.vercel.app/projects/decisionops-lab) · [Repo](https://github.com/dffxonnb-cyber/DecisionOps-lab) |
+| 4 | **LH Traffic Safety Analysis** | 100m grid risk signal을 LORO 검증과 현장 검토 우선순위로 번역한 공간 분석 | 99,323 training grids, 770 target grids, AUC 0.8604, Top-10% Lift 4.39x | [Detail](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) · [Repo](https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis) |
+
+### Claim Boundaries
+
+- Redveil은 portfolio prototype이며 투자 추천, buy/sell recommendation, 수익률 예측, 전문 검토 대체를 주장하지 않습니다.
+- Shelter Signal은 live-first public-data service이지만 계정, 영구 저장, 실제 알림 발송 운영, production SLA를 주장하지 않습니다.
+- DecisionOps Lab은 synthetic-data workflow이며 실제 제품 성과, 실제 사용자 행동, production business impact를 주장하지 않습니다.
+- LH Traffic Safety는 현장 검토 우선순위 신호이며 실제 사고 감소 효과나 시설 설치 결정을 증명하지 않습니다.
+
+---
+
+## Supporting Projects
+
+| Project | Supporting Role | Evidence |
+| --- | --- | --- |
+| **Starbucks Promotion Analysis** | CRM / marketing analytics | 고객·오퍼·채널 반응, AUC 0.8147, Recall 0.8712, Tableau workbook |
+| **UK Online Retail Segment Analysis** | segmentation / campaign action design | RFM, Pareto, statistical tests, top 20% revenue 73.5% |
+| **ShopEasy** | commerce dashboard / experiment proposal | deterministic synthetic dataset, conversion dashboard, A/B test proposal |
+| **Job Signal Pipeline** | mock/local SQL pipeline validation | PostgreSQL raw loading, 5 analytics views, 7 SQL tests PASS, Streamlit local dashboard |
+| **NBA Game & Player Analysis** | archive-level sports analytics | EDA, statistical tests, modeling flow, public artifact smoke tests |
 
 ---
 
@@ -82,23 +87,25 @@ Problem → Data → Criteria → Judgment → Output
 | Strength | Description |
 | --- | --- |
 | **Problem Framing** | 모호한 질문을 분석 단위, 측정 기준, 검토 흐름으로 나누어 판단 가능한 문제로 재구성합니다. |
-| **Risk & Priority Design** | 단순 수치 비교가 아니라, 무엇을 보류하고 무엇을 먼저 검토해야 하는지 설명 가능한 신호를 설계합니다. |
-| **Analysis to Interface** | 분석 결과를 보고서 안에만 두지 않고 대시보드, 지도, 웹 페이지, 리뷰 화면으로 연결합니다. |
+| **Risk & Priority Design** | 단순 수치 비교가 아니라 무엇을 보류하고 무엇을 먼저 검토해야 하는지 설명 가능한 신호를 설계합니다. |
+| **Analysis to Interface** | 분석 결과를 보고서 안에만 두지 않고 웹 화면, 대시보드, 문서, 검증 경로로 연결합니다. |
 | **Decision Language** | 모델 점수와 지표를 과장하지 않고, 실제 검토자가 이해할 수 있는 판단 언어로 번역합니다. |
-| **End-to-End Delivery** | 데이터 준비, 분석, 기준 설계, 시각화, 문서화, 검증 흐름까지 하나의 결과물로 연결합니다. |
+| **Claim Boundary** | production impact, real user behavior, investment outcome처럼 검증되지 않은 범위를 분리합니다. |
 
 ---
 
 ## Tech Stack
 
-| Area | Tools |
+| Area | Tools / Wording |
 | --- | --- |
-| **Analysis** | Python, pandas, SQL, scikit-learn, Jupyter |
-| **Visualization / BI** | Tableau, Streamlit, pydeck, Matplotlib, Seaborn |
-| **Web / Delivery** | HTML, CSS, JavaScript, React, Next.js, TypeScript, GitHub Pages, Vercel |
-| **Data / API** | PostgreSQL, Neon, public-data APIs, serverless API routes |
-| **Spatial Analysis** | GeoPandas, QGIS, GeoJSON, spatial grid analysis |
-| **Validation** | GitHub Actions, public artifact checks, smoke tests |
+| **Analysis** | Python, pandas, NumPy, Jupyter, scikit-learn 후보 검토 |
+| **SQL / Analytics Engineering** | SQL models, DuckDB, PostgreSQL local/fallback validation, data quality checks |
+| **Visualization / BI** | Tableau workbook, Matplotlib, Seaborn, Plotly, Streamlit/pydeck prototypes |
+| **Web / Delivery** | HTML, CSS, JavaScript, React, Next.js, Vite, TypeScript, GitHub Pages, Vercel |
+| **API / Public Data** | Vercel serverless routes, data.go.kr API normalization, cache/fallback metadata |
+| **Spatial Analysis** | GeoPandas, QGIS, GeoJSON, 100m grid analysis, public-safe spatial evidence |
+| **Validation** | GitHub Actions, typecheck/lint/build, public artifact checks, smoke tests |
+| **Local / Dry-run Only** | Docker Compose local validation, n8n dry-run outline, Mailpit local capture |
 
 ---
 
@@ -106,9 +113,9 @@ Problem → Data → Criteria → Judgment → Output
 
 | Route | What it shows |
 | --- | --- |
-| [Start Here](https://signal-archive.vercel.app/start-here) | 역할 적합도, 프로젝트 근거, 다음 검토 경로를 안내하는 리뷰어용 시작 페이지 |
-| [Projects](https://signal-archive.vercel.app/projects) | 프로젝트별 문제 정의, 분석 방법, 산출물, 링크, 검증 신호 |
-| [Case Studies](https://signal-archive.vercel.app/case-studies) | 리스크 신호, 의사결정 도구, 비즈니스 해석 방식의 반복 패턴 |
+| [Start Here](https://signal-archive.vercel.app/start-here) | 역할 적합도, 대표 프로젝트 근거, 다음 검토 경로 |
+| [Projects](https://signal-archive.vercel.app/projects) | 대표/지원 프로젝트별 문제 정의, 산출물, 검증 신호 |
+| [Case Studies](https://signal-archive.vercel.app/case-studies) | 리스크 신호, decision flow, 품질 gate, 산출물 설계 방식 |
 | [Resume](https://signal-archive.vercel.app/resume) | 기술 역량, 역할 적합도, 프로젝트 기반 경험 요약 |
 | [Contact](https://signal-archive.vercel.app/contact) | 공개 연락처와 포트폴리오 링크 |
 
@@ -128,5 +135,3 @@ Problem → Data → Criteria → Judgment → Output
 | `docs/reviewer-path.md` | 역할별 추천 검토 순서 |
 
 콘텐츠 업데이트 흐름은 `PORTFOLIO_UPDATE_GUIDE.md`, 검증 범위는 `VERIFY.md`에서 확인할 수 있습니다.
-
----
