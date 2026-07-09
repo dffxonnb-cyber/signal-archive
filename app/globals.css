@@ -3067,20 +3067,21 @@ main {
 
 .detail-evidence-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-grid-tight);
 }
 
 .detail-evidence-item {
-  min-height: 112px;
+  min-height: 0;
   align-content: start;
 }
 
-.detail-evidence-item strong {
+.detail-evidence-item__value {
+  margin: 0;
   color: var(--accent-strong);
-  font-size: 0.92rem;
-  font-weight: 620;
-  line-height: 1.55;
+  font-size: 0.87rem;
+  font-weight: 500;
+  line-height: 1.66;
   font-variant-numeric: tabular-nums;
   word-break: keep-all;
   overflow-wrap: break-word;
@@ -3089,16 +3090,17 @@ main {
 }
 
 .detail-evidence-item--lead {
-  grid-column: span 2;
+  grid-column: 1 / -1;
   border-color: var(--border-evidence);
   background:
-    linear-gradient(180deg, rgba(211, 179, 111, 0.075), rgba(255, 255, 255, 0.012)),
+    linear-gradient(180deg, rgba(211, 179, 111, 0.052), rgba(255, 255, 255, 0.012)),
     rgba(255, 255, 255, 0.018);
 }
 
-.detail-evidence-item--lead strong {
+.detail-evidence-item--lead .detail-evidence-item__value {
   color: var(--accent-warm);
-  font-size: 1rem;
+  font-size: 0.9rem;
+  font-weight: 560;
 }
 
 .detail-context-grid {
@@ -6266,13 +6268,13 @@ detial-operation__risk:first-child {
 }
 
 .detail-evidence-grid {
-  align-items: stretch;
+  align-items: start;
 }
 
 .detail-evidence-item {
   min-width: 0;
-  min-height: clamp(108px, 10vw, 132px);
-  padding: clamp(14px, 1.7vw, 18px);
+  min-height: 0;
+  padding: clamp(12px, 1.4vw, 16px);
   align-content: start;
 }
 
@@ -6283,19 +6285,19 @@ detial-operation__risk:first-child {
   overflow-wrap: break-word;
 }
 
-.detail-evidence-item strong {
+.detail-evidence-item__value {
   display: block;
   margin-top: 0;
-  line-height: 1.55;
+  line-height: 1.66;
   word-break: keep-all;
   overflow-wrap: break-word;
   hyphens: none;
 }
 
-.detail-evidence-item--lead strong {
+.detail-evidence-item--lead .detail-evidence-item__value {
   max-width: 42rem;
-  font-size: clamp(0.96rem, 1.1vw, 1.06rem);
-  line-height: 1.55;
+  font-size: clamp(0.88rem, 1vw, 0.94rem);
+  line-height: 1.66;
 }
 
 @media (max-width: 768px) {

@@ -63,7 +63,7 @@ export const projects: Project[] = [
       },
       {
         label: "공간 단위",
-        value: "행정구역 평균 대신 100m × 100m 격자를 위험도·후보 비교·현장 검토의 공통 단위로 사용",
+        value: "행정구역 평균 대신 100m 격자를 위험도·후보 비교·현장 검토 단위로 사용",
       },
       {
         label: "전이 검증",
@@ -75,11 +75,11 @@ export const projects: Project[] = [
       },
       {
         label: "공개 검토표",
-        value: "public_top20_priority.csv에 public_review_note와 claim_boundary를 추가해 공개 가능한 검토 언어로 정리",
+        value: "Top-20 공개 검토표에 review note와 claim boundary를 함께 정리",
       },
       {
         label: "공개 경계",
-        value: "시설 패키지·추천 사유·Dashboard URL·현장 검증은 evidence audit에서 별도 경계로 관리",
+        value: "시설 패키지·추천 사유·현장 검증은 evidence audit에서 별도 경계로 관리",
       },
     ],
     signalCaseStudy: {
@@ -329,19 +329,19 @@ export const projects: Project[] = [
       },
       {
         label: "Delivery",
-        value: "리스크 점수, 보류 사유, 대체 후보, Hold Memo, Comparison Memo를 GitHub Pages 정적 웹에서 바로 확인",
+        value: "리스크 점수, 보류 사유, 대체 후보, memo를 GitHub Pages에서 확인",
       },
       {
         label: "V2 Decision Artifact",
-        value: "Hold Memo copy/export, Comparison Memo copy/export, Professional Review Checklist UI와 memo text 포함까지 검증",
+        value: "Hold/Comparison Memo copy-export와 Professional Review Checklist UI 검증",
       },
       {
         label: "Public Verification",
-        value: "GitHub Pages 배포, public-safe payload, tests, smoke checks, Production evidence 확인",
+        value: "GitHub Pages 배포, public-safe payload, tests, smoke checks 확인",
       },
       {
         label: "QA Boundary",
-        value: "portfolio prototype이며 투자 추천, buy/sell recommendation, 수익률 예측, 법률·세무·금융·중개·현장 전문 검토 대체를 주장하지 않음",
+        value: "투자 추천·수익률 예측·전문 검토 대체를 주장하지 않음",
       },
     ],
     signalCaseStudy: {
@@ -602,31 +602,31 @@ export const projects: Project[] = [
     evidencePoints: [
       {
         label: "Live-first 수집",
-        value: "KST 기준 최근 30일, state=notice, 최대 10개 upstream page 수집",
+        value: "KST 최근 30일, state=notice, 최대 10개 upstream page 수집",
       },
       {
         label: "Signal Logic",
-        value: "noticeEdt 기반 current/urgent/protected/archive 분리와 D-Day~D-3 긴급 신호 정렬",
+        value: "noticeEdt 기반 current/urgent/archive 분리와 D-Day~D-3 긴급 신호 정렬",
       },
       {
         label: "탐색 단위",
-        value: "서버 측 한국 지역 alias 필터와 page/limit 기반 20건 단위 탐색",
+        value: "서버 측 지역 alias 필터와 page/limit 기반 20건 단위 탐색",
       },
       {
         label: "Trust Layer",
-        value: "source, fallbackReason, cacheStatus, fetchedAt, dateRange, count metadata로 응답 상태 구분",
+        value: "source, fallbackReason, cacheStatus, fetchedAt metadata로 응답 상태 구분",
       },
       {
         label: "Operational Layer",
-        value: "5분 TTL 정규화 데이터 캐시, in-flight request sharing, stale-live 처리",
+        value: "5분 TTL 캐시, in-flight request sharing, stale-live 처리",
       },
       {
         label: "Observability",
-        value: "cache hit/miss, upstream fetch duration/count, normalized/filtered/returned count 확인",
+        value: "cache hit/miss, upstream duration, returned count 확인",
       },
       {
         label: "V2 dry-run evidence",
-        value: "alert_candidates → JSON/HTML digest preview는 local dry-run evidence로 분리했으며 실제 알림 발송 운영은 주장하지 않음",
+        value: "alert candidates와 digest preview는 local dry-run이며 실제 알림 발송은 주장하지 않음",
       },
     ],
     signalCaseStudy: {

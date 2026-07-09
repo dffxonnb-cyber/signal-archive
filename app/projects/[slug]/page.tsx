@@ -187,7 +187,7 @@ export default async function ProjectDetailPage({
                   key={`${project.slug}-${item.label}`}
                 >
                   <span>{item.label}</span>
-                  <strong>{item.value}</strong>
+                  <p className="detail-evidence-item__value">{item.value}</p>
                 </article>
               ))}
             </div>
