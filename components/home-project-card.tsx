@@ -11,6 +11,7 @@ const projectAccentClasses: Record<string, string> = {
   "lh-traffic-safety-analysis": "home-project-card--lh",
   "seoul-storefront-redveil": "home-project-card--redveil",
   "shelter-signal": "home-project-card--shelter",
+  "decisionops-lab": "home-project-card--default",
   "starbucks-promotion-analysis": "home-project-card--starbucks",
 };
 
@@ -28,6 +29,10 @@ const projectBoundaries: Record<
   "shelter-signal": {
     proves: "공공 API의 현재성, cache, fallback 상태를 서비스 판단 흐름으로 분리하는 역량",
     doesNotClaim: "사용자 계정, 영구 저장, 실제 알림 발송 운영",
+  },
+  "decisionops-lab": {
+    proves: "제품 이벤트를 SQL mart, 23개 품질 gate, D7 guardrail, scenario matrix, decision memo로 연결하는 역량",
+    doesNotClaim: "실제 제품 성과, 실제 사용자 행동, production business impact",
   },
   "lh-traffic-safety-analysis": {
     proves: "공간 위험 신호를 검증 지표와 현장 검토 우선순위로 연결하는 역량",

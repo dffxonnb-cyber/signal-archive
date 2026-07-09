@@ -235,7 +235,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 3,
+    sortOrder: 4,
     caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool", "segmenting-for-business-meaning"],
     sections: [
       {
@@ -449,7 +449,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 2,
+    sortOrder: 1,
     caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool"],
     sections: [
       {
@@ -509,17 +509,17 @@ export const projects: Project[] = [
     review: {
       decisionQuestion: "현재 유효한 공고와 보호 종료 임박 공고를 어떻게 신뢰 가능한 상태로 구분할 것인가?",
       myRole: "live-first API 설계, KST 마감 분류, region/page API, TTL cache, fallback 상태 분리, PWA 구현",
-      evidence: "KST 30일 live window · D-Day~D-3 urgent signal · source/cache/fallback metadata · Production UI/API evidence",
+      evidence: "KST 30일 live window · D-Day~D-3 urgent signal · source/cache/fallback metadata · deployed UI/API evidence",
       deliverable: "현재 공고, 보호 종료 임박 신호, 데이터 상태를 함께 보여주는 live-first public-data service",
       hiringSignal: "공공 API의 불안정성을 숨기지 않고 신호 로직, cache/fallback, UI 상태로 분리해 구현할 수 있음",
     },
     operationMeta: {
       lastVerifiedAt: "2026-06-12 09:30 KST",
-      source: "production api",
+      source: "live api",
       whyItMatters:
         "공공데이터 API의 지연, 누락, 만료 상태를 서비스 운영 흐름 안에서 처리하고, 마감 임박 공고를 분리해 실제 확인 가능한 archive로 구성했습니다.",
       verified: [
-        "Live API 응답 기반 production source 확인",
+        "Live API 응답 기반 source 확인",
         "KST 최근 30일 dateRange 수집 구조 확인",
         "region filter / page / limit 응답 구조 확인",
         "deadline_status 기반 current / urgent / protected / archive 분리 확인",
@@ -532,7 +532,7 @@ export const projects: Project[] = [
         "입양 가능성 기반 scoring",
       ],
       reviewChecklist: [
-        "최근 30일 live API 응답이 production source로 들어오는지",
+        "최근 30일 live API 응답이 deployed API source로 들어오는지",
         "D-Day / D-1~3 / active / expired 상태가 분리되는지",
         "current / urgent / protected / archive view가 목적별로 나뉘는지",
         "API 실패 시 fallback path가 분리되어 있는지",
@@ -758,7 +758,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 1,
+    sortOrder: 2,
     caseStudySlugs: ["risk-signals-before-volume", "turn-analysis-into-a-decision-tool"],
     sections: [
       {
@@ -799,6 +799,236 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: "decisionops-lab",
+    slug: "decisionops-lab",
+    title: "DecisionOps Lab",
+    status: "featured",
+    category: "대표 프로젝트",
+    primaryDomain: "제품 분석",
+    summary:
+      "synthetic 제품 이벤트 데이터를 DuckDB SQL mart, 품질 gate, A/B evidence, D7 guardrail, scenario matrix, decision memo/report로 연결한 분석 의사결정 workflow입니다.",
+    period: "2026",
+    format: "개인 프로젝트",
+    domains: ["제품 분석", "analytics engineering", "SQL 모델링", "실험 검토"],
+    role: ["raw/staging/intermediate/mart SQL 설계", "data quality gate", "A/B test evidence", "D7 guardrail review", "scenario matrix"],
+    filterTools: ["Python", "SQL"],
+    cardTools: ["Python", "SQL", "DuckDB", "GitHub Actions"],
+    stack: ["Python", "pandas", "DuckDB", "SQL", "SciPy", "statsmodels", "pytest", "GitHub Actions"],
+    problemTypes: ["제품 지표 설계", "실험 검토", "데이터 품질 검증"],
+    coreTags: ["SQL Mart", "Quality Gate", "A/B Evidence", "Guardrail Review", "Decision Memo", "Synthetic Data"],
+    badges: ["Featured", "Analytics Engineering", "Product Analytics", "Claim Boundary"],
+    context:
+      "제품 이벤트 데이터는 지표 계산만으로 바로 의사결정에 쓰기 어렵습니다. DecisionOps Lab은 synthetic raw users/events/sessions/payments/experiments를 분석 가능한 SQL layer로 정리하고, 품질 gate와 D7 revisit guardrail을 먼저 통과한 뒤 실험 결과를 Ship/Retest/Hold/Investigate 언어로 남기는 workflow입니다.",
+    outcome:
+      "raw CSV를 DuckDB raw tables, staging, intermediate, mart layer로 모델링하고, 23개 quality checks PASS, activation lift +3.97pp, p-value 0.000011, D7 revisit delta +0.97pp, 5개 scenario matrix, decision memo, reviewer-facing HTML report를 생성했습니다. 모든 결과는 synthetic-data workflow로 제한해 실제 제품 성과나 사용자 행동을 주장하지 않습니다.",
+    supportingLine:
+      "raw event를 SQL mart, 품질 gate, A/B evidence, D7 guardrail, scenario matrix, decision memo로 연결한 분석 의사결정 workflow",
+    review: {
+      decisionQuestion: "activation lift가 좋아 보여도 품질 gate와 guardrail을 통과해야 Ship으로 판단할 수 있는가?",
+      myRole: "synthetic dataset 설계, SQL staging/intermediate/mart layer 구성, data quality checks, A/B test analysis, D7 guardrail review, scenario matrix, decision memo/report 생성",
+      evidence: "raw users 10,000 · raw events 41,676 · 23 quality checks PASS · activation lift +3.97pp · p-value 0.000011 · D7 delta +0.97pp · 5 scenario matrix",
+      deliverable: "SQL mart layer, data quality report, experiment evidence, Ship/Retest/Hold/Investigate decision memo, reviewer HTML report",
+      hiringSignal: "제품 이벤트 데이터를 지표 계산에서 멈추지 않고 품질 gate, guardrail, 실험 근거, 리뷰 가능한 decision artifact로 연결할 수 있음",
+    },
+    reviewerPriority: 3,
+    showInReviewerPath: true,
+    decisionMoment: {
+      originalQuestion: "실험 결과가 좋아 보이면 바로 Ship해도 되는가?",
+      reframedQuestion: "activation lift와 통계 신호가 있어도 품질 검증과 guardrail을 통과해야 Ship으로 판단할 수 있는가?",
+      keyEvidence: "SQL mart · 23 quality checks PASS · activation lift +3.97pp · p-value 0.000011 · D7 revisit guardrail +0.97pp · 5 scenario matrix",
+      finalDeliverable: "mart_decision_summary, quality_report.json, experiment_result.json, scenario_matrix.md, decision_memo.md, public reviewer report",
+      proves: "제품 이벤트 데이터를 해석 전 품질 gate와 실험/guardrail 판단 언어로 전환하는 역량",
+    },
+    cardBrief: {
+      problem:
+        "실험 지표가 하나 좋아 보여도 데이터 품질, D7 revisit guardrail, 시나리오별 decision behavior를 함께 보지 않으면 의사결정 근거가 약해집니다.",
+      method:
+        "synthetic raw events를 DuckDB SQL layer로 모델링하고, 23개 quality checks와 A/B 분석, D7 guardrail 검토를 거쳐 Ship/Retest/Hold/Investigate decision memo로 정리했습니다.",
+      output: [
+        "SQL staging/intermediate/mart layer",
+        "23 data quality checks",
+        "A/B evidence + D7 revisit guardrail",
+        "decision memo / reviewer report",
+      ],
+    },
+    metrics: [
+      { label: "Quality Gate", value: "23/23 PASS" },
+      { label: "Activation Lift", value: "+3.97pp" },
+      { label: "D7 Guardrail", value: "+0.97pp" },
+      { label: "Scenario Matrix", value: "5 scenarios" },
+    ],
+    evidencePoints: [
+      {
+        label: "SQL Layer",
+        value: "raw users/events/sessions/payments/experiments를 staging, intermediate, mart tables로 분리하고 reviewer-facing artifact가 mart layer를 읽도록 구성",
+      },
+      {
+        label: "Quality Gate",
+        value: "row count, nulls, accepted values, relation, duplicate, experiment balance 등 23개 checks가 모두 PASS",
+      },
+      {
+        label: "Experiment Review",
+        value: "Variant A activation 30.15%, B 34.12%, absolute lift +3.97pp, p-value 0.000011, confidence interval +2.14pp~+5.80pp",
+      },
+      {
+        label: "Guardrail Review",
+        value: "D7 revisit A 48.17%, B 49.14%, delta +0.97pp로 default strong_positive scenario의 guardrail PASS 확인",
+      },
+      {
+        label: "Decision Language",
+        value: "strong_positive=Ship, guardrail_risk/weak_evidence=Retest, neutral=Hold, quality_failure=Investigate로 분기",
+      },
+      {
+        label: "Verification",
+        value: "`scripts/run_full_verification.py`와 GitHub Actions가 reports/quality_report.json, experiment_result.json, decision_memo.md, review_report.html, scenario_matrix를 생성/업로드",
+      },
+      {
+        label: "Claim Boundary",
+        value: "synthetic data workflow이며 실제 제품 성과, 실제 사용자 행동, production business impact는 주장하지 않음",
+      },
+    ],
+    signalCaseStudy: {
+      signalType: "실험 의사결정 workflow",
+      title: "activation lift를 Ship 판단으로 바로 넘기지 않는 구조",
+      thesis:
+        "synthetic 제품 이벤트를 SQL mart와 품질 gate로 정리하고, A/B evidence와 D7 revisit guardrail을 함께 읽어 Ship / Retest / Hold / Investigate memo로 번역한 technical workflow 사례입니다.",
+      chips: ["DuckDB SQL", "23 Quality Checks", "+3.97pp Lift", "p=0.000011", "D7 +0.97pp", "5 Scenarios", "Decision Memo", "Reviewer Report"],
+      flow: ["Synthetic events", "DuckDB raw", "SQL staging", "Intermediate models", "Mart layer", "Quality gate", "A/B evidence", "D7 guardrail", "Scenario matrix", "Decision memo"],
+      evidenceTitle: "검토 가능한 DecisionOps 산출물",
+      evidenceDescription:
+        "별도 스크린샷을 만들지 않고, 저장소에 남아 있는 quality report, experiment result, scenario matrix, decision memo, reviewer report를 evidence로 연결합니다.",
+      sections: [
+        {
+          label: "01 Problem",
+          title: "좋아 보이는 실험 결과를 바로 Ship하지 않기",
+          description:
+            "activation lift가 좋아 보여도 데이터 품질이나 downstream behavior가 흔들리면 제품 판단으로 승격하기 어렵습니다.",
+          points: ["지표 단독 해석을 보류", "품질·통계·D7 guardrail을 먼저 확인"],
+        },
+        {
+          label: "02 Data Model",
+          title: "raw event를 SQL layer로 분리",
+          description:
+            "raw users/events/sessions/payments/experiments를 DuckDB raw tables, staging, intermediate, mart layer로 나눕니다.",
+          points: ["mart_experiment_result", "mart_decision_summary", "mart_segment_performance", "mart_retention_cohort"],
+        },
+        {
+          label: "03 Quality Gate",
+          title: "해석 전에 23개 checks를 통과",
+          description:
+            "row count, nulls, accepted values, relation, duplicate, experiment balance checks를 먼저 확인합니다.",
+          points: ["23/23 PASS", "quality failure scenario는 Investigate로 분기"],
+        },
+        {
+          label: "04 Experiment Evidence",
+          title: "activation lift와 통계 신호 확인",
+          description:
+            "default strong_positive scenario에서 Variant B의 activation이 높지만, 이 결과만으로 결론을 내리지 않습니다.",
+          points: ["A 30.15% → B 34.12%", "+3.97pp lift", "p-value 0.000011"],
+        },
+        {
+          label: "05 Guardrail",
+          title: "D7 revisit를 downstream guardrail로 확인",
+          description:
+            "짧은 activation 개선이 이후 revisit 행동을 약화시키지 않는지 D7 revisit delta를 함께 봅니다.",
+          points: ["D7 revisit delta +0.97pp", "guardrail_risk는 Retest로 분기"],
+        },
+        {
+          label: "06 Decision Matrix",
+          title: "하나의 positive result에 고정하지 않기",
+          description:
+            "scenario matrix가 Ship, Retest, Hold, Investigate 판단을 모두 보여주도록 구성했습니다.",
+          points: ["strong_positive=Ship", "weak_evidence/guardrail_risk=Retest", "neutral=Hold", "quality_failure=Investigate"],
+        },
+        {
+          label: "07 Output",
+          title: "reviewer-facing artifact로 남기기",
+          description:
+            "quality report, experiment result, scenario matrix, decision memo, public reviewer report를 검토 가능한 산출물로 남깁니다.",
+          points: ["reports/decision_memo.md", "reports/review_report.html", "scripts/run_full_verification.py"],
+        },
+        {
+          label: "08 Boundary",
+          title: "synthetic-data claim boundary 유지",
+          description:
+            "DecisionOps는 workflow design evidence이며 실제 제품 성과, 실제 사용자 행동, production business impact를 증명하지 않습니다.",
+          points: ["public-safe synthetic workflow", "production warehouse operation 아님"],
+        },
+      ],
+    },
+    detailBrief: {
+      problem: {
+        what:
+          "제품 분석 결과는 지표 산출만으로는 부족하며, 품질 문제가 있는 데이터나 D7 revisit guardrail 악화를 무시하면 잘못된 Ship 판단으로 이어질 수 있습니다.",
+        why:
+          "리뷰어가 신뢰할 수 있는 포트폴리오 evidence가 되려면 raw data, SQL model, 품질 gate, 실험 해석, 최종 memo가 같은 경로로 연결되어야 하기 때문입니다.",
+      },
+      dataMethod: {
+        dataTypes: ["synthetic product events", "users/sessions/payments/experiments", "DuckDB SQL marts", "quality/experiment/scenario reports"],
+        process: [
+          "synthetic raw CSV를 생성하고 DuckDB pipeline으로 적재",
+          "staging, intermediate, mart SQL layer로 grain과 metric 정의를 분리",
+          "23개 quality checks를 먼저 실행한 뒤 A/B evidence와 D7 revisit guardrail 확인",
+          "5개 scenario matrix로 Ship/Retest/Hold/Investigate decision behavior 검증",
+          "decision memo와 reviewer HTML report로 검토 가능한 산출물 생성",
+        ],
+        metrics: ["23/23 quality PASS", "activation lift +3.97pp", "p-value 0.000011", "D7 delta +0.97pp", "5 scenario matrix"],
+      },
+      limitations: [
+        "synthetic dataset 기반이므로 실제 제품 성과, 실제 사용자 행동, 실제 business impact를 주장하지 않습니다.",
+        "실험 결과는 workflow 검증용이며 production A/B test나 인과적 사업 성과 검증이 아닙니다.",
+        "DuckDB 기반 portfolio workflow이며 production warehouse scale이나 운영 데이터 플랫폼을 주장하지 않습니다.",
+        "refund risk와 session activity는 decision memo 설계 문서의 guardrail 후보로 다루며, 현재 생성된 scenario matrix의 검증 중심은 D7 revisit입니다.",
+        "dashboard보다는 SQL layer, quality gate, scenario matrix, decision memo 중심의 reviewer-facing evidence입니다.",
+      ],
+      linkNote: "GitHub README, docs/REVIEW_GUIDE.md, reports/scenario_matrix.md, reports/decision_memo.md에서 검증 경로와 claim boundary를 확인할 수 있습니다.",
+    },
+    focusPoints: [
+      "raw product event를 SQL mart layer와 metric definition으로 재구성",
+      "data quality gate를 해석보다 앞에 두어 결과 신뢰 경계를 분리",
+      "A/B evidence를 D7 revisit guardrail과 함께 읽고 decision memo로 번역",
+      "scenario matrix로 Ship, Retest, Hold, Investigate 분기를 재현 가능하게 검증",
+      "synthetic-data workflow의 claim boundary를 명확히 유지",
+    ],
+    links: [
+      {
+        label: "Public Reviewer Report",
+        href: "https://dffxonnb-cyber.github.io/DecisionOps-lab/",
+        type: "primary",
+      },
+      {
+        label: "GitHub 저장소",
+        href: "https://github.com/dffxonnb-cyber/DecisionOps-lab",
+        type: "secondary",
+      },
+    ],
+    sortOrder: 3,
+    caseStudySlugs: ["guardrail-aware-experiment-decision", "pipeline-validation-design", "turn-analysis-into-a-decision-tool"],
+    sections: [
+      {
+        title: "프로젝트 개요",
+        paragraphs: [
+          "DecisionOps Lab은 synthetic 제품 이벤트 데이터를 raw 분석에서 바로 결론으로 넘기지 않고, SQL layer와 품질 gate를 거쳐 decision memo로 연결하는 product analytics workflow입니다.",
+          "대표 역할은 실제 제품 성과를 주장하는 것이 아니라, 실험 해석 전에 어떤 검증과 guardrail을 통과해야 하는지 보여주는 것입니다.",
+        ],
+      },
+      {
+        title: "접근 방식",
+        paragraphs: [
+          "raw events를 staging, intermediate, mart layer로 분리하고, reviewer-facing report가 mart layer를 읽도록 구성했습니다.",
+          "23/23 quality PASS, activation lift +3.97pp, p-value 0.000011, D7 revisit guardrail +0.97pp, 5개 scenario matrix를 함께 보고 Ship/Retest/Hold/Investigate 판단 언어로 정리했습니다.",
+        ],
+      },
+      {
+        title: "Scope and Limitations",
+        paragraphs: [
+          "이 프로젝트는 synthetic-data workflow입니다. 실제 사용자 행동, 실제 제품 성과, production business impact를 증명하지 않습니다.",
+          "강점은 SQL 모델링, 품질 gate, 실험 evidence, guardrail review, decision memo가 하나의 검토 경로로 연결되어 있다는 점입니다.",
+        ],
+      },
+    ],
+  },
+  {
     id: "uk-online-retail-segment-analysis",
     slug: "uk-online-retail-segment-analysis",
     title: "UK Online Retail Segment Analysis",
@@ -815,7 +1045,7 @@ export const projects: Project[] = [
     stack: ["Python", "pandas", "NumPy", "SciPy", "statsmodels", "scikit-posthocs", "Jupyter", "Matplotlib/Seaborn"],
     problemTypes: ["구매 패턴 분석", "고객 세그먼트 분석", "매출/재구매 인사이트"],
     coreTags: ["UK Online Retail", "E-commerce", "RFM", "Customer Segmentation", "Revenue Analysis"],
-    badges: ["Featured", "E-commerce", "Revenue Logic", "CI Verified"],
+    badges: ["E-commerce", "Revenue Logic", "CI Verified"],
     context:
       "영국 온라인 리테일 거래 데이터는 구매 기록 자체는 풍부하지만, 어떤 패턴이 세그먼트 차이와 재구매 관점 인사이트로 이어지는지 구조적으로 정리할 필요가 있었습니다.",
     outcome:
@@ -913,7 +1143,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 5,
+    sortOrder: 6,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -942,8 +1172,8 @@ export const projects: Project[] = [
     id: "starbucks-promotion-analysis",
     slug: "starbucks-promotion-analysis",
     title: "Starbucks Promotion Analysis",
-    status: "featured",
-    category: "대표 프로젝트",
+    status: "supporting",
+    category: "서브 프로젝트",
     primaryDomain: "마케팅",
     summary:
       "고객·오퍼·채널 데이터를 재구성해\n어떤 고객군이 어떤 제안과 채널에 반응하는지 읽고\nCRM 액션 판단으로 번역한 마케팅 분석입니다.",
@@ -1051,7 +1281,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 4,
+    sortOrder: 5,
     caseStudySlugs: ["segmenting-for-business-meaning"],
     sections: [
       {
@@ -1171,7 +1401,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 8,
+    sortOrder: 9,
     caseStudySlugs: [],
     sections: [
       {
@@ -1196,47 +1426,47 @@ export const projects: Project[] = [
     category: "서브 프로젝트",
     primaryDomain: "데이터 파이프라인",
     summary:
-      "채용 공고 mock 응답을 PostgreSQL raw 적재부터\nanalytics views, SQL tests, Streamlit dashboard까지 연결해 검증한\nlocal validation data pipeline v1입니다.",
+      "채용 공고 mock 응답을 PostgreSQL raw 적재부터\nanalytics views, SQL tests, local review dashboard까지 연결해 검증한\nlocal validation data pipeline v1입니다.",
     period: "2026",
     format: "개인 프로젝트",
     domains: ["채용 데이터", "데이터 파이프라인", "PostgreSQL", "검증 자동화"],
-    role: ["mock ingestion 설계", "raw/analytics schema 분리", "SQL data quality tests", "Streamlit dashboard 검증"],
+    role: ["mock ingestion 설계", "raw/analytics schema 분리", "SQL data quality tests", "local review dashboard 검증"],
     filterTools: ["Python", "SQL", "Web"],
-    cardTools: ["Python", "PostgreSQL", "SQL", "Streamlit"],
-    stack: ["Python", "PostgreSQL", "SQLAlchemy", "psycopg", "Docker Compose", "n8n", "Streamlit", "Plotly"],
+    cardTools: ["Python", "PostgreSQL", "SQL", "Local validation"],
+    stack: ["Python", "PostgreSQL", "SQLAlchemy", "psycopg", "Docker Compose local", "n8n dry-run outline", "Streamlit local review", "Plotly"],
     problemTypes: ["데이터 품질 검증", "로컬 파이프라인 검증", "분석 뷰 설계"],
-    coreTags: ["Mock Ingestion", "Raw Loading", "Analytics Views", "SQL Tests", "Streamlit Dashboard", "Boundary Docs"],
+    coreTags: ["Mock Ingestion", "Raw Loading", "Analytics Views", "SQL Tests", "Local Review Dashboard", "Boundary Docs"],
     badges: ["Pipeline Validation", "SQL QA", "Local v1"],
     context:
       "외부 채용 API 승인과 production 운영 환경이 없는 상태에서 live 서비스처럼 보이게 만드는 대신, 채용 공고 데이터가 어떻게 수집·적재·모델링·검증·조회되는지 mock/local 범위 안에서 재현 가능한 파이프라인으로 분리했습니다.",
     outcome:
-      "Saramin mock 응답을 `raw.job_postings`에 upsert하고, `analytics` schema의 5개 views와 7개 SQL data quality tests를 `scripts/validate_sql_models.py`로 검증했습니다. Streamlit dashboard는 live API가 아니라 검증된 analytics views를 조회하는 local portfolio review 화면으로 연결했습니다.",
+      "Saramin mock 응답을 `raw.job_postings`에 upsert하고, `analytics` schema의 5개 views와 7개 SQL data quality tests를 `scripts/validate_sql_models.py`로 검증했습니다. local review dashboard는 live API가 아니라 검증된 analytics views를 조회하는 portfolio review 화면으로 연결했습니다.",
     supportingLine:
-      "mock ingestion부터 PostgreSQL, SQL tests, Streamlit dashboard까지 연결한 검증형 데이터 파이프라인",
+      "mock ingestion부터 PostgreSQL, SQL tests, local review dashboard까지 연결한 검증형 데이터 파이프라인",
     review: {
       decisionQuestion: "live API나 production 운영을 주장하지 않고 채용 데이터 파이프라인 구조를 어떻게 검증할 것인가?",
-      myRole: "mock ingestion 설계, PostgreSQL raw/analytics schema 분리, SQL data quality tests, Streamlit dashboard 연결, 검증 문서 정리",
-      evidence: "Saramin mock → raw.job_postings → 5 analytics views → 7 SQL tests PASS → Streamlit localhost:8501",
+      myRole: "mock ingestion 설계, PostgreSQL raw/analytics schema 분리, SQL data quality tests, local review dashboard 연결, 검증 문서 정리",
+      evidence: "Saramin mock → raw.job_postings → 5 analytics views → 7 SQL tests PASS → localhost local dashboard",
       deliverable: "mock/local boundary가 명확한 local validation data pipeline v1과 VERIFY/architecture/runbook 문서",
       hiringSignal: "외부 API 제약을 숨기지 않고 수집-적재-모델링-검증-대시보드 흐름을 SQL 테스트로 확인 가능하게 만듦",
     },
     decisionMoment: {
       originalQuestion: "채용 공고 서비스를 만들 수 있는가?",
       reframedQuestion: "live 운영을 주장하지 않고 검증 가능한 채용 데이터 파이프라인 구조를 어떻게 증명할 것인가?",
-      keyEvidence: "Saramin mock ingestion, PostgreSQL raw loading, 5 analytics SQL views, 7 zero-failing SQL tests, Streamlit dashboard",
-      finalDeliverable: "Docker-backed PostgreSQL, raw/analytics SQL models, validation script, Streamlit dashboard, verification docs",
+      keyEvidence: "Saramin mock ingestion, PostgreSQL raw loading, 5 analytics SQL views, 7 zero-failing SQL tests, local review dashboard",
+      finalDeliverable: "Docker Compose local PostgreSQL, raw/analytics SQL models, validation script, local review dashboard, verification docs",
       proves: "구현 범위와 미검증 범위를 분리하면서 데이터 품질 검증 루프를 끝까지 연결하는 역량",
     },
     cardBrief: {
       problem:
         "live 채용 API와 production 운영을 주장하지 않으면서도 채용 데이터 파이프라인의 구조와 품질 검증 흐름을 보여줄 필요가 있었음.",
       method:
-        "Saramin mock 응답을 정규화해 PostgreSQL raw table에 적재하고, 5개 analytics views와 7개 SQL tests를 validation script와 Streamlit dashboard로 연결함.",
+        "Saramin mock 응답을 정규화해 PostgreSQL raw table에 적재하고, 5개 analytics views와 7개 SQL tests를 validation script와 local review dashboard로 연결함.",
       output: [
         "Mock ingestion",
         "PostgreSQL raw loading",
         "5 Analytics SQL views",
-        "7 SQL tests + Streamlit dashboard",
+        "7 SQL tests + local dashboard",
       ],
     },
     metrics: [
@@ -1247,7 +1477,7 @@ export const projects: Project[] = [
     evidencePoints: [
       {
       label: "검증 경로",
-      value: "Saramin mock ingestion → PostgreSQL raw loading → 5 analytics views → 7 SQL tests PASS → Streamlit dashboard",
+      value: "Saramin mock ingestion → PostgreSQL raw loading → 5 analytics views → 7 SQL tests PASS → local review dashboard",
       },
       {
         label: "Raw/Analytics 분리",
@@ -1259,7 +1489,7 @@ export const projects: Project[] = [
       },
       {
         label: "Dashboard 검증",
-        value: "Streamlit dashboard는 live API를 호출하지 않고 검증된 PostgreSQL analytics views를 조회",
+        value: "local review dashboard는 live API를 호출하지 않고 검증된 PostgreSQL analytics views를 조회",
       },
       {
       label: "범위 경계",
@@ -1274,29 +1504,29 @@ export const projects: Project[] = [
           "외부 API 제약을 구현 실패처럼 숨기거나 live 서비스처럼 과장하면, 실제로 검증된 범위와 앞으로 필요한 작업이 흐려지기 때문입니다.",
       },
       dataMethod: {
-        dataTypes: ["Saramin mock response", "PostgreSQL raw.job_postings", "analytics SQL views", "SQL data quality test queries", "Streamlit dashboard"],
+        dataTypes: ["Saramin mock response", "PostgreSQL raw.job_postings", "analytics SQL views", "SQL data quality test queries", "Streamlit local review dashboard"],
         process: [
           "Saramin mock 응답을 정규화하고 `--load-db` 옵션으로 PostgreSQL raw table에 upsert",
           "raw schema와 analytics schema를 분리해 원천 보존과 분석 로직을 나눔",
           "정렬된 SQL migrations/models/tests를 `scripts/validate_sql_models.py`에서 순서대로 실행",
-          "analytics previews와 SQL tests가 통과한 뒤 Streamlit dashboard에서 views를 조회",
+          "analytics previews와 SQL tests가 통과한 뒤 local review dashboard에서 views를 조회",
           "VERIFY 문서와 evidence 문서에 mock/local boundary와 미구현 범위를 명시",
         ],
-        metrics: ["5 analytics views", "7 SQL tests", "PASS: Validation passed", "localhost:8501 dashboard connection"],
+        metrics: ["5 analytics views", "7 SQL tests", "PASS: Validation passed", "localhost local dashboard connection"],
       },
       limitations: [
         "Saramin live API 호출 성공이나 production ingestion 운영을 주장하지 않습니다.",
         "실제 live API 검증에는 승인된 `SARAMIN_API_KEY`와 quota/rate limit 확인이 필요합니다.",
         "Work24는 보조 reference/enrichment 성격으로 분리했으며 main job posting source로 적재하지 않았습니다.",
-        "n8n production workflow, monitoring, notification delivery는 현재 구현 범위가 아닙니다.",
-        "Streamlit dashboard는 local portfolio review용이며 운영 채용 서비스가 아닙니다.",
+        "n8n workflow automation, monitoring, notification delivery는 현재 구현 범위가 아닙니다.",
+        "local review dashboard는 portfolio review용이며 운영 채용 서비스가 아닙니다.",
         "mock 데이터 검증은 파이프라인 구조 검증이지 실제 채용 시장 커버리지 검증이 아닙니다.",
       ],
       linkNote: "GitHub README, VERIFY.md, docs/architecture.md, local validation evidence에서 검증 경로와 미검증 범위를 함께 확인할 수 있습니다.",
     },
     focusPoints: [
       "live 서비스 주장이 아니라 mock/local boundary 안에서 검증 가능한 채용 데이터 흐름으로 범위 재정의",
-      "raw loading, 5 analytics views, 7 SQL tests, Streamlit dashboard를 한 검증 루프로 연결",
+      "raw loading, 5 analytics views, 7 SQL tests, local review dashboard를 한 검증 루프로 연결",
       "Saramin live API 운영, production ingestion, monitoring, notification delivery 미구현 범위를 문서에 명확히 분리",
     ],
     links: [
@@ -1306,21 +1536,21 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 7,
+    sortOrder: 8,
     caseStudySlugs: ["pipeline-validation-design", "turn-analysis-into-a-decision-tool"],
     sections: [
       {
         title: "프로젝트 개요",
         paragraphs: [
           "Job Signal Pipeline은 채용 공고 데이터를 live 서비스처럼 운영했다고 주장하는 프로젝트가 아니라, mock 응답 기반으로 수집·적재·모델링·검증·대시보드 조회 경로를 확인한 local validation pipeline v1입니다.",
-          "핵심 검증 경로는 Saramin mock ingestion → PostgreSQL raw loading → analytics SQL views → SQL tests → Streamlit dashboard입니다.",
+          "핵심 검증 경로는 Saramin mock ingestion → PostgreSQL raw loading → analytics SQL views → SQL tests → local review dashboard입니다.",
         ],
       },
       {
         title: "검증 흐름",
         paragraphs: [
           "`scripts/validate_sql_models.py`는 SQL migrations, analytics models, mock ingestion loading, analytics previews, SQL tests를 한 번에 실행해 데이터 품질과 분석 뷰 연결을 확인합니다.",
-          "Streamlit dashboard는 live API를 직접 호출하지 않고 PostgreSQL analytics views를 읽기 때문에, 수집과 분석/시각화 경계를 분리해 검토할 수 있습니다.",
+          "local review dashboard는 live API를 직접 호출하지 않고 PostgreSQL analytics views를 읽기 때문에, 수집과 분석/시각화 경계를 분리해 검토할 수 있습니다.",
         ],
       },
       {
@@ -1449,7 +1679,7 @@ export const projects: Project[] = [
         type: "secondary",
       },
     ],
-    sortOrder: 6,
+    sortOrder: 7,
     caseStudySlugs: ["turn-analysis-into-a-decision-tool"],
     sections: [
       {

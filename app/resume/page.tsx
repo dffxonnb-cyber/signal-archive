@@ -12,27 +12,28 @@ export default function ResumePage() {
     {
       title: "Data Analyst Fit",
       relevantWork: ["데이터 정리", "EDA", "지표 설계", "결과 해석", "문서화"],
-      coreSkills: ["SQL", "Python", "pandas", "Jupyter", "Tableau", "Looker Studio"],
+      coreSkills: ["SQL", "Python", "pandas", "Jupyter", "Tableau"],
       proofProjects: [
+        "seoul-storefront-redveil",
+        "decisionops-lab",
         "starbucks-promotion-analysis",
         "uk-online-retail-segment-analysis",
-        "shopeasy",
       ],
-      evidence: ["고객 반응 분석", "세그먼트 분석", "전환 병목 분석"],
+      evidence: ["판단 기준 설계", "SQL/품질 gate", "CRM·세그먼트 supporting evidence"],
     },
     {
       title: "Data Product Builder Fit",
       relevantWork: ["웹앱 구현", "서버리스 API 연결", "정적 fallback", "검증 가능한 배포"],
-      coreSkills: ["React", "Next.js", "TypeScript", "Vercel", "Neon"],
-      proofProjects: ["shelter-signal", "seoul-storefront-redveil", "shopeasy"],
-      evidence: ["Vercel API route", "PWA", "case study archive"],
+      coreSkills: ["React", "Next.js", "TypeScript", "Vercel", "GitHub Pages"],
+      proofProjects: ["seoul-storefront-redveil", "shelter-signal", "decisionops-lab"],
+      evidence: ["decision artifact", "Vercel API route", "PWA", "reviewer report"],
     },
     {
       title: "Pipeline / Automation Validation Fit",
-      relevantWork: ["PostgreSQL 모델링", "SQL tests", "Docker 로컬 검증", "dry-run 자동화"],
-      coreSkills: ["PostgreSQL", "Docker", "n8n", "Mailpit", "Python smoke tests"],
-      proofProjects: ["shelter-signal"],
-      evidence: ["Mailpit smoke test PASS", "SQL validation", "email_html dry-run"],
+      relevantWork: ["SQL 모델링", "data quality tests", "local validation", "dry-run 경계 문서화"],
+      coreSkills: ["SQL", "PostgreSQL", "GitHub Actions", "Python smoke tests", "local dry-run"],
+      proofProjects: ["decisionops-lab", "job-signal-pipeline", "shelter-signal"],
+      evidence: ["quality gate PASS", "SQL validation", "fallback/local dry-run boundary"],
     },
   ];
 
@@ -54,7 +55,7 @@ export default function ResumePage() {
               </div>
               <div>
                 <dt>Proof Projects</dt>
-                <dd>Redveil · Shelter Signal · LH Traffic Safety · Starbucks</dd>
+                <dd>Redveil · Shelter Signal · DecisionOps Lab · LH Traffic Safety</dd>
               </div>
               <div>
                 <dt>Resume PDF</dt>
