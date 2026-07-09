@@ -12,6 +12,14 @@ Redveil now demonstrates a pause-first decision artifact flow: risk signal → p
 
 포지셔닝, 대표 프로젝트, live product evidence를 가장 빠르게 확인하는 경로입니다.
 
+## Analytics Engineering / Product Analyst role
+
+1. [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab)
+2. [Public Reviewer Report](https://dffxonnb-cyber.github.io/DecisionOps-lab/)
+3. Seoul Storefront Redveil
+
+SQL 모델링, 품질검증, 실험 해석, 가드레일 기반 의사결정 흐름을 확인하는 경로입니다.
+
 ## Spatial / Public Data role
 
 1. LH Traffic Safety Analysis
