@@ -57,6 +57,7 @@ Problem → Data → Criteria → Judgment → Output
 | Review Goal | Suggested Path | What it shows |
 | --- | --- | --- |
 | **3-minute profile scan** | [Start Here](https://signal-archive.vercel.app/start-here) → [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) | 포지셔닝, 대표 프로젝트, live product evidence |
+| **Analytics Engineering / Product Analyst role** | [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) → [Reviewer Report](https://dffxonnb-cyber.github.io/DecisionOps-lab/) → [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) | SQL 모델링, 품질검증, 실험 해석, 가드레일 기반 의사결정 흐름 |
 | **Spatial / Public Data role** | [LH Traffic Safety](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) → [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) | 격자 기반 위험 신호, 공공데이터 API, 공간·도시 의사결정 구조 |
 | **Business / CRM role** | [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Starbucks Promotion](https://signal-archive.vercel.app/projects/starbucks-promotion-analysis) → [UK Online Retail](https://signal-archive.vercel.app/projects/uk-online-retail-segment-analysis) | 리스크 판단, 고객 반응 예측, 세그먼트 액션 설계 |
 
