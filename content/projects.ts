@@ -836,7 +836,7 @@ export const projects: Project[] = [
       originalQuestion: "실험 결과가 좋아 보이면 바로 Ship해도 되는가?",
       reframedQuestion: "activation lift와 통계 신호가 있어도 품질 검증과 guardrail을 통과해야 Ship으로 판단할 수 있는가?",
       keyEvidence: "SQL mart · 23 quality checks PASS · activation lift +3.97pp · p-value 0.000011 · D7 revisit guardrail +0.97pp · 5 scenario matrix",
-      finalDeliverable: "mart_decision_summary, quality_report.json, experiment_result.json, scenario_matrix.md, decision_memo.md, public reviewer report",
+      finalDeliverable: "mart decision summary, quality/experiment reports, scenario matrix, decision memo, public reviewer report",
       proves: "제품 이벤트 데이터를 해석 전 품질 gate와 실험/guardrail 판단 언어로 전환하는 역량",
     },
     cardBrief: {
@@ -860,31 +860,31 @@ export const projects: Project[] = [
     evidencePoints: [
       {
         label: "SQL Layer",
-        value: "raw users/events/sessions/payments/experiments를 staging, intermediate, mart tables로 분리하고 reviewer-facing artifact가 mart layer를 읽도록 구성",
+        value: "raw events → staging/intermediate/mart로 분리하고 reviewer report가 mart layer를 읽도록 구성",
       },
       {
         label: "Quality Gate",
-        value: "row count, nulls, accepted values, relation, duplicate, experiment balance 등 23개 checks가 모두 PASS",
+        value: "row count, null, relation, duplicate, experiment balance 등 23개 checks PASS",
       },
       {
         label: "Experiment Review",
-        value: "Variant A activation 30.15%, B 34.12%, absolute lift +3.97pp, p-value 0.000011, confidence interval +2.14pp~+5.80pp",
+        value: "B variant activation +3.97pp, p-value 0.000011",
       },
       {
         label: "Guardrail Review",
-        value: "D7 revisit A 48.17%, B 49.14%, delta +0.97pp로 default strong_positive scenario의 guardrail PASS 확인",
+        value: "D7 revisit delta +0.97pp로 default scenario guardrail PASS",
       },
       {
         label: "Decision Language",
-        value: "strong_positive=Ship, guardrail_risk/weak_evidence=Retest, neutral=Hold, quality_failure=Investigate로 분기",
+        value: "strong_positive=Ship, weak/guardrail risk=Retest, neutral=Hold, quality failure=Investigate",
       },
       {
         label: "Verification",
-        value: "`scripts/run_full_verification.py`와 GitHub Actions가 reports/quality_report.json, experiment_result.json, decision_memo.md, review_report.html, scenario_matrix를 생성/업로드",
+        value: "one-command runner와 GitHub Actions로 quality/report/memo artifacts 생성",
       },
       {
         label: "Claim Boundary",
-        value: "synthetic data workflow이며 실제 제품 성과, 실제 사용자 행동, production business impact는 주장하지 않음",
+        value: "synthetic workflow이며 실제 제품 성과·사용자 행동·business impact는 주장하지 않음",
       },
     ],
     signalCaseStudy: {
@@ -896,7 +896,7 @@ export const projects: Project[] = [
       flow: ["Synthetic events", "DuckDB raw", "SQL staging", "Intermediate models", "Mart layer", "Quality gate", "A/B evidence", "D7 guardrail", "Scenario matrix", "Decision memo"],
       evidenceTitle: "검토 가능한 DecisionOps 산출물",
       evidenceDescription:
-        "별도 스크린샷을 만들지 않고, 저장소에 남아 있는 quality report, experiment result, scenario matrix, decision memo, reviewer report를 evidence로 연결합니다.",
+        "별도 스크린샷을 만들지 않고, quality/experiment reports, scenario matrix, decision memo, reviewer report를 evidence로 연결합니다.",
       sections: [
         {
           label: "01 Problem",
@@ -945,7 +945,7 @@ export const projects: Project[] = [
           title: "reviewer-facing artifact로 남기기",
           description:
             "quality report, experiment result, scenario matrix, decision memo, public reviewer report를 검토 가능한 산출물로 남깁니다.",
-          points: ["reports/decision_memo.md", "reports/review_report.html", "scripts/run_full_verification.py"],
+          points: ["decision memo", "public reviewer report", "one-command verification runner"],
         },
         {
           label: "08 Boundary",
@@ -981,7 +981,7 @@ export const projects: Project[] = [
         "refund risk와 session activity는 decision memo 설계 문서의 guardrail 후보로 다루며, 현재 생성된 scenario matrix의 검증 중심은 D7 revisit입니다.",
         "dashboard보다는 SQL layer, quality gate, scenario matrix, decision memo 중심의 reviewer-facing evidence입니다.",
       ],
-      linkNote: "GitHub README, docs/REVIEW_GUIDE.md, reports/scenario_matrix.md, reports/decision_memo.md에서 검증 경로와 claim boundary를 확인할 수 있습니다.",
+      linkNote: "GitHub README, review guide, scenario matrix, decision memo에서 검증 경로와 claim boundary를 확인할 수 있습니다.",
     },
     focusPoints: [
       "raw product event를 SQL mart layer와 metric definition으로 재구성",

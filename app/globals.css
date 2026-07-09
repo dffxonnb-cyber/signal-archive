@@ -2726,6 +2726,8 @@ main {
   font-size: 0.94rem;
   line-height: 1.76;
   word-break: keep-all;
+  overflow-wrap: break-word;
+  text-align: left;
 }
 
 .detail-signal-case__chips {
@@ -2781,7 +2783,7 @@ main {
   font-size: 0.69rem;
   font-weight: 650;
   line-height: 1.38;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .detail-signal-flow__step em {
@@ -2838,6 +2840,8 @@ main {
   font-size: 0.82rem;
   line-height: 1.6;
   word-break: keep-all;
+  overflow-wrap: break-word;
+  text-align: left;
 }
 
 .detail-signal-evidence__grid {
@@ -2882,6 +2886,7 @@ main {
   font-size: 0.72rem;
   line-height: 1.55;
   word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 .detail-signal-case__grid {
@@ -2927,6 +2932,8 @@ main {
   font-size: 0.84rem;
   line-height: 1.64;
   word-break: keep-all;
+  overflow-wrap: break-word;
+  text-align: left;
 }
 
 .detail-signal-case__section ul {
@@ -2988,7 +2995,8 @@ main {
   font-size: 1rem;
   line-height: 1.62;
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  text-align: left;
 }
 
 .detail-decision__question--reframed {
@@ -3034,10 +3042,11 @@ main {
   margin: 0;
   color: var(--text-primary);
   font-size: 0.94rem;
-  font-weight: 650;
+  font-weight: 600;
   line-height: 1.58;
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  text-align: left;
 }
 
 .detail-decision__proof--evidence {
@@ -3058,23 +3067,25 @@ main {
 
 .detail-evidence-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
   gap: var(--space-grid-tight);
 }
 
 .detail-evidence-item {
-  min-height: 128px;
-  align-content: space-between;
+  min-height: 112px;
+  align-content: start;
 }
 
 .detail-evidence-item strong {
   color: var(--accent-strong);
-  font-size: 1.02rem;
-  font-weight: 760;
-  line-height: 1.42;
+  font-size: 0.92rem;
+  font-weight: 620;
+  line-height: 1.55;
   font-variant-numeric: tabular-nums;
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
+  hyphens: none;
+  text-align: left;
 }
 
 .detail-evidence-item--lead {
@@ -3087,7 +3098,7 @@ main {
 
 .detail-evidence-item--lead strong {
   color: var(--accent-warm);
-  font-size: 1.18rem;
+  font-size: 1rem;
 }
 
 .detail-context-grid {
@@ -3128,7 +3139,7 @@ main {
   font-weight: 650;
   line-height: 1.44;
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .detail-note--context {
@@ -3252,6 +3263,8 @@ main {
   color: var(--text-primary);
   font-size: 0.77rem;
   line-height: 1;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 
 .list-stack {
@@ -6258,30 +6271,31 @@ detial-operation__risk:first-child {
 
 .detail-evidence-item {
   min-width: 0;
-  min-height: clamp(128px, 12vw, 168px);
-  padding: clamp(16px, 2vw, 22px);
+  min-height: clamp(108px, 10vw, 132px);
+  padding: clamp(14px, 1.7vw, 18px);
+  align-content: start;
 }
 
 .detail-evidence-item span {
   display: block;
   line-height: 1.35;
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .detail-evidence-item strong {
   display: block;
-  margin-top: var(--space-4);
-  line-height: 1.42;
+  margin-top: 0;
+  line-height: 1.55;
   word-break: keep-all;
-  overflow-wrap: anywhere;
-  hyphens: auto;
+  overflow-wrap: break-word;
+  hyphens: none;
 }
 
 .detail-evidence-item--lead strong {
   max-width: 42rem;
-  font-size: clamp(1rem, 1.4vw, 1.18rem);
-  line-height: 1.45;
+  font-size: clamp(0.96rem, 1.1vw, 1.06rem);
+  line-height: 1.55;
 }
 
 @media (max-width: 768px) {
@@ -6334,7 +6348,7 @@ detial-operation__risk:first-child {
 .detail-signal-evidence__item figcaption strong,
 .detail-signal-evidence__item figcaption span {
   word-break: keep-all;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 @media (max-width: 768px) {
