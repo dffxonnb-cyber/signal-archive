@@ -24,7 +24,7 @@ const homePriorityLinks = [
     href: "/projects/shelter-signal",
   },
   {
-    label: "03 DecisionOps",
+    label: "03 DecisionOps Lab",
     href: "/projects/decisionops-lab",
   },
   {
@@ -83,7 +83,7 @@ const projectRoleMap = [
   {
     step: "03",
     title: "DecisionOps Lab",
-    detail: "raw product event를 SQL mart, 품질 gate, A/B evidence, guardrail decision memo로 연결한 workflow",
+    detail: "raw event를 SQL mart, data quality, A/B evidence, multi-guardrail decision memo로 연결한 workflow",
     href: "/projects/decisionops-lab",
     label: "DecisionOps 보기",
   },

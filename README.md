@@ -58,7 +58,7 @@ Problem → Data → Criteria → Judgment → Output
 | ---: | --- | --- | --- | --- |
 | 1 | **Seoul Storefront Redveil** | 상권 분석을 보류 사유, 대체 후보, memo/checklist handoff로 바꾼 single flagship | GitHub Pages public UI, 25 Seoul districts, 12,074 transactions, decision artifact evidence | [Detail](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) · [Live](https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/) · [Repo](https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil) |
 | 2 | **Shelter Signal** | 구조동물 공고를 current/urgent와 live/cache/fallback 상태로 분리한 public-data PWA | Vercel `/api/notices`, KST freshness, D-Day~D-3, cache/fallback metadata | [Detail](https://signal-archive.vercel.app/projects/shelter-signal) · [Live](https://shelter-signal-ebon.vercel.app/) · [Repo](https://github.com/dffxonnb-cyber/shelter-signal) |
-| 3 | **DecisionOps Lab** | synthetic product events를 SQL mart, quality gate, A/B evidence, guardrail memo로 연결한 workflow | raw/staging/intermediate/mart SQL, quality PASS, scenario matrix, decision memo/report | [Detail](https://signal-archive.vercel.app/projects/decisionops-lab) · [Repo](https://github.com/dffxonnb-cyber/DecisionOps-lab) |
+| 3 | **DecisionOps Lab** | synthetic product events를 SQL mart, quality gate, A/B evidence, guardrail memo로 연결한 workflow | raw/staging/intermediate/mart SQL, quality PASS, scenario matrix, decision memo/report | [Detail](https://signal-archive.vercel.app/projects/decisionops-lab) · [Report](https://dffxonnb-cyber.github.io/DecisionOps-lab/) · [Repo](https://github.com/dffxonnb-cyber/DecisionOps-lab) |
 | 4 | **LH Traffic Safety Analysis** | 100m grid risk signal을 LORO 검증과 현장 검토 우선순위로 번역한 공간 분석 | 99,323 training grids, 770 target grids, AUC 0.8604, Top-10% Lift 4.39x | [Detail](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) · [Repo](https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis) |
 
 ### Claim Boundaries
@@ -77,7 +77,7 @@ Problem → Data → Criteria → Judgment → Output
 | **Starbucks Promotion Analysis** | CRM / marketing analytics | 고객·오퍼·채널 반응, AUC 0.8147, Recall 0.8712, Tableau workbook |
 | **UK Online Retail Segment Analysis** | segmentation / campaign action design | RFM, Pareto, statistical tests, top 20% revenue 73.5% |
 | **ShopEasy** | commerce dashboard / experiment proposal | deterministic synthetic dataset, conversion dashboard, A/B test proposal |
-| **Job Signal Pipeline** | mock/local SQL pipeline validation | PostgreSQL raw loading, 5 analytics views, 7 SQL tests PASS, Streamlit local dashboard |
+| **Job Signal Pipeline** | mock/local SQL pipeline validation | PostgreSQL raw loading, 5 analytics views, 7 SQL tests PASS, local review dashboard |
 | **NBA Game & Player Analysis** | archive-level sports analytics | EDA, statistical tests, modeling flow, public artifact smoke tests |
 
 ---

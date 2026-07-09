@@ -5,7 +5,7 @@ import { ProjectExplorer } from "@/components/project-explorer";
 import { featuredProjects, projects } from "@/content/projects";
 
 const reviewerProjectPaths = [
-    {
+  {
     label: "3-minute scan",
     title: "Redveil → Shelter → DecisionOps → LH",
     detail: "single flagship decision artifact를 먼저 보고, public-data service, SQL/guardrail workflow, 공간 검증으로 확장합니다.",
@@ -29,6 +29,28 @@ const reviewerProjectPaths = [
         title: "LH Traffic Safety",
         href: "/projects/lh-traffic-safety-analysis",
         reason: "100m grid와 LORO 검증",
+      },
+    ],
+  },
+  {
+    label: "Analytics / DecisionOps",
+    title: "분석 결과를 의사결정으로 번역",
+    detail: "차트나 모델 점수 이후의 품질 검증, guardrail, decision memo를 확인하는 경로입니다.",
+    projects: [
+      {
+        title: "DecisionOps Lab",
+        href: "/projects/decisionops-lab",
+        reason: "Ship / Retest / Hold / Investigate 판단 workflow",
+      },
+      {
+        title: "Starbucks",
+        href: "/projects/starbucks-promotion-analysis",
+        reason: "고객·오퍼·채널 반응",
+      },
+      {
+        title: "ShopEasy",
+        href: "/projects/shopeasy",
+        reason: "전환 병목과 A/B test 가설",
       },
     ],
   },
@@ -113,7 +135,7 @@ export default function ProjectsPage() {
     },
     {
       label: "Delivery Types",
-      value: "PWA · Dashboard",
+      value: "PWA · Decision Report",
       note: "serverless API · static site · case study",
     },
   ];
@@ -147,7 +169,7 @@ export default function ProjectsPage() {
               </h2>
             </div>
             <p className="page-intro">
-              평평한 gallery가 아니라, 운영형 서비스·상권 판단·공간 검증을 질문별 evidence board로 읽도록 나눴습니다.
+              평평한 gallery가 아니라, 운영형 서비스·상권 판단·분석 의사결정·공간 검증을 질문별 evidence board로 읽도록 나눴습니다.
             </p>
           </div>
 

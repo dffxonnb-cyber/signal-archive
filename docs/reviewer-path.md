@@ -20,6 +20,14 @@ Redveil은 단일 flagship입니다. 가장 큰 프로젝트라서가 아니라,
 
 포지셔닝, 단일 flagship, live public-data service, SQL/guardrail decision workflow를 가장 빠르게 확인하는 경로입니다.
 
+## Analytics Engineering / Product Analyst role
+
+1. [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab)
+2. [Public Reviewer Report](https://dffxonnb-cyber.github.io/DecisionOps-lab/)
+3. Seoul Storefront Redveil
+
+SQL 모델링, 품질검증, 실험 해석, 가드레일 기반 의사결정 흐름을 확인하는 경로입니다.
+
 ## Spatial / Public Data role
 
 1. Seoul Storefront Redveil
