@@ -42,6 +42,7 @@ const decisionFiles: DecisionFile[] = [
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",
       "shelter-signal",
+      "decisionops-lab",
       "shopeasy",
     ],
     axis: "Question",
@@ -77,6 +78,7 @@ const decisionFiles: DecisionFile[] = [
     evidence: ["AUC 0.8147", "Recall 0.8712", "Precision 0.6830", "F1 0.7657"],
     linkedProjects: [
       "starbucks-promotion-analysis",
+      "decisionops-lab",
       "uk-online-retail-segment-analysis",
       "shopeasy",
     ],
@@ -89,13 +91,14 @@ const decisionFiles: DecisionFile[] = [
     title: "Data Structure Design",
     description: "분석 가능한 테이블을 만드는 방식",
     proves: "흩어진 데이터를 분석 가능한 grain으로 재구성할 수 있음",
-    primaryExample: "Starbucks Promotion Analysis",
-    primaryExampleSlug: "starbucks-promotion-analysis",
-    signal: "원천 데이터만으로는 바로 판단할 수 없는 분리된 데이터 구조",
-    criteria: "조인 기준, 이벤트 정의, 분석 단위, 지표 grain",
-    decisionOutput: "고객-오퍼 테이블, 주문-세션 지표, 재현 가능한 파이프라인",
-    evidence: ["Profile · Transcript · Portfolio 구조", "분석 가능한 통합 테이블로 재설계"],
+    primaryExample: "DecisionOps Lab",
+    primaryExampleSlug: "decisionops-lab",
+    signal: "raw product event만으로는 바로 Ship / Retest / Hold / Investigate 판단을 내릴 수 없는 구조",
+    criteria: "raw/staging/intermediate/mart layer, metric grain, 23 quality checks, D7 guardrail",
+    decisionOutput: "SQL mart, quality report, scenario matrix, decision memo, reviewer report",
+    evidence: ["23/23 quality PASS", "A/B lift +3.97pp", "D7 delta +0.97pp", "5 scenario matrix"],
     linkedProjects: [
+      "decisionops-lab",
       "starbucks-promotion-analysis",
       "shopeasy",
       "uk-online-retail-segment-analysis",
@@ -117,6 +120,7 @@ const decisionFiles: DecisionFile[] = [
     decisionOutput: "README, 방법론 문서, 재현성 가이드, 대시보드, 웹 화면, 실행 파이프라인",
     evidence: ["README", "검증 문서", "웹 기반 검토 화면", "공개 프로토타입 링크"],
     linkedProjects: [
+      "decisionops-lab",
       "lh-traffic-safety-analysis",
       "seoul-storefront-redveil",
       "shelter-signal",
@@ -132,6 +136,7 @@ const projectDisplayNames: Record<string, string> = {
   "lh-traffic-safety-analysis": "LH Traffic Safety",
   "seoul-storefront-redveil": "Seoul Storefront Redveil",
   "shelter-signal": "Shelter Signal",
+  "decisionops-lab": "DecisionOps Lab",
   shopeasy: "ShopEasy",
   "uk-online-retail-segment-analysis": "UK Online Retail",
   "starbucks-promotion-analysis": "Starbucks Promotion",
@@ -158,6 +163,11 @@ const ctaProjects = [
     slug: "shelter-signal",
     title: "Shelter Signal",
     detail: "공고 생명주기와 데이터 신뢰 상태를 보호 종료 임박 신호로 구현",
+  },
+  {
+    slug: "decisionops-lab",
+    title: "DecisionOps Lab",
+    detail: "SQL mart와 D7 guardrail을 decision memo로 연결",
   },
   {
     slug: "lh-traffic-safety-analysis",
@@ -188,8 +198,8 @@ export default function CaseStudiesPage() {
     },
     {
       label: "분석 도메인",
-      value: "Public · CRM",
-      note: "상권·공공·커머스·스포츠 분석",
+      value: "Decision · Public · CRM",
+      note: "상권·공공·제품·커머스 분석",
     },
     {
       label: "산출물",
@@ -213,7 +223,7 @@ export default function CaseStudiesPage() {
               데이터를 리스크·우선순위 신호로 해석하며, 분석을 검토 가능한 의사결정 도구로 연결하는 과정입니다.
             </>
           }
-          meta={<span className="page-hero__meta-chip">Redveil · Shelter · LH를 관통하는 Signal → Criteria → Decision.</span>}
+          meta={<span className="page-hero__meta-chip">Redveil · Shelter · DecisionOps · LH를 관통하는 Signal → Criteria → Decision.</span>}
           panelPlacement="below"
           title="판단이 만들어지는 방식"
           titleId="decision-files-title"
@@ -222,7 +232,7 @@ export default function CaseStudiesPage() {
             <div className={styles.flowSummary}>
               <span className={styles.panelLabel}>검토 기준</span>
               <p className={styles.flowNote}>
-                Redveil, Shelter Signal, LH Traffic Safety에서 반복되는 신호를 읽고 기준을 세운 뒤, 리뷰어가 판단 근거와 결과물을 함께 확인할 수 있게 남깁니다.
+                Redveil, Shelter Signal, DecisionOps Lab, LH Traffic Safety에서 반복되는 신호를 읽고 기준을 세운 뒤, 리뷰어가 판단 근거와 결과물을 함께 확인할 수 있게 남깁니다.
               </p>
               <div aria-label="Signal to Criteria to Decision" className="page-hero__flow">
                 {archiveFlow.map((step, index) => (

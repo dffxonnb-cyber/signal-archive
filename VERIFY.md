@@ -42,13 +42,15 @@ npm run build
 
 ### Local Validation
 
-- Redveil, LH, Starbucks, UK Retail, NBA, and ShopEasy each keep repository-level verification scripts or CI checks for public artifacts, smoke tests, or entry-point syntax.
+- Redveil, LH, Starbucks, UK Retail, ShopEasy, Job Signal Pipeline, and NBA each keep repository-level verification scripts or CI checks for public artifacts, smoke tests, or entry-point syntax.
 - Shelter Signal additionally documents local PostgreSQL, SQL tests, static export, and separate V2 n8n/Mailpit dry-run validation.
+- DecisionOps Lab keeps a synthetic-data verification path with DuckDB SQL marts, 23 quality checks, A/B evidence, D7 guardrail review, scenario matrix, decision memo, and reviewer report artifacts.
 - Local validation should not be read as monitoring or notification delivery for real recipients.
 
 ### Mock, Sample, And Fallback Behavior
 
 - Shelter Signal currently uses Neon fallback rows based on local mock/export validation data, with static JSON and mock data fallback.
+- DecisionOps Lab uses synthetic product events to verify workflow structure; it does not claim real user behavior, product performance, production warehouse operation, or business impact.
 - ShopEasy uses a deterministic synthetic dataset designed for portfolio review and dashboard signal consistency.
 - Redveil can rebuild the public payload from raw inputs when available, but public review relies on a tracked public-safe snapshot.
 
@@ -64,11 +66,13 @@ npm run build
 | --- | --- | --- |
 | Seoul Storefront Redveil | Unit tests, public-safe payload build, local smoke tests, optional Playwright browser checks, GitHub Pages artifact | Full raw-data rebuild requires excluded source snapshots; the service is a screening prototype, not investment advice. |
 | Shelter Signal | Deployed Vite React PWA, live `/api/notices` path with Neon/static/mock fallback, notice-derived `/api/shelters` | Hosted Neon rows are mock/export validation support; hosted public-data ingestion and notification operations are outside the verified scope. |
+| DecisionOps Lab | DuckDB SQL mart build, 23/23 quality checks, A/B evidence, D7 guardrail review, scenario matrix, decision memo, public reviewer report | Synthetic-data workflow only; it does not claim real product performance, real user behavior, production business impact, or production data warehouse operation. |
 | LH Traffic Safety Analysis | Public-safe dashboard smoke tests, validation docs, review CSV/images, README visuals | Original competition/geospatial data is excluded; full GRF/grid pipeline rerun requires local source data. |
 | Starbucks Promotion Analysis | Public artifact checker, pipeline entry-point compile check, Tableau workbook and screenshots | Full notebook execution requires Kaggle `portfolio.csv`, `profile.csv`, and `transcript.csv`; CI does not retrain models. |
 | UK Online Retail Segment Analysis | Public artifact checker, pipeline entry-point compile check, docs/images review | Full notebook execution requires UCI `Online_Retail.csv`; segment thresholds should be revalidated for a new business context. |
-| NBA Game & Player Analysis | Public artifact check, synthetic dataframe smoke test, tracked PNG outputs and docs | Full pipeline execution requires Kaggle `games.csv`, `games_details.csv`, `players.csv`, and `teams.csv`; live data integration is not included. |
 | ShopEasy | Static dashboard, deterministic synthetic dataset generator, CSV schema/row count/key metric checks | Synthetic data is generated for portfolio review, not production behavior simulation; browser visual regression is not included. |
+| Job Signal Pipeline | Mock ingestion, PostgreSQL raw loading, 5 analytics views, 7 SQL tests, local review dashboard docs | Saramin live API operation, production ingestion schedules, monitoring, and notification delivery are outside the verified scope. |
+| NBA Game & Player Analysis | Public artifact check, synthetic dataframe smoke test, tracked PNG outputs and docs | Full pipeline execution requires Kaggle `games.csv`, `games_details.csv`, `players.csv`, and `teams.csv`; live data integration is not included. |
 
 ## Shelter Signal Verification Boundary
 

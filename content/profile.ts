@@ -10,7 +10,7 @@ export const profile: Profile = {
   "분석 결과를 차트에서 끝내지 않고, 판단 기준·리스크 신호·검토 가능한 산출물로 연결하는 데이터 의사결정 아카이브를 구축합니다.",
 summary: [
   "공공데이터, 상권 데이터, CRM 데이터처럼 성격이 다른 데이터를 목적에 맞는 분석 단위와 지표로 다시 정리하고, 검토자가 실제로 판단할 수 있는 기준·리스크 신호·웹 결과물로 연결하는 작업을 강점으로 삼고 있습니다.",
-  "React/Next/Vite 기반 웹앱, Vercel 서버리스 API route, SQL 모델링, PostgreSQL local/fallback 검증, Docker/n8n/Mailpit dry-run evidence를 프로젝트 범위에 맞게 조합해 왔습니다.",
+  "React/Next/Vite 기반 웹앱, Vercel 서버리스 API route, DuckDB SQL mart, PostgreSQL local/fallback 검증, Docker/n8n/Mailpit dry-run evidence를 프로젝트 범위에 맞게 조합해 왔습니다.",
   "프로덕션 엔지니어링 범위를 과장하기보다, 분석 결과가 실제로 확인 가능한 화면·문서·검증 스크립트로 끝까지 이어지는 흐름을 중요하게 생각합니다.",
 ],
   strengths: [
@@ -72,6 +72,7 @@ summary: [
       summary: "분석 가능한 테이블 구조, 검증 가능한 SQL layer, local/fallback 범위의 데이터 산출물을 구성합니다.",
       items: [
         "PostgreSQL",
+        "DuckDB",
         "Neon fallback/historical evidence",
         "SQLAlchemy",
         "psycopg",

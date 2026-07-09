@@ -830,6 +830,8 @@ export const projects: Project[] = [
       deliverable: "SQL mart layer, data quality report, experiment evidence, Ship/Retest/Hold/Investigate decision memo, reviewer HTML report",
       hiringSignal: "제품 이벤트 데이터를 지표 계산에서 멈추지 않고 품질 gate, guardrail, 실험 근거, 리뷰 가능한 decision artifact로 연결할 수 있음",
     },
+    reviewerPriority: 3,
+    showInReviewerPath: true,
     decisionMoment: {
       originalQuestion: "실험 결과가 좋아 보이면 바로 Ship해도 되는가?",
       reframedQuestion: "activation lift와 통계 신호가 있어도 품질 검증과 guardrail을 통과해야 Ship으로 판단할 수 있는가?",
@@ -839,52 +841,121 @@ export const projects: Project[] = [
     },
     cardBrief: {
       problem:
-          "실험 지표가 하나 좋아 보여도 데이터 품질, D7 revisit guardrail, 시나리오별 decision behavior를 함께 보지 않으면 의사결정 근거가 약해집니다.",
+        "실험 지표가 하나 좋아 보여도 데이터 품질, D7 revisit guardrail, 시나리오별 decision behavior를 함께 보지 않으면 의사결정 근거가 약해집니다.",
       method:
-          "synthetic raw events를 DuckDB SQL layer로 모델링하고, 23개 quality checks와 A/B 분석, D7 guardrail 검토를 거쳐 Ship/Retest/Hold/Investigate decision memo로 정리했습니다.",
+        "synthetic raw events를 DuckDB SQL layer로 모델링하고, 23개 quality checks와 A/B 분석, D7 guardrail 검토를 거쳐 Ship/Retest/Hold/Investigate decision memo로 정리했습니다.",
       output: [
         "SQL staging/intermediate/mart layer",
-          "23 data quality checks",
-          "A/B evidence + D7 revisit guardrail",
-          "decision memo / reviewer report",
-        ],
-      },
-      metrics: [
-        { label: "Quality Gate", value: "23/23 PASS" },
-        { label: "Activation Lift", value: "+3.97pp" },
-        { label: "D7 Guardrail", value: "+0.97pp" },
-        { label: "Scenario Matrix", value: "5 scenarios" },
+        "23 data quality checks",
+        "A/B evidence + D7 revisit guardrail",
+        "decision memo / reviewer report",
       ],
-      evidencePoints: [
-        {
-          label: "SQL Layer",
-          value: "raw users/events/sessions/payments/experiments를 staging, intermediate, mart tables로 분리하고 reviewer-facing artifact가 mart layer를 읽도록 구성",
-        },
-        {
-          label: "Quality Gate",
-          value: "row count, nulls, accepted values, relation, duplicate, experiment balance 등 23개 checks가 모두 PASS",
-        },
-        {
-          label: "Experiment Review",
-          value: "Variant A activation 30.15%, B 34.12%, absolute lift +3.97pp, p-value 0.000011, confidence interval +2.14pp~+5.80pp",
-        },
-        {
-          label: "Guardrail Review",
-          value: "D7 revisit A 48.17%, B 49.14%, delta +0.97pp로 default strong_positive scenario의 guardrail PASS 확인",
-        },
-        {
-          label: "Decision Language",
-          value: "strong_positive=Ship, guardrail_risk/weak_evidence=Retest, neutral=Hold, quality_failure=Investigate로 분기",
-        },
-        {
-          label: "Verification",
-          value: "`scripts/run_full_verification.py`와 GitHub Actions가 reports/quality_report.json, experiment_result.json, decision_memo.md, review_report.html, scenario_matrix를 생성/업로드",
-        },
-        {
-          label: "Claim Boundary",
+    },
+    metrics: [
+      { label: "Quality Gate", value: "23/23 PASS" },
+      { label: "Activation Lift", value: "+3.97pp" },
+      { label: "D7 Guardrail", value: "+0.97pp" },
+      { label: "Scenario Matrix", value: "5 scenarios" },
+    ],
+    evidencePoints: [
+      {
+        label: "SQL Layer",
+        value: "raw users/events/sessions/payments/experiments를 staging, intermediate, mart tables로 분리하고 reviewer-facing artifact가 mart layer를 읽도록 구성",
+      },
+      {
+        label: "Quality Gate",
+        value: "row count, nulls, accepted values, relation, duplicate, experiment balance 등 23개 checks가 모두 PASS",
+      },
+      {
+        label: "Experiment Review",
+        value: "Variant A activation 30.15%, B 34.12%, absolute lift +3.97pp, p-value 0.000011, confidence interval +2.14pp~+5.80pp",
+      },
+      {
+        label: "Guardrail Review",
+        value: "D7 revisit A 48.17%, B 49.14%, delta +0.97pp로 default strong_positive scenario의 guardrail PASS 확인",
+      },
+      {
+        label: "Decision Language",
+        value: "strong_positive=Ship, guardrail_risk/weak_evidence=Retest, neutral=Hold, quality_failure=Investigate로 분기",
+      },
+      {
+        label: "Verification",
+        value: "`scripts/run_full_verification.py`와 GitHub Actions가 reports/quality_report.json, experiment_result.json, decision_memo.md, review_report.html, scenario_matrix를 생성/업로드",
+      },
+      {
+        label: "Claim Boundary",
         value: "synthetic data workflow이며 실제 제품 성과, 실제 사용자 행동, production business impact는 주장하지 않음",
       },
     ],
+    signalCaseStudy: {
+      signalType: "실험 의사결정 workflow",
+      title: "activation lift를 Ship 판단으로 바로 넘기지 않는 구조",
+      thesis:
+        "synthetic 제품 이벤트를 SQL mart와 품질 gate로 정리하고, A/B evidence와 D7 revisit guardrail을 함께 읽어 Ship / Retest / Hold / Investigate memo로 번역한 technical workflow 사례입니다.",
+      chips: ["DuckDB SQL", "23 Quality Checks", "+3.97pp Lift", "p=0.000011", "D7 +0.97pp", "5 Scenarios", "Decision Memo", "Reviewer Report"],
+      flow: ["Synthetic events", "DuckDB raw", "SQL staging", "Intermediate models", "Mart layer", "Quality gate", "A/B evidence", "D7 guardrail", "Scenario matrix", "Decision memo"],
+      evidenceTitle: "검토 가능한 DecisionOps 산출물",
+      evidenceDescription:
+        "별도 스크린샷을 만들지 않고, 저장소에 남아 있는 quality report, experiment result, scenario matrix, decision memo, reviewer report를 evidence로 연결합니다.",
+      sections: [
+        {
+          label: "01 Problem",
+          title: "좋아 보이는 실험 결과를 바로 Ship하지 않기",
+          description:
+            "activation lift가 좋아 보여도 데이터 품질이나 downstream behavior가 흔들리면 제품 판단으로 승격하기 어렵습니다.",
+          points: ["지표 단독 해석을 보류", "품질·통계·D7 guardrail을 먼저 확인"],
+        },
+        {
+          label: "02 Data Model",
+          title: "raw event를 SQL layer로 분리",
+          description:
+            "raw users/events/sessions/payments/experiments를 DuckDB raw tables, staging, intermediate, mart layer로 나눕니다.",
+          points: ["mart_experiment_result", "mart_decision_summary", "mart_segment_performance", "mart_retention_cohort"],
+        },
+        {
+          label: "03 Quality Gate",
+          title: "해석 전에 23개 checks를 통과",
+          description:
+            "row count, nulls, accepted values, relation, duplicate, experiment balance checks를 먼저 확인합니다.",
+          points: ["23/23 PASS", "quality failure scenario는 Investigate로 분기"],
+        },
+        {
+          label: "04 Experiment Evidence",
+          title: "activation lift와 통계 신호 확인",
+          description:
+            "default strong_positive scenario에서 Variant B의 activation이 높지만, 이 결과만으로 결론을 내리지 않습니다.",
+          points: ["A 30.15% → B 34.12%", "+3.97pp lift", "p-value 0.000011"],
+        },
+        {
+          label: "05 Guardrail",
+          title: "D7 revisit를 downstream guardrail로 확인",
+          description:
+            "짧은 activation 개선이 이후 revisit 행동을 약화시키지 않는지 D7 revisit delta를 함께 봅니다.",
+          points: ["D7 revisit delta +0.97pp", "guardrail_risk는 Retest로 분기"],
+        },
+        {
+          label: "06 Decision Matrix",
+          title: "하나의 positive result에 고정하지 않기",
+          description:
+            "scenario matrix가 Ship, Retest, Hold, Investigate 판단을 모두 보여주도록 구성했습니다.",
+          points: ["strong_positive=Ship", "weak_evidence/guardrail_risk=Retest", "neutral=Hold", "quality_failure=Investigate"],
+        },
+        {
+          label: "07 Output",
+          title: "reviewer-facing artifact로 남기기",
+          description:
+            "quality report, experiment result, scenario matrix, decision memo, public reviewer report를 검토 가능한 산출물로 남깁니다.",
+          points: ["reports/decision_memo.md", "reports/review_report.html", "scripts/run_full_verification.py"],
+        },
+        {
+          label: "08 Boundary",
+          title: "synthetic-data claim boundary 유지",
+          description:
+            "DecisionOps는 workflow design evidence이며 실제 제품 성과, 실제 사용자 행동, production business impact를 증명하지 않습니다.",
+          points: ["public-safe synthetic workflow", "production warehouse operation 아님"],
+        },
+      ],
+    },
     detailBrief: {
       problem: {
         what:
@@ -937,15 +1008,15 @@ export const projects: Project[] = [
       {
         title: "프로젝트 개요",
         paragraphs: [
-            "DecisionOps Lab은 synthetic 제품 이벤트 데이터를 raw 분석에서 바로 결론으로 넘기지 않고, SQL layer와 품질 gate를 거쳐 decision memo로 연결하는 product analytics workflow입니다.",
-            "대표 역할은 실제 제품 성과를 주장하는 것이 아니라, 실험 해석 전에 어떤 검증과 guardrail을 통과해야 하는지 보여주는 것입니다.",
+          "DecisionOps Lab은 synthetic 제품 이벤트 데이터를 raw 분석에서 바로 결론으로 넘기지 않고, SQL layer와 품질 gate를 거쳐 decision memo로 연결하는 product analytics workflow입니다.",
+          "대표 역할은 실제 제품 성과를 주장하는 것이 아니라, 실험 해석 전에 어떤 검증과 guardrail을 통과해야 하는지 보여주는 것입니다.",
         ],
       },
       {
         title: "접근 방식",
         paragraphs: [
           "raw events를 staging, intermediate, mart layer로 분리하고, reviewer-facing report가 mart layer를 읽도록 구성했습니다.",
-            "23/23 quality PASS, activation lift +3.97pp, p-value 0.000011, D7 revisit guardrail +0.97pp, 5개 scenario matrix를 함께 보고 Ship/Retest/Hold/Investigate 판단 언어로 정리했습니다.",
+          "23/23 quality PASS, activation lift +3.97pp, p-value 0.000011, D7 revisit guardrail +0.97pp, 5개 scenario matrix를 함께 보고 Ship/Retest/Hold/Investigate 판단 언어로 정리했습니다.",
         ],
       },
       {
