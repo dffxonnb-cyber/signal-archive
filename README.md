@@ -14,6 +14,8 @@
   ·
   <a href="https://signal-archive.vercel.app/start-here"><strong>Reviewer Guide</strong></a>
   ·
+  <a href="https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/v2/"><strong>Redveil V2</strong></a>
+  ·
   <a href="docs/reviewer-path.md"><strong>Reviewer Path</strong></a>
   ·
   <a href="https://github.com/dffxonnb-cyber"><strong>GitHub Profile</strong></a>
@@ -36,7 +38,7 @@
 Problem → Data → Criteria → Judgment → Output
 ```
 
-단일 flagship은 **Seoul Storefront Redveil**입니다. 가장 큰 프로젝트라서가 아니라, 분석 결과가 reviewable decision artifact로 바뀌는 방식을 가장 잘 보여주기 때문입니다.
+단일 flagship은 **Seoul Storefront Redveil V2**입니다. 가장 큰 프로젝트라서가 아니라, 공간·거래 분석이 지도 선택, 보류 사유, 대체 후보, 판단 메모와 검증 가능한 제품 흐름으로 바뀌는 방식을 가장 잘 보여주기 때문입니다.
 
 ---
 
@@ -45,7 +47,7 @@ Problem → Data → Criteria → Judgment → Output
 | Review Goal | Suggested Path | What it shows |
 | --- | --- | --- |
 | **3-minute profile scan** | [Start Here](https://signal-archive.vercel.app/start-here) → [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) → [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) | 단일 flagship, public-data service, SQL/D7 guardrail decision workflow |
-| **Spatial / Public Data role** | [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) → [LH Traffic Safety](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) → [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) | 판단 산출물, API/cache/fallback 경계, 100m grid/LORO 검증 |
+| **Spatial / Public Data role** | [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [Shelter Signal](https://signal-archive.vercel.app/projects/shelter-signal) → [LH Traffic Safety](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) → [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) | 지도 기반 판단 산출물, API/cache/fallback 경계, 100m grid/LORO 검증 |
 | **Business / CRM role** | [Redveil](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) → [DecisionOps Lab](https://signal-archive.vercel.app/projects/decisionops-lab) → [Starbucks](https://signal-archive.vercel.app/projects/starbucks-promotion-analysis) → [UK Retail](https://signal-archive.vercel.app/projects/uk-online-retail-segment-analysis) | decision artifact, product metrics, CRM/segmentation supporting evidence |
 
 더 자세한 검토 순서는 [docs/reviewer-path.md](docs/reviewer-path.md)에 정리했습니다.
@@ -56,14 +58,14 @@ Problem → Data → Criteria → Judgment → Output
 
 | Order | Project | Positioning | Main Evidence | Review |
 | ---: | --- | --- | --- | --- |
-| 1 | **Seoul Storefront Redveil** | 상권 분석을 보류 사유, 대체 후보, memo/checklist handoff로 바꾼 single flagship | GitHub Pages public UI, 25 Seoul districts, 12,074 transactions, decision artifact evidence | [Detail](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) · [Live](https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/) · [Repo](https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil) |
+| 1 | **Seoul Storefront Redveil V2** | 서울 자치구 지도에서 보류 사유, 대체 후보와 판단 메모까지 연결한 single flagship | 25 districts, 427 dongs, 1,520 trade areas, 12,074 transactions, 5 connected screens | [Detail](https://signal-archive.vercel.app/projects/seoul-storefront-redveil) · [Live V2](https://dffxonnb-cyber.github.io/Seoul-Storefront-Redveil/v2/) · [Repo](https://github.com/dffxonnb-cyber/Seoul-Storefront-Redveil) |
 | 2 | **Shelter Signal** | 구조동물 공고를 current/urgent와 live/cache/fallback 상태로 분리한 public-data PWA | Vercel `/api/notices`, KST freshness, D-Day~D-3, cache/fallback metadata | [Detail](https://signal-archive.vercel.app/projects/shelter-signal) · [Live](https://shelter-signal-ebon.vercel.app/) · [Repo](https://github.com/dffxonnb-cyber/shelter-signal) |
 | 3 | **DecisionOps Lab** | synthetic product events를 SQL mart, quality gate, A/B evidence, D7 guardrail, scenario matrix로 연결한 workflow | 23 quality checks PASS, activation lift +3.97pp, p-value 0.000011, D7 delta +0.97pp, Ship/Retest/Hold/Investigate memo/report | [Detail](https://signal-archive.vercel.app/projects/decisionops-lab) · [Report](https://dffxonnb-cyber.github.io/DecisionOps-lab/) · [Repo](https://github.com/dffxonnb-cyber/DecisionOps-lab) |
 | 4 | **LH Traffic Safety Analysis** | 100m grid risk signal을 LORO 검증과 현장 검토 우선순위로 번역한 공간 분석 | 99,323 training grids, 770 target grids, AUC 0.8604, Top-10% Lift 4.39x | [Detail](https://signal-archive.vercel.app/projects/lh-traffic-safety-analysis) · [Repo](https://github.com/dffxonnb-cyber/LH-traffic-safety-analysis) |
 
 ### Claim Boundaries
 
-- Redveil은 portfolio prototype이며 투자 추천, buy/sell recommendation, 수익률 예측, 전문 검토 대체를 주장하지 않습니다.
+- Redveil V2는 portfolio product이며 투자 추천, buy/sell recommendation, 수익률 예측, 개별 매물 정확성이나 전문 검토 대체를 주장하지 않습니다.
 - Shelter Signal은 live-first public-data service이지만 계정, 영구 저장, 실제 알림 발송 운영, production SLA를 주장하지 않습니다.
 - DecisionOps Lab은 synthetic-data workflow이며 실제 제품 성과, 실제 사용자 행동, production business impact를 주장하지 않습니다.
 - LH Traffic Safety는 현장 검토 우선순위 신호이며 실제 사고 감소 효과나 시설 설치 결정을 증명하지 않습니다.
@@ -103,8 +105,8 @@ Problem → Data → Criteria → Judgment → Output
 | **Visualization / BI** | Tableau workbook, Matplotlib, Seaborn, Plotly, Streamlit/pydeck prototypes |
 | **Web / Delivery** | HTML, CSS, JavaScript, React, Next.js, Vite, TypeScript, GitHub Pages, Vercel |
 | **API / Public Data** | Vercel serverless routes, data.go.kr API normalization, cache/fallback metadata |
-| **Spatial Analysis** | GeoPandas, QGIS, GeoJSON, 100m grid analysis, public-safe spatial evidence |
-| **Validation** | GitHub Actions, typecheck/lint/build, public artifact checks, smoke tests |
+| **Spatial Analysis** | GeoPandas, QGIS, GeoJSON, SVG boundary map, 100m grid analysis, public-safe spatial evidence |
+| **Validation** | GitHub Actions, typecheck/lint/build, public artifact checks, smoke tests, Playwright Chromium E2E |
 | **Local / Dry-run Only** | Docker Compose local validation, n8n dry-run outline, Mailpit local capture |
 
 ---
@@ -128,7 +130,8 @@ Problem → Data → Criteria → Judgment → Output
 | File | Role |
 | --- | --- |
 | `content/profile.ts` | 포지셔닝, 강점, 연락처, 기술 스택 |
-| `content/projects.ts` | 프로젝트 카드, 상세 페이지, 의사결정 질문, 근거, 링크 |
+| `content/projects.ts` | 기본 프로젝트 카드, 상세 페이지, 의사결정 질문, 근거, 링크 |
+| `content/projects-v2.ts` | Redveil V2 공식 제품 정보와 화면 증거 override |
 | `content/proof-points.ts` | 상단 핵심 근거와 프로젝트 증거 |
 | `content/case-studies.ts` | 반복되는 문제 해결 패턴과 사례 구조 |
 | `content/writing.ts` | 글쓰기 디렉터리 및 아티클 콘텐츠 |
