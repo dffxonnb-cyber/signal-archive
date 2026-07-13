@@ -187,7 +187,7 @@ export default async function ProjectDetailPage({
                   key={`${project.slug}-${item.label}`}
                 >
                   <span>{item.label}</span>
-                  <strong>{item.value}</strong>
+                  <p className="detail-evidence-item__value">{item.value}</p>
                 </article>
               ))}
             </div>
@@ -232,9 +232,7 @@ export default async function ProjectDetailPage({
                     ))}
                   </ul>
                 </article>
-              </div>
 
-              <div className="detail-operation__split">
                 <article className="detail-operation__panel">
                   <span className="project-card__meta-label">Reviewer Checklist</span>
                   <h3>리뷰어가 확인할 것</h3>

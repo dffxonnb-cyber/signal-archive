@@ -63,7 +63,7 @@ export const projects: Project[] = [
       },
       {
         label: "공간 단위",
-        value: "행정구역 평균 대신 100m × 100m 격자를 위험도·후보 비교·현장 검토의 공통 단위로 사용",
+        value: "행정구역 평균 대신 100m 격자를 위험도·후보 비교·현장 검토 단위로 사용",
       },
       {
         label: "전이 검증",
@@ -75,11 +75,11 @@ export const projects: Project[] = [
       },
       {
         label: "공개 검토표",
-        value: "public_top20_priority.csv에 public_review_note와 claim_boundary를 추가해 공개 가능한 검토 언어로 정리",
+        value: "Top-20 공개 검토표에 review note와 claim boundary를 함께 정리",
       },
       {
         label: "공개 경계",
-        value: "시설 패키지·추천 사유·Dashboard URL·현장 검증은 evidence audit에서 별도 경계로 관리",
+        value: "시설 패키지·추천 사유·현장 검증은 evidence audit에서 별도 경계로 관리",
       },
     ],
     signalCaseStudy: {
@@ -329,19 +329,19 @@ export const projects: Project[] = [
       },
       {
         label: "Delivery",
-        value: "리스크 점수, 보류 사유, 대체 후보, Hold Memo, Comparison Memo를 GitHub Pages 정적 웹에서 바로 확인",
+        value: "리스크 점수, 보류 사유, 대체 후보, memo를 GitHub Pages에서 확인",
       },
       {
         label: "V2 Decision Artifact",
-        value: "Hold Memo copy/export, Comparison Memo copy/export, Professional Review Checklist UI와 memo text 포함까지 검증",
+        value: "Hold/Comparison Memo copy-export와 Professional Review Checklist UI 검증",
       },
       {
         label: "Public Verification",
-        value: "GitHub Pages 배포, public-safe payload, tests, smoke checks, Production evidence 확인",
+        value: "GitHub Pages 배포, public-safe payload, tests, smoke checks 확인",
       },
       {
         label: "QA Boundary",
-        value: "portfolio prototype이며 투자 추천, buy/sell recommendation, 수익률 예측, 법률·세무·금융·중개·현장 전문 검토 대체를 주장하지 않음",
+        value: "투자 추천·수익률 예측·전문 검토 대체를 주장하지 않음",
       },
     ],
     signalCaseStudy: {
@@ -515,15 +515,16 @@ export const projects: Project[] = [
     },
     operationMeta: {
       lastVerifiedAt: "2026-06-12 09:30 KST",
-      source: "live api",
+      source: "deployed live API",
       whyItMatters:
-        "공공데이터 API의 지연, 누락, 만료 상태를 서비스 운영 흐름 안에서 처리하고, 마감 임박 공고를 분리해 실제 확인 가능한 archive로 구성했습니다.",
+        "공공데이터 API의 지연·누락·만료 상태를 운영 흐름에서 분리하고, 보호 종료 임박 공고를 확인 가능한 archive로 정리했습니다.",
       verified: [
-        "Live API 응답 기반 source 확인",
-        "KST 최근 30일 dateRange 수집 구조 확인",
-        "region filter / page / limit 응답 구조 확인",
-        "deadline_status 기반 current / urgent / protected / archive 분리 확인",
-        "cache hit / miss 및 stale-live fallback 흐름 확인",
+        "live API source 확인",
+        "KST 30일 dateRange 수집 구조 확인",
+        "region filter·page·limit 응답 구조 확인",
+        "D-Day / D-1~3 / active / expired 상태 분리",
+        "current / urgent / protected / archive view 분리",
+        "cache hit/miss와 stale-live fallback 흐름 확인",
       ],
       designing: [
         "장기 추세 대시보드",
@@ -533,14 +534,14 @@ export const projects: Project[] = [
       ],
       reviewChecklist: [
         "최근 30일 live API 응답이 deployed API source로 들어오는지",
-        "D-Day / D-1~3 / active / expired 상태가 분리되는지",
+        "deadline_status가 D-Day / D-1~3 / active / expired로 분리되는지",
         "current / urgent / protected / archive view가 목적별로 나뉘는지",
-        "API 실패 시 fallback path가 분리되어 있는지",
+        "API 실패 시 fallback cache가 분리되는지",
       ],
       risksHandled: [
         {
           risk: "공공데이터 API 응답 지연",
-          handling: "5분 TTL cache와 stale-live fallback으로 사용자 흐름을 유지",
+          handling: "5분 TTL cache와 stale-live fallback으로 탐색 흐름 유지",
         },
         {
           risk: "마감일 기준 혼선",
@@ -552,7 +553,7 @@ export const projects: Project[] = [
         },
         {
           risk: "live API 실패",
-          handling: "PostgreSQL, static, mock fallback 순서로 degraded state 구성",
+          handling: "PostgreSQL/static/mock fallback을 degraded state로 분리",
         },
       ],
     },
@@ -602,31 +603,31 @@ export const projects: Project[] = [
     evidencePoints: [
       {
         label: "Live-first 수집",
-        value: "KST 기준 최근 30일, state=notice, 최대 10개 upstream page 수집",
+        value: "KST 최근 30일, state=notice, 최대 10개 upstream page 수집",
       },
       {
         label: "Signal Logic",
-        value: "noticeEdt 기반 current/urgent/protected/archive 분리와 D-Day~D-3 긴급 신호 정렬",
+        value: "noticeEdt 기반 current/urgent/archive 분리와 D-Day~D-3 긴급 신호 정렬",
       },
       {
         label: "탐색 단위",
-        value: "서버 측 한국 지역 alias 필터와 page/limit 기반 20건 단위 탐색",
+        value: "서버 측 지역 alias 필터와 page/limit 기반 20건 단위 탐색",
       },
       {
         label: "Trust Layer",
-        value: "source, fallbackReason, cacheStatus, fetchedAt, dateRange, count metadata로 응답 상태 구분",
+        value: "source, fallbackReason, cacheStatus, fetchedAt metadata로 응답 상태 구분",
       },
       {
         label: "Operational Layer",
-        value: "5분 TTL 정규화 데이터 캐시, in-flight request sharing, stale-live 처리",
+        value: "5분 TTL 캐시, in-flight request sharing, stale-live 처리",
       },
       {
         label: "Observability",
-        value: "cache hit/miss, upstream fetch duration/count, normalized/filtered/returned count 확인",
+        value: "cache hit/miss, upstream duration, returned count 확인",
       },
       {
         label: "V2 dry-run evidence",
-        value: "alert_candidates → JSON/HTML digest preview는 local dry-run evidence로 분리했으며 실제 알림 발송 운영은 주장하지 않음",
+        value: "alert candidates와 digest preview는 local dry-run이며 실제 알림 발송은 주장하지 않음",
       },
     ],
     signalCaseStudy: {
@@ -836,7 +837,7 @@ export const projects: Project[] = [
       originalQuestion: "실험 결과가 좋아 보이면 바로 Ship해도 되는가?",
       reframedQuestion: "activation lift와 통계 신호가 있어도 품질 검증과 guardrail을 통과해야 Ship으로 판단할 수 있는가?",
       keyEvidence: "SQL mart · 23 quality checks PASS · activation lift +3.97pp · p-value 0.000011 · D7 revisit guardrail +0.97pp · 5 scenario matrix",
-      finalDeliverable: "mart_decision_summary, quality_report.json, experiment_result.json, scenario_matrix.md, decision_memo.md, public reviewer report",
+      finalDeliverable: "mart decision summary, quality/experiment reports, scenario matrix, decision memo, public reviewer report",
       proves: "제품 이벤트 데이터를 해석 전 품질 gate와 실험/guardrail 판단 언어로 전환하는 역량",
     },
     cardBrief: {
@@ -860,31 +861,31 @@ export const projects: Project[] = [
     evidencePoints: [
       {
         label: "SQL Layer",
-        value: "raw users/events/sessions/payments/experiments를 staging, intermediate, mart tables로 분리하고 reviewer-facing artifact가 mart layer를 읽도록 구성",
+        value: "raw events → staging/intermediate/mart로 분리하고 reviewer report가 mart layer를 읽도록 구성",
       },
       {
         label: "Quality Gate",
-        value: "row count, nulls, accepted values, relation, duplicate, experiment balance 등 23개 checks가 모두 PASS",
+        value: "row count, null, relation, duplicate, experiment balance 등 23개 checks PASS",
       },
       {
         label: "Experiment Review",
-        value: "Variant A activation 30.15%, B 34.12%, absolute lift +3.97pp, p-value 0.000011, confidence interval +2.14pp~+5.80pp",
+        value: "B variant activation +3.97pp, p-value 0.000011",
       },
       {
         label: "Guardrail Review",
-        value: "D7 revisit A 48.17%, B 49.14%, delta +0.97pp로 default strong_positive scenario의 guardrail PASS 확인",
+        value: "D7 revisit delta +0.97pp로 default scenario guardrail PASS",
       },
       {
         label: "Decision Language",
-        value: "strong_positive=Ship, guardrail_risk/weak_evidence=Retest, neutral=Hold, quality_failure=Investigate로 분기",
+        value: "strong_positive=Ship, weak/guardrail risk=Retest, neutral=Hold, quality failure=Investigate",
       },
       {
         label: "Verification",
-        value: "`scripts/run_full_verification.py`와 GitHub Actions가 reports/quality_report.json, experiment_result.json, decision_memo.md, review_report.html, scenario_matrix를 생성/업로드",
+        value: "one-command runner와 GitHub Actions로 quality/report/memo artifacts 생성",
       },
       {
         label: "Claim Boundary",
-        value: "synthetic data workflow이며 실제 제품 성과, 실제 사용자 행동, production business impact는 주장하지 않음",
+        value: "synthetic workflow이며 실제 제품 성과·사용자 행동·business impact는 주장하지 않음",
       },
     ],
     signalCaseStudy: {
@@ -896,7 +897,7 @@ export const projects: Project[] = [
       flow: ["Synthetic events", "DuckDB raw", "SQL staging", "Intermediate models", "Mart layer", "Quality gate", "A/B evidence", "D7 guardrail", "Scenario matrix", "Decision memo"],
       evidenceTitle: "검토 가능한 DecisionOps 산출물",
       evidenceDescription:
-        "별도 스크린샷을 만들지 않고, 저장소에 남아 있는 quality report, experiment result, scenario matrix, decision memo, reviewer report를 evidence로 연결합니다.",
+        "별도 스크린샷을 만들지 않고, quality/experiment reports, scenario matrix, decision memo, reviewer report를 evidence로 연결합니다.",
       sections: [
         {
           label: "01 Problem",
@@ -945,7 +946,7 @@ export const projects: Project[] = [
           title: "reviewer-facing artifact로 남기기",
           description:
             "quality report, experiment result, scenario matrix, decision memo, public reviewer report를 검토 가능한 산출물로 남깁니다.",
-          points: ["reports/decision_memo.md", "reports/review_report.html", "scripts/run_full_verification.py"],
+          points: ["decision memo", "public reviewer report", "one-command verification runner"],
         },
         {
           label: "08 Boundary",
@@ -981,7 +982,7 @@ export const projects: Project[] = [
         "refund risk와 session activity는 decision memo 설계 문서의 guardrail 후보로 다루며, 현재 생성된 scenario matrix의 검증 중심은 D7 revisit입니다.",
         "dashboard보다는 SQL layer, quality gate, scenario matrix, decision memo 중심의 reviewer-facing evidence입니다.",
       ],
-      linkNote: "GitHub README, docs/REVIEW_GUIDE.md, reports/scenario_matrix.md, reports/decision_memo.md에서 검증 경로와 claim boundary를 확인할 수 있습니다.",
+      linkNote: "GitHub README, review guide, scenario matrix, decision memo에서 검증 경로와 claim boundary를 확인할 수 있습니다.",
     },
     focusPoints: [
       "raw product event를 SQL mart layer와 metric definition으로 재구성",
