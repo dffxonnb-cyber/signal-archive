@@ -28,6 +28,11 @@
   <img alt="Data Portfolio" src="https://img.shields.io/badge/Data-Decision%20Archive-6b7280?style=flat-square" />
 </p>
 
+<p align="center">
+  <strong>Desktop recommended · Mobile supported</strong><br/>
+  프로젝트 비교와 화면 증거 검토는 PC 환경에 최적화되어 있으며, 모바일에서도 전체 콘텐츠를 확인할 수 있습니다.
+</p>
+
 ---
 
 ## Overview

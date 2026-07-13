@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { DesktopRecommendationNote } from "@/components/desktop-recommendation-note";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
       <body>
         <div className="site-shell">
           <SiteHeader />
+          <DesktopRecommendationNote />
           {children}
           <SiteFooter />
         </div>
