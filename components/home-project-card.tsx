@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { ProjectPublicStatusChips } from "@/components/project-public-status-chips";
+import { ProjectCurrentStatus } from "@/components/project-current-status";
 import type { Project } from "@/types/content";
 
 type HomeProjectCardProps = {
@@ -62,7 +62,7 @@ export function HomeProjectCard({
         <span className="home-project-card__lens">{project.primaryDomain}</span>
       </div>
 
-      <ProjectPublicStatusChips slug={project.slug} variant="home" />
+      <ProjectCurrentStatus slug={project.slug} variant="home" />
 
       <div className="home-project-card__body">
         <h3 className="home-project-card__title">
