@@ -19,7 +19,7 @@
       }
     ],
     "paths": {
-      "@/content/projects": ["./content/projects-public.ts"],
+      "@/content/projects": ["./content/projects-hiring.ts"],
       "@/*": ["./*"]
     }
   },
