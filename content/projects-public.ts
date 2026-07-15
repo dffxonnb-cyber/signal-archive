@@ -257,8 +257,8 @@ function syncProjectPublicStatus(project: Project): Project {
   return {
     ...project,
     evidencePoints: [
-      ...getProjectPublicStatusEvidence(project.slug),
       ...existingEvidence,
+      ...getProjectPublicStatusEvidence(project.slug),
     ],
   };
 }
