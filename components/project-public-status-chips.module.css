@@ -1,0 +1,50 @@
+.group {
+  display: grid;
+  gap: 8px;
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+  padding: 0 2px;
+}
+
+.label {
+  color: var(--accent-warm);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.value {
+  min-width: 0;
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+.home {
+  margin-inline: 16px;
+}
+
+.project {
+  margin-top: -2px;
+}
+
+@media (max-width: 640px) {
+  .roles {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .home {
+    margin-inline: 14px;
+  }
+}

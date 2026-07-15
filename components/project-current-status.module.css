@@ -1,16 +1,27 @@
-.status {
+.group {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 10px;
-  align-items: baseline;
-  padding: 10px 12px;
+  gap: 0;
   border: 1px solid rgba(148, 184, 170, 0.18);
   border-radius: 8px;
   background: rgba(148, 184, 170, 0.045);
+  overflow: hidden;
 }
 
-.label {
-  color: var(--accent-signal);
+.row {
+  display: grid;
+  grid-template-columns: 66px minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  padding: 9px 12px;
+}
+
+.roleRow {
+  border-top: 1px solid rgba(148, 184, 170, 0.12);
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.label,
+.roleLabel {
   font-size: 0.66rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -18,14 +29,32 @@
   white-space: nowrap;
 }
 
-.value {
+.label {
+  color: var(--accent-signal);
+}
+
+.roleLabel {
+  color: var(--accent-warm);
+}
+
+.value,
+.roleValue {
   min-width: 0;
-  color: var(--text-primary);
-  font-size: 0.79rem;
-  font-weight: 650;
   line-height: 1.5;
   word-break: keep-all;
   overflow-wrap: anywhere;
+}
+
+.value {
+  color: var(--text-primary);
+  font-size: 0.79rem;
+  font-weight: 650;
+}
+
+.roleValue {
+  color: var(--text-secondary);
+  font-size: 0.76rem;
+  font-weight: 600;
 }
 
 .home {
@@ -37,9 +66,9 @@
 }
 
 @media (max-width: 640px) {
-  .status {
+  .row {
     grid-template-columns: 1fr;
-    gap: 5px;
+    gap: 4px;
   }
 
   .home {
