@@ -4,6 +4,7 @@ export type ProjectPublicStatus = {
   verification: string;
   verifiedAt?: string;
   scope: string;
+  currentLine?: string;
 };
 
 const projectPublicStatusBySlug: Record<string, ProjectPublicStatus> = {
@@ -13,6 +14,7 @@ const projectPublicStatusBySlug: Record<string, ProjectPublicStatus> = {
     verification: "Release evidence verified",
     verifiedAt: "2026-07-13",
     scope: "Frozen flagship",
+    currentLine: "V2 공식 flagship · 공개 서비스 · 2026-07-13 검증",
   },
   "shelter-signal": {
     access: "Live service",
@@ -20,6 +22,7 @@ const projectPublicStatusBySlug: Record<string, ProjectPublicStatus> = {
     verification: "Production flow verified",
     verifiedAt: "2026-06-12 09:30 KST",
     scope: "Live API · alert delivery not in scope",
+    currentLine: "Live API 운영 흐름 검증 · 2026-06-12 · 실제 알림 발송 제외",
   },
   "decisionops-lab": {
     access: "Public reviewer report",
@@ -27,6 +30,7 @@ const projectPublicStatusBySlug: Record<string, ProjectPublicStatus> = {
     verification: "Workflow verified",
     verifiedAt: "2026-07-09",
     scope: "Synthetic workflow",
+    currentLine: "Synthetic workflow 정본 · 공개 reviewer report · 2026-07-09 검증",
   },
   "lh-traffic-safety-analysis": {
     access: "Public evidence",
@@ -34,6 +38,7 @@ const projectPublicStatusBySlug: Record<string, ProjectPublicStatus> = {
     verification: "Canonical scope frozen",
     verifiedAt: "2026-07-15",
     scope: "Field-review signal",
+    currentLine: "Canonical scope 동결 · 공개 evidence · 2026-07-15",
   },
   "starbucks-promotion-analysis": {
     access: "Public artifacts",
@@ -76,6 +81,22 @@ const fallbackStatus: ProjectPublicStatus = {
 
 export function getProjectPublicStatus(slug: string): ProjectPublicStatus {
   return projectPublicStatusBySlug[slug] ?? fallbackStatus;
+}
+
+export function getProjectCurrentStatusLine(slug: string): string {
+  const status = getProjectPublicStatus(slug);
+
+  return (
+    status.currentLine ??
+    [
+      status.access,
+      status.verification,
+      status.verifiedAt ? status.verifiedAt : null,
+      status.scope,
+    ]
+      .filter(Boolean)
+      .join(" · ")
+  );
 }
 
 export function getProjectPublicStatusChips(slug: string): string[] {

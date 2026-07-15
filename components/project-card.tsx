@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ProjectCurrentStatus } from "@/components/project-current-status";
 import { ProjectPublicStatusChips } from "@/components/project-public-status-chips";
 import type { Project } from "@/types/content";
 
@@ -252,7 +253,7 @@ export function ProjectCard({
         </div>
       </div>
 
-      <ProjectPublicStatusChips slug={project.slug} />
+      <ProjectCurrentStatus slug={project.slug} />
 
       <div className="project-card__decision">
         <span className="project-card__meta-label">Decision Question</span>
