@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { ProjectPublicStatusChips } from "@/components/project-public-status-chips";
 import type { Project } from "@/types/content";
 
 type ProjectCardVariant = "featured" | "supporting";
@@ -161,6 +162,8 @@ export function ProjectCard({
           ) : null}
         </div>
 
+        <ProjectPublicStatusChips slug={project.slug} />
+
         <div className="project-card__supporting-proof">
           <span className="project-card__meta-label">Decision Question</span>
           <p>{project.review.decisionQuestion}</p>
@@ -248,6 +251,8 @@ export function ProjectCard({
           </h2>
         </div>
       </div>
+
+      <ProjectPublicStatusChips slug={project.slug} />
 
       <div className="project-card__decision">
         <span className="project-card__meta-label">Decision Question</span>

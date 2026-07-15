@@ -1,5 +1,6 @@
 import type { Project } from "../types/content";
 
+import { getProjectPublicStatusEvidence } from "./project-public-status";
 import { projects as sourceProjects } from "./projects-v2";
 
 const REDVEIL_SLUG = "seoul-storefront-redveil";
@@ -246,7 +247,26 @@ function syncLhCanonicalScope(project: Project): Project {
   };
 }
 
-export const projects = sourceProjects.map(syncRedveilEvidence).map(syncLhCanonicalScope);
+const PUBLIC_STATUS_LABELS = new Set(["공개 접근", "저장소 상태", "검증 상태", "범위 상태"]);
+
+function syncProjectPublicStatus(project: Project): Project {
+  const existingEvidence = (project.evidencePoints ?? []).filter(
+    (item) => !PUBLIC_STATUS_LABELS.has(item.label),
+  );
+
+  return {
+    ...project,
+    evidencePoints: [
+      ...existingEvidence,
+      ...getProjectPublicStatusEvidence(project.slug),
+    ],
+  };
+}
+
+export const projects = sourceProjects
+  .map(syncRedveilEvidence)
+  .map(syncLhCanonicalScope)
+  .map(syncProjectPublicStatus);
 
 export const featuredProjects = projects
   .filter((project) => project.status === "featured")
