@@ -9,7 +9,7 @@
   border-color: rgba(148, 184, 170, 0.22);
   background:
     linear-gradient(135deg, rgba(148, 184, 170, 0.07), transparent 48%),
-    var(--surface-raised);
+    var(--surface-card);
 }
 
 .header {
