@@ -1,4 +1,7 @@
-import { getProjectCurrentStatusLine } from "@/content/project-public-status";
+import {
+  getProjectBestFitRoleLine,
+  getProjectCurrentStatusLine,
+} from "@/content/project-public-status";
 
 import styles from "./project-current-status.module.css";
 
@@ -13,11 +16,17 @@ export function ProjectCurrentStatus({
 }: ProjectCurrentStatusProps) {
   return (
     <div
-      className={`${styles.status} ${styles[variant]}`}
-      aria-label="현재 프로젝트 상태"
+      className={`${styles.group} ${styles[variant]}`}
+      aria-label="현재 프로젝트 상태와 추천 직무"
     >
-      <span className={styles.label}>Current</span>
-      <span className={styles.value}>{getProjectCurrentStatusLine(slug)}</span>
+      <div className={styles.row}>
+        <span className={styles.label}>Current</span>
+        <span className={styles.value}>{getProjectCurrentStatusLine(slug)}</span>
+      </div>
+      <div className={`${styles.row} ${styles.roleRow}`}>
+        <span className={styles.roleLabel}>Best fit</span>
+        <span className={styles.roleValue}>{getProjectBestFitRoleLine(slug)}</span>
+      </div>
     </div>
   );
 }
