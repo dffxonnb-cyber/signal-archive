@@ -1,3 +1,194 @@
 .scope {
   display: contents;
 }
+
+.scope :global(main.page-shell > .site-container) {
+  row-gap: clamp(52px, 6vw, 82px);
+}
+
+.scope :global(main.page-shell h2) {
+  max-width: 30ch;
+  line-height: 1.28;
+  text-wrap: balance;
+}
+
+.scope :global([id^="decision-file-"]) {
+  grid-template-columns: 112px minmax(0, 1fr) !important;
+  border-radius: 18px !important;
+  overflow: clip;
+}
+
+.scope :global([id^="decision-file-"] > div:first-child),
+.scope :global([id^="decision-file-"] > div:nth-child(2)) {
+  padding-top: clamp(26px, 3vw, 34px) !important;
+  padding-bottom: clamp(26px, 3vw, 34px) !important;
+}
+
+.scope :global([id^="decision-file-"] > div:first-child) {
+  gap: 12px !important;
+  padding-inline: 18px !important;
+}
+
+.scope :global([id^="decision-file-"] > div:first-child > span:first-child) {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.scope :global([id^="decision-file-"] > div:first-child > strong) {
+  margin-top: 2px;
+  font-size: 2.65rem !important;
+  line-height: 1 !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2)) {
+  gap: clamp(24px, 2.7vw, 34px) !important;
+  padding-inline: clamp(26px, 3.6vw, 44px) !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header) {
+  gap: 14px !important;
+  max-width: 76ch;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header > div:first-child) {
+  min-height: 28px;
+  justify-content: flex-start !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header > div:first-child > span:first-child) {
+  display: none !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header > div:first-child > span:last-child) {
+  display: inline-flex;
+  min-height: 28px;
+  align-items: center;
+}
+
+.scope :global([id^="decision-file-"] h3) {
+  max-width: 28ch;
+  font-size: clamp(1.3rem, 1.8vw, 1.55rem) !important;
+  line-height: 1.28 !important;
+  text-wrap: balance;
+}
+
+.scope :global([id^="decision-file-"] header p) {
+  max-width: 62ch;
+  font-size: 0.96rem !important;
+  line-height: 1.72 !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header + div) {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+  align-items: stretch;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header + div > section) {
+  min-height: 132px;
+  align-content: start;
+  gap: 12px !important;
+  padding: 18px 20px !important;
+  border-radius: 14px !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header + div p),
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header + div a) {
+  max-width: 42ch;
+  line-height: 1.7 !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header + div + div) {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(18px, 2vw, 28px) !important;
+  padding-block: 2px;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header + div + div > section) {
+  min-width: 0;
+  gap: 12px !important;
+  padding: 18px 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(218, 228, 224, 0.12) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > header + div + div p) {
+  max-width: 36ch;
+  font-size: 0.9rem !important;
+  line-height: 1.78 !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > div:last-child) {
+  grid-template-columns: 1fr !important;
+  gap: 22px !important;
+  padding-top: 6px !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > div:last-child > section) {
+  gap: 13px !important;
+  padding: 18px 0 0 !important;
+  border: 0 !important;
+  border-top: 1px solid rgba(218, 228, 224, 0.1) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > div:last-child > section > div) {
+  gap: 10px !important;
+}
+
+.scope :global([id^="decision-file-"] > div:nth-child(2) > div:last-child a),
+.scope :global([id^="decision-file-"] > div:nth-child(2) > div:last-child span) {
+  min-height: 32px !important;
+  padding-inline: 12px !important;
+  line-height: 1.35 !important;
+}
+
+@media (max-width: 1080px) {
+  .scope :global([id^="decision-file-"] > div:nth-child(2) > header + div),
+  .scope :global([id^="decision-file-"] > div:nth-child(2) > header + div + div) {
+    grid-template-columns: 1fr !important;
+  }
+
+  .scope :global([id^="decision-file-"] > div:nth-child(2) > header + div > section) {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 860px) {
+  .scope :global([id^="decision-file-"]) {
+    grid-template-columns: 1fr !important;
+  }
+
+  .scope :global([id^="decision-file-"] > div:first-child) {
+    grid-template-columns: auto 1fr auto !important;
+    align-items: center;
+    padding: 18px 22px !important;
+  }
+
+  .scope :global([id^="decision-file-"] > div:first-child > strong) {
+    font-size: 2rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .scope :global(main.page-shell > .site-container) {
+    row-gap: 44px;
+  }
+
+  .scope :global([id^="decision-file-"] > div:first-child) {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .scope :global([id^="decision-file-"] > div:nth-child(2)) {
+    padding: 22px 18px 26px !important;
+  }
+
+  .scope :global([id^="decision-file-"] > div:nth-child(2) > header + div > section) {
+    padding: 16px !important;
+  }
+}
