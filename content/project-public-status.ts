@@ -19,13 +19,18 @@ const projectPublicStatusBySlug: Record<string, ProjectPublicStatus> = {
     bestFitRoles: ["공간데이터 분석", "비즈니스 분석", "데이터 기반 서비스 기획"],
   },
   "shelter-signal": {
-    access: "Live service",
+    access: "V1/V2 live service",
     repository: "Public repository",
-    verification: "Production flow verified",
-    verifiedAt: "2026-06-12 09:30 KST",
-    scope: "Live API · alert delivery not in scope",
-    currentLine: "Live API 운영 흐름 검증 · 2026-06-12 · 실제 알림 발송 제외",
-    bestFitRoles: ["공공데이터 분석", "데이터 서비스 운영", "API 기반 제품 분석"],
+    verification: "Daily snapshot and production flow verified",
+    verifiedAt: "2026-07-16 07:13 KST",
+    scope: "V1 current notices + V2 history-aware · external alert delivery excluded",
+    currentLine:
+      "V1 live + V2 history-aware · 일별 snapshot/변화 이벤트 검증 · 2026-07-16",
+    bestFitRoles: [
+      "공공데이터 분석",
+      "데이터 서비스 운영",
+      "데이터 신뢰성·이벤트 모델링",
+    ],
   },
   "decisionops-lab": {
     access: "Public reviewer report",
