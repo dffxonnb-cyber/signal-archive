@@ -3,7 +3,7 @@ import type { Project } from "../types/content";
 import {
   featuredProjects as sourceFeaturedProjects,
   projects as sourceProjects,
-} from "./projects-current";
+} from "./projects-decisionops";
 
 const PRIVATE_REPOSITORY_PROJECTS = new Set([
   "job-signal-pipeline",
