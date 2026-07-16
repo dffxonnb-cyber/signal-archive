@@ -8,7 +8,8 @@ const reviewerProjectPaths = [
   {
     label: "3-minute scan",
     title: "Redveil → Shelter → DecisionOps → LH",
-    detail: "single flagship decision artifact를 먼저 보고, public-data service, SQL/D7 guardrail workflow, 공간 검증으로 확장합니다.",
+    detail:
+      "single flagship decision artifact를 먼저 보고, history-aware public-data product, SQL multi-guardrail workflow, 공간 검증으로 확장합니다.",
     projects: [
       {
         title: "Redveil",
@@ -18,12 +19,12 @@ const reviewerProjectPaths = [
       {
         title: "Shelter Signal",
         href: "/projects/shelter-signal",
-        reason: "live API · cache/fallback · urgent/archive 분리",
+        reason: "V1 live · V2 change events/timeline/briefing",
       },
       {
         title: "DecisionOps Lab",
         href: "/projects/decisionops-lab",
-        reason: "SQL mart · 23 quality checks · D7 guardrail memo",
+        reason: "SQL mart · 23 checks · 3 guardrails · 7 scenarios",
       },
       {
         title: "LH Traffic Safety",
@@ -35,12 +36,13 @@ const reviewerProjectPaths = [
   {
     label: "Analytics / DecisionOps",
     title: "분석 결과를 의사결정으로 번역",
-    detail: "차트나 모델 점수 이후의 품질 검증, D7 guardrail, scenario matrix, decision memo를 확인하는 경로입니다.",
+    detail:
+      "차트나 모델 점수 이후의 품질 검증, D7·refund·session guardrails, 7-scenario matrix와 decision memo를 확인하는 경로입니다.",
     projects: [
       {
         title: "DecisionOps Lab",
         href: "/projects/decisionops-lab",
-        reason: "23 checks PASS · +3.97pp lift · 5 scenario matrix",
+        reason: "23 checks · +3.97pp · 3 guardrails · 7 scenarios",
       },
       {
         title: "Starbucks",
@@ -67,7 +69,7 @@ const reviewerProjectPaths = [
       {
         title: "Shelter Signal",
         href: "/projects/shelter-signal",
-        reason: "API current·urgent 분리",
+        reason: "daily snapshot·change events·timeline",
       },
       {
         title: "LH Traffic Safety",
@@ -77,14 +79,15 @@ const reviewerProjectPaths = [
       {
         title: "DecisionOps Lab",
         href: "/projects/decisionops-lab",
-        reason: "SQL 품질 gate와 D7 guardrail 판단 보강",
+        reason: "SQL 품질 gate와 3개 guardrail 판단 보강",
       },
     ],
   },
   {
     label: "Business / CRM",
     title: "상권·고객·커머스 판단",
-    detail: "CRM과 dashboard evidence는 Redveil과 DecisionOps 뒤에 supporting 근거로 읽는 흐름입니다.",
+    detail:
+      "CRM과 dashboard evidence는 Redveil과 DecisionOps 뒤에 supporting 근거로 읽는 흐름입니다.",
     projects: [
       {
         title: "Redveil",
@@ -94,7 +97,7 @@ const reviewerProjectPaths = [
       {
         title: "DecisionOps Lab",
         href: "/projects/decisionops-lab",
-        reason: "제품 지표·D7 guardrail 판단",
+        reason: "제품 지표·3 guardrails·7 scenarios",
       },
       {
         title: "Starbucks",
@@ -145,7 +148,7 @@ export default function ProjectsPage() {
       <div className="site-container page-grid">
         <PageHero
           eyebrow="Evidence Board"
-          lead="Redveil을 단일 flagship으로 먼저 확인하고, Shelter Signal의 public-data service, DecisionOps Lab의 SQL/D7 guardrail workflow, LH Traffic Safety의 공간 검증으로 확장해 읽는 프로젝트 보드입니다."
+          lead="Redveil을 단일 flagship으로 먼저 확인하고, Shelter Signal의 history-aware public-data product, DecisionOps Lab의 SQL·3개 guardrail·7개 scenario workflow, LH Traffic Safety의 공간 검증으로 확장해 읽는 프로젝트 보드입니다."
           title="Projects"
           titleId="projects-title"
         >
