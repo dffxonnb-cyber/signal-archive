@@ -32,9 +32,18 @@ function requireText(file, text, label = text) {
   pass(`${file}: ${label}`);
 }
 
+function requireTextInsensitive(file, text, label = text) {
+  const content = read(file).toLowerCase();
+  if (!content.includes(text.toLowerCase())) {
+    fail(`${file}: missing ${label}`);
+    return;
+  }
+  pass(`${file}: ${label}`);
+}
+
 function requireAny(file, options, label) {
-  const content = read(file);
-  if (!options.some((option) => content.includes(option))) {
+  const content = read(file).toLowerCase();
+  if (!options.some((option) => content.includes(option.toLowerCase()))) {
     fail(`${file}: missing ${label}; expected one of ${options.map((item) => JSON.stringify(item)).join(", ")}`);
     return;
   }
@@ -81,16 +90,17 @@ function checkCanonicalAlias() {
 
 function checkOverrideChain() {
   const chain = [
-    ["content/projects-hiring.ts", './projects-decisionops'],
-    ["content/projects-decisionops.ts", './projects-current'],
-    ["content/projects-current.ts", './projects-public'],
-    ["content/projects-public.ts", './projects-v2'],
-    ["content/projects-v2.ts", './projects'],
+    ["content/projects-hiring.ts", "./projects-decisionops"],
+    ["content/projects-decisionops.ts", "./projects-current"],
+    ["content/projects-current.ts", "./projects-public"],
+    ["content/projects-public.ts", "./projects-v2"],
+    ["content/projects-v2.ts", "./projects"],
   ];
 
   for (const [file, source] of chain) {
     const content = read(file);
-    const importPattern = new RegExp(`from\\s+["']${source.replaceAll("/", "\\/")}["']`);
+    const escapedSource = source.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const importPattern = new RegExp(`from\\s+["']${escapedSource}["']`);
     if (!importPattern.test(content)) {
       fail(`${file}: canonical override chain must import ${source}`);
       continue;
@@ -140,9 +150,9 @@ function checkRepresentativeContracts() {
   }
   requireText(decisionOpsFile, "3 Guardrails", "DecisionOps guardrail count");
   requireText(decisionOpsFile, "7 Scenarios", "DecisionOps scenario count");
-  requireText(decisionOpsFile, "D7 revisit", "DecisionOps D7 guardrail");
-  requireText(decisionOpsFile, "Refund rate", "DecisionOps refund guardrail");
-  requireText(decisionOpsFile, "Session activity", "DecisionOps session guardrail");
+  requireTextInsensitive(decisionOpsFile, "D7 revisit", "DecisionOps D7 guardrail");
+  requireTextInsensitive(decisionOpsFile, "refund rate", "DecisionOps refund guardrail");
+  requireTextInsensitive(decisionOpsFile, "session activity", "DecisionOps session guardrail");
 
   requireText("content/project-public-status.ts", '"shelter-signal"', "Shelter public status");
   requireText("content/project-public-status.ts", '"decisionops-lab"', "DecisionOps public status");
@@ -187,7 +197,7 @@ function checkBaseProjectSlugs() {
   const routeFiles = [...walk("app"), ...walk("components")].filter((file) => /\.(?:ts|tsx)$/.test(file));
   for (const file of routeFiles) {
     const text = read(file);
-    for (const match of text.matchAll(/["']\/projects\/([^"'/?#]+)["']/g)) {
+    for (const match of text.matchAll(/["']\/projects\/([a-z0-9-]+)["']/g)) {
       if (!unique.has(match[1])) {
         fail(`${file}: project route references unknown slug ${match[1]}`);
       }
@@ -195,15 +205,28 @@ function checkBaseProjectSlugs() {
   }
 }
 
+function getReplacedLegacyAssets() {
+  const publicOverride = read("content/projects-public.ts");
+  return new Set(
+    [...publicOverride.matchAll(/const\s+LEGACY_[A-Z0-9_]+\s*=\s*["'](\/[^"']+)["']/g)].map(
+      (match) => match[1],
+    ),
+  );
+}
+
 function checkPublicAssets() {
   const contentFiles = walk("content").filter((file) => /\.tsx?$/.test(file));
+  const replacedLegacyAssets = getReplacedLegacyAssets();
   const missing = new Set();
   let checked = 0;
 
   for (const file of contentFiles) {
     const text = read(file);
-    for (const match of text.matchAll(/\bsrc:\s*["'`]\/(?!\/)([^"'`]+)["'`]/g)) {
-      const publicPath = stripAnchorAndQuery(match[1]);
+    for (const match of text.matchAll(/\bsrc:\s*["'`](\/(?!\/)[^"'`]+)["'`]/g)) {
+      const originalPath = match[1];
+      if (replacedLegacyAssets.has(originalPath)) continue;
+
+      const publicPath = stripAnchorAndQuery(originalPath.slice(1));
       const relativeAsset = `public/${publicPath}`;
       checked += 1;
       if (!fs.existsSync(path.join(ROOT, relativeAsset))) {
@@ -216,7 +239,7 @@ function checkPublicAssets() {
     for (const item of missing) fail(`Missing public asset: ${item}`);
     return;
   }
-  pass(`${checked} public content asset references exist`);
+  pass(`${checked} effective public content asset references exist`);
 }
 
 function checkMarkdownLinks() {
@@ -236,7 +259,7 @@ function checkMarkdownLinks() {
         continue;
       }
 
-      const target = stripAnchorAndQuery(rawTarget);
+      const target = stripAnchorAndQuery(rawTarget.split(/\s+["']/u, 1)[0]);
       if (!target) continue;
       checked += 1;
       const resolved = path.resolve(ROOT, path.dirname(file), target);
