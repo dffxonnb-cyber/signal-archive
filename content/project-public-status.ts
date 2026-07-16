@@ -35,11 +35,12 @@ const projectPublicStatusBySlug: Record<string, ProjectPublicStatus> = {
   "decisionops-lab": {
     access: "Public reviewer report",
     repository: "Public repository",
-    verification: "Workflow verified",
+    verification: "Multi-guardrail workflow verified",
     verifiedAt: "2026-07-09",
-    scope: "Synthetic workflow",
-    currentLine: "Synthetic workflow 정본 · 공개 reviewer report · 2026-07-09 검증",
-    bestFitRoles: ["제품 데이터 분석", "Analytics Engineering", "실험 분석"],
+    scope: "Synthetic · 3 guardrails · 7 scenarios",
+    currentLine:
+      "3개 guardrail · 7개 scenario 정본 · 공개 reviewer report · 2026-07-09 검증",
+    bestFitRoles: ["제품 데이터 분석", "Analytics Engineering", "실험·의사결정 분석"],
   },
   "lh-traffic-safety-analysis": {
     access: "Public evidence",
