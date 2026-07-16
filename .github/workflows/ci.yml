@@ -11,7 +11,40 @@ permissions:
   contents: read
 
 jobs:
+  content:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          show-progress: false
+
+      - name: Check canonical content path
+        run: node scripts/check-content-consistency.mjs structure
+
+      - name: Check representative project contracts
+        if: always()
+        run: node scripts/check-content-consistency.mjs representative
+
+      - name: Check project slugs and routes
+        if: always()
+        run: node scripts/check-content-consistency.mjs routes
+
+      - name: Check public evidence assets
+        if: always()
+        run: node scripts/check-content-consistency.mjs assets
+
+      - name: Check documentation links and URLs
+        if: always()
+        run: node scripts/check-content-consistency.mjs docs
+
+      - name: Check stale hiring-facing wording
+        if: always()
+        run: node scripts/check-content-consistency.mjs stale
+
   verify:
+    needs: content
     runs-on: ubuntu-latest
 
     steps:
