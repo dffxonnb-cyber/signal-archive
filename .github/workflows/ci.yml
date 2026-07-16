@@ -20,8 +20,28 @@ jobs:
         with:
           show-progress: false
 
-      - name: Check content consistency
-        run: node scripts/check-content-consistency.mjs
+      - name: Check canonical content path
+        run: node scripts/check-content-consistency.mjs structure
+
+      - name: Check representative project contracts
+        if: always()
+        run: node scripts/check-content-consistency.mjs representative
+
+      - name: Check project slugs and routes
+        if: always()
+        run: node scripts/check-content-consistency.mjs routes
+
+      - name: Check public evidence assets
+        if: always()
+        run: node scripts/check-content-consistency.mjs assets
+
+      - name: Check documentation links and URLs
+        if: always()
+        run: node scripts/check-content-consistency.mjs docs
+
+      - name: Check stale hiring-facing wording
+        if: always()
+        run: node scripts/check-content-consistency.mjs stale
 
   verify:
     needs: content
