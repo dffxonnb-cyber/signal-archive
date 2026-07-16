@@ -324,14 +324,26 @@ function checkStalePhrases() {
   ]);
 }
 
-checkCanonicalAlias();
-checkOverrideChain();
-checkRepresentativeContracts();
-checkBaseProjectSlugs();
-checkPublicAssets();
-checkMarkdownLinks();
-checkExternalUrlSyntax();
-checkStalePhrases();
+const groups = {
+  structure: [checkCanonicalAlias, checkOverrideChain],
+  representative: [checkRepresentativeContracts],
+  routes: [checkBaseProjectSlugs],
+  assets: [checkPublicAssets],
+  docs: [checkMarkdownLinks, checkExternalUrlSyntax],
+  stale: [checkStalePhrases],
+};
+
+const requestedGroups = process.argv.slice(2);
+const selectedGroups = requestedGroups.length > 0 ? requestedGroups : Object.keys(groups);
+
+for (const group of selectedGroups) {
+  const checks = groups[group];
+  if (!checks) {
+    fail(`Unknown content-check group: ${group}`);
+    continue;
+  }
+  for (const check of checks) check();
+}
 
 for (const message of passes) console.log(`PASS ${message}`);
 
@@ -341,4 +353,4 @@ if (errors.length > 0) {
   process.exit(1);
 }
 
-console.log(`\nContent consistency check passed (${passes.length} contract groups).`);
+console.log(`\nContent consistency check passed for: ${selectedGroups.join(", ")}.`);
