@@ -48,7 +48,7 @@ The content check fails if the exact alias or any import in this chain is remove
 - `src: "/..."` evidence references in structured content exist under `public/`.
 - Relative Markdown links resolve to tracked files.
 - Public URL strings are syntactically valid HTTPS URLs.
-- Hiring-facing files do not reintroduce known stale wording such as five-scenario, local V2 dry-run, D7-only, or optional-browser-check descriptions.
+- Hiring-facing files do not reintroduce legacy five-scenario, local dry-run, single-guardrail, or optional-browser-verification descriptions.
 
 This is a repository-level consistency contract. It does not make external network requests or independently rerun the linked repositories.
 
