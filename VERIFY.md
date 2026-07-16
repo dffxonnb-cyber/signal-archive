@@ -7,27 +7,27 @@ Signal Archive is the portfolio hub. Its verification target is whether the publ
 | Area | Publicly Verifiable | Notes |
 | --- | --- | --- |
 | Portfolio build | Yes | Next.js routes are built from tracked TypeScript content and override layers. |
+| Content consistency | Yes | A Node check enforces the canonical content alias and override chain, representative-project contracts, slugs, public assets, relative documentation links, URL syntax, and stale-phrase exclusions. |
 | Type safety | Yes | `tsc --noEmit` checks project content, components, and route types. |
 | Linting | Yes | ESLint checks the app, content, scripts, and component code. |
 | Production build | Yes | `next build` generates the deployable portfolio pages. |
-| Public links and evidence wording | Partly | Links and claims are tracked in the repository; automated cross-file consistency checks are documented separately when implemented. |
 | Underlying project data | Repository-specific | Each project repository owns its raw-data, model, pipeline, and production boundary. |
 
 ## Structured Content Path
 
-Hiring-facing project pages currently resolve through layered content modules:
+Hiring-facing imports use the exact `tsconfig.json` alias below:
 
 ```text
-content/projects.ts
-→ content/projects-v2.ts
-→ content/projects-public.ts
-→ content/projects-current.ts
-→ content/projects-decisionops.ts
+@/content/projects
 → content/projects-hiring.ts
-→ @/content/projects
+→ content/projects-decisionops.ts
+→ content/projects-current.ts
+→ content/projects-public.ts
+→ content/projects-v2.ts
+→ content/projects.ts
 ```
 
-The layers keep legacy base records available while applying the current public-safe state of representative projects:
+The final file in that chain contains the base project records; each preceding layer applies a narrower public-safe override before the objects reach the app:
 
 - `projects-v2.ts`: Redveil V2 official product and evidence.
 - `projects-public.ts`: public-status evidence and canonical LH scope.
@@ -35,10 +35,28 @@ The layers keep legacy base records available while applying the current public-
 - `projects-decisionops.ts`: DecisionOps three-guardrail, seven-scenario workflow.
 - `projects-hiring.ts`: removes private-repository links from hiring-facing output.
 
+The content check fails if the exact alias or any import in this chain is removed or redirected.
+
+## Automated Content Contracts
+
+`npm run check:content` verifies:
+
+- Redveil uses the official GitHub Pages `/v2/` URL and retains Chromium E2E evidence.
+- Shelter contains the seven change-event types, daily 06:20 KST collection wording, `#changes`, `#briefing`, and D-Day~D-3 boundary.
+- DecisionOps contains all seven scenario names and D7 revisit, refund rate, and session activity guardrails with the 3/7 counts.
+- Representative and supporting project slugs are unique, and hard-coded `/projects/<slug>` routes reference known project records.
+- `src: "/..."` evidence references in structured content exist under `public/`.
+- Relative Markdown links resolve to tracked files.
+- Public URL strings are syntactically valid HTTPS URLs.
+- Hiring-facing files do not reintroduce known stale wording such as five-scenario, local V2 dry-run, D7-only, or optional-browser-check descriptions.
+
+This is a repository-level consistency contract. It does not make external network requests or independently rerun the linked repositories.
+
 ## Local Verification
 
 ```bash
 npm ci
+npm run check:content
 npm run typecheck
 npm run lint
 npm run build
@@ -50,18 +68,19 @@ GitHub Actions runs the same sequence on `main` pushes and pull requests:
 
 ```bash
 npm ci
+npm run check:content
 npm run typecheck
 npm run lint
 npm run build
 ```
 
-A passing Signal Archive CI run proves that the structured content is type-valid and that the portfolio can be linted and built. It does not rerun every linked project's data pipeline.
+A passing Signal Archive CI run proves that the canonical content path and representative-project contracts are intact, the structured content is type-valid, and the portfolio can be linted and built. It does not rerun every linked project's data pipeline.
 
 ## Verification Boundaries
 
 ### Verified Portfolio Behavior
 
-- Signal Archive itself is verified through typecheck, lint, and production build.
+- Signal Archive itself is verified through content consistency, typecheck, lint, and production build.
 - Public project links are presented as reviewable artifacts such as GitHub Pages products, Vercel routes, repository documents, tracked reports, public-safe JSON, Tableau files, screenshots, and evidence notes.
 - Representative-project wording is limited to evidence available in the linked public repositories.
 - Project-specific validation is delegated to each repository rather than being duplicated inside this portfolio repository.
@@ -130,6 +149,7 @@ A passing Signal Archive CI run proves that the structured content is type-valid
 
 ## Known Limits
 
-- Signal Archive does not currently rerun all external project repositories from one monorepo command.
-- Cross-file wording, link, asset, scenario-count, and evidence-date consistency require their own automated check; until that check is added, CI guarantees type/lint/build integrity only.
+- Signal Archive does not rerun all external project repositories from one monorepo command.
+- URL verification is syntactic and local; CI does not make network calls to prove that every external service is reachable at that moment.
+- Evidence-date freshness still follows each source repository's update cadence; this check prevents structural drift but does not infer whether a source dataset should have refreshed today.
 - Project-specific statistical validation, raw-data availability, and notebook execution remain documented in each project's repository-level verification guide.
