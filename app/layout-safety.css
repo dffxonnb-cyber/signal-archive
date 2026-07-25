@@ -1,0 +1,33 @@
+/* Production layout safety overrides for long hiring-facing copy. */
+.project-card__proof-item,
+.project-card__brief-copy,
+.detail-signal-case__section,
+.detail-signal-case__section > * {
+  min-width: 0;
+}
+
+.project-card__brief-copy,
+.detail-signal-case__section h3,
+.detail-signal-case__section p,
+.detail-signal-case__section li {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+@media (max-width: 800px) {
+  .site-header {
+    overflow-x: clip;
+  }
+
+  .site-header__inner,
+  .site-nav {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .site-nav {
+    contain: inline-size;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+}
