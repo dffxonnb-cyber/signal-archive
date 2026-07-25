@@ -1,0 +1,46 @@
+/* Keep proof-point evidence cards readable without allowing long evidence strings to cross card boundaries. */
+.home-proof__grid,
+.proof-point-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.home-proof__grid > :last-child,
+.proof-point-grid > :last-child {
+  grid-column: auto;
+}
+
+.home-proof-card,
+.proof-point-card {
+  min-width: 0;
+}
+
+.home-proof-card__label,
+.home-proof-card__value,
+.home-proof-card__note,
+.proof-point-card__label,
+.proof-point-card__value,
+.proof-point-card__note {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: none;
+}
+
+.home-proof-card__note,
+.proof-point-card__note {
+  line-height: 1.5;
+}
+
+@media (min-width: 481px) and (max-width: 1023.98px) {
+  .home-proof__grid,
+  .proof-point-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480.98px) {
+  .home-proof__grid,
+  .proof-point-grid {
+    grid-template-columns: 1fr;
+  }
+}
