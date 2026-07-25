@@ -1,4 +1,12 @@
 /* Production layout safety overrides for long hiring-facing copy. */
+.site-container.page-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.site-container.page-grid > * {
+  min-width: 0;
+}
+
 .project-card__proof-item,
 .project-card__brief-copy,
 .detail-signal-case__section,
