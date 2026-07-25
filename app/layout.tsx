@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
 import "./globals.css";
+import "./proof-points.css";
 
 export const metadata: Metadata = {
   title: {
