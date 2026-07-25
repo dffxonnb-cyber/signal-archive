@@ -3,7 +3,11 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
-.site-container.page-grid > * {
+.site-container.page-grid > *,
+.site-container.page-grid [class*="patternSection"],
+.site-container.page-grid [class*="patternGrid"],
+.site-container.page-grid [class*="patternCard"],
+.site-container.page-grid [class*="sectionHead"] {
   min-width: 0;
 }
 
@@ -17,9 +21,18 @@
 .project-card__brief-copy,
 .detail-signal-case__section h3,
 .detail-signal-case__section p,
-.detail-signal-case__section li {
+.detail-signal-case__section li,
+.site-container.page-grid [class*="patternCard"] h3,
+.site-container.page-grid [class*="patternCard"] p,
+.site-container.page-grid [class*="patternCard"] li {
   overflow-wrap: anywhere;
   word-break: normal;
+}
+
+@media (max-width: 1080px) {
+  .site-container.page-grid [class*="patternGrid"] {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 @media (max-width: 800px) {
