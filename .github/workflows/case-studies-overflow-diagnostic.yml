@@ -1,0 +1,38 @@
+name: Case Studies Overflow Diagnostic
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Diagnose 320px production overflow
+        run: node scripts/diagnose-case-studies-overflow.mjs
+
+      - name: Upload diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: case-studies-overflow-diagnostic
+          path: artifacts/case-studies-overflow-diagnostic
+          if-no-files-found: error
+          retention-days: 7
