@@ -1,0 +1,42 @@
+name: Production Layout Audit
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  production-layout-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save --ignore-scripts playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Audit production layout
+        env:
+          BASE_URL: https://signal-archive.vercel.app
+          REQUIRED_MARKER: Redveil V2
+        run: node scripts/audit-production-layout.mjs
+
+      - name: Upload audit report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-layout-audit
+          path: artifacts/production-layout-audit
+          if-no-files-found: error
+          retention-days: 7
